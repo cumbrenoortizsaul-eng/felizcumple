@@ -137,6 +137,16 @@
   .globo.pop{animation:none;transform:scale(0);opacity:0;transition:transform .3s,opacity .3s}
   @keyframes flota{50%{transform:translateY(-10px)}}
 
+  /* Saludo según la hora */
+  .saludo{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(1.4rem,5vw,2rem);color:var(--pink-deep);margin-bottom:6px;min-height:1.2em}
+
+  /* Mini-juego */
+  .game-hud{display:flex;justify-content:space-around;gap:8px;font-size:clamp(1rem,3.5vw,1.2rem);font-weight:700;color:var(--pink-deep);margin-bottom:12px}
+  .game-board{position:relative;height:320px;background:var(--rose);border-radius:18px;overflow:hidden;touch-action:manipulation}
+  .game-start{position:absolute;inset:0;display:grid;place-items:center}
+  .turtle{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;transform:scale(0);animation:tpop .2s forwards}
+  @keyframes tpop{to{transform:scale(1)}}
+
   footer{text-align:center;padding:50px 20px;color:var(--soft)}
   footer .big{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--pink-deep)}
 
@@ -184,6 +194,7 @@
 <!-- ===== HERO ===== -->
 <header class="hero">
   <div class="wrap">
+    <p class="saludo" id="saludo"></p>
     <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦫</span><span class="capi-mochi">🐢</span></div>
     <h1>Para ti,<br>mi amor</h1>
     <p class="sub">Un capibara enamorado con su mochila de tortuga… igual que yo contigo 🦫🐢💕</p>
@@ -255,6 +266,25 @@
     <div class="card reveal" style="text-align:center">
       <div class="globos" id="globos"></div>
       <p class="piropo-txt" id="globoMsg" style="min-height:1.6em;margin-top:14px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MINI-JUEGO ===== -->
+<section id="game">
+  <div class="wrap">
+    <h2>Atrapa las tortugas 🐢</h2>
+    <p class="lead">¿Cuántas cazas en 20 segundos?</p>
+    <div class="card reveal">
+      <div class="game-hud">
+        <span>⏱️ <b id="gTime">20</b>s</span>
+        <span>🐢 <b id="gScore">0</b></span>
+        <span>🏆 <b id="gBest">0</b></span>
+      </div>
+      <div class="game-board" id="gBoard">
+        <div class="game-start" id="gStart"><button class="piropo-btn" id="gBtn">Jugar 🎮</button></div>
+      </div>
+      <p class="piropo-txt" id="gMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
@@ -525,6 +555,54 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     };
     cont.appendChild(g);
   });
+})();
+
+/* ================= SALUDO SEGÚN LA HORA ================= */
+(function(){
+  const h=new Date().getHours();
+  const s = h<6 ? "Buenas noches, mi amor 🌙" :
+            h<13 ? "Buenos días, mi amor ☀️" :
+            h<20 ? "Buenas tardes, mi amor 🌇" :
+                   "Buenas noches, mi amor 🌙";
+  document.getElementById('saludo').textContent=s;
+})();
+
+/* ================= MINI-JUEGO: ATRAPA LAS TORTUGAS ================= */
+(function(){
+  const board=document.getElementById('gBoard'),start=document.getElementById('gStart'),btn=document.getElementById('gBtn');
+  const timeEl=document.getElementById('gTime'),scoreEl=document.getElementById('gScore'),bestEl=document.getElementById('gBest'),msg=document.getElementById('gMsg');
+  let score=0,time=20,running=false,spawnT,tickT,best=+(localStorage.getItem('tortugasBest')||0);
+  bestEl.textContent=best;
+  function spawn(){
+    const t=document.createElement('div');t.className='turtle';
+    t.textContent = Math.random()<0.15 ? '🦫' : '🐢';
+    const cap = t.textContent==='🦫';
+    const w=board.clientWidth-46, h=board.clientHeight-46;
+    t.style.left=Math.max(0,Math.random()*w)+'px';
+    t.style.top=Math.max(0,Math.random()*h)+'px';
+    t.onclick=()=>{
+      if(!running||t.dataset.done)return;t.dataset.done=1;
+      score += cap ? 3 : 1;
+      scoreEl.textContent=score;
+      t.style.transform='scale(0)';setTimeout(()=>t.remove(),150);
+    };
+    board.appendChild(t);
+    setTimeout(()=>t.remove(), 850);
+  }
+  function end(){
+    running=false;clearInterval(tickT);clearInterval(spawnT);
+    board.querySelectorAll('.turtle').forEach(x=>x.remove());
+    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
+    if(score>best){best=score;localStorage.setItem('tortugasBest',best);bestEl.textContent=best;}
+    msg.textContent = `¡Cazaste ${score}! ` + (score>=20?'¡Eres una crack! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡El capibara te ayuda la próxima! 🦫');
+    confetti();
+  }
+  btn.onclick=()=>{
+    score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
+    start.style.display='none';running=true;
+    spawnT=setInterval(spawn,600);
+    tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
+  };
 })();
 
 /* ================= LIGHTBOX ================= */
