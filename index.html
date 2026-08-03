@@ -146,6 +146,8 @@
   .game-start{position:absolute;inset:0;display:grid;place-items:center}
   .turtle{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;transform:scale(0);animation:tpop .2s forwards}
   @keyframes tpop{to{transform:scale(1)}}
+  .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
+  @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
   footer{text-align:center;padding:50px 20px;color:var(--soft)}
   footer .big{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--pink-deep)}
@@ -346,6 +348,12 @@ const PIROPOS = [
   "Contigo quiero absolutamente todos mis planes.",
   "Eres mi lugar favorito para volver siempre.",
   "Te comería a besos ahora mismo 😘"
+];
+
+/* ---- PIROPOS CORTOS (los que sueltan las tortugas del juego) ---- */
+const PIROPOS_JUEGO = [
+  "Guapa 😍","Mi amor 🥰","Te quiero 💕","Preciosa ✨","Bombón 😘",
+  "Mía 💗","Reina 👑","Bonita 🌸","Mi vida 🫶","Diosa 🔥","Mi capibara 🦫"
 ];
 
 /* ---- GLOBOS SORPRESA (mensaje de cada globo) ---- */
@@ -573,6 +581,13 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   const timeEl=document.getElementById('gTime'),scoreEl=document.getElementById('gScore'),bestEl=document.getElementById('gBest'),msg=document.getElementById('gMsg');
   let score=0,time=20,running=false,spawnT,tickT,best=+(localStorage.getItem('tortugasBest')||0);
   bestEl.textContent=best;
+  function floatPiropo(x,y){
+    const f=document.createElement('div');f.className='float-piropo';
+    f.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
+    f.style.left=x;f.style.top=y;
+    board.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
   function spawn(){
     const t=document.createElement('div');t.className='turtle';
     t.textContent = Math.random()<0.15 ? '🦫' : '🐢';
@@ -584,6 +599,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
       if(!running||t.dataset.done)return;t.dataset.done=1;
       score += cap ? 3 : 1;
       scoreEl.textContent=score;
+      floatPiropo(t.style.left,t.style.top);
       t.style.transform='scale(0)';setTimeout(()=>t.remove(),150);
     };
     board.appendChild(t);
