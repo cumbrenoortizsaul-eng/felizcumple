@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz Cumpleaños, mi amor 💕</title>
-<meta name="description" content="Una web hecha con todo mi cariño para tu cumpleaños.">
+<title>Para ti, mi amor 🦫🐢💕</title>
+<meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,9 +65,10 @@
   .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px}
   .hero h1{font-size:clamp(2.8rem,9vw,5.5rem);color:var(--pink-deep);line-height:1.05;text-shadow:2px 2px 0 var(--rose)}
   .hero .sub{font-size:clamp(1.1rem,3.5vw,1.5rem);color:var(--soft);margin-top:10px;max-width:34ch}
-  .cake{font-size:clamp(4rem,16vw,8rem);margin:24px 0;cursor:pointer;user-select:none;transition:transform .2s}
-  .cake:hover{transform:scale(1.06) rotate(-3deg)}
-  .cake.blown{filter:grayscale(.15)}
+  .capi{position:relative;display:inline-block;margin:24px 0;cursor:pointer;user-select:none;animation:bob 2.4s ease-in-out infinite}
+  .capi:hover{transform:scale(1.06)}
+  .capi-emoji{font-size:clamp(4rem,16vw,8rem);line-height:1}
+  .capi-mochi{position:absolute;top:8%;right:-6%;font-size:clamp(1.8rem,7vw,3.4rem);transform:rotate(12deg)}
   .hint{color:var(--soft);font-size:.9rem;opacity:.85}
   .scroll-cue{margin-top:38px;font-size:1.8rem;animation:bob 1.6s ease-in-out infinite}
   @keyframes bob{50%{transform:translateY(10px)}}
@@ -183,10 +184,10 @@
 <!-- ===== HERO ===== -->
 <header class="hero">
   <div class="wrap">
-    <h1>Feliz Cumpleaños,<br>mi amor</h1>
-    <p class="sub">Hoy el mundo es más bonito porque naciste tú 💕</p>
-    <div class="cake" id="cake" title="¡Pide un deseo y sopla!">🎂</div>
-    <p class="hint" id="cakeHint">Toca la tarta y sopla las velas 🕯️</p>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦫</span><span class="capi-mochi">🐢</span></div>
+    <h1>Para ti,<br>mi amor</h1>
+    <p class="sub">Un capibara enamorado con su mochila de tortuga… igual que yo contigo 🦫🐢💕</p>
+    <p class="hint" id="capiHint">Toca al capibara 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -212,7 +213,7 @@
     <div class="counters reveal">
       <div class="counter"><div class="n" id="cDays">–</div><div class="l">juntos 💞</div></div>
       <div class="counter"><div class="n">∞</div><div class="l">veces que te quiero 😘</div></div>
-      <div class="counter"><div class="n" id="cNext">–</div><div class="l">para tu cumple 🎈</div></div>
+      <div class="counter"><div class="n">🦫🐢</div><div class="l">un equipo, tú y yo 💕</div></div>
     </div>
   </div>
 </section>
@@ -221,7 +222,7 @@
 <section id="countdown">
   <div class="wrap">
     <h2>Cuenta atrás</h2>
-    <p class="lead">Lo que falta para volver a verte 🥰</p>
+    <p class="lead">Lo que falta para verte: el día 10 a las 9:00 🥰</p>
     <div class="card reveal" style="max-width:560px">
       <div class="cd" id="cd">
         <div class="box"><div class="n" id="cdD">0</div><div class="l">DÍAS</div></div>
@@ -285,18 +286,6 @@
   </div>
 </section>
 
-<!-- ===== REGALO SORPRESA ===== -->
-<section id="gift">
-  <div class="wrap">
-    <h2>Un regalo para ti</h2>
-    <p class="lead">Toca el regalo para abrirlo 🎁</p>
-    <div class="card reveal" style="text-align:center;max-width:560px">
-      <div class="giftbox" id="giftBox">🎁</div>
-      <div class="gift-msg" id="giftMsg"><p id="giftText"></p></div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="big">Te quiero 💕</div>
   <p>Hecho con mucho cariño para ti</p>
@@ -311,7 +300,7 @@ const INICIO = new Date(2026, 6, 30);
 // Fecha del cumpleaños (mes 1-12, día)
 const CUMPLE = {mes:7, dia:30};
 // Fecha de la próxima cita/reencuentro (año, mes 1-12, día, hora, minuto)
-const FECHA_CITA = new Date(2026, 7, 10, 0, 0);
+const FECHA_CITA = new Date(2026, 7, 10, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
@@ -372,11 +361,8 @@ const FRASES = [
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
   "Te quiero 💕","Eres preciosa 😍","Mi vida 🥰","Para siempre 💞",
-  "Mi persona favorita 💗","Contigo todo 🌟","Feliz cumple 🎂","Eres mi hogar 🏡❤️"
+  "Mi persona favorita 💗","Contigo todo 🌟","Mi capibara 🦫","Eres mi hogar 🏡❤️"
 ];
-
-// Mensaje que aparece al abrir el regalo sorpresa 🎁
-const REGALO_MENSAJE = "Ve al salón… ahí te espera tu sorpresa de verdad 🎁💕";
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
 // El primer valor es la imagen y el segundo su pie de foto.
@@ -407,7 +393,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['❤️','💕','💗','💓','💖','🩷'];
+  const c=document.getElementById('hearts'), emo=['❤️','💕','💗','💓','💖','🩷','🦫','🐢'];
   const n = window.innerWidth<600?16:28;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -456,10 +442,6 @@ showQuote();
   const days = Math.floor((t0-new Date(INICIO.getFullYear(),INICIO.getMonth(),INICIO.getDate()))/86400000);
   const el=document.getElementById('cDays');
   el.textContent = days>0 ? days.toLocaleString('es-ES')+' días' : (days===0 ? '¡Día 1! 💞' : 'Muy pronto 💕');
-  let next=new Date(today.getFullYear(),CUMPLE.mes-1,CUMPLE.dia);
-  if(next<t0) next.setFullYear(today.getFullYear()+1);
-  const d=Math.round((next-t0)/86400000);
-  document.getElementById('cNext').textContent = d===0?'¡HOY! 🎉':d+(d===1?' día':' días');
 })();
 
 /* ================= GALERÍA ================= */
@@ -477,15 +459,17 @@ FOTOS.forEach(([src,cap])=>{
 const eb=document.getElementById('envelope'),lb2=document.getElementById('letterBody'),lh=document.getElementById('letterHint');
 eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'💌';lh.textContent=o?'':'Toca el sobre para abrir';};
 
-/* ================= TARTA + CONFETI ================= */
-const cake=document.getElementById('cake'),ch=document.getElementById('cakeHint');
-cake.onclick=()=>{
-  cake.classList.add('blown');ch.textContent='¡Deseo pedido! 🌟 Feliz cumpleaños 💕';
+/* ================= CAPIBARA + CONFETI ================= */
+const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
+const CAPI_MSGS=['Te quiero 🦫💕','Eres mi capibara favorita 🥰','Contigo a todos lados 🐢💗','Mua 😘'];
+let capiI=0;
+capi.onclick=()=>{
+  ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🎉','🎊','💕','❤️','🌟','🎈','🩷','✨'];
-  for(let i=0;i<70;i++){
+  const emo=['🦫','🐢','💕','❤️','🩷','💗','✨','🫶'];
+  for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
     p.style.cssText=`position:fixed;left:${Math.random()*100}vw;top:-40px;font-size:${14+Math.random()*20}px;z-index:60;pointer-events:none;transition:transform 3s ease-in,opacity 3s`;
@@ -494,16 +478,7 @@ function confetti(){
     setTimeout(()=>p.remove(),3200);
   }
 }
-function welcome(){confetti();toast('¡Bienvenida, mi amor! 💕');}
-
-/* ================= REGALO SORPRESA ================= */
-const gBox=document.getElementById('giftBox'),gMsg=document.getElementById('giftMsg'),gText=document.getElementById('giftText');
-gBox.onclick=()=>{
-  if(gMsg.classList.contains('open'))return;
-  gBox.textContent='🎉';gBox.classList.add('opened');
-  gText.textContent=REGALO_MENSAJE;gMsg.classList.add('open');
-  confetti();
-};
+function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
 
 /* ================= CUENTA ATRÁS ================= */
 (function(){
