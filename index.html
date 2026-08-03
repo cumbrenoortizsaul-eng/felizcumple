@@ -117,6 +117,25 @@
   .gift-msg.open{max-height:400px}
   .gift-msg p{font-size:clamp(1.2rem,4vw,1.6rem);font-family:'Dancing Script',cursive;font-weight:700;color:var(--pink-deep);margin-top:16px}
 
+  /* Cuenta atrás */
+  .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cd .box{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-radius:18px;min-width:82px;padding:16px 10px;box-shadow:0 10px 30px rgba(255,77,121,.35)}
+  .cd .box .n{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:700;line-height:1}
+  .cd .box .l{font-size:.8rem;opacity:.9;margin-top:4px;letter-spacing:.5px}
+  #cdDone{display:none;font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--pink-deep);text-align:center}
+
+  /* Toca para una sorpresa */
+  #piropo .card{text-align:center;max-width:600px}
+  .piropo-txt{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(1.5rem,5vw,2.2rem);color:var(--pink-deep);min-height:2.4em;display:flex;align-items:center;justify-content:center;transition:opacity .3s}
+  .piropo-btn{margin-top:10px;background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border:none;padding:12px 26px;border-radius:40px;font-family:'Quicksand';font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 6px 18px rgba(255,77,121,.35)}
+
+  /* Globos */
+  .globos{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .globo{font-size:3.4rem;cursor:pointer;user-select:none;transition:transform .25s;animation:flota 3s ease-in-out infinite}
+  .globo:hover{transform:scale(1.12)}
+  .globo.pop{animation:none;transform:scale(0);opacity:0;transition:transform .3s,opacity .3s}
+  @keyframes flota{50%{transform:translateY(-10px)}}
+
   footer{text-align:center;padding:50px 20px;color:var(--soft)}
   footer .big{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--pink-deep)}
 
@@ -198,6 +217,47 @@
   </div>
 </section>
 
+<!-- ===== CUENTA ATRÁS ===== -->
+<section id="countdown">
+  <div class="wrap">
+    <h2>Cuenta atrás</h2>
+    <p class="lead">Lo que falta para volver a verte 🥰</p>
+    <div class="card reveal" style="max-width:560px">
+      <div class="cd" id="cd">
+        <div class="box"><div class="n" id="cdD">0</div><div class="l">DÍAS</div></div>
+        <div class="box"><div class="n" id="cdH">0</div><div class="l">HORAS</div></div>
+        <div class="box"><div class="n" id="cdM">0</div><div class="l">MIN</div></div>
+        <div class="box"><div class="n" id="cdS">0</div><div class="l">SEG</div></div>
+      </div>
+      <div id="cdDone">¡Hoy nos vemos! 🥰💕</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOCA PARA UNA SORPRESA ===== -->
+<section id="piropo">
+  <div class="wrap">
+    <h2>Toca para una sorpresa</h2>
+    <p class="lead">Un piropo cada vez que pulses ✨</p>
+    <div class="card reveal">
+      <div class="piropo-txt" id="piropoTxt">Pulsa el botón 👇</div>
+      <button class="piropo-btn" id="piropoBtn">Dame un piropo 💖</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GLOBOS SORPRESA ===== -->
+<section id="balloons">
+  <div class="wrap">
+    <h2>Globos sorpresa</h2>
+    <p class="lead">Pincha un globo y descubre el mensaje 🎈</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="globos" id="globos"></div>
+      <p class="piropo-txt" id="globoMsg" style="min-height:1.6em;margin-top:14px"></p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -250,6 +310,34 @@
 const INICIO = new Date(2026, 6, 30);
 // Fecha del cumpleaños (mes 1-12, día)
 const CUMPLE = {mes:7, dia:30};
+// Fecha de la próxima cita/reencuentro (año, mes 1-12, día, hora, minuto)
+const FECHA_CITA = new Date(2026, 7, 10, 0, 0);
+
+/* ---- PIROPOS (botón "toca para una sorpresa") ---- */
+const PIROPOS = [
+  "Eres lo más bonito que han visto mis ojos 😍",
+  "Contigo hasta el lunes es mi día favorito.",
+  "Me encanta cómo te ríes de tus propios chistes 🥰",
+  "Si te lo pienso, sonrío solo. 💭",
+  "Eres mi persona favorita del planeta 🌍",
+  "Me haces sentir el más afortunado del mundo.",
+  "Tus ojos me tienen totalmente enamorado 👀💕",
+  "Guapa, lista y encima mía. Qué suerte tengo.",
+  "Me pierdo cada vez que me miras.",
+  "Contigo quiero absolutamente todos mis planes.",
+  "Eres mi lugar favorito para volver siempre.",
+  "Te comería a besos ahora mismo 😘"
+];
+
+/* ---- GLOBOS SORPRESA (mensaje de cada globo) ---- */
+const GLOBOS_MENSAJES = [
+  "Te quiero más de lo que cabe aquí 💕",
+  "Gracias por existir, mi amor 🥰",
+  "Eres mi sitio favorito del mundo 🏡",
+  "Cada día contigo es un regalo 🎁",
+  "No veo el momento de abrazarte otra vez 🤗",
+  "Eres lo mejor que me ha pasado ❤️"
+];
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
@@ -416,6 +504,53 @@ gBox.onclick=()=>{
   gText.textContent=REGALO_MENSAJE;gMsg.classList.add('open');
   confetti();
 };
+
+/* ================= CUENTA ATRÁS ================= */
+(function(){
+  const D=document.getElementById('cdD'),H=document.getElementById('cdH'),M=document.getElementById('cdM'),S=document.getElementById('cdS');
+  const cd=document.getElementById('cd'),done=document.getElementById('cdDone');
+  function tick(){
+    const diff=FECHA_CITA-new Date();
+    if(diff<=0){cd.style.display='none';done.style.display='block';return;}
+    const s=Math.floor(diff/1000);
+    D.textContent=Math.floor(s/86400);
+    H.textContent=Math.floor(s%86400/3600);
+    M.textContent=Math.floor(s%3600/60);
+    S.textContent=s%60;
+  }
+  tick();setInterval(tick,1000);
+})();
+
+/* ================= TOCA PARA UNA SORPRESA ================= */
+(function(){
+  const txt=document.getElementById('piropoTxt'),btn=document.getElementById('piropoBtn');
+  let last=-1;
+  btn.onclick=()=>{
+    let i;do{i=Math.floor(Math.random()*PIROPOS.length);}while(i===last&&PIROPOS.length>1);
+    last=i;
+    txt.style.opacity=0;
+    setTimeout(()=>{txt.textContent=PIROPOS[i];txt.style.opacity=1;},200);
+  };
+})();
+
+/* ================= GLOBOS SORPRESA ================= */
+(function(){
+  const cont=document.getElementById('globos'),msg=document.getElementById('globoMsg');
+  const colores=['🎈','🩷','💗','💖','❤️','💝'];
+  GLOBOS_MENSAJES.forEach((m,i)=>{
+    const g=document.createElement('div');g.className='globo';
+    g.textContent=colores[i%colores.length];
+    g.style.animationDelay=(i*0.3)+'s';
+    g.onclick=()=>{
+      if(g.classList.contains('pop'))return;
+      g.classList.add('pop');
+      msg.style.opacity=0;
+      setTimeout(()=>{msg.textContent=m;msg.style.opacity=1;},200);
+      confetti();
+    };
+    cont.appendChild(g);
+  });
+})();
 
 /* ================= LIGHTBOX ================= */
 const lb=document.getElementById('lb'),lbimg=lb.querySelector('img');
