@@ -149,6 +149,11 @@
   .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
   @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
+  /* Contador de te quieros */
+  .tq-num{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(3rem,14vw,5rem);color:var(--pink-deep);line-height:1}
+  .tq-btn{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border:none;padding:16px 34px;border-radius:44px;font-family:'Quicksand';font-weight:700;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 24px rgba(255,77,121,.4);transition:transform .1s}
+  .tq-btn:active{transform:scale(.94)}
+
   footer{text-align:center;padding:50px 20px;color:var(--soft)}
   footer .big{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--pink-deep)}
 
@@ -256,6 +261,20 @@
     <div class="card reveal">
       <div class="piropo-txt" id="piropoTxt">Pulsa el botón 👇</div>
       <button class="piropo-btn" id="piropoBtn">Dame un piropo 💖</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTADOR DE TE QUIEROS ===== -->
+<section id="tequieros">
+  <div class="wrap">
+    <h2>Cuéntame los "te quiero"</h2>
+    <p class="lead">Pulsa cada vez que me quieras 💗</p>
+    <div class="card reveal" style="text-align:center;max-width:520px">
+      <div class="tq-num" id="tqNum">0</div>
+      <div class="lead" style="margin:2px 0 18px">te quieros 💗</div>
+      <button class="tq-btn" id="tqBtn">💗 Te quiero</button>
+      <p class="piropo-txt" id="tqMsg" style="min-height:1.4em;margin-top:14px"></p>
     </div>
   </div>
 </section>
@@ -618,6 +637,31 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     start.style.display='none';running=true;
     spawnT=setInterval(spawn,600);
     tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
+  };
+})();
+
+/* ================= CONTADOR DE TE QUIEROS ================= */
+(function(){
+  const num=document.getElementById('tqNum'),btn=document.getElementById('tqBtn'),msg=document.getElementById('tqMsg');
+  let n=+(localStorage.getItem('teQuieros')||0);
+  num.textContent=n.toLocaleString('es-ES');
+  const HITOS={1:'¡El primero de muchos! 🥰',10:'¡Vas lanzada! 💕',25:'¡25 te quieros! 😍',50:'¡50! Qué maravilla 🥹',100:'¡100! Estás enamoradísima 🔥',250:'¡250! Locura de amor 💗',500:'¡500! Oficialmente loca por mí 🤭'};
+  function burst(){
+    const r=btn.getBoundingClientRect(),emo=['💗','❤️','💕','🩷','🦫'];
+    for(let i=0;i<6;i++){
+      const p=document.createElement('div');p.textContent=emo[Math.floor(Math.random()*emo.length)];
+      p.style.cssText=`position:fixed;left:${r.left+r.width/2}px;top:${r.top}px;font-size:${16+Math.random()*14}px;z-index:60;pointer-events:none;transition:transform .9s ease-out,opacity .9s`;
+      document.body.appendChild(p);
+      const dx=(Math.random()-.5)*130,dy=-60-Math.random()*90;
+      requestAnimationFrame(()=>{p.style.transform=`translate(${dx}px,${dy}px)`;p.style.opacity=0;});
+      setTimeout(()=>p.remove(),950);
+    }
+  }
+  btn.onclick=()=>{
+    n++;localStorage.setItem('teQuieros',n);
+    num.textContent=n.toLocaleString('es-ES');
+    burst();
+    if(HITOS[n])msg.textContent=HITOS[n];
   };
 })();
 
