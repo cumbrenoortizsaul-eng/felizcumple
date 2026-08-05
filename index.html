@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🦫🐢💕</title>
+<title>Para ti, mi amor 🌌✨</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,18 +12,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#ff6b9d; --pink-deep:#ff4d79; --rose:#ffd1e0; --cream:#fff5f8;
-    --ink:#5a2a3d; --soft:#8a5a6d; --card:#ffffff; --shadow:0 12px 40px rgba(255,77,121,.18);
+    --pink:#ff8fc7; --pink-deep:#c39bff; --rose:#241f4d; --cream:#0b0e2a;
+    --ink:#ece9ff; --soft:#b3add9; --card:#171a3d; --gold:#ffe08a;
+    --shadow:0 12px 40px rgba(0,0,0,.45);
   }
   html[data-theme="dark"]{
-    --cream:#1a0f16; --card:#2a1721; --ink:#ffe3ee; --soft:#e6a9c0;
-    --rose:#48283a; --shadow:0 12px 40px rgba(0,0,0,.4);
+    --cream:#05061a; --card:#0f1230; --rose:#1b1740; --ink:#f2f0ff; --soft:#a7a2d1;
+    --shadow:0 12px 40px rgba(0,0,0,.6);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
-    background:var(--cream); overflow-x:hidden; line-height:1.6;
+    background:
+      radial-gradient(120% 80% at 82% -8%, rgba(255,224,138,.28), transparent 42%),
+      radial-gradient(140% 100% at 20% 110%, rgba(195,155,255,.22), transparent 55%),
+      linear-gradient(180deg,#0b0e2a 0%,#141346 55%,#20123f 100%);
+    background-attachment:fixed;
+    overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
@@ -44,7 +50,16 @@
     90%{opacity:.6}
     100%{transform:translateY(112vh) rotate(340deg);opacity:0}
   }
-  @media (prefers-reduced-motion: reduce){.fh,.petal{animation:none;display:none}}
+  /* Estrellas */
+  .star{position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 6px rgba(255,255,255,.9);animation:twinkle linear infinite}
+  @keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+  .shoot{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;
+    box-shadow:0 0 8px 2px rgba(255,255,255,.9);opacity:0}
+  .shoot::after{content:"";position:absolute;top:50%;right:0;width:120px;height:2px;
+    background:linear-gradient(90deg,rgba(255,255,255,.9),transparent);transform:translateY(-50%)}
+  @keyframes shootMove{0%{opacity:0;transform:translate(0,0)}8%{opacity:1}100%{opacity:0;transform:translate(-340px,180px)}}
+  .moon{position:fixed;top:16px;left:18px;font-size:clamp(2.4rem,7vw,3.4rem);z-index:0;filter:drop-shadow(0 0 16px rgba(255,224,138,.7));pointer-events:none}
+  @media (prefers-reduced-motion: reduce){.fh,.petal,.star,.shoot{animation:none}.shoot{display:none}}
 
   #toast{position:fixed;left:50%;top:22%;transform:translate(-50%,-10px);z-index:40;
     background:var(--card);color:var(--pink-deep);font-weight:700;padding:14px 22px;border-radius:40px;
@@ -167,8 +182,10 @@
   .reveal.in{opacity:1;transform:none}
 
   /* Portada con contraseña */
-  #gate{position:fixed;inset:0;z-index:100;background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+  #gate{position:fixed;inset:0;z-index:100;
+    background:radial-gradient(120% 90% at 78% 8%, rgba(255,224,138,.28), transparent 44%), linear-gradient(160deg,#0b0e2a,#20123f);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
+  #gate .lock::after{content:" 🌙"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -190,6 +207,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
+<div class="moon">🌙</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -204,7 +222,7 @@
     <p class="saludo" id="saludo"></p>
     <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦫</span><span class="capi-mochi">🐢</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Un capibara enamorado con su mochila de tortuga… igual que yo contigo 🦫🐢💕</p>
+    <p class="sub">Eres mi universo entero… y todas sus estrellas 🌌✨</p>
     <p class="hint" id="capiHint">Toca al capibara 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
@@ -466,32 +484,43 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['❤️','💕','💗','💓','💖','🩷','🦫','🐢'];
-  const n = window.innerWidth<600?16:28;
+  const c=document.getElementById('hearts'), emo=['💕','💗','✨','🌟','💫','🩷','🦫','🐢'];
+  const n = window.innerWidth<600?12:20;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
     h.textContent=emo[i%emo.length];
     h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(14+Math.random()*22)+'px';
-    h.style.animationDuration=(7+Math.random()*9)+'s';
+    h.style.fontSize=(14+Math.random()*20)+'px';
+    h.style.animationDuration=(8+Math.random()*9)+'s';
     h.style.animationDelay=(Math.random()*10)+'s';
     const showMsg=()=>toast(MENSAJES[Math.floor(Math.random()*MENSAJES.length)]);
     h.addEventListener('click',showMsg);
     h.addEventListener('mouseenter',showMsg);
     c.appendChild(h);
   }
-  // Lluvia de pétalos 🌸
-  const petalos=['🌸','🌷','💗','🩷','🌹'];
-  const np = window.innerWidth<600?12:20;
-  for(let i=0;i<np;i++){
-    const p=document.createElement('div');p.className='petal';
-    p.textContent=petalos[i%petalos.length];
-    p.style.left=Math.random()*100+'vw';
-    p.style.fontSize=(14+Math.random()*16)+'px';
-    p.style.animationDuration=(9+Math.random()*10)+'s';
-    p.style.animationDelay=(Math.random()*12)+'s';
-    c.appendChild(p);
+  // Estrellas que titilan ✨
+  const ns = window.innerWidth<600?45:75;
+  for(let i=0;i<ns;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=1+Math.random()*2.4;
+    s.style.width=s.style.height=sz+'px';
+    s.style.left=Math.random()*100+'vw';
+    s.style.top=Math.random()*100+'vh';
+    s.style.animationDuration=(1.5+Math.random()*3)+'s';
+    s.style.animationDelay=(Math.random()*4)+'s';
+    c.appendChild(s);
   }
+  // Estrellas fugaces 🌠
+  function shoot(){
+    const s=document.createElement('div');s.className='shoot';
+    s.style.left=(40+Math.random()*55)+'vw';
+    s.style.top=(Math.random()*40)+'vh';
+    s.style.animation='shootMove '+(1+Math.random()*0.6)+'s ease-in forwards';
+    c.appendChild(s);
+    setTimeout(()=>s.remove(),1900);
+  }
+  setInterval(()=>{if(Math.random()<0.6)shoot();},3500);
+  setTimeout(shoot,1200);
 })();
 const toastEl=document.getElementById('toast'); let toastT;
 function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('show'),1600);}
