@@ -310,6 +310,22 @@
   </div>
 </section>
 
+<!-- ===== CAPIBARA SALTARÍN ===== -->
+<section id="runner">
+  <div class="wrap">
+    <h2>Capibara saltarín 🦫</h2>
+    <p class="lead">Salta los obstáculos: toca la pantalla (o pulsa espacio) 🐢</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud">
+        <span>🏃 <b id="rScore">0</b></span>
+        <span>🏆 <b id="rBest">0</b></span>
+      </div>
+      <canvas id="rCanvas" width="560" height="200" style="width:100%;max-width:560px;background:var(--rose);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:manipulation"></canvas>
+      <p class="piropo-txt" id="rMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -387,9 +403,9 @@ const GLOBOS_MENSAJES = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Quién es más guapo, tú o yo? 😏";
-const RESPUESTAS = ["los dos","los dosh","los 2","losdos"];
-const PISTA = "Pista: no hay que elegir… somos dos 😉";
+const PREGUNTA = "¿Quién es el amor de mi vida? 🥰";
+const RESPUESTAS = ["paula"];
+const PISTA = "Pista: eres tú, empieza por P 💕";
 
 /* ---- NUESTRA CANCIÓN (Spotify) ---- */
 // Tipo ("album" o "track") e ID de Spotify (lo que va después de /album/ o /track/)
@@ -663,6 +679,60 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     burst();
     if(HITOS[n])msg.textContent=HITOS[n];
   };
+})();
+
+/* ================= CAPIBARA SALTARÍN ================= */
+(function(){
+  const cv=document.getElementById('rCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height,groundY=H-22;
+  const rScore=document.getElementById('rScore'),rBest=document.getElementById('rBest'),rMsg=document.getElementById('rMsg');
+  let best=+(localStorage.getItem('capiRunBest')||0);rBest.textContent=best;
+  const GRAV=0.62,JUMP=-11.4;
+  const capy={x:56,w:40,h:38,y:groundY-38,vy:0,onGround:true};
+  let obstacles=[],speed=4.2,score=0,frame=0,nextSpawn=60,state='idle',raf;
+
+  function reset(){obstacles=[];speed=4.2;score=0;frame=0;nextSpawn=60;capy.y=groundY-capy.h;capy.vy=0;capy.onGround=true;}
+  function start(){reset();state='running';rMsg.textContent='';cancelAnimationFrame(raf);loop();}
+  function jump(){
+    if(state==='running'){if(capy.onGround){capy.vy=JUMP;capy.onGround=false;}}
+    else start();
+  }
+  function spawn(){const h=28+(Math.random()<0.3?12:0);obstacles.push({x:W+10,w:Math.round(h*0.8),h,emoji:'🌵'});}
+  function over(){
+    state='over';cancelAnimationFrame(raf);
+    if(score>best){best=score;localStorage.setItem('capiRunBest',best);rBest.textContent=best;}
+    rMsg.textContent=`¡${score} puntos! `+(score>=300?'¡Máquina! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🦫');
+    draw();ctx.fillStyle='rgba(0,0,0,.35)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
+    ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';
+  }
+  function loop(){
+    frame++;
+    capy.vy+=GRAV;capy.y+=capy.vy;
+    if(capy.y>=groundY-capy.h){capy.y=groundY-capy.h;capy.vy=0;capy.onGround=true;}
+    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
+    for(const o of obstacles)o.x-=speed;
+    obstacles=obstacles.filter(o=>o.x+o.w>-10);
+    if(frame%6===0){score++;rScore.textContent=score;}
+    speed+=0.0016;
+    for(const o of obstacles){
+      const obsTop=groundY+2-o.h;
+      if(capy.x+capy.w-6>o.x+3 && capy.x+6<o.x+o.w-3 && capy.y+capy.h-4>obsTop+3){over();break;}
+    }
+    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(255,77,121,.5)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
+    ctx.textBaseline='alphabetic';
+    for(const o of obstacles){ctx.font=o.h+'px serif';ctx.fillText(o.emoji,o.x,groundY+2);}
+    ctx.font='34px serif';ctx.fillText('🦫',capy.x,capy.y+capy.h);
+    ctx.font='17px serif';ctx.fillText('🐢',capy.x+21,capy.y+17);
+  }
+  cv.addEventListener('click',jump);
+  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
+  document.addEventListener('keydown',e=>{if(e.code==='Space'&&(state!=='idle')){e.preventDefault();jump();}});
+  draw();
 })();
 
 /* ================= LIGHTBOX ================= */
