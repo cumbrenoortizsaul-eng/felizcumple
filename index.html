@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🌌✨</title>
+<title>Para ti, mi amor 🌊☀️</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,22 +12,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#ff8fc7; --pink-deep:#c39bff; --rose:#241f4d; --cream:#0b0e2a;
-    --ink:#ece9ff; --soft:#b3add9; --card:#171a3d; --gold:#ffe08a;
-    --shadow:0 12px 40px rgba(0,0,0,.45);
+    --pink:#ff8c69; --pink-deep:#ff5e78; --rose:#ffe0cf; --cream:#fff3e9;
+    --ink:#5a3a2e; --soft:#a5695a; --card:#ffffff; --gold:#ffd36b;
+    --shadow:0 12px 40px rgba(255,94,120,.22);
   }
   html[data-theme="dark"]{
-    --cream:#05061a; --card:#0f1230; --rose:#1b1740; --ink:#f2f0ff; --soft:#a7a2d1;
-    --shadow:0 12px 40px rgba(0,0,0,.6);
+    --cream:#2a1626; --card:#3a1f2e; --rose:#5a2e3a; --ink:#ffe8dc; --soft:#e6b5a6;
+    --shadow:0 12px 40px rgba(0,0,0,.45);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(120% 80% at 82% -8%, rgba(255,224,138,.28), transparent 42%),
-      radial-gradient(140% 100% at 20% 110%, rgba(195,155,255,.22), transparent 55%),
-      linear-gradient(180deg,#0b0e2a 0%,#141346 55%,#20123f 100%);
+      radial-gradient(circle at 50% 72%, rgba(255,211,107,.75), rgba(255,211,107,0) 26%),
+      linear-gradient(180deg,#ffe9c7 0%,#ffcf9e 26%,#ff9e86 48%,#ff7a9c 66%,#3fbecb 66%,#1fa3b8 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
@@ -58,8 +57,11 @@
   .shoot::after{content:"";position:absolute;top:50%;right:0;width:120px;height:2px;
     background:linear-gradient(90deg,rgba(255,255,255,.9),transparent);transform:translateY(-50%)}
   @keyframes shootMove{0%{opacity:0;transform:translate(0,0)}8%{opacity:1}100%{opacity:0;transform:translate(-340px,180px)}}
-  .moon{position:fixed;top:16px;left:18px;font-size:clamp(2.4rem,7vw,3.4rem);z-index:0;filter:drop-shadow(0 0 16px rgba(255,224,138,.7));pointer-events:none}
-  @media (prefers-reduced-motion: reduce){.fh,.petal,.star,.shoot{animation:none}.shoot{display:none}}
+  .moon{position:fixed;top:16px;left:18px;font-size:clamp(2.4rem,7vw,3.4rem);z-index:0;filter:drop-shadow(0 0 18px rgba(255,211,107,.9));pointer-events:none}
+  .bubble{position:absolute;bottom:-30px;border-radius:50%;pointer-events:none;opacity:0;
+    background:radial-gradient(circle at 32% 30%, rgba(255,255,255,.85), rgba(255,255,255,.12));
+    border:1px solid rgba(255,255,255,.5);animation:rise linear infinite}
+  @media (prefers-reduced-motion: reduce){.fh,.petal,.star,.shoot,.bubble{animation:none}.shoot,.bubble{display:none}}
 
   #toast{position:fixed;left:50%;top:22%;transform:translate(-50%,-10px);z-index:40;
     background:var(--card);color:var(--pink-deep);font-weight:700;padding:14px 22px;border-radius:40px;
@@ -183,9 +185,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(120% 90% at 78% 8%, rgba(255,224,138,.28), transparent 44%), linear-gradient(160deg,#0b0e2a,#20123f);
+    background:radial-gradient(circle at 50% 78%, rgba(255,211,107,.7), transparent 34%), linear-gradient(180deg,#ffcf9e,#ff7a9c 60%,#3fbecb);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🌙"}
+  #gate .lock::after{content:" 🌅"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -207,7 +209,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🌙</div>
+<div class="moon">☀️</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -222,7 +224,7 @@
     <p class="saludo" id="saludo"></p>
     <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦫</span><span class="capi-mochi">🐢</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres mi universo entero… y todas sus estrellas 🌌✨</p>
+    <p class="sub">Eres mi verano favorito… y mi atardecer de cada día 🌅💕</p>
     <p class="hint" id="capiHint">Toca al capibara 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
@@ -389,34 +391,34 @@ const FECHA_CITA = new Date(2026, 7, 10, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás para comerte, de verdad 😋",
-  "Eres pura obra maestra 🎨",
-  "No hay filtro que te mejore: ya eres perfecta ✨",
-  "Me alegras el día solo con existir ☀️",
-  "Contigo se me acelera hasta el corazón 💓",
-  "Eres mi tipo: exactamente tú 💕",
-  "Guapa por fuera y aún más por dentro 🥹",
-  "Me tienes en la palma de tu mano 🫶",
-  "Cada día me gustas un poquito más 📈",
-  "Eres mi sonrisa favorita del mundo 😊",
-  "Ojalá tenerte cerca siempre 🥰",
-  "Preciosa, lista y mía: combo perfecto 🔥"
+  "Estás más buena que un helado en agosto 🍦",
+  "Eres mi rayo de sol favorito ☀️",
+  "Contigo me da un calorcito en el pecho 🥰",
+  "Guapa, con solecito y sin él ✨",
+  "Eres mi verano entero 🌴",
+  "Me tienes derretido, y no es por el calor 😍",
+  "Preciosa como un atardecer en la playa 🌅",
+  "Eres mi brisa buena y mi refresco 🍹",
+  "Contigo cualquier plan es el mejor plan 💕",
+  "Me haces feliz como un domingo de playa 🏖️",
+  "Eres mi ola favorita, siempre vuelvo a ti 🌊",
+  "Guapísima, mi amor de verano 💛"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan las tortugas del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi reina 👑","Bombón 😘","Ricura 😋","Hermosa 🌷",
-  "Cariño 💞","Fuego 🔥","Tesoro 💎","Mi todo 🫶","Capibarita 🦫","Mi 🐢"
+  "Guapa 😍","Mi sol ☀️","Bombón 🍦","Preciosa ✨","Mi playa 🏖️",
+  "Ricura 😋","Mi ola 🌊","Hermosa 🌺","Mi amor 🥰","Mi verano 🌴","Mía 💕"
 ];
 
 /* ---- GLOBOS SORPRESA (mensaje de cada globo) ---- */
 const GLOBOS_MENSAJES = [
-  "Eres mi lugar feliz 🥰",
-  "Gracias por ser tú 💕",
-  "Te elijo cada día ❤️",
-  "Mi capibara favorita 🦫💗",
-  "Contigo, siempre 🐢",
-  "Eres mi mejor plan 🌟"
+  "Eres mi verano favorito 🌴",
+  "Contigo, arena y mar 🌊",
+  "Gracias por tanto sol 🌞",
+  "Mi ola favorita eres tú 💕",
+  "Cuento los días para verte 🏖️",
+  "Eres mi lugar feliz 🥥"
 ];
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
@@ -432,27 +434,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres mi sitio favorito para perder el tiempo.",
-  "Contigo cualquier día se vuelve especial.",
-  "Me gustas hoy más que ayer, y menos que mañana.",
-  "Eres la mejor casualidad de mi vida.",
-  "A tu lado se me olvidan hasta las prisas.",
-  "Eres mi 'para siempre' preferido.",
-  "Contigo aprendí que el amor también es paz.",
-  "Eres lo primero que pienso y lo último que sueño.",
-  "Me haces bien sin ni siquiera intentarlo.",
-  "Eres mi refugio y mi aventura favorita.",
-  "Contigo hasta el silencio suena bonito.",
-  "Eres la razón por la que creo en 'nosotros'.",
-  "Me encanta la vida cuando la comparto contigo.",
-  "Eres mi mejor decisión, una y otra vez.",
-  "Te quiero en fácil, en difícil y en todo."
+  "Contigo cualquier día es verano.",
+  "Eres mi sitio favorito, mejor que cualquier playa.",
+  "Tú eres mi verano de todo el año.",
+  "Me derrito por ti más que un helado al sol 🍦",
+  "Contigo hasta el calor se disfruta.",
+  "Eres mi ola favorita, siempre vuelvo a ti 🌊",
+  "A tu lado todo sabe a atardecer de verano.",
+  "Eres mi puesta de sol preferida 🌅",
+  "Contigo la vida es playa, sol y tú.",
+  "Me gustas más que un chapuzón en agosto.",
+  "Eres mi brisa buena en los días de calor.",
+  "Contigo cada verano se queda corto.",
+  "Eres mi destino favorito, vayas donde vayas.",
+  "Tú eres mi verano y mi para siempre.",
+  "Contigo hasta la arena en los pies es bonita."
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te adoro 💕","Guapísima 😍","Mi amor 🥰","Solo tú 💞",
-  "Mi favorita 💗","Contigo todo 🌟","Mi capibara 🦫","Mi hogar 🏡❤️"
+  "Te quiero 💕","Guapísima 😍","Mi sol ☀️","Mi verano 🌴",
+  "Mi ola 🌊","Contigo todo 🌺","Mi playa 🏖️","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -484,13 +486,13 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['💕','💗','✨','🌟','💫','🩷','🦫','🐢'];
-  const n = window.innerWidth<600?12:20;
+  const c=document.getElementById('hearts'), emo=['💕','💗','🐚','🌺','🌴','🍹','🦩','🐢','☀️','🌊'];
+  const n = window.innerWidth<600?14:24;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
     h.textContent=emo[i%emo.length];
     h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(14+Math.random()*20)+'px';
+    h.style.fontSize=(15+Math.random()*20)+'px';
     h.style.animationDuration=(8+Math.random()*9)+'s';
     h.style.animationDelay=(Math.random()*10)+'s';
     const showMsg=()=>toast(MENSAJES[Math.floor(Math.random()*MENSAJES.length)]);
@@ -498,29 +500,17 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     h.addEventListener('mouseenter',showMsg);
     c.appendChild(h);
   }
-  // Estrellas que titilan ✨
-  const ns = window.innerWidth<600?45:75;
-  for(let i=0;i<ns;i++){
-    const s=document.createElement('div');s.className='star';
-    const sz=1+Math.random()*2.4;
-    s.style.width=s.style.height=sz+'px';
-    s.style.left=Math.random()*100+'vw';
-    s.style.top=Math.random()*100+'vh';
-    s.style.animationDuration=(1.5+Math.random()*3)+'s';
-    s.style.animationDelay=(Math.random()*4)+'s';
-    c.appendChild(s);
+  // Burbujas de mar 🫧
+  const nb = window.innerWidth<600?14:22;
+  for(let i=0;i<nb;i++){
+    const b=document.createElement('div');b.className='bubble';
+    const sz=6+Math.random()*16;
+    b.style.width=b.style.height=sz+'px';
+    b.style.left=Math.random()*100+'vw';
+    b.style.animationDuration=(9+Math.random()*10)+'s';
+    b.style.animationDelay=(Math.random()*12)+'s';
+    c.appendChild(b);
   }
-  // Estrellas fugaces 🌠
-  function shoot(){
-    const s=document.createElement('div');s.className='shoot';
-    s.style.left=(40+Math.random()*55)+'vw';
-    s.style.top=(Math.random()*40)+'vh';
-    s.style.animation='shootMove '+(1+Math.random()*0.6)+'s ease-in forwards';
-    c.appendChild(s);
-    setTimeout(()=>s.remove(),1900);
-  }
-  setInterval(()=>{if(Math.random()<0.6)shoot();},3500);
-  setTimeout(shoot,1200);
 })();
 const toastEl=document.getElementById('toast'); let toastT;
 function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('show'),1600);}
@@ -563,7 +553,7 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Muá 😘','Eres mi capibara 🦫💕','Contigo hasta el fin 🐢','Te quiero infinito ♾️💗'];
+const CAPI_MSGS=['Muá 😘','Mi amor de verano 🌴💕','Contigo a la playa 🐢🏖️','Te quiero un montón 💕'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
