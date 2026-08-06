@@ -166,6 +166,13 @@
   .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
   @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
+  /* Busca la perla */
+  .shells{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .shell{font-size:3.2rem;cursor:pointer;user-select:none;transition:transform .2s;animation:flota 3s ease-in-out infinite}
+  .shell:hover{transform:scale(1.12)}
+  .shell.done{cursor:default;animation:none}
+  .shell.win{animation:pop .5s ease}
+
   /* Contador de te quieros */
   .tq-num{font-family:'Dancing Script',cursive;font-weight:700;font-size:clamp(3rem,14vw,5rem);color:var(--pink-deep);line-height:1}
   .tq-btn{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border:none;padding:16px 34px;border-radius:44px;font-family:'Quicksand';font-weight:700;font-size:1.15rem;cursor:pointer;box-shadow:0 8px 24px rgba(255,77,121,.4);transition:transform .1s}
@@ -346,6 +353,35 @@
   </div>
 </section>
 
+<!-- ===== ESQUIVA LAS OLAS ===== -->
+<section id="waves">
+  <div class="wrap">
+    <h2>Esquiva las olas 🌊</h2>
+    <p class="lead">Salta las olas en la orilla: toca la pantalla (o espacio) 🏖️</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud">
+        <span>🏃‍♀️ <b id="wScore">0</b></span>
+        <span>🏆 <b id="wBest">0</b></span>
+      </div>
+      <canvas id="wCanvas" width="560" height="200" style="width:100%;max-width:560px;background:linear-gradient(180deg,#ffe3c2 0%,#ffd0a3 60%,#4fc3d1 60%,#2bb0c2 100%);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:manipulation"></canvas>
+      <p class="piropo-txt" id="wMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUSCA LA PERLA ===== -->
+<section id="pearl">
+  <div class="wrap">
+    <h2>Busca la perla 🐚</h2>
+    <p class="lead">Una concha esconde una perla… ¿la encuentras? 🦪</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="shells" id="shells"></div>
+      <p class="piropo-txt" id="pearlMsg" style="min-height:1.6em;margin-top:14px">Toca una concha 🐚</p>
+      <button class="piropo-btn" id="pearlBtn" style="display:none">Jugar otra vez 🔁</button>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -364,9 +400,11 @@
       <p class="hint" id="letterHint">Toca el sobre para abrir</p>
       <div class="letter-body" id="letterBody">
         <p>Para el amor de mi vida,</p>
-        <p>En estos 3 meses desde que nos conocemos no ha habido un día en el que no haya pensado en ti, ni en un solo momento. Desde que llegaste a mi vida lo veo todo más claro, ya que eres el sol que ilumina mi camino. Un camino que espero que, desde hoy hasta el futuro, sea de los dos.</p>
-        <p>¿Y cómo no estar bien contigo, si cada vez que pienso en ti sonrío? Cuidas de mí, me besas, me abrazas, me expresas tu amor… ¿Y cómo no enamorarme de ti, si eres lo que siempre soñé? Una chica bonita por fuera y por dentro, que se preocupa por sus seres queridos, divertida, detallista, y muchos otros adjetivos que ahora se me olvidan, porque mientras escribo esto pienso en tus ojos y me pierdo.</p>
-        <p>Lo que sí tengo claro es lo mucho que te amo, y sueño con despertarme contigo a mi lado todos los días.</p>
+        <p>Cada día que pasa me tienes un poquito más enamorado. Desde que estás en mi vida todo brilla distinto, como si fuera verano todo el año… y tú fueras mi sol.</p>
+        <p>Me encanta cómo cuidas de mí, cómo me abrazas y cómo me quieres sin miedo. Eres bonita por fuera y aún más por dentro: divertida, detallista, buena con los tuyos, y mil cosas más que se me olvidan cada vez que me pierdo en tus ojos.</p>
+        <p>No sé qué hice para merecerte, pero sí sé lo que quiero: un futuro contigo. Despertarme a tu lado, hacerte reír, cuidarte y quererte cada día un poco más. Contigo hasta lo más normal se convierte en mi plan favorito.</p>
+        <p>Cuento los días para volver a verte y darte todos los besos que te debo.</p>
+        <p>Te quiero con locura, hoy y siempre.</p>
         <p class="sig">Tuyo, siempre ❤️</p>
       </div>
     </div>
@@ -421,11 +459,21 @@ const GLOBOS_MENSAJES = [
   "Eres mi lugar feliz 🥥"
 ];
 
+/* ---- PREMIOS DE LA PERLA (mensajes al encontrarla) ---- */
+const PERLA_PREMIOS = [
+  "¡Perla encontrada! 🦪 Vale por un abrazo enorme 🤗",
+  "¡La tienes! 🐚 Premio: una cita en la playa 🏖️",
+  "¡Perla! 💗 Vale por 100 besos 😘",
+  "¡Bravo! 🦪 Premio: un helado juntos 🍦",
+  "¡Encontrada! ✨ Vale por un masaje 💆‍♀️",
+  "¡Sí! 🐚 Premio: elegir tú el próximo plan 🎉"
+];
+
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Quién es el amor de mi vida? 🥰";
-const RESPUESTAS = ["paula"];
-const PISTA = "Pista: eres tú, empieza por P 💕";
+const PREGUNTA = "¿Cuándo nos vamos a casar? 💍";
+const RESPUESTAS = ["cuando nos veamos","cuando nos vemos"];
+const PISTA = "Pista: cuando por fin nos veamos 🥰";
 
 /* ---- NUESTRA CANCIÓN (Spotify) ---- */
 // Tipo ("album" o "track") e ID de Spotify (lo que va después de /album/ o /track/)
@@ -752,6 +800,82 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
   document.addEventListener('keydown',e=>{if(e.code==='Space'&&(state!=='idle')){e.preventDefault();jump();}});
   draw();
+})();
+
+/* ================= ESQUIVA LAS OLAS ================= */
+(function(){
+  const cv=document.getElementById('wCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height,groundY=H-26;
+  const sc=document.getElementById('wScore'),bt=document.getElementById('wBest'),ms=document.getElementById('wMsg');
+  let best=+(localStorage.getItem('olasBest')||0);bt.textContent=best;
+  const GRAV=0.6,JUMP=-11;
+  const her={x:54,w:38,h:40,y:groundY-40,vy:0,onGround:true};
+  let obs=[],speed=4,score=0,frame=0,nextSpawn=60,state='idle',raf;
+  function reset(){obs=[];speed=4;score=0;frame=0;nextSpawn=60;her.y=groundY-her.h;her.vy=0;her.onGround=true;}
+  function start(){reset();state='running';ms.textContent='';cancelAnimationFrame(raf);loop();}
+  function jump(){if(state==='running'){if(her.onGround){her.vy=JUMP;her.onGround=false;}}else start();}
+  function spawn(){const h=26+(Math.random()<0.3?12:0);obs.push({x:W+10,w:Math.round(h*1.1),h});}
+  function over(){
+    state='over';cancelAnimationFrame(raf);
+    if(score>best){best=score;localStorage.setItem('olasBest',best);bt.textContent=best;}
+    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Sirena pro! 🧜‍♀️🏆':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🌊');
+    draw();ctx.fillStyle='rgba(0,0,0,.32)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
+    ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';
+  }
+  function loop(){
+    frame++;
+    her.vy+=GRAV;her.y+=her.vy;
+    if(her.y>=groundY-her.h){her.y=groundY-her.h;her.vy=0;her.onGround=true;}
+    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
+    for(const o of obs)o.x-=speed;
+    obs=obs.filter(o=>o.x+o.w>-10);
+    if(frame%6===0){score++;sc.textContent=score;}
+    speed+=0.0016;
+    for(const o of obs){const top=groundY+2-o.h;
+      if(her.x+her.w-8>o.x+3 && her.x+8<o.x+o.w-3 && her.y+her.h-4>top+3){over();break;}}
+    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(43,176,194,.9)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
+    ctx.textBaseline='alphabetic';
+    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('🌊',o.x,groundY+4);}
+    ctx.font='34px serif';ctx.fillText('🏃‍♀️',her.x,her.y+her.h);
+  }
+  cv.addEventListener('click',jump);
+  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
+  draw();
+})();
+
+/* ================= BUSCA LA PERLA ================= */
+(function(){
+  const cont=document.getElementById('shells'),msg=document.getElementById('pearlMsg'),btn=document.getElementById('pearlBtn');
+  const N=5;
+  function nueva(){
+    cont.innerHTML='';msg.textContent='Toca una concha 🐚';btn.style.display='none';
+    const premio=PERLA_PREMIOS[Math.floor(Math.random()*PERLA_PREMIOS.length)];
+    const ganadora=Math.floor(Math.random()*N);
+    let acabado=false;
+    for(let i=0;i<N;i++){
+      const s=document.createElement('div');s.className='shell';s.textContent='🐚';
+      s.style.animationDelay=(i*0.25)+'s';
+      s.onclick=()=>{
+        if(acabado||s.classList.contains('done'))return;
+        if(i===ganadora){
+          acabado=true;s.textContent='🦪';s.classList.add('done','win');
+          msg.textContent=premio;btn.style.display='inline-block';
+          confetti();
+          cont.querySelectorAll('.shell').forEach(x=>{if(!x.classList.contains('done'))x.classList.add('done')});
+        }else{
+          s.textContent='🌊';s.classList.add('done');msg.textContent='Ahí no… ¡sigue buscando! 💗';
+        }
+      };
+      cont.appendChild(s);
+    }
+  }
+  btn.onclick=nueva;
+  nueva();
 })();
 
 /* ================= LIGHTBOX ================= */
