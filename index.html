@@ -159,6 +159,7 @@
 
   /* Mini-juego */
   .game-hud{display:flex;justify-content:space-around;gap:8px;font-size:clamp(1rem,3.5vw,1.2rem);font-weight:700;color:var(--pink-deep);margin-bottom:12px}
+  .feed-target{text-align:center;font-weight:700;color:var(--ink);margin-bottom:10px;font-size:clamp(1.1rem,4vw,1.4rem)}
   .game-board{position:relative;height:320px;background:var(--rose);border-radius:18px;overflow:hidden;touch-action:manipulation}
   .game-start{position:absolute;inset:0;display:grid;place-items:center}
   .turtle{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;transform:scale(0);animation:tpop .2s forwards}
@@ -318,6 +319,45 @@
   </div>
 </section>
 
+<!-- ===== ATRAPA A LOS MONITOS ===== -->
+<section id="monkeys">
+  <div class="wrap">
+    <h2>Atrapa a los monitos 🐵</h2>
+    <p class="lead">¡Se escapan! ¿Cuántos cazas en 20 segundos?</p>
+    <div class="card reveal">
+      <div class="game-hud">
+        <span>⏱️ <b id="mkTime">20</b>s</span>
+        <span>🐵 <b id="mkScore">0</b></span>
+        <span>🏆 <b id="mkBest">0</b></span>
+      </div>
+      <div class="game-board" id="mkBoard">
+        <div class="game-start" id="mkStart"><button class="piropo-btn" id="mkBtn">Jugar 🎮</button></div>
+      </div>
+      <p class="piropo-txt" id="mkMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ALIMENTA A LOS ANIMALES ===== -->
+<section id="feed">
+  <div class="wrap">
+    <h2>Alimenta a los animales 🍌</h2>
+    <p class="lead">Toca la comida que quiere cada animal 🐾</p>
+    <div class="card reveal">
+      <div class="game-hud">
+        <span>⏱️ <b id="feedTime">30</b>s</span>
+        <span>🍽️ <b id="feedScore">0</b></span>
+        <span>🏆 <b id="feedBest">0</b></span>
+      </div>
+      <div class="feed-target" id="feedTarget">Pulsa jugar 🎮</div>
+      <div class="game-board" id="feedBoard">
+        <div class="game-start" id="feedStart"><button class="piropo-btn" id="feedBtn">Jugar 🎮</button></div>
+      </div>
+      <p class="piropo-txt" id="feedMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== ESQUIVA LAS OLAS ===== -->
 <section id="waves">
   <div class="wrap">
@@ -438,9 +478,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Cuándo nos vamos a casar? 💍";
-const RESPUESTAS = ["cuando nos veamos","cuando nos vemos"];
-const PISTA = "Pista: cuando por fin nos veamos 🥰";
+const PREGUNTA = "¿Qué animal es Paula? 🐭";
+const RESPUESTAS = ["una ratina","ratina","una ratita","ratita"];
+const PISTA = "Pista: pequeñita y adorable… una ratina 🐭";
 
 /* ---- NUESTRA CANCIÓN (Spotify) ---- */
 // Tipo ("album" o "track") e ID de Spotify (lo que va después de /album/ o /track/)
@@ -643,6 +683,93 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
+})();
+
+/* ================= ATRAPA A LOS MONITOS ================= */
+(function(){
+  const board=document.getElementById('mkBoard'),start=document.getElementById('mkStart'),btn=document.getElementById('mkBtn');
+  const timeEl=document.getElementById('mkTime'),scoreEl=document.getElementById('mkScore'),bestEl=document.getElementById('mkBest'),msg=document.getElementById('mkMsg');
+  let score=0,time=20,running=false,spawnT,tickT,best=+(localStorage.getItem('monosBest')||0);
+  bestEl.textContent=best;
+  function floatPiropo(x,y){
+    const f=document.createElement('div');f.className='float-piropo';
+    f.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
+    f.style.left=x;f.style.top=y;board.appendChild(f);setTimeout(()=>f.remove(),1000);
+  }
+  function spawn(){
+    const t=document.createElement('div');t.className='turtle';
+    const bonus=Math.random()<0.15;t.textContent=bonus?'🦁':'🐵';
+    const w=board.clientWidth-46,h=board.clientHeight-46;
+    t.style.left=Math.max(0,Math.random()*w)+'px';t.style.top=Math.max(0,Math.random()*h)+'px';
+    t.onclick=()=>{
+      if(!running||t.dataset.done)return;t.dataset.done=1;
+      score+=bonus?3:1;scoreEl.textContent=score;
+      floatPiropo(t.style.left,t.style.top);
+      t.style.transform='scale(0)';setTimeout(()=>t.remove(),150);
+    };
+    board.appendChild(t);setTimeout(()=>t.remove(),820);
+  }
+  function end(){
+    running=false;clearInterval(tickT);clearInterval(spawnT);
+    board.querySelectorAll('.turtle').forEach(x=>x.remove());
+    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
+    if(score>best){best=score;localStorage.setItem('monosBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Cazaste ${score}! `+(score>=20?'¡Domadora de monos! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡Otra vez! 🐵');
+  }
+  btn.onclick=()=>{
+    score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
+    start.style.display='none';running=true;
+    spawnT=setInterval(spawn,580);
+    tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
+  };
+})();
+
+/* ================= ALIMENTA A LOS ANIMALES ================= */
+(function(){
+  const board=document.getElementById('feedBoard'),start=document.getElementById('feedStart'),btn=document.getElementById('feedBtn');
+  const tEl=document.getElementById('feedTime'),sEl=document.getElementById('feedScore'),bEl=document.getElementById('feedBest'),tgt=document.getElementById('feedTarget'),msg=document.getElementById('feedMsg');
+  const PARES=[['🐵','🍌'],['🐰','🥕'],['🐼','🎋'],['🐶','🦴'],['🐱','🐟'],['🐘','🥜'],['🐨','🍃'],['🐴','🍎']];
+  const FOODS=[...new Set(PARES.map(p=>p[1]))];
+  let best=+(localStorage.getItem('feedBest')||0);bEl.textContent=best;
+  let items=[],score=0,time=30,running=false,target=null,raf,spawnT,tickT,changeT;
+  function pick(){target=PARES[Math.floor(Math.random()*PARES.length)];tgt.textContent=`${target[0]} quiere ${target[1]}`;}
+  function floatTxt(x,y,t){const f=document.createElement('div');f.className='float-piropo';f.textContent=t;f.style.left=x+'px';f.style.top=Math.max(0,y)+'px';board.appendChild(f);setTimeout(()=>f.remove(),900);}
+  function spawn(){
+    const food=Math.random()<0.5?target[1]:FOODS[Math.floor(Math.random()*FOODS.length)];
+    const el=document.createElement('div');el.textContent=food;
+    el.style.cssText='position:absolute;font-size:2rem;cursor:pointer;user-select:none;will-change:transform';
+    const x=Math.random()*(board.clientWidth-36);
+    const it={el,x,y:-30,food,done:false};
+    el.style.left=x+'px';el.style.top='0px';el.style.transform='translateY(-30px)';
+    el.onclick=()=>{
+      if(!running||it.done)return;it.done=true;
+      if(food===target[1]){score++;sEl.textContent=score;floatTxt(x,it.y,'ñam 😋');}
+      else{floatTxt(x,it.y,'¡ese no! 🙈');}
+      el.remove();items=items.filter(o=>o!==it);
+    };
+    board.appendChild(el);items.push(it);
+  }
+  function loop(){
+    for(const it of items){it.y+=2.5;it.el.style.transform='translateY('+it.y+'px)';}
+    for(const it of items.slice()){if(it.y>board.clientHeight-8){it.el.remove();items=items.filter(o=>o!==it);}}
+    if(running)raf=requestAnimationFrame(loop);
+  }
+  function end(){
+    running=false;clearInterval(tickT);clearInterval(spawnT);clearInterval(changeT);cancelAnimationFrame(raf);
+    items.forEach(it=>it.el.remove());items=[];
+    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';tgt.textContent='¡Bien hecho! 🐾';
+    if(score>best){best=score;localStorage.setItem('feedBest',best);bEl.textContent=best;}
+    msg.textContent=`¡Diste de comer a ${score}! `+(score>=20?'¡Cuidadora del zoo! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡Otra vez! 🐒');
+    confetti();
+  }
+  btn.onclick=()=>{
+    score=0;time=30;sEl.textContent=0;tEl.textContent=30;msg.textContent='';
+    start.style.display='none';running=true;pick();
+    spawnT=setInterval(spawn,640);
+    changeT=setInterval(pick,7000);
+    tickT=setInterval(()=>{time--;tEl.textContent=time;if(time<=0)end();},1000);
+    loop();
+  };
 })();
 
 /* ================= ESQUIVA LAS OLAS ================= */
