@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🌊☀️</title>
+<title>Para ti, mi amor 🦁🐘💕</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,21 +12,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#ff8c69; --pink-deep:#ff5e78; --rose:#ffe0cf; --cream:#fff3e9;
-    --ink:#5a3a2e; --soft:#a5695a; --card:#ffffff; --gold:#ffd36b;
-    --shadow:0 12px 40px rgba(255,94,120,.22);
+    --pink:#e86a92; --pink-deep:#cf4f7a; --rose:#dcf0c6; --cream:#eef7e0;
+    --ink:#33472b; --soft:#5f7a52; --card:#ffffff; --gold:#ffcf5a;
+    --shadow:0 12px 40px rgba(90,140,60,.22);
   }
   html[data-theme="dark"]{
-    --cream:#2a1626; --card:#3a1f2e; --rose:#5a2e3a; --ink:#ffe8dc; --soft:#e6b5a6;
-    --shadow:0 12px 40px rgba(0,0,0,.45);
+    --cream:#12210f; --card:#1c2c17; --rose:#26401c; --ink:#e8f5da; --soft:#a9c495;
+    --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(circle at 50% 72%, rgba(255,211,107,.75), rgba(255,211,107,0) 26%),
-      linear-gradient(180deg,#ffe9c7 0%,#ffcf9e 26%,#ff9e86 48%,#ff7a9c 66%,#3fbecb 66%,#1fa3b8 100%);
+      radial-gradient(circle at 82% 6%, rgba(255,207,90,.55), transparent 30%),
+      linear-gradient(180deg,#bfe6f2 0%,#d7f0c2 42%,#a6d982 74%,#79c162 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
@@ -192,9 +192,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 78%, rgba(255,211,107,.7), transparent 34%), linear-gradient(180deg,#ffcf9e,#ff7a9c 60%,#3fbecb);
+    background:radial-gradient(circle at 80% 10%, rgba(255,207,90,.55), transparent 34%), linear-gradient(180deg,#bfe6f2,#a6d982 65%,#79c162);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🌅"}
+  #gate .lock::after{content:" 🦁"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -216,7 +216,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">☀️</div>
+<div class="moon">🌳</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -229,10 +229,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦫</span><span class="capi-mochi">🐢</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦁</span><span class="capi-mochi">🐵</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres mi verano favorito… y mi atardecer de cada día 🌅💕</p>
-    <p class="hint" id="capiHint">Toca al capibara 🫶</p>
+    <p class="sub">En mi zoo de emociones, tú eres mi animal favorito 🦁💕</p>
+    <p class="hint" id="capiHint">Toca al leoncito 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -318,41 +318,6 @@
   </div>
 </section>
 
-<!-- ===== MINI-JUEGO ===== -->
-<section id="game">
-  <div class="wrap">
-    <h2>Atrapa las tortugas 🐢</h2>
-    <p class="lead">¿Cuántas cazas en 20 segundos?</p>
-    <div class="card reveal">
-      <div class="game-hud">
-        <span>⏱️ <b id="gTime">20</b>s</span>
-        <span>🐢 <b id="gScore">0</b></span>
-        <span>🏆 <b id="gBest">0</b></span>
-      </div>
-      <div class="game-board" id="gBoard">
-        <div class="game-start" id="gStart"><button class="piropo-btn" id="gBtn">Jugar 🎮</button></div>
-      </div>
-      <p class="piropo-txt" id="gMsg" style="min-height:1.4em;margin-top:12px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CAPIBARA SALTARÍN ===== -->
-<section id="runner">
-  <div class="wrap">
-    <h2>Capibara saltarín 🦫</h2>
-    <p class="lead">Salta los obstáculos: toca la pantalla (o pulsa espacio) 🐢</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud">
-        <span>🏃 <b id="rScore">0</b></span>
-        <span>🏆 <b id="rBest">0</b></span>
-      </div>
-      <canvas id="rCanvas" width="560" height="200" style="width:100%;max-width:560px;background:var(--rose);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:manipulation"></canvas>
-      <p class="piropo-txt" id="rMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ESQUIVA LAS OLAS ===== -->
 <section id="waves">
   <div class="wrap">
@@ -429,45 +394,45 @@ const FECHA_CITA = new Date(2026, 7, 10, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás más buena que un helado en agosto 🍦",
-  "Eres mi rayo de sol favorito ☀️",
-  "Contigo me da un calorcito en el pecho 🥰",
-  "Guapa, con solecito y sin él ✨",
-  "Eres mi verano entero 🌴",
-  "Me tienes derretido, y no es por el calor 😍",
-  "Preciosa como un atardecer en la playa 🌅",
-  "Eres mi brisa buena y mi refresco 🍹",
-  "Contigo cualquier plan es el mejor plan 💕",
-  "Me haces feliz como un domingo de playa 🏖️",
-  "Eres mi ola favorita, siempre vuelvo a ti 🌊",
-  "Guapísima, mi amor de verano 💛"
+  "Eres monísima, y no lo digo por los monos 🐵",
+  "Tienes ojitos de cachorrito y me matas 🥹",
+  "Eres la reina de mi selva 👑🦁",
+  "Contigo me pongo tierno como un koala 🐨",
+  "Guapa a rabiar, mi fierecilla 🐯",
+  "Eres mi animalito favorito de todo el zoo 💕",
+  "Me tienes en el bote, como un pingüino feliz 🐧",
+  "Preciosa por fuera y aún más por dentro 🦒",
+  "Eres mi pareja, como los del arca de Noé 🐘",
+  "Me haces más feliz que un panda con bambú 🐼",
+  "Contigo cualquier plan es el mejor plan 💖",
+  "Eres única, no hay otra igual en el mundo 🦄"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan las tortugas del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi sol ☀️","Bombón 🍦","Preciosa ✨","Mi playa 🏖️",
-  "Ricura 😋","Mi ola 🌊","Hermosa 🌺","Mi amor 🥰","Mi verano 🌴","Mía 💕"
+  "Guapa 😍","Mi leona 🦁","Monísima 🐵","Preciosa ✨","Mi koala 🐨",
+  "Ricura 😋","Mi pandita 🐼","Hermosa 🦒","Mi amor 🥰","Mi fiera 🐯","Mía 💕"
 ];
 
 /* ---- GLOBOS SORPRESA (mensaje de cada globo) ---- */
 const GLOBOS_MENSAJES = [
-  "Eres mi verano favorito 🌴",
-  "Contigo, arena y mar 🌊",
-  "Gracias por tanto sol 🌞",
-  "Mi ola favorita eres tú 💕",
-  "Cuento los días para verte 🏖️",
-  "Eres mi lugar feliz 🥥"
+  "Eres mi animalito favorito 🦁",
+  "Contigo, en la selva o donde sea 🌴",
+  "Gracias por ser tú 🐵💕",
+  "Mi pareja de zoo eres tú 🐘",
+  "Cuento los días para verte 🐾",
+  "Eres mi lugar feliz 🐨"
 ];
 
 /* ---- PREMIOS DE LA PERLA (mensajes al encontrarla) ---- */
 const PERLA_PREMIOS = [
-  "¡Perla encontrada! 🦪 Eres mi tesoro más bonito 💗",
-  "¡La tienes! 🐚 Igual de preciosa que esta perla ✨",
+  "¡Encontrada! 🦪 Eres mi tesoro más bonito 💗",
+  "¡La tienes! 🐚 Brillas más que cualquier perla ✨",
   "¡Bravo! 🦪 Eres lo mejor que me ha pasado 🥰",
-  "¡Sí! 🐚 No hay perla que brille más que tú 🌟",
-  "¡Encontrada! ✨ Te quiero con locura, mi amor 💕",
+  "¡Sí! 🐚 Eres mi animalito favorito del zoo 🦁",
+  "¡Genial! ✨ Te quiero con locura, mi amor 💕",
   "¡Perla! 🦪 Eres única, como tú no hay otra 😍",
-  "¡Genial! 🐚 Guapa por fuera y aún más por dentro 🥹",
+  "¡Monísima! 🐵 Guapa por fuera y por dentro 🥹",
   "¡La perla eres tú! 💖 Mi cosa más bonita 🌸"
 ];
 
@@ -484,27 +449,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Contigo cualquier día es verano.",
-  "Eres mi sitio favorito, mejor que cualquier playa.",
-  "Tú eres mi verano de todo el año.",
-  "Me derrito por ti más que un helado al sol 🍦",
-  "Contigo hasta el calor se disfruta.",
-  "Eres mi ola favorita, siempre vuelvo a ti 🌊",
-  "A tu lado todo sabe a atardecer de verano.",
-  "Eres mi puesta de sol preferida 🌅",
-  "Contigo la vida es playa, sol y tú.",
-  "Me gustas más que un chapuzón en agosto.",
-  "Eres mi brisa buena en los días de calor.",
-  "Contigo cada verano se queda corto.",
-  "Eres mi destino favorito, vayas donde vayas.",
-  "Tú eres mi verano y mi para siempre.",
-  "Contigo hasta la arena en los pies es bonita."
+  "En mi zoo de emociones, tú eres mi favorita.",
+  "Contigo soy feliz como un panda con bambú 🐼",
+  "Eres la leona que manda en mi corazón 🦁",
+  "Me tienes monísimo perdido por ti 🐵",
+  "Contigo iría al fin del mundo, o de la selva 🌴",
+  "Eres mi pareja, como los animalitos del arca 🐘",
+  "A tu lado hasta los días grises son de colores 🦜",
+  "Eres tierna como un koala y fiera como una tigresa 🐨🐯",
+  "Contigo cualquier rincón es mi sitio favorito.",
+  "Me haces cosquillas en el corazón, mi amor.",
+  "Eres mi manada, mi hogar y mi calma.",
+  "Te elegiría entre todos los animales del mundo 🦒",
+  "Contigo la vida es una aventura preciosa.",
+  "Eres mi hoy bonito y mi mañana seguro.",
+  "Te quiero más que un pingüino a su pareja 🐧"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Guapísima 😍","Mi sol ☀️","Mi verano 🌴",
-  "Mi ola 🌊","Contigo todo 🌺","Mi playa 🏖️","Mi hogar 🏡❤️"
+  "Te quiero 💕","Guapísima 😍","Mi leona 🦁","Monísima 🐵",
+  "Mi pandita 🐼","Contigo todo 🐾","Mi koala 🐨","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -536,13 +501,13 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['💕','💗','🐚','🌺','🌴','🍹','🦩','🐢','☀️','🌊'];
+  const c=document.getElementById('hearts'), emo=['🦁','🐘','🦒','🐵','🐯','🦓','🐼','🦜','🐨','🦊','🐧','💕'];
   const n = window.innerWidth<600?14:24;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
     h.textContent=emo[i%emo.length];
     h.style.left=Math.random()*100+'vw';
-    h.style.fontSize=(15+Math.random()*20)+'px';
+    h.style.fontSize=(16+Math.random()*20)+'px';
     h.style.animationDuration=(8+Math.random()*9)+'s';
     h.style.animationDelay=(Math.random()*10)+'s';
     const showMsg=()=>toast(MENSAJES[Math.floor(Math.random()*MENSAJES.length)]);
@@ -550,16 +515,17 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     h.addEventListener('mouseenter',showMsg);
     c.appendChild(h);
   }
-  // Burbujas de mar 🫧
-  const nb = window.innerWidth<600?14:22;
-  for(let i=0;i<nb;i++){
-    const b=document.createElement('div');b.className='bubble';
-    const sz=6+Math.random()*16;
-    b.style.width=b.style.height=sz+'px';
-    b.style.left=Math.random()*100+'vw';
-    b.style.animationDuration=(9+Math.random()*10)+'s';
-    b.style.animationDelay=(Math.random()*12)+'s';
-    c.appendChild(b);
+  // Hojas cayendo 🍃
+  const hojas=['🍃','🌿','🍀','🐾'];
+  const nh = window.innerWidth<600?12:20;
+  for(let i=0;i<nh;i++){
+    const p=document.createElement('div');p.className='petal';
+    p.textContent=hojas[i%hojas.length];
+    p.style.left=Math.random()*100+'vw';
+    p.style.fontSize=(15+Math.random()*16)+'px';
+    p.style.animationDuration=(9+Math.random()*10)+'s';
+    p.style.animationDelay=(Math.random()*12)+'s';
+    c.appendChild(p);
   }
 })();
 const toastEl=document.getElementById('toast'); let toastT;
@@ -603,14 +569,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Muá 😘','Mi amor de verano 🌴💕','Contigo a la playa 🐢🏖️','Te quiero un montón 💕'];
+const CAPI_MSGS=['Muá 😘','Mi animalito favorito 🦁💕','Eres mi rey de la selva 👑','Te quiero un montón 🐵💗'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🦫','🐢','💕','❤️','🩷','💗','✨','🫶'];
+  const emo=['🦁','🐘','🐵','🦒','💕','❤️','🩷','🐾'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -677,131 +643,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
-})();
-
-/* ================= MINI-JUEGO: ATRAPA LAS TORTUGAS ================= */
-(function(){
-  const board=document.getElementById('gBoard'),start=document.getElementById('gStart'),btn=document.getElementById('gBtn');
-  const timeEl=document.getElementById('gTime'),scoreEl=document.getElementById('gScore'),bestEl=document.getElementById('gBest'),msg=document.getElementById('gMsg');
-  let score=0,time=20,running=false,spawnT,tickT,best=+(localStorage.getItem('tortugasBest')||0);
-  bestEl.textContent=best;
-  function floatPiropo(x,y){
-    const f=document.createElement('div');f.className='float-piropo';
-    f.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
-    f.style.left=x;f.style.top=y;
-    board.appendChild(f);
-    setTimeout(()=>f.remove(),1000);
-  }
-  function spawn(){
-    const t=document.createElement('div');t.className='turtle';
-    t.textContent = Math.random()<0.15 ? '🦫' : '🐢';
-    const cap = t.textContent==='🦫';
-    const w=board.clientWidth-46, h=board.clientHeight-46;
-    t.style.left=Math.max(0,Math.random()*w)+'px';
-    t.style.top=Math.max(0,Math.random()*h)+'px';
-    t.onclick=()=>{
-      if(!running||t.dataset.done)return;t.dataset.done=1;
-      score += cap ? 3 : 1;
-      scoreEl.textContent=score;
-      floatPiropo(t.style.left,t.style.top);
-      t.style.transform='scale(0)';setTimeout(()=>t.remove(),150);
-    };
-    board.appendChild(t);
-    setTimeout(()=>t.remove(), 850);
-  }
-  function end(){
-    running=false;clearInterval(tickT);clearInterval(spawnT);
-    board.querySelectorAll('.turtle').forEach(x=>x.remove());
-    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
-    if(score>best){best=score;localStorage.setItem('tortugasBest',best);bestEl.textContent=best;}
-    msg.textContent = `¡Cazaste ${score}! ` + (score>=20?'¡Eres una crack! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡El capibara te ayuda la próxima! 🦫');
-    confetti();
-  }
-  btn.onclick=()=>{
-    score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
-    start.style.display='none';running=true;
-    spawnT=setInterval(spawn,600);
-    tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
-  };
-})();
-
-/* ================= CONTADOR DE TE QUIEROS ================= */
-(function(){
-  const num=document.getElementById('tqNum'),btn=document.getElementById('tqBtn'),msg=document.getElementById('tqMsg');
-  let n=+(localStorage.getItem('teQuieros')||0);
-  num.textContent=n.toLocaleString('es-ES');
-  const HITOS={1:'¡El primero de muchos! 🥰',10:'¡Vas lanzada! 💕',25:'¡25 te quieros! 😍',50:'¡50! Qué maravilla 🥹',100:'¡100! Estás enamoradísima 🔥',250:'¡250! Locura de amor 💗',500:'¡500! Oficialmente loca por mí 🤭'};
-  function burst(){
-    const r=btn.getBoundingClientRect(),emo=['💗','❤️','💕','🩷','🦫'];
-    for(let i=0;i<6;i++){
-      const p=document.createElement('div');p.textContent=emo[Math.floor(Math.random()*emo.length)];
-      p.style.cssText=`position:fixed;left:${r.left+r.width/2}px;top:${r.top}px;font-size:${16+Math.random()*14}px;z-index:60;pointer-events:none;transition:transform .9s ease-out,opacity .9s`;
-      document.body.appendChild(p);
-      const dx=(Math.random()-.5)*130,dy=-60-Math.random()*90;
-      requestAnimationFrame(()=>{p.style.transform=`translate(${dx}px,${dy}px)`;p.style.opacity=0;});
-      setTimeout(()=>p.remove(),950);
-    }
-  }
-  btn.onclick=()=>{
-    n++;localStorage.setItem('teQuieros',n);
-    num.textContent=n.toLocaleString('es-ES');
-    burst();
-    if(HITOS[n])msg.textContent=HITOS[n];
-  };
-})();
-
-/* ================= CAPIBARA SALTARÍN ================= */
-(function(){
-  const cv=document.getElementById('rCanvas'),ctx=cv.getContext('2d');
-  const W=cv.width,H=cv.height,groundY=H-22;
-  const rScore=document.getElementById('rScore'),rBest=document.getElementById('rBest'),rMsg=document.getElementById('rMsg');
-  let best=+(localStorage.getItem('capiRunBest')||0);rBest.textContent=best;
-  const GRAV=0.62,JUMP=-11.4;
-  const capy={x:56,w:40,h:38,y:groundY-38,vy:0,onGround:true};
-  let obstacles=[],speed=4.2,score=0,frame=0,nextSpawn=60,state='idle',raf;
-
-  function reset(){obstacles=[];speed=4.2;score=0;frame=0;nextSpawn=60;capy.y=groundY-capy.h;capy.vy=0;capy.onGround=true;}
-  function start(){reset();state='running';rMsg.textContent='';cancelAnimationFrame(raf);loop();}
-  function jump(){
-    if(state==='running'){if(capy.onGround){capy.vy=JUMP;capy.onGround=false;}}
-    else start();
-  }
-  function spawn(){const h=28+(Math.random()<0.3?12:0);obstacles.push({x:W+10,w:Math.round(h*0.8),h,emoji:'🌵'});}
-  function over(){
-    state='over';cancelAnimationFrame(raf);
-    if(score>best){best=score;localStorage.setItem('capiRunBest',best);rBest.textContent=best;}
-    rMsg.textContent=`¡${score} puntos! `+(score>=300?'¡Máquina! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🦫');
-    draw();ctx.fillStyle='rgba(0,0,0,.35)';ctx.fillRect(0,0,W,H);
-    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
-    ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';
-  }
-  function loop(){
-    frame++;
-    capy.vy+=GRAV;capy.y+=capy.vy;
-    if(capy.y>=groundY-capy.h){capy.y=groundY-capy.h;capy.vy=0;capy.onGround=true;}
-    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
-    for(const o of obstacles)o.x-=speed;
-    obstacles=obstacles.filter(o=>o.x+o.w>-10);
-    if(frame%6===0){score++;rScore.textContent=score;}
-    speed+=0.0016;
-    for(const o of obstacles){
-      const obsTop=groundY+2-o.h;
-      if(capy.x+capy.w-6>o.x+3 && capy.x+6<o.x+o.w-3 && capy.y+capy.h-4>obsTop+3){over();break;}
-    }
-    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    ctx.strokeStyle='rgba(255,77,121,.5)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
-    ctx.textBaseline='alphabetic';
-    for(const o of obstacles){ctx.font=o.h+'px serif';ctx.fillText(o.emoji,o.x,groundY+2);}
-    ctx.font='34px serif';ctx.fillText('🦫',capy.x,capy.y+capy.h);
-    ctx.font='17px serif';ctx.fillText('🐢',capy.x+21,capy.y+17);
-  }
-  cv.addEventListener('click',jump);
-  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
-  document.addEventListener('keydown',e=>{if(e.code==='Space'&&(state!=='idle')){e.preventDefault();jump();}});
-  draw();
 })();
 
 /* ================= ESQUIVA LAS OLAS ================= */
