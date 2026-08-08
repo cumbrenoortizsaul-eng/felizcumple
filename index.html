@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🦁🐘💕</title>
+<title>Para ti, mi amor 🪐✨</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,21 +12,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#e86a92; --pink-deep:#cf4f7a; --rose:#dcf0c6; --cream:#eef7e0;
-    --ink:#33472b; --soft:#5f7a52; --card:#ffffff; --gold:#ffcf5a;
-    --shadow:0 12px 40px rgba(90,140,60,.22);
+    --pink:#b98cff; --pink-deep:#8a63ff; --rose:#241a4a; --cream:#070a1f;
+    --ink:#ece9ff; --soft:#a9a3d6; --card:#141232; --gold:#ffe08a;
+    --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   html[data-theme="dark"]{
-    --cream:#12210f; --card:#1c2c17; --rose:#26401c; --ink:#e8f5da; --soft:#a9c495;
-    --shadow:0 12px 40px rgba(0,0,0,.5);
+    --cream:#03040f; --card:#0c0a24; --rose:#1a1440; --ink:#f2f0ff; --soft:#9a94c7;
+    --shadow:0 12px 40px rgba(0,0,0,.65);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(circle at 82% 6%, rgba(255,207,90,.55), transparent 30%),
-      linear-gradient(180deg,#bfe6f2 0%,#d7f0c2 42%,#a6d982 74%,#79c162 100%);
+      radial-gradient(60% 45% at 82% 12%, rgba(138,99,255,.35), transparent 60%),
+      radial-gradient(55% 40% at 12% 88%, rgba(80,180,220,.22), transparent 60%),
+      linear-gradient(180deg,#070a1f 0%,#0e1030 55%,#160f36 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
@@ -193,9 +194,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 80% 10%, rgba(255,207,90,.55), transparent 34%), linear-gradient(180deg,#bfe6f2,#a6d982 65%,#79c162);
+    background:radial-gradient(60% 50% at 78% 14%, rgba(138,99,255,.5), transparent 60%), linear-gradient(180deg,#0b0e2a,#160f36);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🦁"}
+  #gate .lock::after{content:" 🪐"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -217,7 +218,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🌳</div>
+<div class="moon">🪐</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -230,10 +231,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦁</span><span class="capi-mochi">🐵</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">👩‍🚀</span><span class="capi-mochi">💫</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">En mi zoo de emociones, tú eres mi animal favorito 🦁💕</p>
-    <p class="hint" id="capiHint">Toca al leoncito 🫶</p>
+    <p class="sub">En todo el universo, te elegiría a ti… mi estrella más brillante 🌟💕</p>
+    <p class="hint" id="capiHint">Toca a la astronauta 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -358,22 +359,6 @@
   </div>
 </section>
 
-<!-- ===== ESQUIVA LAS OLAS ===== -->
-<section id="waves">
-  <div class="wrap">
-    <h2>Esquiva las olas 🌊</h2>
-    <p class="lead">Salta las olas en la orilla: toca la pantalla (o espacio) 🏖️</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud">
-        <span>🏃‍♀️ <b id="wScore">0</b></span>
-        <span>🏆 <b id="wBest">0</b></span>
-      </div>
-      <canvas id="wCanvas" width="560" height="200" style="width:100%;max-width:560px;background:linear-gradient(180deg,#ffe3c2 0%,#ffd0a3 60%,#4fc3d1 60%,#2bb0c2 100%);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:manipulation"></canvas>
-      <p class="piropo-txt" id="wMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== BUSCA LA PERLA ===== -->
 <section id="pearl">
   <div class="wrap">
@@ -434,53 +419,53 @@ const FECHA_CITA = new Date(2026, 7, 10, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres monísima, y no lo digo por los monos 🐵",
-  "Tienes ojitos de cachorrito y me matas 🥹",
-  "Eres la reina de mi selva 👑🦁",
-  "Contigo me pongo tierno como un koala 🐨",
-  "Guapa a rabiar, mi fierecilla 🐯",
-  "Eres mi animalito favorito de todo el zoo 💕",
-  "Me tienes en el bote, como un pingüino feliz 🐧",
-  "Preciosa por fuera y aún más por dentro 🦒",
-  "Eres mi pareja, como los del arca de Noé 🐘",
-  "Me haces más feliz que un panda con bambú 🐼",
-  "Contigo cualquier plan es el mejor plan 💖",
-  "Eres única, no hay otra igual en el mundo 🦄"
+  "Brillas más que todas las estrellas juntas 🌟",
+  "Eres el planeta al que siempre quiero volver 🪐",
+  "Tus ojos tienen galaxias enteras 👀✨",
+  "Contigo tocaría la luna sin cohete 🌙🚀",
+  "Eres mi lugar favorito de todo el universo 🌌",
+  "Me tienes en órbita perdido por ti 🛰️",
+  "Guapa a la velocidad de la luz 💫",
+  "Preciosa por fuera y una estrella por dentro ⭐",
+  "Eres la constelación más bonita del cielo 💜",
+  "Contigo cualquier viaje es el mejor viaje 🚀",
+  "Me haces sentir en las estrellas 🌠",
+  "Eres única en toda la Vía Láctea 🌌"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan las tortugas del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi leona 🦁","Monísima 🐵","Preciosa ✨","Mi koala 🐨",
-  "Ricura 😋","Mi pandita 🐼","Hermosa 🦒","Mi amor 🥰","Mi fiera 🐯","Mía 💕"
+  "Guapa 😍","Mi estrella 🌟","Mi luna 🌙","Preciosa ✨","Mi galaxia 🌌",
+  "Ricura 😋","Mi planeta 🪐","Hermosa 💫","Mi amor 🥰","Mi cometa ☄️","Mía 💕"
 ];
 
 /* ---- GLOBOS SORPRESA (mensaje de cada globo) ---- */
 const GLOBOS_MENSAJES = [
-  "Eres mi animalito favorito 🦁",
-  "Contigo, en la selva o donde sea 🌴",
-  "Gracias por ser tú 🐵💕",
-  "Mi pareja de zoo eres tú 🐘",
-  "Cuento los días para verte 🐾",
-  "Eres mi lugar feliz 🐨"
+  "Eres mi estrella favorita 🌟",
+  "Contigo, hasta la luna y más allá 🌙",
+  "Gracias por ser tú 💫💕",
+  "Mi universo entero eres tú 🌌",
+  "Cuento los días para verte 🚀",
+  "Eres mi lugar feliz 🪐"
 ];
 
 /* ---- PREMIOS DE LA PERLA (mensajes al encontrarla) ---- */
 const PERLA_PREMIOS = [
-  "¡Encontrada! 🦪 Eres mi tesoro más bonito 💗",
-  "¡La tienes! 🐚 Brillas más que cualquier perla ✨",
-  "¡Bravo! 🦪 Eres lo mejor que me ha pasado 🥰",
-  "¡Sí! 🐚 Eres mi animalito favorito del zoo 🦁",
+  "¡Encontrada! 🌟 Eres mi tesoro más bonito 💗",
+  "¡La tienes! ✨ Brillas más que cualquier estrella 🌠",
+  "¡Bravo! ⭐ Eres lo mejor que me ha pasado 🥰",
+  "¡Sí! 🪐 Eres mi planeta favorito de todos 🌌",
   "¡Genial! ✨ Te quiero con locura, mi amor 💕",
-  "¡Perla! 🦪 Eres única, como tú no hay otra 😍",
-  "¡Monísima! 🐵 Guapa por fuera y por dentro 🥹",
-  "¡La perla eres tú! 💖 Mi cosa más bonita 🌸"
+  "¡Estrella! 🌟 Eres única en todo el universo 😍",
+  "¡Preciosa! 💫 Guapa por fuera y por dentro 🥹",
+  "¡La estrella eres tú! 💖 Mi cosa más bonita 🌙"
 ];
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Qué animal es Paula? 🐭";
-const RESPUESTAS = ["una ratina","ratina","una ratita","ratita"];
-const PISTA = "Pista: pequeñita y adorable… una ratina 🐭";
+const PREGUNTA = "¿Cuáles son las estrellas que más brillan? 🌟";
+const RESPUESTAS = ["tus ojos","mis ojos","tus ojitos","mis ojitos"];
+const PISTA = "Pista: los que te miran ahora mismo… tus ojos 👀✨";
 
 /* ---- NUESTRA CANCIÓN (Spotify) ---- */
 // Tipo ("album" o "track") e ID de Spotify (lo que va después de /album/ o /track/)
@@ -489,27 +474,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "En mi zoo de emociones, tú eres mi favorita.",
-  "Contigo soy feliz como un panda con bambú 🐼",
-  "Eres la leona que manda en mi corazón 🦁",
-  "Me tienes monísimo perdido por ti 🐵",
-  "Contigo iría al fin del mundo, o de la selva 🌴",
-  "Eres mi pareja, como los animalitos del arca 🐘",
-  "A tu lado hasta los días grises son de colores 🦜",
-  "Eres tierna como un koala y fiera como una tigresa 🐨🐯",
-  "Contigo cualquier rincón es mi sitio favorito.",
-  "Me haces cosquillas en el corazón, mi amor.",
-  "Eres mi manada, mi hogar y mi calma.",
-  "Te elegiría entre todos los animales del mundo 🦒",
-  "Contigo la vida es una aventura preciosa.",
+  "En todo el universo, te elegiría a ti.",
+  "Eres la estrella que ilumina mis noches 🌟",
+  "Contigo, hasta el infinito se queda corto ♾️",
+  "Tus ojos tienen más luz que mil galaxias 🌌",
+  "Eres mi planeta favorito para vivir 🪐",
+  "Me haces sentir en las estrellas 🌠",
+  "Contigo viajaría hasta el fin del cosmos 🚀",
+  "Eres mi luna llena en los días oscuros 🌙",
+  "Nuestro amor tiene su propia constelación 💫",
+  "A tu lado, la gravedad no existe 🛰️",
+  "Eres el sol alrededor del que giro ☀️",
+  "Te quiero más que estrellas hay en el cielo ⭐",
+  "Contigo cualquier órbita es la buena 💜",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Te quiero más que un pingüino a su pareja 🐧"
+  "En mi universo, tú lo eres todo 🌌"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Guapísima 😍","Mi leona 🦁","Monísima 🐵",
-  "Mi pandita 🐼","Contigo todo 🐾","Mi koala 🐨","Mi hogar 🏡❤️"
+  "Te quiero 💕","Guapísima 😍","Mi estrella 🌟","Mi luna 🌙",
+  "Mi galaxia 🌌","Contigo todo 💫","Mi planeta 🪐","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -541,32 +526,42 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🦁','🐘','🦒','🐵','🐯','🦓','🐼','🦜','🐨','🦊','🐧','💕'];
-  const n = window.innerWidth<600?14:24;
+  const c=document.getElementById('hearts'), emo=['🪐','🌟','🚀','🌙','☄️','🛸','🌍','💫','⭐','💜'];
+  const n = window.innerWidth<600?12:20;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
     h.textContent=emo[i%emo.length];
     h.style.left=Math.random()*100+'vw';
     h.style.fontSize=(16+Math.random()*20)+'px';
-    h.style.animationDuration=(8+Math.random()*9)+'s';
+    h.style.animationDuration=(9+Math.random()*10)+'s';
     h.style.animationDelay=(Math.random()*10)+'s';
     const showMsg=()=>toast(MENSAJES[Math.floor(Math.random()*MENSAJES.length)]);
     h.addEventListener('click',showMsg);
     h.addEventListener('mouseenter',showMsg);
     c.appendChild(h);
   }
-  // Hojas cayendo 🍃
-  const hojas=['🍃','🌿','🍀','🐾'];
-  const nh = window.innerWidth<600?12:20;
-  for(let i=0;i<nh;i++){
-    const p=document.createElement('div');p.className='petal';
-    p.textContent=hojas[i%hojas.length];
-    p.style.left=Math.random()*100+'vw';
-    p.style.fontSize=(15+Math.random()*16)+'px';
-    p.style.animationDuration=(9+Math.random()*10)+'s';
-    p.style.animationDelay=(Math.random()*12)+'s';
-    c.appendChild(p);
+  // Estrellas que titilan ✨
+  const ns = window.innerWidth<600?50:80;
+  for(let i=0;i<ns;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=1+Math.random()*2.4;
+    s.style.width=s.style.height=sz+'px';
+    s.style.left=Math.random()*100+'vw';
+    s.style.top=Math.random()*100+'vh';
+    s.style.animationDuration=(1.5+Math.random()*3)+'s';
+    s.style.animationDelay=(Math.random()*4)+'s';
+    c.appendChild(s);
   }
+  // Estrellas fugaces 🌠
+  function shoot(){
+    const s=document.createElement('div');s.className='shoot';
+    s.style.left=(40+Math.random()*55)+'vw';
+    s.style.top=(Math.random()*40)+'vh';
+    s.style.animation='shootMove '+(1+Math.random()*0.6)+'s ease-in forwards';
+    c.appendChild(s);setTimeout(()=>s.remove(),1900);
+  }
+  setInterval(()=>{if(Math.random()<0.6)shoot();},3500);
+  setTimeout(shoot,1200);
 })();
 const toastEl=document.getElementById('toast'); let toastT;
 function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>toastEl.classList.remove('show'),1600);}
@@ -609,14 +604,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Muá 😘','Mi animalito favorito 🦁💕','Eres mi rey de la selva 👑','Te quiero un montón 🐵💗'];
+const CAPI_MSGS=['Muá 😘','Mi estrella favorita 🌟💕','Eres mi universo entero 🪐','Te quiero hasta la luna 🌙💗'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🦁','🐘','🐵','🦒','💕','❤️','🩷','🐾'];
+  const emo=['🪐','🌟','🚀','💫','💕','❤️','🩷','⭐'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -770,52 +765,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     tickT=setInterval(()=>{time--;tEl.textContent=time;if(time<=0)end();},1000);
     loop();
   };
-})();
-
-/* ================= ESQUIVA LAS OLAS ================= */
-(function(){
-  const cv=document.getElementById('wCanvas'),ctx=cv.getContext('2d');
-  const W=cv.width,H=cv.height,groundY=H-26;
-  const sc=document.getElementById('wScore'),bt=document.getElementById('wBest'),ms=document.getElementById('wMsg');
-  let best=+(localStorage.getItem('olasBest')||0);bt.textContent=best;
-  const GRAV=0.6,JUMP=-11;
-  const her={x:54,w:38,h:40,y:groundY-40,vy:0,onGround:true};
-  let obs=[],speed=4,score=0,frame=0,nextSpawn=60,state='idle',raf;
-  function reset(){obs=[];speed=4;score=0;frame=0;nextSpawn=60;her.y=groundY-her.h;her.vy=0;her.onGround=true;}
-  function start(){reset();state='running';ms.textContent='';cancelAnimationFrame(raf);loop();}
-  function jump(){if(state==='running'){if(her.onGround){her.vy=JUMP;her.onGround=false;}}else start();}
-  function spawn(){const h=26+(Math.random()<0.3?12:0);obs.push({x:W+10,w:Math.round(h*1.1),h});}
-  function over(){
-    state='over';cancelAnimationFrame(raf);
-    if(score>best){best=score;localStorage.setItem('olasBest',best);bt.textContent=best;}
-    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Sirena pro! 🧜‍♀️🏆':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🌊');
-    draw();ctx.fillStyle='rgba(0,0,0,.32)';ctx.fillRect(0,0,W,H);
-    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
-    ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';
-  }
-  function loop(){
-    frame++;
-    her.vy+=GRAV;her.y+=her.vy;
-    if(her.y>=groundY-her.h){her.y=groundY-her.h;her.vy=0;her.onGround=true;}
-    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
-    for(const o of obs)o.x-=speed;
-    obs=obs.filter(o=>o.x+o.w>-10);
-    if(frame%6===0){score++;sc.textContent=score;}
-    speed+=0.0016;
-    for(const o of obs){const top=groundY+2-o.h;
-      if(her.x+her.w-8>o.x+3 && her.x+8<o.x+o.w-3 && her.y+her.h-4>top+3){over();break;}}
-    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    ctx.strokeStyle='rgba(43,176,194,.9)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
-    ctx.textBaseline='alphabetic';
-    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('🌊',o.x,groundY+4);}
-    ctx.font='34px serif';ctx.fillText('🏃‍♀️',her.x,her.y+her.h);
-  }
-  cv.addEventListener('click',jump);
-  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
-  draw();
 })();
 
 /* ================= BUSCA LA PERLA ================= */
