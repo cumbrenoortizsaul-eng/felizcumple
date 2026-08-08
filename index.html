@@ -161,6 +161,10 @@
   /* Mini-juego */
   .game-hud{display:flex;justify-content:space-around;gap:8px;font-size:clamp(1rem,3.5vw,1.2rem);font-weight:700;color:var(--pink-deep);margin-bottom:12px}
   .feed-target{text-align:center;font-weight:700;color:var(--ink);margin-bottom:10px;font-size:clamp(1.1rem,4vw,1.4rem)}
+  /* Pide un deseo */
+  .sky{position:relative;height:180px;overflow:hidden;border-radius:18px;
+    background:radial-gradient(circle at 72% 22%, rgba(138,99,255,.28), transparent 60%), linear-gradient(180deg,#0a0c22,#140f30)}
+  .wish-star{position:absolute;font-size:2rem;cursor:pointer;user-select:none;filter:drop-shadow(0 0 8px rgba(255,224,138,.95))}
   .game-board{position:relative;height:320px;background:var(--rose);border-radius:18px;overflow:hidden;touch-action:manipulation}
   .game-start{position:absolute;inset:0;display:grid;place-items:center}
   .turtle{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;transform:scale(0);animation:tpop .2s forwards}
@@ -308,66 +312,49 @@
   </div>
 </section>
 
-<!-- ===== GLOBOS SORPRESA ===== -->
-<section id="balloons">
+<!-- ===== PIDE UN DESEO ===== -->
+<section id="wish">
   <div class="wrap">
-    <h2>Globos sorpresa</h2>
-    <p class="lead">Pincha un globo y descubre el mensaje 🎈</p>
+    <h2>Pide un deseo 🌟</h2>
+    <p class="lead">Toca la estrella fugaz cuando cruce ✨</p>
     <div class="card reveal" style="text-align:center">
-      <div class="globos" id="globos"></div>
-      <p class="piropo-txt" id="globoMsg" style="min-height:1.6em;margin-top:14px"></p>
+      <div class="sky" id="sky"></div>
+      <p class="piropo-txt" id="wishMsg" style="min-height:1.6em;margin-top:14px">Espera a que cruce una estrella… 🌠</p>
     </div>
   </div>
 </section>
 
-<!-- ===== ATRAPA A LOS MONITOS ===== -->
-<section id="monkeys">
+<!-- ===== ATRAPA LOS MARCIANITOS ===== -->
+<section id="aliens">
   <div class="wrap">
-    <h2>Atrapa a los monitos 🐵</h2>
-    <p class="lead">¡Se escapan! ¿Cuántos cazas en 20 segundos?</p>
+    <h2>Atrapa los marcianitos 👽</h2>
+    <p class="lead">¡Invasión! ¿Cuántos cazas en 20 segundos?</p>
     <div class="card reveal">
       <div class="game-hud">
-        <span>⏱️ <b id="mkTime">20</b>s</span>
-        <span>🐵 <b id="mkScore">0</b></span>
-        <span>🏆 <b id="mkBest">0</b></span>
+        <span>⏱️ <b id="alTime">20</b>s</span>
+        <span>👽 <b id="alScore">0</b></span>
+        <span>🏆 <b id="alBest">0</b></span>
       </div>
-      <div class="game-board" id="mkBoard">
-        <div class="game-start" id="mkStart"><button class="piropo-btn" id="mkBtn">Jugar 🎮</button></div>
+      <div class="game-board" id="alBoard">
+        <div class="game-start" id="alStart"><button class="piropo-btn" id="alBtn">Jugar 🎮</button></div>
       </div>
-      <p class="piropo-txt" id="mkMsg" style="min-height:1.4em;margin-top:12px"></p>
+      <p class="piropo-txt" id="alMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
 
-<!-- ===== ALIMENTA A LOS ANIMALES ===== -->
-<section id="feed">
+<!-- ===== COHETE ESQUIVA ASTEROIDES ===== -->
+<section id="rocket">
   <div class="wrap">
-    <h2>Alimenta a los animales 🍌</h2>
-    <p class="lead">Toca la comida que quiere cada animal 🐾</p>
-    <div class="card reveal">
-      <div class="game-hud">
-        <span>⏱️ <b id="feedTime">30</b>s</span>
-        <span>🍽️ <b id="feedScore">0</b></span>
-        <span>🏆 <b id="feedBest">0</b></span>
-      </div>
-      <div class="feed-target" id="feedTarget">Pulsa jugar 🎮</div>
-      <div class="game-board" id="feedBoard">
-        <div class="game-start" id="feedStart"><button class="piropo-btn" id="feedBtn">Jugar 🎮</button></div>
-      </div>
-      <p class="piropo-txt" id="feedMsg" style="min-height:1.4em;margin-top:12px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== BUSCA LA PERLA ===== -->
-<section id="pearl">
-  <div class="wrap">
-    <h2>Busca la perla 🐚</h2>
-    <p class="lead">Una concha esconde una perla… ¿la encuentras? 🦪</p>
+    <h2>Cohete esquiva asteroides 🚀</h2>
+    <p class="lead">Salta los asteroides: toca la pantalla (o espacio) ☄️</p>
     <div class="card reveal" style="text-align:center">
-      <div class="shells" id="shells"></div>
-      <p class="piropo-txt" id="pearlMsg" style="min-height:1.6em;margin-top:14px">Toca una concha 🐚</p>
-      <button class="piropo-btn" id="pearlBtn" style="display:none">Jugar otra vez 🔁</button>
+      <div class="game-hud">
+        <span>🚀 <b id="rkScore">0</b></span>
+        <span>🏆 <b id="rkBest">0</b></span>
+      </div>
+      <canvas id="rkCanvas" width="560" height="200" style="width:100%;max-width:560px;background:linear-gradient(180deg,#0a0c22 0%,#140f30 100%);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:manipulation"></canvas>
+      <p class="piropo-txt" id="rkMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
     </div>
   </div>
 </section>
@@ -433,10 +420,22 @@ const PIROPOS = [
   "Eres única en toda la Vía Láctea 🌌"
 ];
 
-/* ---- PIROPOS CORTOS (los que sueltan las tortugas del juego) ---- */
+/* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
 const PIROPOS_JUEGO = [
   "Guapa 😍","Mi estrella 🌟","Mi luna 🌙","Preciosa ✨","Mi galaxia 🌌",
   "Ricura 😋","Mi planeta 🪐","Hermosa 💫","Mi amor 🥰","Mi cometa ☄️","Mía 💕"
+];
+
+/* ---- DESEOS (al tocar la estrella fugaz) ---- */
+const DESEOS = [
+  "Tu deseo: que nunca te falte una sonrisa 😊",
+  "Deseo concedido: te quiero infinito ♾️💕",
+  "Que se cumplan todos tus sueños 🌟",
+  "Pedí verte pronto y abrazarte fuerte 🤗",
+  "Que seas tan feliz como me haces a mí 🥰",
+  "Pedí que estemos juntos muchísimo tiempo 💫",
+  "Deseo: mil planes bonitos contigo 🚀",
+  "Que sepas lo especial que eres para mí ✨"
 ];
 
 /* ---- GLOBOS SORPRESA (mensaje de cada globo) ---- */
@@ -651,25 +650,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   };
 })();
 
-/* ================= GLOBOS SORPRESA ================= */
-(function(){
-  const cont=document.getElementById('globos'),msg=document.getElementById('globoMsg');
-  const colores=['🎈','🩷','💗','💖','❤️','💝'];
-  GLOBOS_MENSAJES.forEach((m,i)=>{
-    const g=document.createElement('div');g.className='globo';
-    g.textContent=colores[i%colores.length];
-    g.style.animationDelay=(i*0.3)+'s';
-    g.onclick=()=>{
-      if(g.classList.contains('pop'))return;
-      g.classList.add('pop');
-      msg.style.opacity=0;
-      setTimeout(()=>{msg.textContent=m;msg.style.opacity=1;},200);
-      confetti();
-    };
-    cont.appendChild(g);
-  });
-})();
-
 /* ================= SALUDO SEGÚN LA HORA ================= */
 (function(){
   const h=new Date().getHours();
@@ -680,11 +660,31 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= ATRAPA A LOS MONITOS ================= */
+/* ================= PIDE UN DESEO ================= */
 (function(){
-  const board=document.getElementById('mkBoard'),start=document.getElementById('mkStart'),btn=document.getElementById('mkBtn');
-  const timeEl=document.getElementById('mkTime'),scoreEl=document.getElementById('mkScore'),bestEl=document.getElementById('mkBest'),msg=document.getElementById('mkMsg');
-  let score=0,time=20,running=false,spawnT,tickT,best=+(localStorage.getItem('monosBest')||0);
+  const sky=document.getElementById('sky'),msg=document.getElementById('wishMsg');
+  function cross(){
+    const s=document.createElement('div');s.className='wish-star';s.textContent='🌠';
+    const y=8+Math.random()*(sky.clientHeight-52);
+    s.style.top=y+'px';s.style.left='-44px';
+    s.style.transition='transform 2.6s linear';
+    sky.appendChild(s);
+    requestAnimationFrame(()=>{s.style.transform='translateX('+(sky.clientWidth+90)+'px)';});
+    let used=false;
+    s.onclick=()=>{if(used)return;used=true;
+      msg.textContent=DESEOS[Math.floor(Math.random()*DESEOS.length)];
+      s.remove();confetti();
+    };
+    setTimeout(()=>s.remove(),2750);
+  }
+  setInterval(cross,3200);setTimeout(cross,900);
+})();
+
+/* ================= ATRAPA LOS MARCIANITOS ================= */
+(function(){
+  const board=document.getElementById('alBoard'),start=document.getElementById('alStart'),btn=document.getElementById('alBtn');
+  const timeEl=document.getElementById('alTime'),scoreEl=document.getElementById('alScore'),bestEl=document.getElementById('alBest'),msg=document.getElementById('alMsg');
+  let score=0,time=20,running=false,spawnT,tickT,best=+(localStorage.getItem('marcianosBest')||0);
   bestEl.textContent=best;
   function floatPiropo(x,y){
     const f=document.createElement('div');f.className='float-piropo';
@@ -693,7 +693,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   }
   function spawn(){
     const t=document.createElement('div');t.className='turtle';
-    const bonus=Math.random()<0.15;t.textContent=bonus?'🦁':'🐵';
+    const bonus=Math.random()<0.15;t.textContent=bonus?'🛸':'👽';
     const w=board.clientWidth-46,h=board.clientHeight-46;
     t.style.left=Math.max(0,Math.random()*w)+'px';t.style.top=Math.max(0,Math.random()*h)+'px';
     t.onclick=()=>{
@@ -708,8 +708,8 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     running=false;clearInterval(tickT);clearInterval(spawnT);
     board.querySelectorAll('.turtle').forEach(x=>x.remove());
     start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
-    if(score>best){best=score;localStorage.setItem('monosBest',best);bestEl.textContent=best;}
-    msg.textContent=`¡Cazaste ${score}! `+(score>=20?'¡Domadora de monos! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡Otra vez! 🐵');
+    if(score>best){best=score;localStorage.setItem('marcianosBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Cazaste ${score}! `+(score>=20?'¡Defensora galáctica! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡Otra vez! 👽');
   }
   btn.onclick=()=>{
     score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
@@ -719,82 +719,50 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   };
 })();
 
-/* ================= ALIMENTA A LOS ANIMALES ================= */
+/* ================= COHETE ESQUIVA ASTEROIDES ================= */
 (function(){
-  const board=document.getElementById('feedBoard'),start=document.getElementById('feedStart'),btn=document.getElementById('feedBtn');
-  const tEl=document.getElementById('feedTime'),sEl=document.getElementById('feedScore'),bEl=document.getElementById('feedBest'),tgt=document.getElementById('feedTarget'),msg=document.getElementById('feedMsg');
-  const PARES=[['🐵','🍌'],['🐰','🥕'],['🐼','🎋'],['🐶','🦴'],['🐱','🐟'],['🐘','🥜'],['🐨','🍃'],['🐴','🍎']];
-  const FOODS=[...new Set(PARES.map(p=>p[1]))];
-  let best=+(localStorage.getItem('feedBest')||0);bEl.textContent=best;
-  let items=[],score=0,time=30,running=false,target=null,raf,spawnT,tickT,changeT;
-  function pick(){target=PARES[Math.floor(Math.random()*PARES.length)];tgt.textContent=`${target[0]} quiere ${target[1]}`;}
-  function floatTxt(x,y,t){const f=document.createElement('div');f.className='float-piropo';f.textContent=t;f.style.left=x+'px';f.style.top=Math.max(0,y)+'px';board.appendChild(f);setTimeout(()=>f.remove(),900);}
-  function spawn(){
-    const food=Math.random()<0.5?target[1]:FOODS[Math.floor(Math.random()*FOODS.length)];
-    const el=document.createElement('div');el.textContent=food;
-    el.style.cssText='position:absolute;font-size:2rem;cursor:pointer;user-select:none;will-change:transform';
-    const x=Math.random()*(board.clientWidth-36);
-    const it={el,x,y:-30,food,done:false};
-    el.style.left=x+'px';el.style.top='0px';el.style.transform='translateY(-30px)';
-    el.onclick=()=>{
-      if(!running||it.done)return;it.done=true;
-      if(food===target[1]){score++;sEl.textContent=score;floatTxt(x,it.y,'ñam 😋');}
-      else{floatTxt(x,it.y,'¡ese no! 🙈');}
-      el.remove();items=items.filter(o=>o!==it);
-    };
-    board.appendChild(el);items.push(it);
+  const cv=document.getElementById('rkCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height,groundY=H-24;
+  const sc=document.getElementById('rkScore'),bt=document.getElementById('rkBest'),ms=document.getElementById('rkMsg');
+  let best=+(localStorage.getItem('coheteBest')||0);bt.textContent=best;
+  const GRAV=0.6,JUMP=-11;
+  const rk={x:54,w:38,h:40,y:groundY-40,vy:0,onGround:true};
+  let obs=[],speed=4.2,score=0,frame=0,nextSpawn=60,state='idle',raf;
+  function reset(){obs=[];speed=4.2;score=0;frame=0;nextSpawn=60;rk.y=groundY-rk.h;rk.vy=0;rk.onGround=true;}
+  function start(){reset();state='running';ms.textContent='';cancelAnimationFrame(raf);loop();}
+  function jump(){if(state==='running'){if(rk.onGround){rk.vy=JUMP;rk.onGround=false;}}else start();}
+  function spawn(){const h=26+(Math.random()<0.3?12:0);obs.push({x:W+10,w:Math.round(h*0.95),h});}
+  function over(){
+    state='over';cancelAnimationFrame(raf);
+    if(score>best){best=score;localStorage.setItem('coheteBest',best);bt.textContent=best;}
+    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Astronauta pro! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🚀');
+    draw();ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
+    ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';
   }
   function loop(){
-    for(const it of items){it.y+=2.5;it.el.style.transform='translateY('+it.y+'px)';}
-    for(const it of items.slice()){if(it.y>board.clientHeight-8){it.el.remove();items=items.filter(o=>o!==it);}}
-    if(running)raf=requestAnimationFrame(loop);
+    frame++;
+    rk.vy+=GRAV;rk.y+=rk.vy;
+    if(rk.y>=groundY-rk.h){rk.y=groundY-rk.h;rk.vy=0;rk.onGround=true;}
+    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
+    for(const o of obs)o.x-=speed;
+    obs=obs.filter(o=>o.x+o.w>-10);
+    if(frame%6===0){score++;sc.textContent=score;}
+    speed+=0.0016;
+    for(const o of obs){const top=groundY+2-o.h;
+      if(rk.x+rk.w-8>o.x+3 && rk.x+8<o.x+o.w-3 && rk.y+rk.h-4>top+3){over();break;}}
+    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
   }
-  function end(){
-    running=false;clearInterval(tickT);clearInterval(spawnT);clearInterval(changeT);cancelAnimationFrame(raf);
-    items.forEach(it=>it.el.remove());items=[];
-    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';tgt.textContent='¡Bien hecho! 🐾';
-    if(score>best){best=score;localStorage.setItem('feedBest',best);bEl.textContent=best;}
-    msg.textContent=`¡Diste de comer a ${score}! `+(score>=20?'¡Cuidadora del zoo! 🏆💕':score>=10?'¡Muy bien! 🥰':'¡Otra vez! 🐒');
-    confetti();
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(138,99,255,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
+    ctx.textBaseline='alphabetic';
+    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('☄️',o.x,groundY+4);}
+    ctx.font='32px serif';ctx.fillText('🚀',rk.x,rk.y+rk.h);
   }
-  btn.onclick=()=>{
-    score=0;time=30;sEl.textContent=0;tEl.textContent=30;msg.textContent='';
-    start.style.display='none';running=true;pick();
-    spawnT=setInterval(spawn,640);
-    changeT=setInterval(pick,7000);
-    tickT=setInterval(()=>{time--;tEl.textContent=time;if(time<=0)end();},1000);
-    loop();
-  };
-})();
-
-/* ================= BUSCA LA PERLA ================= */
-(function(){
-  const cont=document.getElementById('shells'),msg=document.getElementById('pearlMsg'),btn=document.getElementById('pearlBtn');
-  const N=5;
-  function nueva(){
-    cont.innerHTML='';msg.textContent='Toca una concha 🐚';btn.style.display='none';
-    const premio=PERLA_PREMIOS[Math.floor(Math.random()*PERLA_PREMIOS.length)];
-    const ganadora=Math.floor(Math.random()*N);
-    let acabado=false;
-    for(let i=0;i<N;i++){
-      const s=document.createElement('div');s.className='shell';s.textContent='🐚';
-      s.style.animationDelay=(i*0.25)+'s';
-      s.onclick=()=>{
-        if(acabado||s.classList.contains('done'))return;
-        if(i===ganadora){
-          acabado=true;s.textContent='🦪';s.classList.add('done','win');
-          msg.textContent=premio;btn.style.display='inline-block';
-          confetti();
-          cont.querySelectorAll('.shell').forEach(x=>{if(!x.classList.contains('done'))x.classList.add('done')});
-        }else{
-          s.textContent='🌊';s.classList.add('done');msg.textContent='Ahí no… ¡sigue buscando! 💗';
-        }
-      };
-      cont.appendChild(s);
-    }
-  }
-  btn.onclick=nueva;
-  nueva();
+  cv.addEventListener('click',jump);
+  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
+  draw();
 })();
 
 /* ================= LIGHTBOX ================= */
