@@ -161,6 +161,11 @@
   /* Mini-juego */
   .game-hud{display:flex;justify-content:space-around;gap:8px;font-size:clamp(1rem,3.5vw,1.2rem);font-weight:700;color:var(--pink-deep);margin-bottom:12px}
   .feed-target{text-align:center;font-weight:700;color:var(--ink);margin-bottom:10px;font-size:clamp(1.1rem,4vw,1.4rem)}
+  /* Doma al león */
+  .doma-lion{font-size:2.6rem;margin:6px 0}
+  .doma-bar{position:relative;height:26px;background:var(--rose);border-radius:14px;margin:8px auto 0;max-width:360px;overflow:hidden}
+  .doma-zone{position:absolute;top:0;bottom:0;background:rgba(242,183,5,.65)}
+  .doma-marker{position:absolute;top:0;bottom:0;width:8px;background:var(--pink-deep);border-radius:4px;left:0}
   /* Pide un deseo */
   .sky{position:relative;height:180px;overflow:hidden;border-radius:18px;
     background:radial-gradient(circle at 72% 22%, rgba(138,99,255,.28), transparent 60%), linear-gradient(180deg,#0a0c22,#140f30)}
@@ -317,6 +322,47 @@
       <div class="lead" style="margin:2px 0 18px">rugidos de amor 🦖</div>
       <button class="tq-btn" id="tqBtn">🦖 ¡RUGE!</button>
       <p class="piropo-txt" id="tqMsg" style="min-height:1.4em;margin-top:14px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MALABARES ===== -->
+<section id="juggle">
+  <div class="wrap">
+    <h2>Malabares 🤹</h2>
+    <p class="lead">Toca las bolas antes de que caigan. ¡Que no escape ninguna!</p>
+    <div class="card reveal">
+      <div class="game-hud"><span>🤹 <b id="jgScore">0</b></span><span>🏆 <b id="jgBest">0</b></span></div>
+      <div class="game-board" id="jgBoard"><div class="game-start" id="jgStart"><button class="piropo-btn" id="jgBtn">Jugar 🎮</button></div></div>
+      <p class="piropo-txt" id="jgMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIRO AL BLANCO ===== -->
+<section id="target">
+  <div class="wrap">
+    <h2>Tiro al blanco 🎯</h2>
+    <p class="lead">Acierta a la diana. ¿Cuántas en 20 segundos?</p>
+    <div class="card reveal">
+      <div class="game-hud"><span>⏱️ <b id="tgTime">20</b>s</span><span>🎯 <b id="tgScore">0</b></span><span>🏆 <b id="tgBest">0</b></span></div>
+      <div class="game-board" id="tgBoard"><div class="game-start" id="tgStart"><button class="piropo-btn" id="tgBtn">Jugar 🎮</button></div></div>
+      <p class="piropo-txt" id="tgMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOMA AL LEÓN ===== -->
+<section id="doma">
+  <div class="wrap">
+    <h2>Doma al león 🦁</h2>
+    <p class="lead">Pulsa cuando la marca esté en la zona dorada para que salte el aro 🔥</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🦁 <b id="dmScore">0</b></span><span>🏆 <b id="dmBest">0</b></span></div>
+      <div class="doma-lion" id="dmLion">🦁 ⭕</div>
+      <div class="doma-bar" id="dmBar"><div class="doma-zone" id="dmZone"></div><div class="doma-marker" id="dmMarker"></div></div>
+      <button class="piropo-btn" id="dmBtn" style="margin-top:14px">Jugar 🎮</button>
+      <p class="piropo-txt" id="dmMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
@@ -642,6 +688,97 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     burst();
     if(HITOS[n])msg.textContent=HITOS[n];
   };
+})();
+
+/* ================= MALABARES ================= */
+(function(){
+  const board=document.getElementById('jgBoard'),start=document.getElementById('jgStart'),btn=document.getElementById('jgBtn');
+  const scoreEl=document.getElementById('jgScore'),bestEl=document.getElementById('jgBest'),msg=document.getElementById('jgMsg');
+  const BOLAS=['🔴','🟡','🔵','🟢','🟣','🟠'];
+  let items=[],score=0,running=false,raf,spawnT,speed=2.3,best=+(localStorage.getItem('malabaresBest')||0);
+  bestEl.textContent=best;
+  function spawn(){
+    const el=document.createElement('div');el.textContent=BOLAS[Math.floor(Math.random()*BOLAS.length)];
+    el.style.cssText='position:absolute;font-size:2rem;cursor:pointer;user-select:none;will-change:transform';
+    const x=Math.random()*(board.clientWidth-36);
+    const it={el,x,y:-30,done:false};
+    el.style.left=x+'px';el.style.top='0px';el.style.transform='translateY(-30px)';
+    el.onclick=()=>{if(!running||it.done)return;it.done=true;score++;scoreEl.textContent=score;el.remove();items=items.filter(o=>o!==it);};
+    board.appendChild(el);items.push(it);
+  }
+  function loop(){
+    for(const it of items){it.y+=speed;it.el.style.transform='translateY('+it.y+'px)';}
+    for(const it of items){if(it.y>board.clientHeight-6 && !it.done){return over();}}
+    if(running)raf=requestAnimationFrame(loop);
+  }
+  function over(){
+    running=false;cancelAnimationFrame(raf);clearInterval(spawnT);
+    items.forEach(it=>it.el.remove());items=[];
+    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
+    if(score>best){best=score;localStorage.setItem('malabaresBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡${score} atrapadas! `+(score>=25?'¡Malabarista pro! 🏆💕':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🤹');
+  }
+  btn.onclick=()=>{
+    score=0;scoreEl.textContent=0;msg.textContent='';speed=2.3;items=[];
+    start.style.display='none';running=true;
+    spawnT=setInterval(()=>{spawn();speed+=0.02;},850);
+    loop();
+  };
+})();
+
+/* ================= TIRO AL BLANCO ================= */
+(function(){
+  const board=document.getElementById('tgBoard'),start=document.getElementById('tgStart'),btn=document.getElementById('tgBtn');
+  const timeEl=document.getElementById('tgTime'),scoreEl=document.getElementById('tgScore'),bestEl=document.getElementById('tgBest'),msg=document.getElementById('tgMsg');
+  let score=0,time=20,running=false,tickT,moveT,best=+(localStorage.getItem('dianaBest')||0);
+  bestEl.textContent=best;
+  const diana=document.createElement('div');diana.textContent='🎯';
+  diana.style.cssText='position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;transition:top .12s,left .12s';
+  function floatTxt(){
+    const f=document.createElement('div');f.className='float-piropo';
+    f.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
+    f.style.left=diana.style.left;f.style.top=diana.style.top;board.appendChild(f);setTimeout(()=>f.remove(),1000);
+  }
+  function place(){const w=board.clientWidth-46,h=board.clientHeight-46;diana.style.left=Math.max(0,Math.random()*w)+'px';diana.style.top=Math.max(0,Math.random()*h)+'px';}
+  diana.onclick=()=>{if(!running)return;score++;scoreEl.textContent=score;floatTxt();place();};
+  function end(){
+    running=false;clearInterval(tickT);clearInterval(moveT);diana.remove();
+    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
+    if(score>best){best=score;localStorage.setItem('dianaBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡${score} dianas! `+(score>=18?'¡Puntería de circo! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 🎯');
+  }
+  btn.onclick=()=>{
+    score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
+    start.style.display='none';board.appendChild(diana);place();running=true;
+    moveT=setInterval(place,1100);
+    tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
+  };
+})();
+
+/* ================= DOMA AL LEÓN ================= */
+(function(){
+  const bar=document.getElementById('dmBar'),zone=document.getElementById('dmZone'),marker=document.getElementById('dmMarker');
+  const btn=document.getElementById('dmBtn'),lion=document.getElementById('dmLion'),msg=document.getElementById('dmMsg');
+  const scoreEl=document.getElementById('dmScore'),bestEl=document.getElementById('dmBest');
+  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,score=0,raf,best=+(localStorage.getItem('domaBest')||0);
+  bestEl.textContent=best;
+  function setZone(){zone.style.left=((100-zoneW)/2)+'%';zone.style.width=zoneW+'%';}
+  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
+  function begin(){score=0;scoreEl.textContent=0;zoneW=34;speed=1.6;setZone();running=true;msg.textContent='';lion.textContent='🦁 ⭕';btn.textContent='¡Salta! 🔥';cancelAnimationFrame(raf);loop();}
+  function attempt(){
+    if(!running){begin();return;}
+    const zs=(100-zoneW)/2,ze=zs+zoneW;
+    if(pos>=zs && pos<=ze){
+      score++;scoreEl.textContent=score;lion.textContent='🦁💨 🔥';setTimeout(()=>{if(running)lion.textContent='🦁 ⭕';},300);
+      zoneW=Math.max(12,zoneW-3);speed+=0.3;setZone();
+      if(score>best){best=score;localStorage.setItem('domaBest',best);bestEl.textContent=best;}
+    }else{
+      running=false;cancelAnimationFrame(raf);lion.textContent='🦁 ❌';
+      msg.textContent=`¡${score} saltos! `+(score>=10?'¡Domadora experta! 🏆💕':score>=5?'¡Muy bien! 🥰':'¡Otra vez! 🦁');
+      btn.textContent='Jugar otra vez 🎮';
+    }
+  }
+  btn.onclick=attempt;
 })();
 
 /* ================= LIGHTBOX ================= */
