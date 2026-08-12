@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🎪🤹</title>
+<title>Para ti, mi amor 🦸‍♀️💥</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,22 +12,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#e23b5a; --pink-deep:#c02444; --rose:#ffe1c4; --cream:#fff4e6;
-    --ink:#5a2333; --soft:#a5687a; --card:#ffffff; --gold:#f2b705;
-    --shadow:0 12px 40px rgba(192,36,68,.22);
+    --pink:#e63946; --pink-deep:#c1121f; --rose:#ffe08a; --cream:#fff8e7;
+    --ink:#1d2440; --soft:#5b6079; --card:#ffffff; --gold:#ffd23f;
+    --shadow:0 12px 40px rgba(29,36,64,.22);
   }
   html[data-theme="dark"]{
-    --cream:#2a0f18; --card:#3a1523; --rose:#5a2333; --ink:#ffe4ec; --soft:#e0a9b8;
-    --shadow:0 12px 40px rgba(0,0,0,.5);
+    --cream:#12162e; --card:#1c2140; --rose:#2a2f52; --ink:#eef1ff; --soft:#a6abcf;
+    --shadow:0 12px 40px rgba(0,0,0,.55);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(circle at 50% -8%, rgba(242,183,5,.5), transparent 40%),
-      repeating-linear-gradient(90deg, rgba(226,59,90,.10) 0 42px, transparent 42px 84px),
-      linear-gradient(180deg,#fff4e6 0%,#ffe1c4 60%,#f7c9a3 100%);
+      repeating-conic-gradient(from 0deg at 50% 22%, rgba(230,57,70,.07) 0 6deg, transparent 6deg 12deg),
+      radial-gradient(rgba(43,108,255,.13) 1.6px, transparent 1.8px) 0 0/20px 20px,
+      linear-gradient(180deg,#fff8e7 0%,#ffe9b0 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
@@ -212,9 +212,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(242,183,5,.55), transparent 44%), linear-gradient(180deg,#e23b5a,#c02444);
+    background:radial-gradient(circle at 50% 12%, rgba(255,210,63,.6), transparent 44%), linear-gradient(135deg,#e63946,#2b6cff);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🎪"}
+  #gate .lock::after{content:" 🦸"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -236,7 +236,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🎪</div>
+<div class="moon">💥</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -249,10 +249,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🤹</span><span class="capi-mochi">🎈</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦸‍♀️</span><span class="capi-mochi">💥</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres la estrella del mayor espectáculo del mundo 🎪✨</p>
-    <p class="hint" id="capiHint">Toca al malabarista 🫶</p>
+    <p class="sub">Juntos salvamos el mundo… eres mi superpoder favorito 🦸‍♀️💥</p>
+    <p class="hint" id="capiHint">Toca a la superheroína 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -420,24 +420,24 @@ const FECHA_CITA = (function(){
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres la reina de la pista 👑🎪",
-  "Me tienes haciendo malabares por ti 🤹",
-  "Guapa de récord Guinness 🏆",
-  "Eres puro espectáculo, mi amor 🎆",
-  "Contigo se me acelera como en la montaña rusa 🎢",
-  "Preciosa bajo cualquier foco 🔦",
-  "Eres mi mayor truco de magia ✨🎩",
-  "Me robas el corazón sin red 🤸❤️",
-  "Eres más dulce que el algodón de azúcar 🍭",
-  "Contigo siempre es día de feria 🎡",
-  "Guapísima, la mejor función de mi vida 🎬",
-  "Eres mi premio gordo 🎯"
+  "Estás de escándalo, ¡POW! 💥",
+  "Eres mi heroína favorita 🦸‍♀️",
+  "Guapa con capa y sin capa ✨",
+  "Me das superpoderes solo con mirarme ⚡",
+  "Eres puro nivel peliculón 🎬",
+  "Contigo se me acelera el corazón, ¡BOOM! 💥",
+  "Preciosa, mi arma secreta 🛡️",
+  "Eres mi misión favorita 🚀",
+  "Me salvas el día solo con tu sonrisa 😍",
+  "Guapísima de otro universo 🌌",
+  "Eres mi final feliz garantizado ❤️",
+  "Contigo soy imparable ⚡💕"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi dino 🦕","Feroz 🦖","Preciosa ✨","Mi ratina 🐭",
-  "Ricura 😋","Mi tesoro 💎","Hermosa 💚","Mi amor 🥰","Fierecilla 🦎","Mía 💕"
+  "Guapa 😍","Mi héroe 🦸‍♀️","¡POW! 💥","Preciosa ✨","Mi rayo ⚡",
+  "Ricura 😋","Mi mundo 🌍","Hermosa 💫","Mi amor 🥰","Imparable 🔥","Mía 💕"
 ];
 
 /* ---- DESEOS (al tocar la estrella fugaz) ---- */
@@ -487,27 +487,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Contigo la vida es un circo… ¡y me encanta! 🎪",
-  "Eres la estrella del mayor espectáculo del mundo 🌟",
-  "Me haces malabares en el corazón 🤹❤️",
-  "Contigo cada día es función de estreno 🎬",
-  "Eres mi número favorito de toda la pista 🎪",
-  "Me tienes en la cuerda floja, perdidamente 🎪",
-  "Contigo hasta el susto es diversión 🎢",
-  "Eres el algodón de azúcar de mi vida 🍭",
-  "Tú eres mi gran premio de la feria 🎡",
-  "Contigo siempre quiero repetir la función 🎟️",
-  "Eres la sonrisa que llena mi carpa 🎪",
-  "Me robas el aliento como un trapecista 🤸",
-  "Contigo la magia es de verdad ✨🎩",
-  "Eres mi espectáculo favorito, sin descanso.",
-  "Que no baje nunca el telón de lo nuestro 🎭"
+  "Juntos podemos con todo, hasta con los lunes 🦸‍♀️🦸‍♂️",
+  "Eres mi superpoder favorito 💥",
+  "Contigo me siento invencible ⚡",
+  "Tu sonrisa es mi kriptonita (de la buena) 💚",
+  "Eres la heroína de mi historia 🦸‍♀️",
+  "Contigo salvaría el mundo mil veces 🌍",
+  "Eres el 'BOOM' que le faltaba a mi vida 💥",
+  "Mi corazón lleva tu escudo 🛡️❤️",
+  "Contigo cualquier misión es la mejor 🚀",
+  "Eres mi villana favorita cuando me robas besos 😈💕",
+  "A tu lado no hay batalla que perder ⚔️",
+  "Contigo hasta caer es volar 🦸",
+  "Tú eres mi gran final feliz de cómic 📖",
+  "Eres mi hoy bonito y mi mañana seguro.",
+  "Te quiero a la velocidad de la luz ⚡"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Guapísima 😍","Mi estrella 🌟","Mi función 🎪",
-  "Mi premio 🎯","Contigo todo 🎉","Mi dulce 🍭","Mi hogar 🏡❤️"
+  "Te quiero 💕","Guapísima 😍","Mi héroe 🦸‍♀️","¡POW! 💥",
+  "Mi superpoder ⚡","Contigo todo 🛡️","Mi mundo 🌍","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -539,7 +539,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🎪','🎈','🤹','🍿','🎠','🦁','🎩','🎟️','🎉','🍭'];
+  const c=document.getElementById('hearts'), emo=['🦸‍♀️','🦸‍♂️','💥','⚡','🛡️','🚀','⭐','🔥','💫','❤️'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -554,7 +554,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['🎉','🎊','🍿','🎈','⭐'];
+  const conf=['💥','⚡','⭐','🌟','💫'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -607,14 +607,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Muá 😘','La estrella del circo eres tú 🎪💕','Malabares de amor 🤹','Te quiero un montón 🎈💗'];
+const CAPI_MSGS=['¡POW! 💥','Mi heroína favorita 🦸‍♀️💕','¡Juntos con todo! ⚡','Te quiero un montón ❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🎉','🎊','🎈','🤹','💕','❤️','🩷','⭐'];
+  const emo=['💥','⚡','⭐','🦸‍♀️','💕','❤️','🩷','🔥'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
