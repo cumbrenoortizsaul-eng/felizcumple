@@ -20,6 +20,17 @@
     --cream:#080417; --card:#120c2c; --rose:#1e1640; --ink:#f4f0ff; --soft:#a49acc;
     --shadow:0 12px 40px rgba(0,0,0,.65);
   }
+  /* Modo DÍA mágico (pergamino claro) */
+  html[data-theme="light"]{
+    --pink:#8a63e8; --pink-deep:#6f45c9; --rose:#e7dcff; --cream:#f3edff;
+    --ink:#3a2a5a; --soft:#7a6a9a; --card:#ffffff; --gold:#d9a441;
+    --shadow:0 12px 40px rgba(138,99,232,.2);
+  }
+  html[data-theme="light"] body{
+    background:
+      radial-gradient(55% 40% at 80% 10%, rgba(179,136,255,.28), transparent 60%),
+      linear-gradient(180deg,#f6f1ff 0%,#e9ddff 100%);
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
@@ -88,7 +99,10 @@
   .capi-emoji{font-size:clamp(4rem,16vw,8rem);line-height:1}
   .capi-mochi{position:absolute;top:8%;right:-6%;font-size:clamp(1.8rem,7vw,3.4rem);transform:rotate(12deg)}
   .hint{color:var(--soft);font-size:.9rem;opacity:.85}
-  .scroll-cue{margin-top:38px;font-size:1.8rem;animation:bob 1.6s ease-in-out infinite}
+  .candles{font-size:1.7rem;margin-top:10px;letter-spacing:8px;animation:flicker 2.5s ease-in-out infinite}
+  @keyframes flicker{0%,100%{filter:drop-shadow(0 0 8px rgba(242,201,76,.9))}50%{filter:drop-shadow(0 0 15px rgba(242,201,76,1))}}
+  html[data-theme="light"] .candles{animation:none;filter:grayscale(.55) opacity(.5)}
+  .scroll-cue{margin-top:24px;font-size:1.8rem;animation:bob 1.6s ease-in-out infinite}
   @keyframes bob{50%{transform:translateY(10px)}}
 
   /* ---------- Secciones ---------- */
@@ -174,6 +188,11 @@
   .bomb-pad{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:280px;margin:0 auto}
   .bomb-btn{aspect-ratio:1;border-radius:16px;cursor:pointer;opacity:.5;transition:opacity .12s,transform .1s}
   .bomb-btn.lit{opacity:1;transform:scale(1.06)}
+  /* Prepara la poción */
+  .potion-pad{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .potion-ing{width:56px;height:56px;border-radius:14px;background:var(--rose);display:grid;place-items:center;font-size:1.7rem;cursor:pointer;user-select:none;transition:transform .1s,background .2s}
+  .potion-ing:active{transform:scale(.9)}
+  .potion-ing.ok{background:var(--pink);color:#fff}
   /* Pide un deseo */
   .sky{position:relative;height:180px;overflow:hidden;border-radius:18px;
     background:radial-gradient(circle at 72% 22%, rgba(138,99,255,.28), transparent 60%), linear-gradient(180deg,#0a0c22,#140f30)}
@@ -261,6 +280,7 @@
     <h1>Para ti,<br>mi amor</h1>
     <p class="sub">Eres la magia que le faltaba a mi vida ✨🪄</p>
     <p class="hint" id="capiHint">Toca a la maga 🫶</p>
+    <div class="candles">🕯️ 🕯️ 🕯️</div>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -330,6 +350,34 @@
       <div class="lead" style="margin:2px 0 18px">rugidos de amor 🦖</div>
       <button class="tq-btn" id="tqBtn">🦖 ¡RUGE!</button>
       <p class="piropo-txt" id="tqMsg" style="min-height:1.4em;margin-top:14px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ATRAPA LA SNITCH ===== -->
+<section id="snitch">
+  <div class="wrap">
+    <h2>Atrapa la snitch dorada 🟡</h2>
+    <p class="lead">¡Vuela rapidísima! Tócala las máximas veces en 20 segundos ✨</p>
+    <div class="card reveal">
+      <div class="game-hud"><span>⏱️ <b id="snTime">20</b>s</span><span>🟡 <b id="snScore">0</b></span><span>🏆 <b id="snBest">0</b></span></div>
+      <div class="game-board" id="snBoard"><div class="game-start" id="snStart"><button class="piropo-btn" id="snBtn">Jugar 🎮</button></div></div>
+      <p class="piropo-txt" id="snMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREPARA LA POCIÓN ===== -->
+<section id="potion">
+  <div class="wrap">
+    <h2>Prepara la poción 🧪</h2>
+    <p class="lead">Toca los ingredientes en el orden de la receta 🪄</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🧪 Nivel <b id="poRound">0</b></span><span>🏆 <b id="poBest">0</b></span></div>
+      <div class="feed-target" id="poRecipe">Pulsa "Empezar" 🧪</div>
+      <div class="potion-pad" id="poPad"></div>
+      <button class="piropo-btn" id="poBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="poMsg" style="min-height:1.4em;margin-top:10px"></p>
     </div>
   </div>
 </section>
@@ -447,8 +495,10 @@ const PREGUNTA = "Paula esss… 💕";
 const RESPUESTAS = ["hermosa","muy hermosa","hermosaa","hermosisima"];
 const PISTA = "Pista: lo que eres… hermosa 😍";
 
-/* ---- NUESTRA CANCIÓN (Spotify) ---- */
-// Tipo ("album" o "track") e ID de Spotify (lo que va después de /album/ o /track/)
+/* ---- MÚSICA ---- */
+// Melodía de Hogwarts (ID de YouTube). Para volver a vuestra canción de Spotify,
+// deja MUSICA_YT vacío ("") y se usará el álbum de Spotify de abajo.
+const MUSICA_YT = "WUiI5aQcTow";
 const SPOTIFY_TIPO = "album";
 const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
@@ -657,34 +707,93 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   };
 })();
 
+/* ================= ATRAPA LA SNITCH ================= */
+(function(){
+  const board=document.getElementById('snBoard'),start=document.getElementById('snStart'),btn=document.getElementById('snBtn');
+  const timeEl=document.getElementById('snTime'),scoreEl=document.getElementById('snScore'),bestEl=document.getElementById('snBest'),msg=document.getElementById('snMsg');
+  let score=0,time=20,running=false,tickT,moveT,best=+(localStorage.getItem('snitchBest')||0);
+  bestEl.textContent=best;
+  const sn=document.createElement('div');sn.textContent='🟡';
+  sn.style.cssText='position:absolute;font-size:1.9rem;cursor:pointer;user-select:none;transition:top .35s ease,left .35s ease;filter:drop-shadow(0 0 6px rgba(242,201,76,.95))';
+  function floatTxt(){const f=document.createElement('div');f.className='float-piropo';f.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];f.style.left=sn.style.left;f.style.top=sn.style.top;board.appendChild(f);setTimeout(()=>f.remove(),1000);}
+  function place(){const w=board.clientWidth-40,h=board.clientHeight-40;sn.style.left=Math.max(0,Math.random()*w)+'px';sn.style.top=Math.max(0,Math.random()*h)+'px';}
+  sn.onclick=()=>{if(!running)return;score++;scoreEl.textContent=score;floatTxt();place();};
+  function end(){
+    running=false;clearInterval(tickT);clearInterval(moveT);sn.remove();
+    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
+    if(score>best){best=score;localStorage.setItem('snitchBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡${score} capturas! `+(score>=18?'¡Buscadora estrella! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 🟡');
+  }
+  btn.onclick=()=>{
+    score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
+    start.style.display='none';board.appendChild(sn);place();running=true;
+    moveT=setInterval(place,750);
+    tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
+  };
+})();
+
+/* ================= PREPARA LA POCIÓN ================= */
+(function(){
+  const recipeEl=document.getElementById('poRecipe'),pad=document.getElementById('poPad'),btn=document.getElementById('poBtn');
+  const roundEl=document.getElementById('poRound'),bestEl=document.getElementById('poBest'),msg=document.getElementById('poMsg');
+  const ING=['🍄','🐍','🌿','🦎','🕷️','🧄'];
+  let recipe=[],idx=0,round=0,playing=false,best=+(localStorage.getItem('pocionBest')||0);
+  bestEl.textContent=best;
+  const btns=[];
+  ING.forEach(em=>{const b=document.createElement('div');b.className='potion-ing';b.textContent=em;b.onclick=()=>tap(em,b);pad.appendChild(b);btns.push(b);});
+  function newRound(){
+    round++;roundEl.textContent=round;idx=0;const len=2+round;recipe=[];
+    for(let k=0;k<len;k++)recipe.push(ING[Math.floor(Math.random()*ING.length)]);
+    recipeEl.textContent='Receta: '+recipe.join(' ');msg.textContent='Toca en orden 🧪';playing=true;
+  }
+  function tap(em,b){
+    if(!playing)return;
+    if(em===recipe[idx]){
+      b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),200);idx++;
+      if(idx===recipe.length){
+        playing=false;msg.textContent='¡Poción lista! ✨ '+PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
+        if(round>best){best=round;localStorage.setItem('pocionBest',best);bestEl.textContent=best;}
+        confetti();setTimeout(newRound,1200);
+      }
+    }else{msg.textContent='¡Puf! 💨 Empieza la receta otra vez';idx=0;}
+  }
+  btn.onclick=()=>{round=0;newRound();btn.textContent='Reiniciar 🎮';};
+})();
+
 /* ================= LIGHTBOX ================= */
 const lb=document.getElementById('lb'),lbimg=lb.querySelector('img');
 function openLb(src,cap){lbimg.src=src;lbimg.alt=cap;lb.classList.add('show');}
 lb.onclick=()=>lb.classList.remove('show');
 
-/* ================= TEMA ================= */
+/* ================= MODO DÍA/NOCHE MÁGICO ================= */
 const tbtn=document.getElementById('theme');
-tbtn.onclick=()=>{
-  const dark=document.documentElement.getAttribute('data-theme')==='dark';
-  document.documentElement.setAttribute('data-theme',dark?'light':'dark');
-  tbtn.textContent=dark?'🌙':'☀️';
-};
+function setMode(mode){ // 'noche' = velas encendidas, 'dia' = pergamino claro
+  document.documentElement.setAttribute('data-theme', mode==='dia'?'light':'dark');
+  tbtn.textContent = mode==='dia' ? '🌞' : '🕯️';
+  tbtn.title = mode==='dia' ? 'Encender las velas 🕯️' : 'Amanecer 🌞';
+}
+let modo='noche'; setMode('noche');
+tbtn.onclick=()=>{ modo = modo==='noche'?'dia':'noche'; setMode(modo); };
 
-/* ================= MÚSICA (reproductor de Spotify dentro de la web) ================= */
+/* ================= MÚSICA (dentro de la web) ================= */
 const mbtn=document.getElementById('music'); let panel=null;
 mbtn.onclick=function(){
-  if(!SPOTIFY_ID){alert('💡 Añade el ID de Spotify en la variable SPOTIFY_ID.');return;}
   if(panel){panel.remove();panel=null;mbtn.textContent='🎵';return;}
   panel=document.createElement('div');
   panel.style.cssText="position:fixed;right:12px;bottom:12px;z-index:70;width:min(340px,92vw);background:var(--card);border-radius:18px;box-shadow:var(--shadow);overflow:hidden";
+  const inner = MUSICA_YT
+    ? `<iframe width="100%" height="200" style="border:0;display:block" frameborder="0"
+         src="https://www.youtube.com/embed/${MUSICA_YT}?autoplay=1&loop=1&playlist=${MUSICA_YT}"
+         allow="autoplay; encrypted-media" allowfullscreen></iframe>
+       <div style="padding:6px 12px 10px;font-size:.8rem;color:var(--soft)">Si no suena sola, dale al ▶️ 🪄</div>`
+    : `<iframe width="100%" height="352" style="border:0;display:block" frameborder="0"
+         src="https://open.spotify.com/embed/${SPOTIFY_TIPO}/${SPOTIFY_ID}?utm_source=generator"
+         allow="autoplay; encrypted-media; clipboard-write; fullscreen; picture-in-picture" loading="lazy"></iframe>
+       <div style="padding:6px 12px 10px;font-size:.8rem;color:var(--soft)">Dale a ▶️ para escucharla 💕</div>`;
   panel.innerHTML=`
     <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;font-weight:700;color:var(--pink-deep)">
-      <span>🎵 Nuestra canción</span><span id="mx" style="cursor:pointer;font-size:1.3rem;line-height:1">×</span>
-    </div>
-    <iframe width="100%" height="352" style="border:0;display:block" frameborder="0"
-      src="https://open.spotify.com/embed/${SPOTIFY_TIPO}/${SPOTIFY_ID}?utm_source=generator"
-      allow="autoplay; encrypted-media; clipboard-write; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    <div style="padding:6px 12px 10px;font-size:.8rem;color:var(--soft)">Dale a ▶️ para escucharla 💕</div>`;
+      <span>🪄 Melodía de Hogwarts</span><span id="mx" style="cursor:pointer;font-size:1.3rem;line-height:1">×</span>
+    </div>${inner}`;
   document.body.appendChild(panel);
   panel.querySelector('#mx').onclick=()=>{panel.remove();panel=null;mbtn.textContent='🎵';};
   mbtn.textContent='⏸️';
