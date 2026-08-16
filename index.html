@@ -193,6 +193,13 @@
   .potion-ing{width:56px;height:56px;border-radius:14px;background:var(--rose);display:grid;place-items:center;font-size:1.7rem;cursor:pointer;user-select:none;transition:transform .1s,background .2s}
   .potion-ing:active{transform:scale(.9)}
   .potion-ing.ok{background:var(--pink);color:#fff}
+  /* Trivial */
+  .trivia-q{font-weight:700;font-size:clamp(1.05rem,3.8vw,1.3rem);margin:6px 0 14px;min-height:2.4em;display:flex;align-items:center;justify-content:center}
+  .trivia-opts{display:grid;gap:10px;max-width:420px;margin:0 auto}
+  .trivia-opt{background:var(--rose);border:none;border-radius:14px;padding:12px 14px;font-family:'Quicksand';font-weight:600;font-size:1rem;color:var(--ink);cursor:pointer;transition:background .2s,transform .1s}
+  .trivia-opt:hover{transform:scale(1.02)}
+  .trivia-opt.ok{background:#25a244;color:#fff}
+  .trivia-opt.no{background:#c1121f;color:#fff}
   /* Pide un deseo */
   .sky{position:relative;height:180px;overflow:hidden;border-radius:18px;
     background:radial-gradient(circle at 72% 22%, rgba(138,99,255,.28), transparent 60%), linear-gradient(180deg,#0a0c22,#140f30)}
@@ -340,15 +347,15 @@
   </div>
 </section>
 
-<!-- ===== ATRAPA LA SNITCH ===== -->
-<section id="snitch">
+<!-- ===== QUIDDITCH ===== -->
+<section id="quidditch">
   <div class="wrap">
-    <h2>Atrapa la snitch dorada 🟡</h2>
-    <p class="lead">¡Vuela rapidísima! Tócala las máximas veces en 20 segundos ✨</p>
-    <div class="card reveal">
-      <div class="game-hud"><span>⏱️ <b id="snTime">20</b>s</span><span>🟡 <b id="snScore">0</b></span><span>🏆 <b id="snBest">0</b></span></div>
-      <div class="game-board" id="snBoard"><div class="game-start" id="snStart"><button class="piropo-btn" id="snBtn">Jugar 🎮</button></div></div>
-      <p class="piropo-txt" id="snMsg" style="min-height:1.4em;margin-top:12px"></p>
+    <h2>Quidditch 🧹</h2>
+    <p class="lead">Mueve el dedo/ratón para volar: atrapa la snitch 🟡 y esquiva las bludgers ⚫</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🟡 <b id="qdScore">0</b></span><span>🏆 <b id="qdBest">0</b></span></div>
+      <canvas id="qdCanvas" width="560" height="300" style="width:100%;max-width:560px;background:radial-gradient(circle at 70% 20%,rgba(138,99,255,.25),transparent 60%),linear-gradient(180deg,#12163a,#241238);border-radius:18px;display:block;margin:0 auto;cursor:crosshair;touch-action:none"></canvas>
+      <p class="piropo-txt" id="qdMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
     </div>
   </div>
 </section>
@@ -364,6 +371,36 @@
       <div class="potion-pad" id="poPad"></div>
       <button class="piropo-btn" id="poBtn" style="margin-top:12px">Empezar 🎮</button>
       <p class="piropo-txt" id="poMsg" style="min-height:1.4em;margin-top:10px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRIVIAL DE HARRY POTTER ===== -->
+<section id="trivia">
+  <div class="wrap">
+    <h2>Trivial de Harry Potter ❓</h2>
+    <p class="lead">¿Cuánto sabes de la saga? 🪄</p>
+    <div class="card reveal" style="text-align:center;max-width:560px">
+      <div class="game-hud"><span>❓ <b id="trQnum">0</b>/<b id="trTotal">0</b></span><span>✅ <b id="trScore">0</b></span><span>🏆 <b id="trBest">0</b></span></div>
+      <div class="trivia-q" id="trQ">Pulsa "Empezar" para jugar 🎓</div>
+      <div class="trivia-opts" id="trOpts"></div>
+      <button class="piropo-btn" id="trBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="trMsg" style="min-height:1.4em;margin-top:10px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DUELO DE MAGOS ===== -->
+<section id="duel">
+  <div class="wrap">
+    <h2>Duelo de magos ⚡</h2>
+    <p class="lead">Pulsa cuando la marca esté en la zona dorada para lanzar el hechizo 🪄</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>⚡ <b id="duScore">0</b></span><span>🏆 <b id="duBest">0</b></span></div>
+      <div class="doma-lion" id="duSpell">🧙‍♀️ vs 🧙‍♂️</div>
+      <div class="doma-bar" id="duBar"><div class="doma-zone" id="duZone"></div><div class="doma-marker" id="duMarker"></div></div>
+      <button class="piropo-btn" id="duBtn" style="margin-top:14px">Empezar 🎮</button>
+      <p class="piropo-txt" id="duMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
@@ -662,31 +699,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= ATRAPA LA SNITCH ================= */
-(function(){
-  const board=document.getElementById('snBoard'),start=document.getElementById('snStart'),btn=document.getElementById('snBtn');
-  const timeEl=document.getElementById('snTime'),scoreEl=document.getElementById('snScore'),bestEl=document.getElementById('snBest'),msg=document.getElementById('snMsg');
-  let score=0,time=20,running=false,tickT,moveT,best=+(localStorage.getItem('snitchBest')||0);
-  bestEl.textContent=best;
-  const sn=document.createElement('div');sn.textContent='🟡';
-  sn.style.cssText='position:absolute;font-size:1.9rem;cursor:pointer;user-select:none;transition:top .35s ease,left .35s ease;filter:drop-shadow(0 0 6px rgba(242,201,76,.95))';
-  function floatTxt(){const f=document.createElement('div');f.className='float-piropo';f.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];f.style.left=sn.style.left;f.style.top=sn.style.top;board.appendChild(f);setTimeout(()=>f.remove(),1000);}
-  function place(){const w=board.clientWidth-40,h=board.clientHeight-40;sn.style.left=Math.max(0,Math.random()*w)+'px';sn.style.top=Math.max(0,Math.random()*h)+'px';}
-  sn.onclick=()=>{if(!running)return;score++;scoreEl.textContent=score;floatTxt();place();};
-  function end(){
-    running=false;clearInterval(tickT);clearInterval(moveT);sn.remove();
-    start.style.display='grid';btn.textContent='Jugar otra vez 🎮';
-    if(score>best){best=score;localStorage.setItem('snitchBest',best);bestEl.textContent=best;}
-    msg.textContent=`¡${score} capturas! `+(score>=18?'¡Buscadora estrella! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 🟡');
-  }
-  btn.onclick=()=>{
-    score=0;time=20;scoreEl.textContent=0;timeEl.textContent=20;msg.textContent='';
-    start.style.display='none';board.appendChild(sn);place();running=true;
-    moveT=setInterval(place,750);
-    tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);
-  };
-})();
-
 /* ================= PREPARA LA POCIÓN ================= */
 (function(){
   const recipeEl=document.getElementById('poRecipe'),pad=document.getElementById('poPad'),btn=document.getElementById('poBtn');
@@ -713,6 +725,124 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     }else{msg.textContent='¡Puf! 💨 Empieza la receta otra vez';idx=0;}
   }
   btn.onclick=()=>{round=0;newRound();btn.textContent='Reiniciar 🎮';};
+})();
+
+/* ================= QUIDDITCH ================= */
+(function(){
+  const cv=document.getElementById('qdCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height;
+  const scoreEl=document.getElementById('qdScore'),bestEl=document.getElementById('qdBest'),msg=document.getElementById('qdMsg');
+  let best=+(localStorage.getItem('quidditchBest')||0);bestEl.textContent=best;
+  const rand=(a,b)=>a+Math.random()*(b-a);
+  let player={x:W/2,y:H/2,tx:W/2,ty:H/2},snitch,bludgers,score,running=false,raf;
+  function addBludger(){bludgers.push({x:rand(20,W-20),y:rand(10,40),vx:(Math.random()<.5?-1:1)*rand(2,3.4),vy:rand(2,3.2)});}
+  function reset(){player.x=player.tx=W/2;player.y=player.ty=H/2;score=0;scoreEl.textContent=0;
+    snitch={x:rand(40,W-40),y:rand(40,H-40),vx:rand(-2.2,2.2),vy:rand(-2.2,2.2)};
+    bludgers=[];addBludger();addBludger();}
+  function start(){reset();running=true;msg.textContent='';cancelAnimationFrame(raf);loop();}
+  function setTarget(cx,cy){const r=cv.getBoundingClientRect();player.tx=(cx-r.left)*(W/r.width);player.ty=(cy-r.top)*(H/r.height);}
+  cv.addEventListener('mousemove',e=>{if(running)setTarget(e.clientX,e.clientY);});
+  cv.addEventListener('touchmove',e=>{e.preventDefault();if(running){const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:false});
+  cv.addEventListener('click',()=>{if(!running)start();});
+  cv.addEventListener('touchstart',e=>{if(!running)start();else{const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:true});
+  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  function loop(){
+    player.x+=(player.tx-player.x)*0.2;player.y+=(player.ty-player.y)*0.2;
+    if(Math.random()<0.03){snitch.vx=rand(-2.6,2.6);snitch.vy=rand(-2.6,2.6);}
+    snitch.x+=snitch.vx;snitch.y+=snitch.vy;
+    if(snitch.x<18||snitch.x>W-18)snitch.vx*=-1;if(snitch.y<18||snitch.y>H-18)snitch.vy*=-1;
+    snitch.x=Math.max(18,Math.min(W-18,snitch.x));snitch.y=Math.max(18,Math.min(H-18,snitch.y));
+    if(dist(player,snitch)<26){score++;scoreEl.textContent=score;snitch.x=rand(30,W-30);snitch.y=rand(30,H-30);if(score%3===0)addBludger();}
+    for(const b of bludgers){b.x+=b.vx;b.y+=b.vy;if(b.x<14||b.x>W-14)b.vx*=-1;if(b.y<14||b.y>H-14)b.vy*=-1;if(dist(player,b)<24)return over();}
+    draw();if(running)raf=requestAnimationFrame(loop);
+  }
+  function over(){running=false;cancelAnimationFrame(raf);
+    if(score>best){best=score;localStorage.setItem('quidditchBest',best);bestEl.textContent=best;}
+    draw();ctx.fillStyle='rgba(0,0,0,.45)';ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
+    ctx.fillText('¡Toca para volar otra vez!',W/2,H/2);ctx.textAlign='left';
+    msg.textContent=`¡${score} snitches! `+(score>=15?'¡Buscadora de leyenda! 🏆💕':score>=7?'¡Muy bien! 🥰':'¡Otra vez! 🧹');
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);ctx.textBaseline='middle';ctx.textAlign='center';
+    ctx.font='24px serif';ctx.fillText('🟡',snitch.x,snitch.y);
+    ctx.font='22px serif';for(const b of bludgers)ctx.fillText('⚫',b.x,b.y);
+    ctx.font='28px serif';ctx.fillText('🧙‍♀️',player.x,player.y);
+    ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  }
+  draw();
+})();
+
+/* ================= TRIVIAL DE HARRY POTTER ================= */
+(function(){
+  const PREGUNTAS=[
+    {q:"¿Cómo se llama el colegio de magia de Harry?",o:["Hogwarts","Beauxbatons","Durmstrang"],c:0},
+    {q:"¿Qué mascota (lechuza) tiene Harry?",o:["Errol","Hedwig","Crookshanks"],c:1},
+    {q:"¿En qué posición juega Harry al Quidditch?",o:["Guardián","Cazador","Buscador"],c:2},
+    {q:"¿A qué casa pertenece Harry?",o:["Slytherin","Gryffindor","Ravenclaw"],c:1},
+    {q:"¿Cómo se llama el villano principal de la saga?",o:["Voldemort","Grindelwald","Dolohov"],c:0},
+    {q:"¿Qué hechizo sirve para desarmar?",o:["Lumos","Expelliarmus","Alohomora"],c:1},
+    {q:"¿Qué hechizo produce luz en la varita?",o:["Nox","Accio","Lumos"],c:2},
+    {q:"¿Cómo se llama el banco de los magos?",o:["Gringotts","Ollivander's","Flourish y Blotts"],c:0},
+    {q:"¿Qué núcleo tiene la varita de Harry?",o:["Pelo de unicornio","Pluma de fénix","Nervio de dragón"],c:1},
+    {q:"¿Cómo se llama el elfo doméstico amigo de Harry?",o:["Kreacher","Winky","Dobby"],c:2},
+    {q:"¿Cuál NO es una Reliquia de la Muerte?",o:["Varita de Saúco","Capa de invisibilidad","Copa de Hufflepuff"],c:2},
+    {q:"¿Qué objeto usa Hermione para ir a más clases?",o:["Giratiempo","Traslador","Recordadora"],c:0},
+    {q:"¿Quién mata a Dumbledore?",o:["Snape","Bellatrix","Draco"],c:0},
+    {q:"¿Cómo se llama la profesora de Transformaciones?",o:["Sprout","McGonagall","Trelawney"],c:1},
+    {q:"¿Qué guarda Harry sin saberlo dentro de sí?",o:["Un Giratiempo","Un Horrocrux","Una snitch"],c:1}
+  ];
+  const qEl=document.getElementById('trQ'),optsEl=document.getElementById('trOpts'),btn=document.getElementById('trBtn');
+  const qnum=document.getElementById('trQnum'),total=document.getElementById('trTotal'),scoreEl=document.getElementById('trScore'),bestEl=document.getElementById('trBest'),msg=document.getElementById('trMsg');
+  let orden=[],i=0,score=0,lock=false,best=+(localStorage.getItem('triviaBest')||0);
+  bestEl.textContent=best;total.textContent=PREGUNTAS.length;
+  function show(){
+    lock=false;const p=PREGUNTAS[orden[i]];qnum.textContent=i+1;qEl.textContent=p.q;optsEl.innerHTML='';msg.textContent='';
+    p.o.forEach((op,k)=>{const b=document.createElement('button');b.className='trivia-opt';b.textContent=op;b.onclick=()=>answer(k,b,p.c);optsEl.appendChild(b);});
+  }
+  function answer(k,b,c){
+    if(lock)return;lock=true;
+    const btns=optsEl.querySelectorAll('.trivia-opt');
+    btns[c].classList.add('ok');
+    if(k===c){score++;scoreEl.textContent=score;msg.textContent='¡Correcto! ✨';}
+    else{b.classList.add('no');msg.textContent='¡Casi! La correcta en verde 💫';}
+    setTimeout(()=>{i++;if(i<orden.length)show();else fin();},1100);
+  }
+  function fin(){
+    qEl.textContent=`¡Terminado! ${score}/${PREGUNTAS.length}`;optsEl.innerHTML='';
+    if(score>best){best=score;localStorage.setItem('triviaBest',best);bestEl.textContent=best;}
+    const pct=score/PREGUNTAS.length;
+    msg.textContent = pct>=0.9?'¡Profesora de Hogwarts! 🎓🏆':pct>=0.6?'¡Buena bruja! 🪄':'¡A repasar en la biblioteca! 📚';
+    btn.textContent='Jugar otra vez 🎮';
+  }
+  btn.onclick=()=>{orden=[...PREGUNTAS.keys()].sort(()=>Math.random()-0.5);i=0;score=0;scoreEl.textContent=0;btn.textContent='Reiniciar 🎮';show();};
+})();
+
+/* ================= DUELO DE MAGOS ================= */
+(function(){
+  const zone=document.getElementById('duZone'),marker=document.getElementById('duMarker');
+  const btn=document.getElementById('duBtn'),spell=document.getElementById('duSpell'),msg=document.getElementById('duMsg');
+  const scoreEl=document.getElementById('duScore'),bestEl=document.getElementById('duBest');
+  const HECHIZOS=['¡Expelliarmus! ⚡','¡Stupefy! 💥','¡Protego! 🛡️','¡Petrificus! 🪄','¡Bombarda! 💫'];
+  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,score=0,raf,best=+(localStorage.getItem('dueloBest')||0);
+  bestEl.textContent=best;
+  function setZone(){zone.style.left=((100-zoneW)/2)+'%';zone.style.width=zoneW+'%';}
+  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
+  function begin(){score=0;scoreEl.textContent=0;zoneW=34;speed=1.6;setZone();running=true;msg.textContent='';spell.textContent='🧙‍♀️ vs 🧙‍♂️';btn.textContent='¡Lanza! ⚡';cancelAnimationFrame(raf);loop();}
+  function attempt(){
+    if(!running){begin();return;}
+    const zs=(100-zoneW)/2,ze=zs+zoneW;
+    if(pos>=zs&&pos<=ze){
+      score++;scoreEl.textContent=score;spell.textContent=HECHIZOS[Math.floor(Math.random()*HECHIZOS.length)];
+      zoneW=Math.max(12,zoneW-3);speed+=0.3;setZone();
+      if(score>best){best=score;localStorage.setItem('dueloBest',best);bestEl.textContent=best;}
+    }else{
+      running=false;cancelAnimationFrame(raf);spell.textContent='🧙‍♂️ te venció 💥';
+      msg.textContent=`¡${score} hechizos! `+(score>=10?'¡Auror de élite! 🏆💕':score>=5?'¡Muy bien! 🥰':'¡Otra vez! ⚡');
+      btn.textContent='Jugar otra vez 🎮';
+    }
+  }
+  btn.onclick=attempt;
 })();
 
 /* ================= LIGHTBOX ================= */
