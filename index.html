@@ -315,7 +315,7 @@
 <section id="countdown">
   <div class="wrap">
     <h2>Cuenta atrás</h2>
-    <p class="lead">Lo que falta para vernos: el sábado a las 9:00 🥰</p>
+    <p class="lead">Lo que falta para vernos: el 24 de agosto a las 9:00 🥰</p>
     <div class="card reveal" style="max-width:560px">
       <div class="cd" id="cd">
         <div class="box"><div class="n" id="cdD">0</div><div class="l">DÍAS</div></div>
@@ -425,13 +425,8 @@ const INICIO = new Date(2026, 6, 30);
 // Fecha del cumpleaños (mes 1-12, día)
 const CUMPLE = {mes:7, dia:30};
 // Fecha de la próxima cita/reencuentro (año, mes 1-12, día, hora, minuto)
-const FECHA_CITA = (function(){
-  const d=new Date();d.setHours(9,0,0,0);          // hoy a las 9:00
-  let add=(6-d.getDay()+7)%7;                        // días hasta el sábado
-  if(add===0 && new Date()>d) add=7;                 // si es sábado y ya pasaron las 9
-  d.setDate(d.getDate()+add);
-  return d;                                           // próximo sábado a las 9:00
-})();
+// Fecha para vernos: 24 de agosto a las 9:00 (año, mes 1-12, día, hora, minuto)
+const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
