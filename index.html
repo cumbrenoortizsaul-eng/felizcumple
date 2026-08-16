@@ -340,20 +340,6 @@
   </div>
 </section>
 
-<!-- ===== CONTADOR DE TE QUIEROS ===== -->
-<section id="tequieros">
-  <div class="wrap">
-    <h2>Rugidos de amor 🦖</h2>
-    <p class="lead">Ruge cada vez que me quieras 🦕</p>
-    <div class="card reveal" style="text-align:center;max-width:520px">
-      <div class="tq-num" id="tqNum">0</div>
-      <div class="lead" style="margin:2px 0 18px">rugidos de amor 🦖</div>
-      <button class="tq-btn" id="tqBtn">🦖 ¡RUGE!</button>
-      <p class="piropo-txt" id="tqMsg" style="min-height:1.4em;margin-top:14px"></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ATRAPA LA SNITCH ===== -->
 <section id="snitch">
   <div class="wrap">
@@ -674,32 +660,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
-})();
-
-/* ================= RUGIDOS DE AMOR (contador) ================= */
-(function(){
-  const num=document.getElementById('tqNum'),btn=document.getElementById('tqBtn'),msg=document.getElementById('tqMsg');
-  if(!btn)return;
-  let n=+(localStorage.getItem('teQuieros')||0);
-  num.textContent=n.toLocaleString('es-ES');
-  const HITOS={1:'¡El primer rugido de muchos! 🦕',10:'¡Ruges genial! 🦖',25:'¡25 rugidos! 😍',50:'¡50! Qué maravilla 🥹',100:'¡100! Rugidos jurásicos 🔥',250:'¡250! Amor prehistórico 💚',500:'¡500! La dino más enamorada 🦕'};
-  function burst(){
-    const r=btn.getBoundingClientRect(),emo=['🦖','🦕','💚','❤️','🥚','🩷'];
-    for(let i=0;i<6;i++){
-      const p=document.createElement('div');p.textContent=emo[Math.floor(Math.random()*emo.length)];
-      p.style.cssText=`position:fixed;left:${r.left+r.width/2}px;top:${r.top}px;font-size:${16+Math.random()*14}px;z-index:60;pointer-events:none;transition:transform .9s ease-out,opacity .9s`;
-      document.body.appendChild(p);
-      const dx=(Math.random()-.5)*130,dy=-60-Math.random()*90;
-      requestAnimationFrame(()=>{p.style.transform=`translate(${dx}px,${dy}px)`;p.style.opacity=0;});
-      setTimeout(()=>p.remove(),950);
-    }
-  }
-  btn.onclick=()=>{
-    n++;localStorage.setItem('teQuieros',n);
-    num.textContent=n.toLocaleString('es-ES');
-    burst();
-    if(HITOS[n])msg.textContent=HITOS[n];
-  };
 })();
 
 /* ================= ATRAPA LA SNITCH ================= */
