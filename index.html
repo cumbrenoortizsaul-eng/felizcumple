@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🦸‍♀️💥</title>
+<title>Para ti, mi amor 🪄✨</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,22 +12,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#e63946; --pink-deep:#c1121f; --rose:#ffe08a; --cream:#fff8e7;
-    --ink:#1d2440; --soft:#5b6079; --card:#ffffff; --gold:#ffd23f;
-    --shadow:0 12px 40px rgba(29,36,64,.22);
+    --pink:#b388ff; --pink-deep:#8a63e8; --rose:#2a1f4a; --cream:#0f0a24;
+    --ink:#efe9ff; --soft:#b3a9d9; --card:#1a1338; --gold:#f2c94c;
+    --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   html[data-theme="dark"]{
-    --cream:#12162e; --card:#1c2140; --rose:#2a2f52; --ink:#eef1ff; --soft:#a6abcf;
-    --shadow:0 12px 40px rgba(0,0,0,.55);
+    --cream:#080417; --card:#120c2c; --rose:#1e1640; --ink:#f4f0ff; --soft:#a49acc;
+    --shadow:0 12px 40px rgba(0,0,0,.65);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      repeating-conic-gradient(from 0deg at 50% 22%, rgba(230,57,70,.07) 0 6deg, transparent 6deg 12deg),
-      radial-gradient(rgba(43,108,255,.13) 1.6px, transparent 1.8px) 0 0/20px 20px,
-      linear-gradient(180deg,#fff8e7 0%,#ffe9b0 100%);
+      radial-gradient(55% 40% at 80% 10%, rgba(179,136,255,.35), transparent 60%),
+      radial-gradient(50% 40% at 15% 90%, rgba(242,201,76,.14), transparent 60%),
+      linear-gradient(180deg,#0f0a24 0%,#1a1040 55%,#241238 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
@@ -220,9 +220,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 12%, rgba(255,210,63,.6), transparent 44%), linear-gradient(135deg,#e63946,#2b6cff);
+    background:radial-gradient(circle at 50% 12%, rgba(242,201,76,.4), transparent 46%), linear-gradient(160deg,#241238,#0f0a24);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🦸"}
+  #gate .lock::after{content:" 🪄"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -244,7 +244,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">💥</div>
+<div class="moon">🪄</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -257,10 +257,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦸‍♀️</span><span class="capi-mochi">💥</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧙‍♀️</span><span class="capi-mochi">✨</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Juntos salvamos el mundo… eres mi superpoder favorito 🦸‍♀️💥</p>
-    <p class="hint" id="capiHint">Toca a la superheroína 🫶</p>
+    <p class="sub">Eres la magia que le faltaba a mi vida ✨🪄</p>
+    <p class="hint" id="capiHint">Toca a la maga 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -334,34 +334,6 @@
   </div>
 </section>
 
-<!-- ===== REACCIÓN HEROICA ===== -->
-<section id="reflex">
-  <div class="wrap">
-    <h2>Reacción heroica 🦸</h2>
-    <p class="lead">Pulsa lo más rápido cuando aparezca la señal de peligro 🚨</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>⏱️ Último <b id="rxLast">—</b></span><span>🏆 Mejor <b id="rxBest">—</b></span></div>
-      <div class="reflex-box" id="rxBox">Pulsa "Empezar" 🦸</div>
-      <button class="piropo-btn" id="rxBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="rxMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DESACTIVA LA BOMBA ===== -->
-<section id="bomb">
-  <div class="wrap">
-    <h2>Desactiva la bomba 💣</h2>
-    <p class="lead">Memoriza la secuencia de colores y repítela 🧠</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>💣 Ronda <b id="bmRound">0</b></span><span>🏆 Mejor <b id="bmBest">0</b></span></div>
-      <div class="bomb-pad" id="bmPad"></div>
-      <button class="piropo-btn" id="bmBtn" style="margin-top:14px">Empezar 🎮</button>
-      <p class="piropo-txt" id="bmMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -415,18 +387,18 @@ const FECHA_CITA = (function(){
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás de escándalo, ¡POW! 💥",
-  "Eres mi heroína favorita 🦸‍♀️",
-  "Guapa con capa y sin capa ✨",
-  "Me das superpoderes solo con mirarme ⚡",
-  "Eres puro nivel peliculón 🎬",
-  "Contigo se me acelera el corazón, ¡BOOM! 💥",
-  "Preciosa, mi arma secreta 🛡️",
-  "Eres mi misión favorita 🚀",
-  "Me salvas el día solo con tu sonrisa 😍",
-  "Guapísima de otro universo 🌌",
-  "Eres mi final feliz garantizado ❤️",
-  "Contigo soy imparable ⚡💕"
+  "Estás para lanzarte un 'accio' ahora mismo 🪄",
+  "Eres pura magia, mi amor ✨",
+  "Me tienes bajo tu hechizo 💜",
+  "Guapa a nivel Animago 😍",
+  "Eres mi poción favorita 🧪",
+  "Brillas más que el Gran Comedor con velas 🕯️",
+  "Preciosa, mi bruja buena 🧙‍♀️",
+  "Eres mi snitch dorada: te atrapé y no te suelto 🏆",
+  "Me haces 'expecto patronum' de felicidad 🦌",
+  "Guapísima de otra dimensión mágica 🔮",
+  "Contigo todo es magia de verdad 🌟",
+  "Eres mi encantamiento favorito ⚡"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
@@ -482,27 +454,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Juntos podemos con todo, hasta con los lunes 🦸‍♀️🦸‍♂️",
-  "Eres mi superpoder favorito 💥",
-  "Contigo me siento invencible ⚡",
-  "Tu sonrisa es mi kriptonita (de la buena) 💚",
-  "Eres la heroína de mi historia 🦸‍♀️",
-  "Contigo salvaría el mundo mil veces 🌍",
-  "Eres el 'BOOM' que le faltaba a mi vida 💥",
-  "Mi corazón lleva tu escudo 🛡️❤️",
-  "Contigo cualquier misión es la mejor 🚀",
-  "Eres mi villana favorita cuando me robas besos 😈💕",
-  "A tu lado no hay batalla que perder ⚔️",
-  "Contigo hasta caer es volar 🦸",
-  "Tú eres mi gran final feliz de cómic 📖",
+  "Eres la magia que le faltaba a mi vida ✨",
+  "Contigo cada día es un hechizo de felicidad 🪄",
+  "Eres mi poción de amor favorita 🧪",
+  "Me lanzaste un hechizo y no quiero contrahechizo 💜",
+  "Contigo hasta lo imposible es 'wingardium' 🪄",
+  "Eres mi Patronus en los días grises 🦌✨",
+  "Nuestro amor no necesita varita, ya es mágico 🔮",
+  "Eres la estrella más brillante de mi cielo 🌟",
+  "Eres mi lugar favorito, mi Sala de los Menesteres 🏰",
+  "Te elegiría en cualquier casa, siempre 🎓",
+  "Contigo el corazón hace 'lumos' y se ilumina 💡",
+  "Eres mi para siempre, palabra de mago 🧙‍♂️",
+  "Me tienes hechizado, y me encanta 💫",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Te quiero a la velocidad de la luz ⚡"
+  "Eres la mejor magia sin truco de mi vida ✨"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Guapísima 😍","Mi héroe 🦸‍♀️","¡POW! 💥",
-  "Mi superpoder ⚡","Contigo todo 🛡️","Mi mundo 🌍","Mi hogar 🏡❤️"
+  "Te quiero 💕","Guapísima 😍","Mi maga 🧙‍♀️","Pura magia ✨",
+  "Mi poción 🧪","Contigo todo 🔮","Mi estrella 🌟","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -534,7 +506,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🦸‍♀️','🦸‍♂️','💥','⚡','🛡️','🚀','⭐','🔥','💫','❤️'];
+  const c=document.getElementById('hearts'), emo=['🪄','✨','🔮','⭐','🧙‍♀️','🦉','📜','🕯️','⚡','💜'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -549,7 +521,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['💥','⚡','⭐','🌟','💫'];
+  const conf=['✨','⭐','🌟','💜','🪄'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -602,14 +574,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['¡POW! 💥','Mi heroína favorita 🦸‍♀️💕','¡Juntos con todo! ⚡','Te quiero un montón ❤️'];
+const CAPI_MSGS=['¡Abracadabra! ✨','Mi maga favorita 🧙‍♀️💕','Me hechizaste 💜','Te quiero un montón 🪄❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['💥','⚡','⭐','🦸‍♀️','💕','❤️','🩷','🔥'];
+  const emo=['✨','🔮','⭐','🪄','💜','❤️','🩷','🌟'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -683,55 +655,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
     burst();
     if(HITOS[n])msg.textContent=HITOS[n];
   };
-})();
-
-/* ================= REACCIÓN HEROICA ================= */
-(function(){
-  const box=document.getElementById('rxBox'),btn=document.getElementById('rxBtn');
-  const last=document.getElementById('rxLast'),bestEl=document.getElementById('rxBest'),msg=document.getElementById('rxMsg');
-  let state='idle',t0,timer,bestMs=+(localStorage.getItem('reflexBest')||0);
-  if(bestMs)bestEl.textContent=bestMs+' ms';
-  function arm(){
-    state='wait';box.className='reflex-box wait';box.textContent='Espera… 🕵️';msg.textContent='';
-    timer=setTimeout(()=>{state='go';box.className='reflex-box go';box.textContent='¡PULSA! 🚨';t0=performance.now();},1200+Math.random()*3200);
-  }
-  btn.onclick=()=>{arm();btn.textContent='Otra vez 🎮';};
-  box.onclick=()=>{
-    if(state==='wait'){clearTimeout(timer);state='idle';box.className='reflex-box';box.textContent='¡Demasiado pronto! 🙈';msg.textContent='Espera a la señal 🚨 y pulsa Empezar';return;}
-    if(state==='go'){
-      const ms=Math.round(performance.now()-t0);state='idle';
-      last.textContent=ms+' ms';box.className='reflex-box';box.textContent='¡'+ms+' ms! 🦸';
-      if(!bestMs||ms<bestMs){bestMs=ms;localStorage.setItem('reflexBest',ms);bestEl.textContent=ms+' ms';msg.textContent='¡Nuevo récord! 🏆💕';}
-      else msg.textContent=ms<300?'¡Reflejos de superhéroe! ⚡':ms<450?'¡Muy rápido! 🥰':'¡Nada mal! 💪';
-    }
-  };
-})();
-
-/* ================= DESACTIVA LA BOMBA ================= */
-(function(){
-  const pad=document.getElementById('bmPad'),btn=document.getElementById('bmBtn');
-  const roundEl=document.getElementById('bmRound'),bestEl=document.getElementById('bmBest'),msg=document.getElementById('bmMsg');
-  const COLORS=['#e63946','#2b6cff','#25a244','#ffd23f'];
-  let seq=[],input=[],round=0,lock=true,best=+(localStorage.getItem('bombaBest')||0);
-  bestEl.textContent=best;
-  const btns=[];
-  COLORS.forEach((c,i)=>{const b=document.createElement('div');b.className='bomb-btn';b.style.background=c;b.onclick=()=>press(i);pad.appendChild(b);btns.push(b);});
-  function flash(i,ms){return new Promise(res=>{btns[i].classList.add('lit');setTimeout(()=>{btns[i].classList.remove('lit');setTimeout(res,150);},ms||380);});}
-  async function playSeq(){lock=true;msg.textContent='Mira bien… 👀';for(const i of seq){await flash(i);}msg.textContent='¡Tu turno! 🧠';lock=false;input=[];}
-  function next(){round++;roundEl.textContent=round;seq.push(Math.floor(Math.random()*4));playSeq();}
-  function press(i){
-    if(lock)return;
-    btns[i].classList.add('lit');setTimeout(()=>btns[i].classList.remove('lit'),150);
-    input.push(i);const idx=input.length-1;
-    if(input[idx]!==seq[idx]){
-      lock=true;const done=round-1;
-      msg.textContent=`💥 ¡BOOM! Aguantaste ${done} ronda${done===1?'':'s'}.`;
-      if(done>best){best=done;localStorage.setItem('bombaBest',best);bestEl.textContent=best;}
-      btn.textContent='Reintentar 🎮';return;
-    }
-    if(input.length===seq.length){msg.textContent='¡Bien! Siguiente… ✅';setTimeout(next,750);}
-  }
-  btn.onclick=()=>{seq=[];round=0;roundEl.textContent=0;msg.textContent='';btn.textContent='Reiniciar 🎮';next();};
 })();
 
 /* ================= LIGHTBOX ================= */
