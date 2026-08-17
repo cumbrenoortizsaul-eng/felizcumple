@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🪄✨</title>
+<title>Para ti, mi amor 🐱🧶</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -12,36 +12,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#b388ff; --pink-deep:#8a63e8; --rose:#2a1f4a; --cream:#0f0a24;
-    --ink:#efe9ff; --soft:#b3a9d9; --card:#1a1338; --gold:#f2c94c;
-    --shadow:0 12px 40px rgba(0,0,0,.5);
+    --pink:#f48ab0; --pink-deep:#e06a95; --rose:#ffe3ee; --cream:#fff5f8;
+    --ink:#5a3a48; --soft:#a5788a; --card:#ffffff; --gold:#ffcf70;
+    --shadow:0 12px 40px rgba(224,106,149,.2);
   }
   html[data-theme="dark"]{
-    --cream:#080417; --card:#120c2c; --rose:#1e1640; --ink:#f4f0ff; --soft:#a49acc;
-    --shadow:0 12px 40px rgba(0,0,0,.65);
-  }
-  /* Modo DÍA mágico (pergamino claro) */
-  html[data-theme="light"]{
-    --pink:#8a63e8; --pink-deep:#6f45c9; --rose:#e7dcff; --cream:#f3edff;
-    --ink:#3a2a5a; --soft:#7a6a9a; --card:#ffffff; --gold:#d9a441;
-    --shadow:0 12px 40px rgba(138,99,232,.2);
-  }
-  html[data-theme="light"] body{
-    background:
-      radial-gradient(55% 40% at 80% 10%, rgba(179,136,255,.28), transparent 60%),
-      linear-gradient(180deg,#f6f1ff 0%,#e9ddff 100%);
+    --cream:#241019; --card:#331825; --rose:#4a2436; --ink:#ffe6f0; --soft:#e0adc0;
+    --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 80% 10%, rgba(179,136,255,.35), transparent 60%),
-      radial-gradient(50% 40% at 15% 90%, rgba(242,201,76,.14), transparent 60%),
-      linear-gradient(180deg,#0f0a24 0%,#1a1040 55%,#241238 100%);
+      radial-gradient(60% 45% at 82% 8%, rgba(255,207,112,.35), transparent 55%),
+      linear-gradient(180deg,#fff5f8 0%,#ffe3ee 55%,#ffd6e6 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
+  }
+  html[data-theme="dark"] body{
+    background:
+      radial-gradient(60% 45% at 82% 8%, rgba(255,207,112,.16), transparent 55%),
+      linear-gradient(180deg,#241019 0%,#331825 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -99,9 +92,6 @@
   .capi-emoji{font-size:clamp(4rem,16vw,8rem);line-height:1}
   .capi-mochi{position:absolute;top:8%;right:-6%;font-size:clamp(1.8rem,7vw,3.4rem);transform:rotate(12deg)}
   .hint{color:var(--soft);font-size:.9rem;opacity:.85}
-  .candles{font-size:1.7rem;margin-top:10px;letter-spacing:8px;animation:flicker 2.5s ease-in-out infinite}
-  @keyframes flicker{0%,100%{filter:drop-shadow(0 0 8px rgba(242,201,76,.9))}50%{filter:drop-shadow(0 0 15px rgba(242,201,76,1))}}
-  html[data-theme="light"] .candles{animation:none;filter:grayscale(.55) opacity(.5)}
   .scroll-cue{margin-top:24px;font-size:1.8rem;animation:bob 1.6s ease-in-out infinite}
   @keyframes bob{50%{transform:translateY(10px)}}
 
@@ -246,9 +236,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 12%, rgba(242,201,76,.4), transparent 46%), linear-gradient(160deg,#241238,#0f0a24);
+    background:radial-gradient(circle at 50% 10%, rgba(255,207,112,.5), transparent 46%), linear-gradient(160deg,#f48ab0,#e06a95);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🪄"}
+  #gate .lock::after{content:" 🐱"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -270,7 +260,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🪄</div>
+<div class="moon">🐱</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -283,11 +273,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧙‍♀️</span><span class="capi-mochi">✨</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🐱</span><span class="capi-mochi">🧶</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres la magia que le faltaba a mi vida ✨🪄</p>
-    <p class="hint" id="capiHint">Toca a la maga 🫶</p>
-    <div class="candles">🕯️ 🕯️ 🕯️</div>
+    <p class="sub">Eres mi michi favorito de todo el mundo 🐱💕</p>
+    <p class="hint" id="capiHint">Toca al gatito 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -347,64 +336,6 @@
   </div>
 </section>
 
-<!-- ===== QUIDDITCH ===== -->
-<section id="quidditch">
-  <div class="wrap">
-    <h2>Quidditch 🧹</h2>
-    <p class="lead">Mueve el dedo/ratón para volar: atrapa la snitch 🟡 y esquiva las bludgers ⚫</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🟡 <b id="qdScore">0</b></span><span>🏆 <b id="qdBest">0</b></span></div>
-      <canvas id="qdCanvas" width="560" height="300" style="width:100%;max-width:560px;background:radial-gradient(circle at 70% 20%,rgba(138,99,255,.25),transparent 60%),linear-gradient(180deg,#12163a,#241238);border-radius:18px;display:block;margin:0 auto;cursor:crosshair;touch-action:none"></canvas>
-      <p class="piropo-txt" id="qdMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PREPARA LA POCIÓN ===== -->
-<section id="potion">
-  <div class="wrap">
-    <h2>Prepara la poción 🧪</h2>
-    <p class="lead">Toca los ingredientes en el orden de la receta 🪄</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🧪 Nivel <b id="poRound">0</b></span><span>🏆 <b id="poBest">0</b></span></div>
-      <div class="feed-target" id="poRecipe">Pulsa "Empezar" 🧪</div>
-      <div class="potion-pad" id="poPad"></div>
-      <button class="piropo-btn" id="poBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="poMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TRIVIAL DE HARRY POTTER ===== -->
-<section id="trivia">
-  <div class="wrap">
-    <h2>Trivial de Harry Potter ❓</h2>
-    <p class="lead">¿Cuánto sabes de la saga? 🪄</p>
-    <div class="card reveal" style="text-align:center;max-width:560px">
-      <div class="game-hud"><span>❓ <b id="trQnum">0</b>/<b id="trTotal">0</b></span><span>✅ <b id="trScore">0</b></span><span>🏆 <b id="trBest">0</b></span></div>
-      <div class="trivia-q" id="trQ">Pulsa "Empezar" para jugar 🎓</div>
-      <div class="trivia-opts" id="trOpts"></div>
-      <button class="piropo-btn" id="trBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="trMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== DUELO DE MAGOS ===== -->
-<section id="duel">
-  <div class="wrap">
-    <h2>Duelo de magos ⚡</h2>
-    <p class="lead">Pulsa cuando la marca esté en la zona dorada para lanzar el hechizo 🪄</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>⚡ <b id="duScore">0</b></span><span>🏆 <b id="duBest">0</b></span></div>
-      <div class="doma-lion" id="duSpell">🧙‍♀️ vs 🧙‍♂️</div>
-      <div class="doma-bar" id="duBar"><div class="doma-zone" id="duZone"></div><div class="doma-marker" id="duMarker"></div></div>
-      <button class="piropo-btn" id="duBtn" style="margin-top:14px">Empezar 🎮</button>
-      <p class="piropo-txt" id="duMsg" style="min-height:1.4em;margin-top:12px"></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -453,18 +384,18 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás para lanzarte un 'accio' ahora mismo 🪄",
-  "Eres pura magia, mi amor ✨",
-  "Me tienes bajo tu hechizo 💜",
-  "Guapa a nivel Animago 😍",
-  "Eres mi poción favorita 🧪",
-  "Brillas más que el Gran Comedor con velas 🕯️",
-  "Preciosa, mi bruja buena 🧙‍♀️",
-  "Eres mi snitch dorada: te atrapé y no te suelto 🏆",
-  "Me haces 'expecto patronum' de felicidad 🦌",
-  "Guapísima de otra dimensión mágica 🔮",
-  "Contigo todo es magia de verdad 🌟",
-  "Eres mi encantamiento favorito ⚡"
+  "Estás monísima, michi 😻",
+  "Eres más suave que el pelito de un gatito 🐱",
+  "Me tienes ronroneando por ti 😽",
+  "Guapa a nivel gatito en caja 📦",
+  "Eres mi ovillo favorito 🧶💕",
+  "Contigo me dan ganas de hacer mimos 🥰",
+  "Preciosa por fuera y adorable por dentro 🐾",
+  "Eres mi siesta favorita al solecito ☀️",
+  "Me robas el corazón con esos ojitos 😻",
+  "Guapísima, mi gatita bonita 🐈",
+  "Contigo todo es blandito y feliz 🧸",
+  "Eres mi mimo favorito de cada día 🤍"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
@@ -514,35 +445,34 @@ const RESPUESTAS = ["una familia","familia","una familia juntos"];
 const PISTA = "Pista: tú, yo y nuestro futuro… una familia 👨‍👩‍👧💕";
 
 /* ---- MÚSICA ---- */
-// Melodía de Hogwarts (ID de YouTube). Para volver a vuestra canción de Spotify,
-// deja MUSICA_YT vacío ("") y se usará el álbum de Spotify de abajo.
-const MUSICA_YT = "WUiI5aQcTow";
+// Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
+const MUSICA_YT = "";
 const SPOTIFY_TIPO = "album";
 const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres la magia que le faltaba a mi vida ✨",
-  "Contigo cada día es un hechizo de felicidad 🪄",
-  "Eres mi poción de amor favorita 🧪",
-  "Me lanzaste un hechizo y no quiero contrahechizo 💜",
-  "Contigo hasta lo imposible es 'wingardium' 🪄",
-  "Eres mi Patronus en los días grises 🦌✨",
-  "Nuestro amor no necesita varita, ya es mágico 🔮",
-  "Eres la estrella más brillante de mi cielo 🌟",
-  "Eres mi lugar favorito, mi Sala de los Menesteres 🏰",
-  "Te elegiría en cualquier casa, siempre 🎓",
-  "Contigo el corazón hace 'lumos' y se ilumina 💡",
-  "Eres mi para siempre, palabra de mago 🧙‍♂️",
-  "Me tienes hechizado, y me encanta 💫",
+  "Eres mi michi favorito de todo el mundo 🐱",
+  "Contigo ronroneo de felicidad 😻",
+  "Me tienes enrollado como un ovillo 🧶💕",
+  "Eres suave y calentita como una siesta al sol ☀️🐾",
+  "Contigo cualquier rincón es mi sitio favorito 🐈",
+  "Me robaste el corazón con una patita 🐾❤️",
+  "Eres mi cosa más monísima, mi gatita 😽",
+  "Contigo hasta los lunes ronronean 💤",
+  "Eres mi personita favorita para hacer mimos 🥰",
+  "Me haces más feliz que un gato con caja 📦😸",
+  "Contigo la vida es blandita y bonita 🧸",
+  "Eres mi ovillo de amor, no te suelto 🧶",
+  "Te querría en todas mis 7 vidas 🐱💕",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Eres la mejor magia sin truco de mi vida ✨"
+  "Contigo siempre quiero acurrucarme 🤍"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Guapísima 😍","Mi maga 🧙‍♀️","Pura magia ✨",
-  "Mi poción 🧪","Contigo todo 🔮","Mi estrella 🌟","Mi hogar 🏡❤️"
+  "Te quiero 💕","Michi 😻","Guapísima 😍","Mi ovillo 🧶",
+  "Mimitos 🥰","Contigo todo 🐾","Ronroneo 😽","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -574,7 +504,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🪄','✨','🔮','⭐','🧙‍♀️','🦉','📜','🕯️','⚡','💜'];
+  const c=document.getElementById('hearts'), emo=['🐱','🐈','🐾','🧶','😸','😻','🐟','🥛','🐈‍⬛','💕'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -589,7 +519,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['✨','⭐','🌟','💜','🪄'];
+  const conf=['🐾','🧶','💕','⭐','🐟'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -642,14 +572,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['¡Abracadabra! ✨','Mi maga favorita 🧙‍♀️💕','Me hechizaste 💜','Te quiero un montón 🪄❤️'];
+const CAPI_MSGS=['Miau 😽','Mi michi favorita 🐱💕','Ronroneo por ti 😻','Te quiero un montón 🐾❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['✨','🔮','⭐','🪄','💜','❤️','🩷','🌟'];
+  const emo=['🐱','🐾','🧶','😻','💕','❤️','🩷','⭐'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -699,166 +629,18 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= PREPARA LA POCIÓN ================= */
-(function(){
-  const recipeEl=document.getElementById('poRecipe'),pad=document.getElementById('poPad'),btn=document.getElementById('poBtn');
-  const roundEl=document.getElementById('poRound'),bestEl=document.getElementById('poBest'),msg=document.getElementById('poMsg');
-  const ING=['🍄','🐍','🌿','🦎','🕷️','🧄'];
-  let recipe=[],idx=0,round=0,playing=false,best=+(localStorage.getItem('pocionBest')||0);
-  bestEl.textContent=best;
-  const btns=[];
-  ING.forEach(em=>{const b=document.createElement('div');b.className='potion-ing';b.textContent=em;b.onclick=()=>tap(em,b);pad.appendChild(b);btns.push(b);});
-  function newRound(){
-    round++;roundEl.textContent=round;idx=0;const len=2+round;recipe=[];
-    for(let k=0;k<len;k++)recipe.push(ING[Math.floor(Math.random()*ING.length)]);
-    recipeEl.textContent='Receta: '+recipe.join(' ');msg.textContent='Toca en orden 🧪';playing=true;
-  }
-  function tap(em,b){
-    if(!playing)return;
-    if(em===recipe[idx]){
-      b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),200);idx++;
-      if(idx===recipe.length){
-        playing=false;msg.textContent='¡Poción lista! ✨ '+PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
-        if(round>best){best=round;localStorage.setItem('pocionBest',best);bestEl.textContent=best;}
-        confetti();setTimeout(newRound,1200);
-      }
-    }else{msg.textContent='¡Puf! 💨 Empieza la receta otra vez';idx=0;}
-  }
-  btn.onclick=()=>{round=0;newRound();btn.textContent='Reiniciar 🎮';};
-})();
-
-/* ================= QUIDDITCH ================= */
-(function(){
-  const cv=document.getElementById('qdCanvas'),ctx=cv.getContext('2d');
-  const W=cv.width,H=cv.height;
-  const scoreEl=document.getElementById('qdScore'),bestEl=document.getElementById('qdBest'),msg=document.getElementById('qdMsg');
-  let best=+(localStorage.getItem('quidditchBest')||0);bestEl.textContent=best;
-  const rand=(a,b)=>a+Math.random()*(b-a);
-  let player={x:W/2,y:H/2,tx:W/2,ty:H/2},snitch,bludgers,score,running=false,raf;
-  function addBludger(){bludgers.push({x:rand(20,W-20),y:rand(10,40),vx:(Math.random()<.5?-1:1)*rand(2,3.4),vy:rand(2,3.2)});}
-  function reset(){player.x=player.tx=W/2;player.y=player.ty=H/2;score=0;scoreEl.textContent=0;
-    snitch={x:rand(40,W-40),y:rand(40,H-40),vx:rand(-2.2,2.2),vy:rand(-2.2,2.2)};
-    bludgers=[];addBludger();addBludger();}
-  function start(){reset();running=true;msg.textContent='';cancelAnimationFrame(raf);loop();}
-  function setTarget(cx,cy){const r=cv.getBoundingClientRect();player.tx=(cx-r.left)*(W/r.width);player.ty=(cy-r.top)*(H/r.height);}
-  cv.addEventListener('mousemove',e=>{if(running)setTarget(e.clientX,e.clientY);});
-  cv.addEventListener('touchmove',e=>{e.preventDefault();if(running){const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:false});
-  cv.addEventListener('click',()=>{if(!running)start();});
-  cv.addEventListener('touchstart',e=>{if(!running)start();else{const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:true});
-  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-  function loop(){
-    player.x+=(player.tx-player.x)*0.2;player.y+=(player.ty-player.y)*0.2;
-    if(Math.random()<0.03){snitch.vx=rand(-2.6,2.6);snitch.vy=rand(-2.6,2.6);}
-    snitch.x+=snitch.vx;snitch.y+=snitch.vy;
-    if(snitch.x<18||snitch.x>W-18)snitch.vx*=-1;if(snitch.y<18||snitch.y>H-18)snitch.vy*=-1;
-    snitch.x=Math.max(18,Math.min(W-18,snitch.x));snitch.y=Math.max(18,Math.min(H-18,snitch.y));
-    if(dist(player,snitch)<26){score++;scoreEl.textContent=score;snitch.x=rand(30,W-30);snitch.y=rand(30,H-30);if(score%3===0)addBludger();}
-    for(const b of bludgers){b.x+=b.vx;b.y+=b.vy;if(b.x<14||b.x>W-14)b.vx*=-1;if(b.y<14||b.y>H-14)b.vy*=-1;if(dist(player,b)<24)return over();}
-    draw();if(running)raf=requestAnimationFrame(loop);
-  }
-  function over(){running=false;cancelAnimationFrame(raf);
-    if(score>best){best=score;localStorage.setItem('quidditchBest',best);bestEl.textContent=best;}
-    draw();ctx.fillStyle='rgba(0,0,0,.45)';ctx.fillRect(0,0,W,H);
-    ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';
-    ctx.fillText('¡Toca para volar otra vez!',W/2,H/2);ctx.textAlign='left';
-    msg.textContent=`¡${score} snitches! `+(score>=15?'¡Buscadora de leyenda! 🏆💕':score>=7?'¡Muy bien! 🥰':'¡Otra vez! 🧹');
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);ctx.textBaseline='middle';ctx.textAlign='center';
-    ctx.font='24px serif';ctx.fillText('🟡',snitch.x,snitch.y);
-    ctx.font='22px serif';for(const b of bludgers)ctx.fillText('⚫',b.x,b.y);
-    ctx.font='28px serif';ctx.fillText('🧙‍♀️',player.x,player.y);
-    ctx.textAlign='left';ctx.textBaseline='alphabetic';
-  }
-  reset();draw();
-})();
-
-/* ================= TRIVIAL DE HARRY POTTER ================= */
-(function(){
-  const PREGUNTAS=[
-    {q:"¿Cómo se llama el colegio de magia de Harry?",o:["Hogwarts","Beauxbatons","Durmstrang"],c:0},
-    {q:"¿Qué mascota (lechuza) tiene Harry?",o:["Errol","Hedwig","Crookshanks"],c:1},
-    {q:"¿En qué posición juega Harry al Quidditch?",o:["Guardián","Cazador","Buscador"],c:2},
-    {q:"¿A qué casa pertenece Harry?",o:["Slytherin","Gryffindor","Ravenclaw"],c:1},
-    {q:"¿Cómo se llama el villano principal de la saga?",o:["Voldemort","Grindelwald","Dolohov"],c:0},
-    {q:"¿Qué hechizo sirve para desarmar?",o:["Lumos","Expelliarmus","Alohomora"],c:1},
-    {q:"¿Qué hechizo produce luz en la varita?",o:["Nox","Accio","Lumos"],c:2},
-    {q:"¿Cómo se llama el banco de los magos?",o:["Gringotts","Ollivander's","Flourish y Blotts"],c:0},
-    {q:"¿Qué núcleo tiene la varita de Harry?",o:["Pelo de unicornio","Pluma de fénix","Nervio de dragón"],c:1},
-    {q:"¿Cómo se llama el elfo doméstico amigo de Harry?",o:["Kreacher","Winky","Dobby"],c:2},
-    {q:"¿Cuál NO es una Reliquia de la Muerte?",o:["Varita de Saúco","Capa de invisibilidad","Copa de Hufflepuff"],c:2},
-    {q:"¿Qué objeto usa Hermione para ir a más clases?",o:["Giratiempo","Traslador","Recordadora"],c:0},
-    {q:"¿Quién mata a Dumbledore?",o:["Snape","Bellatrix","Draco"],c:0},
-    {q:"¿Cómo se llama la profesora de Transformaciones?",o:["Sprout","McGonagall","Trelawney"],c:1},
-    {q:"¿Qué guarda Harry sin saberlo dentro de sí?",o:["Un Giratiempo","Un Horrocrux","Una snitch"],c:1}
-  ];
-  const qEl=document.getElementById('trQ'),optsEl=document.getElementById('trOpts'),btn=document.getElementById('trBtn');
-  const qnum=document.getElementById('trQnum'),total=document.getElementById('trTotal'),scoreEl=document.getElementById('trScore'),bestEl=document.getElementById('trBest'),msg=document.getElementById('trMsg');
-  let orden=[],i=0,score=0,lock=false,best=+(localStorage.getItem('triviaBest')||0);
-  bestEl.textContent=best;total.textContent=PREGUNTAS.length;
-  function show(){
-    lock=false;const p=PREGUNTAS[orden[i]];qnum.textContent=i+1;qEl.textContent=p.q;optsEl.innerHTML='';msg.textContent='';
-    p.o.forEach((op,k)=>{const b=document.createElement('button');b.className='trivia-opt';b.textContent=op;b.onclick=()=>answer(k,b,p.c);optsEl.appendChild(b);});
-  }
-  function answer(k,b,c){
-    if(lock)return;lock=true;
-    const btns=optsEl.querySelectorAll('.trivia-opt');
-    btns[c].classList.add('ok');
-    if(k===c){score++;scoreEl.textContent=score;msg.textContent='¡Correcto! ✨';}
-    else{b.classList.add('no');msg.textContent='¡Casi! La correcta en verde 💫';}
-    setTimeout(()=>{i++;if(i<orden.length)show();else fin();},1100);
-  }
-  function fin(){
-    qEl.textContent=`¡Terminado! ${score}/${PREGUNTAS.length}`;optsEl.innerHTML='';
-    if(score>best){best=score;localStorage.setItem('triviaBest',best);bestEl.textContent=best;}
-    const pct=score/PREGUNTAS.length;
-    msg.textContent = pct>=0.9?'¡Profesora de Hogwarts! 🎓🏆':pct>=0.6?'¡Buena bruja! 🪄':'¡A repasar en la biblioteca! 📚';
-    btn.textContent='Jugar otra vez 🎮';
-  }
-  btn.onclick=()=>{orden=[...PREGUNTAS.keys()].sort(()=>Math.random()-0.5);i=0;score=0;scoreEl.textContent=0;btn.textContent='Reiniciar 🎮';show();};
-})();
-
-/* ================= DUELO DE MAGOS ================= */
-(function(){
-  const zone=document.getElementById('duZone'),marker=document.getElementById('duMarker');
-  const btn=document.getElementById('duBtn'),spell=document.getElementById('duSpell'),msg=document.getElementById('duMsg');
-  const scoreEl=document.getElementById('duScore'),bestEl=document.getElementById('duBest');
-  const HECHIZOS=['¡Expelliarmus! ⚡','¡Stupefy! 💥','¡Protego! 🛡️','¡Petrificus! 🪄','¡Bombarda! 💫'];
-  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,score=0,raf,best=+(localStorage.getItem('dueloBest')||0);
-  bestEl.textContent=best;
-  function setZone(){zone.style.left=((100-zoneW)/2)+'%';zone.style.width=zoneW+'%';}
-  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
-  function begin(){score=0;scoreEl.textContent=0;zoneW=34;speed=1.6;setZone();running=true;msg.textContent='';spell.textContent='🧙‍♀️ vs 🧙‍♂️';btn.textContent='¡Lanza! ⚡';cancelAnimationFrame(raf);loop();}
-  function attempt(){
-    if(!running){begin();return;}
-    const zs=(100-zoneW)/2,ze=zs+zoneW;
-    if(pos>=zs&&pos<=ze){
-      score++;scoreEl.textContent=score;spell.textContent=HECHIZOS[Math.floor(Math.random()*HECHIZOS.length)];
-      zoneW=Math.max(12,zoneW-3);speed+=0.3;setZone();
-      if(score>best){best=score;localStorage.setItem('dueloBest',best);bestEl.textContent=best;}
-    }else{
-      running=false;cancelAnimationFrame(raf);spell.textContent='🧙‍♂️ te venció 💥';
-      msg.textContent=`¡${score} hechizos! `+(score>=10?'¡Auror de élite! 🏆💕':score>=5?'¡Muy bien! 🥰':'¡Otra vez! ⚡');
-      btn.textContent='Jugar otra vez 🎮';
-    }
-  }
-  btn.onclick=attempt;
-})();
-
 /* ================= LIGHTBOX ================= */
 const lb=document.getElementById('lb'),lbimg=lb.querySelector('img');
 function openLb(src,cap){lbimg.src=src;lbimg.alt=cap;lb.classList.add('show');}
 lb.onclick=()=>lb.classList.remove('show');
 
-/* ================= MODO DÍA/NOCHE MÁGICO ================= */
+/* ================= TEMA (día/noche) ================= */
 const tbtn=document.getElementById('theme');
-function setMode(mode){ // 'noche' = velas encendidas, 'dia' = pergamino claro
-  document.documentElement.setAttribute('data-theme', mode==='dia'?'light':'dark');
-  tbtn.textContent = mode==='dia' ? '🌞' : '🕯️';
-  tbtn.title = mode==='dia' ? 'Encender las velas 🕯️' : 'Amanecer 🌞';
-}
-let modo='noche'; setMode('noche');
-tbtn.onclick=()=>{ modo = modo==='noche'?'dia':'noche'; setMode(modo); };
+tbtn.onclick=()=>{
+  const dark=document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+  tbtn.textContent=dark?'🌙':'☀️';
+};
 
 /* ================= MÚSICA (dentro de la web) ================= */
 const mbtn=document.getElementById('music'); let panel=null;
@@ -877,7 +659,7 @@ mbtn.onclick=function(){
        <div style="padding:6px 12px 10px;font-size:.8rem;color:var(--soft)">Dale a ▶️ para escucharla 💕</div>`;
   panel.innerHTML=`
     <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;font-weight:700;color:var(--pink-deep)">
-      <span>🪄 Melodía de Hogwarts</span><span id="mx" style="cursor:pointer;font-size:1.3rem;line-height:1">×</span>
+      <span>🎵 Nuestra canción</span><span id="mx" style="cursor:pointer;font-size:1.3rem;line-height:1">×</span>
     </div>${inner}`;
   document.body.appendChild(panel);
   panel.querySelector('#mx').onclick=()=>{panel.remove();panel=null;mbtn.textContent='🎵';};
