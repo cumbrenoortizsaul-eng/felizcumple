@@ -183,6 +183,9 @@
   .potion-ing{width:56px;height:56px;border-radius:14px;background:var(--rose);display:grid;place-items:center;font-size:1.7rem;cursor:pointer;user-select:none;transition:transform .1s,background .2s}
   .potion-ing:active{transform:scale(.9)}
   .potion-ing.ok{background:var(--pink);color:#fff}
+  /* Trile gatuno */
+  .trile{position:relative;height:92px;max-width:300px;margin:10px auto 0}
+  .trile-cat{position:absolute;top:12px;width:80px;height:66px;display:grid;place-items:center;font-size:2.6rem;cursor:pointer;transition:left .25s ease,transform .2s;user-select:none}
   /* Trivial */
   .trivia-q{font-weight:700;font-size:clamp(1.05rem,3.8vw,1.3rem);margin:6px 0 14px;min-height:2.4em;display:flex;align-items:center;justify-content:center}
   .trivia-opts{display:grid;gap:10px;max-width:420px;margin:0 auto}
@@ -332,6 +335,46 @@
     <div class="card reveal">
       <div class="piropo-txt" id="piropoTxt">Pulsa el botón 👇</div>
       <button class="piropo-btn" id="piropoBtn">Dame un piropo 💖</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PERSIGUE EL OVILLO ===== -->
+<section id="yarn">
+  <div class="wrap">
+    <h2>Persigue el ovillo 🧶</h2>
+    <p class="lead">Mueve el dedo/ratón: el gatito persigue el ovillo que huye 🐱</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>⏱️ <b id="ynTime">25</b>s</span><span>🧶 <b id="ynScore">0</b></span><span>🏆 <b id="ynBest">0</b></span></div>
+      <canvas id="ynCanvas" width="560" height="300" style="width:100%;max-width:560px;background:radial-gradient(circle at 70% 20%,rgba(255,207,112,.3),transparent 60%),linear-gradient(180deg,#ffe3ee,#ffd0e2);border-radius:18px;display:block;margin:0 auto;cursor:crosshair;touch-action:none"></canvas>
+      <p class="piropo-txt" id="ynMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRILE GATUNO ===== -->
+<section id="trile">
+  <div class="wrap">
+    <h2>¿En qué caja está el gato? 📦</h2>
+    <p class="lead">Fíjate bien y sigue la caja del gatito 🐱</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🐱 Aciertos <b id="tlScore">0</b></span></div>
+      <div class="trile" id="trileBox"></div>
+      <button class="piropo-btn" id="tlBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="tlMsg" style="min-height:1.4em;margin-top:10px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SALTA LOS TEJADOS ===== -->
+<section id="roofs">
+  <div class="wrap">
+    <h2>Salta los tejados 🐈</h2>
+    <p class="lead">Salta las chimeneas: toca la pantalla (o espacio) 🏠</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🐈 <b id="rfScore">0</b></span><span>🏆 <b id="rfBest">0</b></span></div>
+      <canvas id="rfCanvas" width="560" height="200" style="width:100%;max-width:560px;background:linear-gradient(180deg,#2a1730 0%,#3a1e33 70%,#5a2c46 70%);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:none"></canvas>
+      <p class="piropo-txt" id="rfMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
     </div>
   </div>
 </section>
@@ -627,6 +670,111 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
+})();
+
+/* ================= PERSIGUE EL OVILLO ================= */
+(function(){
+  const cv=document.getElementById('ynCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height;
+  const timeEl=document.getElementById('ynTime'),scoreEl=document.getElementById('ynScore'),bestEl=document.getElementById('ynBest'),msg=document.getElementById('ynMsg');
+  let best=+(localStorage.getItem('ovilloBest')||0);bestEl.textContent=best;
+  const rand=(a,b)=>a+Math.random()*(b-a);
+  let cat={x:W/2,y:H/2,tx:W/2,ty:H/2},yarn,score,time,running=false,raf,tickT;
+  function reset(){cat.x=cat.tx=W/2;cat.y=cat.ty=H/2;score=0;time=25;scoreEl.textContent=0;timeEl.textContent=25;
+    yarn={x:rand(40,W-40),y:rand(40,H-40),vx:0,vy:0};}
+  function setTarget(cx,cy){const r=cv.getBoundingClientRect();cat.tx=(cx-r.left)*(W/r.width);cat.ty=(cy-r.top)*(H/r.height);}
+  cv.addEventListener('mousemove',e=>{if(running)setTarget(e.clientX,e.clientY);});
+  cv.addEventListener('touchmove',e=>{e.preventDefault();if(running){const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:false});
+  cv.addEventListener('click',()=>{if(!running)start();});
+  cv.addEventListener('touchstart',e=>{if(!running)start();else{const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:true});
+  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  function start(){reset();running=true;msg.textContent='';cancelAnimationFrame(raf);clearInterval(tickT);tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);loop();}
+  function loop(){
+    cat.x+=(cat.tx-cat.x)*0.2;cat.y+=(cat.ty-cat.y)*0.2;
+    const dx=yarn.x-cat.x,dy=yarn.y-cat.y,d=Math.hypot(dx,dy)||1;
+    if(d<150){yarn.vx+=(dx/d)*0.8;yarn.vy+=(dy/d)*0.8;}     // huye del gato
+    yarn.vx*=0.92;yarn.vy*=0.92;yarn.x+=yarn.vx;yarn.y+=yarn.vy;
+    if(yarn.x<16){yarn.x=16;yarn.vx*=-.6;}if(yarn.x>W-16){yarn.x=W-16;yarn.vx*=-.6;}
+    if(yarn.y<16){yarn.y=16;yarn.vy*=-.6;}if(yarn.y>H-16){yarn.y=H-16;yarn.vy*=-.6;}
+    if(dist(cat,yarn)<26){score++;scoreEl.textContent=score;yarn.x=rand(30,W-30);yarn.y=rand(30,H-30);yarn.vx=yarn.vy=0;}
+    draw();if(running)raf=requestAnimationFrame(loop);
+  }
+  function end(){running=false;cancelAnimationFrame(raf);clearInterval(tickT);
+    if(score>best){best=score;localStorage.setItem('ovilloBest',best);bestEl.textContent=best;}
+    draw();msg.textContent=`¡${score} ovillos! `+(score>=18?'¡Cazadora experta! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 🧶');}
+  function draw(){ctx.clearRect(0,0,W,H);ctx.textBaseline='middle';ctx.textAlign='center';
+    ctx.font='26px serif';ctx.fillText('🧶',yarn.x,yarn.y);
+    ctx.font='30px serif';ctx.fillText('🐱',cat.x,cat.y);
+    ctx.textAlign='left';ctx.textBaseline='alphabetic';}
+  reset();draw();
+})();
+
+/* ================= TRILE GATUNO ================= */
+(function(){
+  const cont=document.getElementById('trileBox'),btn=document.getElementById('tlBtn'),msg=document.getElementById('tlMsg'),scoreEl=document.getElementById('tlScore');
+  const POSX=[10,110,210];
+  let boxes=[],catIdx=0,lock=true,wins=0;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  function build(){cont.innerHTML='';boxes=[];for(let i=0;i<3;i++){const b=document.createElement('div');b.className='trile-cat';b.textContent='📦';b.dataset.pos=i;b.style.left=POSX[i]+'px';b.onclick=()=>pick(b);cont.appendChild(b);boxes.push(b);}}
+  async function play(){
+    build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
+    catIdx=Math.floor(Math.random()*3);
+    const cb=boxes[catIdx];cb.textContent='😺';cb.style.transform='translateY(-16px)';
+    await sleep(1100);cb.textContent='📦';cb.style.transform='';
+    msg.textContent='¡Mezclando! 🔀';
+    for(let k=0;k<14;k++){
+      let a=Math.floor(Math.random()*3),b=Math.floor(Math.random()*3);while(b===a)b=Math.floor(Math.random()*3);
+      const pa=+boxes[a].dataset.pos,pb=+boxes[b].dataset.pos;
+      boxes[a].dataset.pos=pb;boxes[b].dataset.pos=pa;
+      boxes[a].style.left=POSX[pb]+'px';boxes[b].style.left=POSX[pa]+'px';
+      await sleep(250);
+    }
+    lock=false;msg.textContent='¿En qué caja está el gato? 🐱';btn.textContent='Otra vez 🎮';
+  }
+  function pick(b){
+    if(lock)return;lock=true;
+    const win=boxes.indexOf(b)===catIdx;
+    b.textContent=win?'😺':'📭';if(!win)boxes[catIdx].textContent='😺';
+    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Lo encontraste 🐱💕';confetti();}
+    else msg.textContent='¡Casi! Ahí estaba el gato 😿';
+  }
+  btn.onclick=play;build();
+})();
+
+/* ================= SALTA LOS TEJADOS ================= */
+(function(){
+  const cv=document.getElementById('rfCanvas'),ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height,groundY=H-24;
+  const sc=document.getElementById('rfScore'),bt=document.getElementById('rfBest'),ms=document.getElementById('rfMsg');
+  let best=+(localStorage.getItem('tejadosBest')||0);bt.textContent=best;
+  const GRAV=0.6,JUMP=-11;
+  const cat={x:54,w:38,h:38,y:groundY-38,vy:0,onGround:true};
+  let obs=[],speed=4.2,score=0,frame=0,nextSpawn=60,state='idle',raf;
+  function reset(){obs=[];speed=4.2;score=0;frame=0;nextSpawn=60;cat.y=groundY-cat.h;cat.vy=0;cat.onGround=true;}
+  function start(){reset();state='running';ms.textContent='';cancelAnimationFrame(raf);loop();}
+  function jump(){if(state==='running'){if(cat.onGround){cat.vy=JUMP;cat.onGround=false;}}else start();}
+  function spawn(){const h=24+(Math.random()<0.3?12:0);obs.push({x:W+10,w:Math.round(h*0.85),h});}
+  function over(){state='over';cancelAnimationFrame(raf);
+    if(score>best){best=score;localStorage.setItem('tejadosBest',best);bt.textContent=best;}
+    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Gata ninja! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🐈');
+    draw();ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';}
+  function loop(){
+    frame++;cat.vy+=GRAV;cat.y+=cat.vy;
+    if(cat.y>=groundY-cat.h){cat.y=groundY-cat.h;cat.vy=0;cat.onGround=true;}
+    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
+    for(const o of obs)o.x-=speed;obs=obs.filter(o=>o.x+o.w>-10);
+    if(frame%6===0){score++;sc.textContent=score;}speed+=0.0016;
+    for(const o of obs){const top=groundY+2-o.h;if(cat.x+cat.w-8>o.x+3&&cat.x+8<o.x+o.w-3&&cat.y+cat.h-4>top+3){over();break;}}
+    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
+  }
+  function draw(){ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(255,207,112,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
+    ctx.textBaseline='alphabetic';
+    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('🧱',o.x,groundY+4);}
+    ctx.font='30px serif';ctx.fillText('🐈',cat.x,cat.y+cat.h);}
+  cv.addEventListener('click',jump);
+  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
+  draw();
 })();
 
 /* ================= LIGHTBOX ================= */
