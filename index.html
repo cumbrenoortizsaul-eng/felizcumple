@@ -187,6 +187,12 @@
   /* Trile gatuno */
   .trile{position:relative;height:92px;max-width:300px;margin:10px auto 0}
   .trile-cat{position:absolute;top:12px;width:80px;height:66px;display:grid;place-items:center;font-size:2.6rem;cursor:pointer;transition:left .25s ease,transform .2s;user-select:none}
+  /* Batalla naval */
+  .naval-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;max-width:300px;margin:8px auto 0}
+  .naval-cell{aspect-ratio:1;border-radius:8px;background:var(--rose);display:grid;place-items:center;font-size:1.2rem;cursor:pointer;transition:background .15s,transform .1s;user-select:none}
+  .naval-cell:active{transform:scale(.92)}
+  .naval-cell.hit{background:#c0392b;color:#fff}
+  .naval-cell.miss{background:#155e77;color:#fff;opacity:.55}
   /* Trivial */
   .trivia-q{font-weight:700;font-size:clamp(1.05rem,3.8vw,1.3rem);margin:6px 0 14px;min-height:2.4em;display:flex;align-items:center;justify-content:center}
   .trivia-opts{display:grid;gap:10px;max-width:420px;margin:0 auto}
@@ -353,29 +359,16 @@
   </div>
 </section>
 
-<!-- ===== TRILE GATUNO ===== -->
-<section id="trile">
+<!-- ===== BATALLA NAVAL ===== -->
+<section id="naval">
   <div class="wrap">
-    <h2>¿En qué caja está el tesoro? 💰</h2>
-    <p class="lead">Fíjate bien y sigue la caja del tesoro 🏴‍☠️</p>
+    <h2>Batalla naval 🚢</h2>
+    <p class="lead">Dispara a las casillas y hunde toda la flota enemiga 💥</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>💰 Aciertos <b id="tlScore">0</b></span></div>
-      <div class="trile" id="trileBox"></div>
-      <button class="piropo-btn" id="tlBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="tlMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SALTA LOS TEJADOS ===== -->
-<section id="roofs">
-  <div class="wrap">
-    <h2>Salta los barriles 🦜</h2>
-    <p class="lead">El loro salta los barriles: toca la pantalla (o espacio) 🛢️</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🦜 <b id="rfScore">0</b></span><span>🏆 <b id="rfBest">0</b></span></div>
-      <canvas id="rfCanvas" width="560" height="200" style="width:100%;max-width:560px;background:linear-gradient(180deg,#2a1730 0%,#3a1e33 70%,#5a2c46 70%);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:none"></canvas>
-      <p class="piropo-txt" id="rfMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
+      <div class="game-hud"><span>💥 <b id="nvHits">0</b>/7</span><span>🎯 Disparos <b id="nvShots">0</b></span><span>🏆 <b id="nvBest">—</b></span></div>
+      <div class="naval-grid" id="nvGrid"></div>
+      <button class="piropo-btn" id="nvBtn" style="margin-top:12px">Nueva partida 🎮</button>
+      <p class="piropo-txt" id="nvMsg" style="min-height:1.4em;margin-top:10px"></p>
     </div>
   </div>
 </section>
@@ -427,18 +420,18 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás para robarte un beso, ¡arrr! 🏴‍☠️",
-  "Eres el tesoro que todo pirata sueña 💰",
-  "Guapa a bordo y en tierra firme 😍",
-  "Me tienes navegando loco por ti ⛵",
-  "Eres mi botín favorito 💎",
-  "Contigo me hundiría feliz 🌊",
-  "Preciosa como un amanecer en alta mar 🌅",
-  "Eres el norte de mi brújula 🧭",
-  "Me robas el corazón sin espada 🗡️❤️",
-  "Guapísima, mi capitana 🧑‍✈️",
-  "Contigo cualquier travesía vale la pena 🚢",
-  "Eres oro puro, mi amor 🪙"
+  "Eres el botín más bonito que he saqueado 💎",
+  "Guapa hasta con parche y pata de palo 😍",
+  "Me tienes anclado a ti para siempre ⚓",
+  "Eres mi sirena favorita 🧜‍♀️",
+  "Contigo zarparía ahora mismo ⛵",
+  "Preciosa como un cofre lleno de oro 💰",
+  "Eres la joya de mi barco 💍",
+  "Me hundo en tus ojos cada día 🌊",
+  "Guapísima, mi lobo de mar 🌊",
+  "Eres mi mapa y mi destino 🗺️",
+  "Contigo hasta el mar picado es bonito 🌊",
+  "Vales más que todo el oro pirata 🪙"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
@@ -483,9 +476,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Qué eres para mí? 🥰";
-const RESPUESTAS = ["mi todo","todo","mi todo 💕"];
-const PISTA = "Pista: lo eres absolutamente todo… mi todo 💕";
+const PREGUNTA = "¿Quién es mi tesoro? 💰";
+const RESPUESTAS = ["paula"];
+const PISTA = "Pista: mi tesoro más valioso… Paula 🏴‍☠️💕";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -495,21 +488,21 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres el tesoro más valioso de los siete mares 💰",
-  "Contigo navegaría hasta el fin del mundo 🌊",
-  "Mi brújula siempre apunta hacia ti 🧭",
-  "Eres el mayor botín de mi vida 🏴‍☠️",
-  "Contigo cualquier tormenta se calma ⚓",
-  "Te robaría… pero mi corazón ya es tuyo 💎",
-  "Eres mi puerto seguro en cualquier mar 🚢",
-  "Mi mapa del tesoro te marca con una X 🗺️❌",
-  "Eres el viento que mueve mis velas ⛵",
-  "Contigo surcaría mil mares sin descanso 🌊",
-  "Eres la perla más bonita del océano 🦪",
-  "Te elegiría entre todo el oro del mundo 🪙",
-  "Contigo cualquier isla es mi hogar 🏝️",
+  "Eres el tesoro que ningún mapa puede medir 🗺️",
+  "Contigo cada día es una nueva aventura ⛵",
+  "Mi corazón zarpó y no quiere volver 🌊",
+  "Eres mi estrella para no perder el rumbo ⭐",
+  "Contigo naufragaría feliz mil veces 🚢",
+  "Eres la calma después de cualquier tormenta ⚓",
+  "Ningún cofre guarda algo tan bonito como tú 💰",
+  "Contigo el horizonte siempre es precioso 🌅",
+  "Eres mi sirena, mi tesoro y mi hogar 🧜‍♀️",
+  "Te llevo en el corazón, mejor que cualquier tatuaje 💙",
+  "Contigo cualquier isla desierta es un paraíso 🏝️",
+  "Eres el oro que de verdad me importa 🪙",
+  "Mi bandera solo ondea por ti 🏴‍☠️",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Eres mi tesoro, y no lo comparto con nadie 🏴‍☠️"
+  "Contigo surcaría el mundo entero 🌊"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
@@ -709,72 +702,38 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   reset();draw();
 })();
 
-/* ================= TRILE GATUNO ================= */
+/* ================= BATALLA NAVAL ================= */
 (function(){
-  const cont=document.getElementById('trileBox'),btn=document.getElementById('tlBtn'),msg=document.getElementById('tlMsg'),scoreEl=document.getElementById('tlScore');
-  const POSX=[10,110,210];
-  let boxes=[],catIdx=0,lock=true,wins=0;
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  function build(){cont.innerHTML='';boxes=[];for(let i=0;i<3;i++){const b=document.createElement('div');b.className='trile-cat';b.textContent='📦';b.dataset.pos=i;b.style.left=POSX[i]+'px';b.onclick=()=>pick(b);cont.appendChild(b);boxes.push(b);}}
-  async function play(){
-    build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
-    catIdx=Math.floor(Math.random()*3);
-    const cb=boxes[catIdx];cb.textContent='💰';cb.style.transform='translateY(-16px)';
-    await sleep(1100);cb.textContent='📦';cb.style.transform='';
-    msg.textContent='¡Mezclando! 🔀';
-    for(let k=0;k<14;k++){
-      let a=Math.floor(Math.random()*3),b=Math.floor(Math.random()*3);while(b===a)b=Math.floor(Math.random()*3);
-      const pa=+boxes[a].dataset.pos,pb=+boxes[b].dataset.pos;
-      boxes[a].dataset.pos=pb;boxes[b].dataset.pos=pa;
-      boxes[a].style.left=POSX[pb]+'px';boxes[b].style.left=POSX[pa]+'px';
-      await sleep(250);
+  const grid=document.getElementById('nvGrid'),btn=document.getElementById('nvBtn'),msg=document.getElementById('nvMsg');
+  const hitsEl=document.getElementById('nvHits'),shotsEl=document.getElementById('nvShots'),bestEl=document.getElementById('nvBest');
+  const N=6,SHIPS=[3,2,2],TOTAL=7;
+  let board=[],fired=[],hits=0,shots=0,over=false,best=+(localStorage.getItem('navalBest')||0);
+  bestEl.textContent=best||'—';
+  function place(){
+    board=Array(N*N).fill(0);
+    for(const size of SHIPS){
+      let ok=false,guard=0;
+      while(!ok && guard++<500){
+        const horiz=Math.random()<0.5,r=Math.floor(Math.random()*N),c=Math.floor(Math.random()*N),cells=[];
+        for(let k=0;k<size;k++){const rr=horiz?r:r+k,cc=horiz?c+k:c;if(rr>=N||cc>=N){cells.length=0;break;}cells.push(rr*N+cc);}
+        if(cells.length===size && cells.every(x=>board[x]===0)){cells.forEach(x=>board[x]=1);ok=true;}
+      }
     }
-    lock=false;msg.textContent='¿En qué caja está el tesoro? 💰';btn.textContent='Otra vez 🎮';
   }
-  function pick(b){
-    if(lock)return;lock=true;
-    const win=boxes.indexOf(b)===catIdx;
-    b.textContent=win?'💰':'📭';if(!win)boxes[catIdx].textContent='💰';
-    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Encontraste el tesoro 💰🏴‍☠️';confetti();}
-    else msg.textContent='¡Casi! Ahí estaba el tesoro 🗺️';
+  function build(){
+    grid.innerHTML='';fired=Array(N*N).fill(false);hits=0;shots=0;over=false;
+    hitsEl.textContent=0;shotsEl.textContent=0;msg.textContent='¡Encuentra los 3 barcos! 🚢';place();
+    for(let i=0;i<N*N;i++){const c=document.createElement('div');c.className='naval-cell';c.textContent='🌊';c.onclick=()=>fire(i,c);grid.appendChild(c);}
+    btn.textContent='Nueva partida 🎮';
   }
-  btn.onclick=play;build();
-})();
-
-/* ================= SALTA LOS TEJADOS ================= */
-(function(){
-  const cv=document.getElementById('rfCanvas'),ctx=cv.getContext('2d');
-  const W=cv.width,H=cv.height,groundY=H-24;
-  const sc=document.getElementById('rfScore'),bt=document.getElementById('rfBest'),ms=document.getElementById('rfMsg');
-  let best=+(localStorage.getItem('tejadosBest')||0);bt.textContent=best;
-  const GRAV=0.6,JUMP=-11;
-  const cat={x:54,w:38,h:38,y:groundY-38,vy:0,onGround:true};
-  let obs=[],speed=4.2,score=0,frame=0,nextSpawn=60,state='idle',raf;
-  function reset(){obs=[];speed=4.2;score=0;frame=0;nextSpawn=60;cat.y=groundY-cat.h;cat.vy=0;cat.onGround=true;}
-  function start(){reset();state='running';ms.textContent='';cancelAnimationFrame(raf);loop();}
-  function jump(){if(state==='running'){if(cat.onGround){cat.vy=JUMP;cat.onGround=false;}}else start();}
-  function spawn(){const h=24+(Math.random()<0.3?12:0);obs.push({x:W+10,w:Math.round(h*0.85),h});}
-  function over(){state='over';cancelAnimationFrame(raf);
-    if(score>best){best=score;localStorage.setItem('tejadosBest',best);bt.textContent=best;}
-    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Loro legendario! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🦜');
-    draw();ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';}
-  function loop(){
-    frame++;cat.vy+=GRAV;cat.y+=cat.vy;
-    if(cat.y>=groundY-cat.h){cat.y=groundY-cat.h;cat.vy=0;cat.onGround=true;}
-    if(frame>=nextSpawn){spawn();nextSpawn=frame+Math.max(52,110-speed*4)+Math.floor(Math.random()*40);}
-    for(const o of obs)o.x-=speed;obs=obs.filter(o=>o.x+o.w>-10);
-    if(frame%6===0){score++;sc.textContent=score;}speed+=0.0016;
-    for(const o of obs){const top=groundY+2-o.h;if(cat.x+cat.w-8>o.x+3&&cat.x+8<o.x+o.w-3&&cat.y+cat.h-4>top+3){over();break;}}
-    if(state==='running'){draw();raf=requestAnimationFrame(loop);}
+  function fire(i,c){
+    if(over||fired[i])return;fired[i]=true;shots++;shotsEl.textContent=shots;
+    if(board[i]===1){c.classList.add('hit');c.textContent='💥';hits++;hitsEl.textContent=hits;
+      if(hits===TOTAL){over=true;msg.textContent=`¡Flota hundida en ${shots} disparos! 🏴‍☠️💕`;confetti();
+        if(!best||shots<best){best=shots;localStorage.setItem('navalBest',best);bestEl.textContent=best;}}}
+    else{c.classList.add('miss');c.textContent='💦';}
   }
-  function draw(){ctx.clearRect(0,0,W,H);
-    ctx.strokeStyle='rgba(255,207,112,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
-    ctx.textBaseline='alphabetic';
-    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('🛢️',o.x,groundY+4);}
-    ctx.font='30px serif';ctx.fillText('🦜',cat.x,cat.y+cat.h);}
-  cv.addEventListener('click',jump);
-  cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
-  draw();
+  btn.onclick=build;build();
 })();
 
 /* ================= LIGHTBOX ================= */
