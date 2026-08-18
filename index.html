@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🐱🧶</title>
+<title>Para ti, mi amor 🏴‍☠️💰</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#f48ab0; --pink-deep:#e06a95; --rose:#ffe3ee; --cream:#fff5f8;
-    --ink:#5a3a48; --soft:#a5788a; --card:#ffffff; --gold:#ffcf70;
-    --shadow:0 12px 40px rgba(224,106,149,.2);
+    --pink:#1f7a99; --pink-deep:#155e77; --rose:#e6dcc0; --cream:#f3ead3;
+    --ink:#3a2e1a; --soft:#7a6a4a; --card:#fff8ea; --gold:#d4a017;
+    --shadow:0 12px 40px rgba(21,94,119,.22);
   }
   html[data-theme="dark"]{
-    --cream:#241019; --card:#331825; --rose:#4a2436; --ink:#ffe6f0; --soft:#e0adc0;
+    --cream:#0e2028; --card:#152e38; --rose:#1e3c46; --ink:#eaf3f0; --soft:#a8c2c8;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(60% 45% at 82% 8%, rgba(255,207,112,.35), transparent 55%),
-      linear-gradient(180deg,#fff5f8 0%,#ffe3ee 55%,#ffd6e6 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(212,160,23,.4), transparent 55%),
+      linear-gradient(180deg,#cfeaf2 0%,#8fc7d6 40%,#3d8aa5 70%,#1f5f78 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(60% 45% at 82% 8%, rgba(255,207,112,.16), transparent 55%),
-      linear-gradient(180deg,#241019 0%,#331825 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(212,160,23,.22), transparent 55%),
+      linear-gradient(180deg,#0e2028 0%,#123540 60%,#1a5570 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -240,9 +240,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(255,207,112,.5), transparent 46%), linear-gradient(160deg,#f48ab0,#e06a95);
+    background:radial-gradient(circle at 50% 10%, rgba(212,160,23,.55), transparent 46%), linear-gradient(160deg,#1f7a99,#123540);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🐱"}
+  #gate .lock::after{content:" 🏴‍☠️"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -264,7 +264,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🐱</div>
+<div class="moon">🏴‍☠️</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -277,10 +277,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🐱</span><span class="capi-mochi">🧶</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦜</span><span class="capi-mochi">🏴‍☠️</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres mi michi favorito de todo el mundo 🐱💕</p>
-    <p class="hint" id="capiHint">Toca al gatito 🫶</p>
+    <p class="sub">Eres el tesoro más valioso de los siete mares 🏴‍☠️💰</p>
+    <p class="hint" id="capiHint">Toca al loro 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -343,11 +343,11 @@
 <!-- ===== PERSIGUE EL OVILLO ===== -->
 <section id="yarn">
   <div class="wrap">
-    <h2>Persigue el ovillo 🧶</h2>
-    <p class="lead">Mueve el dedo/ratón: el gatito persigue el ovillo que huye 🐱</p>
+    <h2>Caza el tesoro 💰</h2>
+    <p class="lead">Mueve el dedo/ratón: el barco persigue la moneda que huye ⛵</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>⏱️ <b id="ynTime">25</b>s</span><span>🧶 <b id="ynScore">0</b></span><span>🏆 <b id="ynBest">0</b></span></div>
-      <canvas id="ynCanvas" width="560" height="300" style="width:100%;max-width:560px;background:radial-gradient(circle at 70% 20%,rgba(255,207,112,.3),transparent 60%),linear-gradient(180deg,#ffe3ee,#ffd0e2);border-radius:18px;display:block;margin:0 auto;cursor:crosshair;touch-action:none"></canvas>
+      <div class="game-hud"><span>⏱️ <b id="ynTime">25</b>s</span><span>💰 <b id="ynScore">0</b></span><span>🏆 <b id="ynBest">0</b></span></div>
+      <canvas id="ynCanvas" width="560" height="300" style="width:100%;max-width:560px;background:radial-gradient(circle at 70% 20%,rgba(212,160,23,.25),transparent 60%),linear-gradient(180deg,#8fc7d6,#2e7a94);border-radius:18px;display:block;margin:0 auto;cursor:crosshair;touch-action:none"></canvas>
       <p class="piropo-txt" id="ynMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
     </div>
   </div>
@@ -356,10 +356,10 @@
 <!-- ===== TRILE GATUNO ===== -->
 <section id="trile">
   <div class="wrap">
-    <h2>¿En qué caja está el gato? 📦</h2>
-    <p class="lead">Fíjate bien y sigue la caja del gatito 🐱</p>
+    <h2>¿En qué caja está el tesoro? 💰</h2>
+    <p class="lead">Fíjate bien y sigue la caja del tesoro 🏴‍☠️</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🐱 Aciertos <b id="tlScore">0</b></span></div>
+      <div class="game-hud"><span>💰 Aciertos <b id="tlScore">0</b></span></div>
       <div class="trile" id="trileBox"></div>
       <button class="piropo-btn" id="tlBtn" style="margin-top:12px">Empezar 🎮</button>
       <p class="piropo-txt" id="tlMsg" style="min-height:1.4em;margin-top:10px"></p>
@@ -370,10 +370,10 @@
 <!-- ===== SALTA LOS TEJADOS ===== -->
 <section id="roofs">
   <div class="wrap">
-    <h2>Salta los tejados 🐈</h2>
-    <p class="lead">Salta las chimeneas: toca la pantalla (o espacio) 🏠</p>
+    <h2>Salta los barriles 🦜</h2>
+    <p class="lead">El loro salta los barriles: toca la pantalla (o espacio) 🛢️</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🐈 <b id="rfScore">0</b></span><span>🏆 <b id="rfBest">0</b></span></div>
+      <div class="game-hud"><span>🦜 <b id="rfScore">0</b></span><span>🏆 <b id="rfBest">0</b></span></div>
       <canvas id="rfCanvas" width="560" height="200" style="width:100%;max-width:560px;background:linear-gradient(180deg,#2a1730 0%,#3a1e33 70%,#5a2c46 70%);border-radius:18px;display:block;margin:0 auto;cursor:pointer;touch-action:none"></canvas>
       <p class="piropo-txt" id="rfMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
     </div>
@@ -427,18 +427,18 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás monísima, michi 😻",
-  "Eres más suave que el pelito de un gatito 🐱",
-  "Me tienes ronroneando por ti 😽",
-  "Guapa a nivel gatito en caja 📦",
-  "Eres mi ovillo favorito 🧶💕",
-  "Contigo me dan ganas de hacer mimos 🥰",
-  "Preciosa por fuera y adorable por dentro 🐾",
-  "Eres mi siesta favorita al solecito ☀️",
-  "Me robas el corazón con esos ojitos 😻",
-  "Guapísima, mi gatita bonita 🐈",
-  "Contigo todo es blandito y feliz 🧸",
-  "Eres mi mimo favorito de cada día 🤍"
+  "Estás para robarte un beso, ¡arrr! 🏴‍☠️",
+  "Eres el tesoro que todo pirata sueña 💰",
+  "Guapa a bordo y en tierra firme 😍",
+  "Me tienes navegando loco por ti ⛵",
+  "Eres mi botín favorito 💎",
+  "Contigo me hundiría feliz 🌊",
+  "Preciosa como un amanecer en alta mar 🌅",
+  "Eres el norte de mi brújula 🧭",
+  "Me robas el corazón sin espada 🗡️❤️",
+  "Guapísima, mi capitana 🧑‍✈️",
+  "Contigo cualquier travesía vale la pena 🚢",
+  "Eres oro puro, mi amor 🪙"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
@@ -495,27 +495,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres mi michi favorito de todo el mundo 🐱",
-  "Contigo ronroneo de felicidad 😻",
-  "Me tienes enrollado como un ovillo 🧶💕",
-  "Eres suave y calentita como una siesta al sol ☀️🐾",
-  "Contigo cualquier rincón es mi sitio favorito 🐈",
-  "Me robaste el corazón con una patita 🐾❤️",
-  "Eres mi cosa más monísima, mi gatita 😽",
-  "Contigo hasta los lunes ronronean 💤",
-  "Eres mi personita favorita para hacer mimos 🥰",
-  "Me haces más feliz que un gato con caja 📦😸",
-  "Contigo la vida es blandita y bonita 🧸",
-  "Eres mi ovillo de amor, no te suelto 🧶",
-  "Te querría en todas mis 7 vidas 🐱💕",
+  "Eres el tesoro más valioso de los siete mares 💰",
+  "Contigo navegaría hasta el fin del mundo 🌊",
+  "Mi brújula siempre apunta hacia ti 🧭",
+  "Eres el mayor botín de mi vida 🏴‍☠️",
+  "Contigo cualquier tormenta se calma ⚓",
+  "Te robaría… pero mi corazón ya es tuyo 💎",
+  "Eres mi puerto seguro en cualquier mar 🚢",
+  "Mi mapa del tesoro te marca con una X 🗺️❌",
+  "Eres el viento que mueve mis velas ⛵",
+  "Contigo surcaría mil mares sin descanso 🌊",
+  "Eres la perla más bonita del océano 🦪",
+  "Te elegiría entre todo el oro del mundo 🪙",
+  "Contigo cualquier isla es mi hogar 🏝️",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Contigo siempre quiero acurrucarme 🤍"
+  "Eres mi tesoro, y no lo comparto con nadie 🏴‍☠️"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Michi 😻","Guapísima 😍","Mi ovillo 🧶",
-  "Mimitos 🥰","Contigo todo 🐾","Ronroneo 😽","Mi hogar 🏡❤️"
+  "Te quiero 💕","Mi tesoro 💰","Guapísima 😍","Mi capitana ⚓",
+  "¡Arrr! 🏴‍☠️","Contigo todo 🌊","Mi perla 🦪","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -547,7 +547,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🐱','🐈','🐾','🧶','😸','😻','🐟','🥛','🐈‍⬛','💕'];
+  const c=document.getElementById('hearts'), emo=['🏴‍☠️','⚓','🦜','🗺️','💰','⛵','🐚','🌊','💎','🪙'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -562,7 +562,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['🐾','🧶','💕','⭐','🐟'];
+  const conf=['🪙','💰','⭐','💎','🐚'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -615,14 +615,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Miau 😽','Mi michi favorita 🐱💕','Ronroneo por ti 😻','Te quiero un montón 🐾❤️'];
+const CAPI_MSGS=['¡Arrr! 🏴‍☠️','Mi tesoro favorito 💰💕','Contigo a alta mar 🌊','Te quiero un montón 🦜❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🐱','🐾','🧶','😻','💕','❤️','🩷','⭐'];
+  const emo=['🪙','💰','🏴‍☠️','💎','💕','❤️','🩷','⭐'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -701,10 +701,10 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   }
   function end(){running=false;cancelAnimationFrame(raf);clearInterval(tickT);
     if(score>best){best=score;localStorage.setItem('ovilloBest',best);bestEl.textContent=best;}
-    draw();msg.textContent=`¡${score} ovillos! `+(score>=18?'¡Cazadora experta! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 🧶');}
+    draw();msg.textContent=`¡${score} monedas! `+(score>=18?'¡Pirata legendaria! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 💰');}
   function draw(){ctx.clearRect(0,0,W,H);ctx.textBaseline='middle';ctx.textAlign='center';
-    ctx.font='26px serif';ctx.fillText('🧶',yarn.x,yarn.y);
-    ctx.font='30px serif';ctx.fillText('🐱',cat.x,cat.y);
+    ctx.font='26px serif';ctx.fillText('🪙',yarn.x,yarn.y);
+    ctx.font='30px serif';ctx.fillText('⛵',cat.x,cat.y);
     ctx.textAlign='left';ctx.textBaseline='alphabetic';}
   reset();draw();
 })();
@@ -719,7 +719,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   async function play(){
     build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
     catIdx=Math.floor(Math.random()*3);
-    const cb=boxes[catIdx];cb.textContent='😺';cb.style.transform='translateY(-16px)';
+    const cb=boxes[catIdx];cb.textContent='💰';cb.style.transform='translateY(-16px)';
     await sleep(1100);cb.textContent='📦';cb.style.transform='';
     msg.textContent='¡Mezclando! 🔀';
     for(let k=0;k<14;k++){
@@ -729,14 +729,14 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
       boxes[a].style.left=POSX[pb]+'px';boxes[b].style.left=POSX[pa]+'px';
       await sleep(250);
     }
-    lock=false;msg.textContent='¿En qué caja está el gato? 🐱';btn.textContent='Otra vez 🎮';
+    lock=false;msg.textContent='¿En qué caja está el tesoro? 💰';btn.textContent='Otra vez 🎮';
   }
   function pick(b){
     if(lock)return;lock=true;
     const win=boxes.indexOf(b)===catIdx;
-    b.textContent=win?'😺':'📭';if(!win)boxes[catIdx].textContent='😺';
-    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Lo encontraste 🐱💕';confetti();}
-    else msg.textContent='¡Casi! Ahí estaba el gato 😿';
+    b.textContent=win?'💰':'📭';if(!win)boxes[catIdx].textContent='💰';
+    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Encontraste el tesoro 💰🏴‍☠️';confetti();}
+    else msg.textContent='¡Casi! Ahí estaba el tesoro 🗺️';
   }
   btn.onclick=play;build();
 })();
@@ -756,7 +756,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   function spawn(){const h=24+(Math.random()<0.3?12:0);obs.push({x:W+10,w:Math.round(h*0.85),h});}
   function over(){state='over';cancelAnimationFrame(raf);
     if(score>best){best=score;localStorage.setItem('tejadosBest',best);bt.textContent=best;}
-    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Gata ninja! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🐈');
+    ms.textContent=`¡${score} puntos! `+(score>=300?'¡Loro legendario! 🏆💕':score>=120?'¡Muy bien! 🥰':'¡Otra vez! 🦜');
     draw();ctx.fillStyle='rgba(0,0,0,.4)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff';ctx.textAlign='center';ctx.font='700 20px Quicksand,sans-serif';ctx.fillText('¡Toca para reintentar!',W/2,H/2);ctx.textAlign='left';}
   function loop(){
     frame++;cat.vy+=GRAV;cat.y+=cat.vy;
@@ -770,8 +770,8 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
   function draw(){ctx.clearRect(0,0,W,H);
     ctx.strokeStyle='rgba(255,207,112,.7)';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,groundY+3);ctx.lineTo(W,groundY+3);ctx.stroke();
     ctx.textBaseline='alphabetic';
-    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('🧱',o.x,groundY+4);}
-    ctx.font='30px serif';ctx.fillText('🐈',cat.x,cat.y+cat.h);}
+    for(const o of obs){ctx.font=o.h+'px serif';ctx.fillText('🛢️',o.x,groundY+4);}
+    ctx.font='30px serif';ctx.fillText('🦜',cat.x,cat.y+cat.h);}
   cv.addEventListener('click',jump);
   cv.addEventListener('touchstart',e=>{e.preventDefault();jump();},{passive:false});
   draw();
