@@ -684,11 +684,11 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
 (function(){
   const zone=document.getElementById('drZone'),marker=document.getElementById('drMarker'),btn=document.getElementById('drBtn');
   const face=document.getElementById('drFace'),msg=document.getElementById('drMsg'),hpEl=document.getElementById('drHp'),bestEl=document.getElementById('drBest');
-  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,hp=5,dragons=0,best=+(localStorage.getItem('dragonBest')||0),raf;
+  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,hp=5,dragons=0,curLvl=1,best=+(localStorage.getItem('dragonBest')||0),raf;
   bestEl.textContent=best;
   function setZone(){zone.style.left=((100-zoneW)/2)+'%';zone.style.width=zoneW+'%';}
   function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
-  function newDragon(){hp=5;hpEl.textContent=hp;zoneW=Math.max(14,34-dragons*3);speed=1.6+dragons*0.35;setZone();face.textContent='🐉 vs 👸';}
+  function newDragon(){curLvl=dragons+1;hp=4+curLvl*2;hpEl.textContent=hp;zoneW=Math.max(9,38-curLvl*4);speed=2+curLvl*0.6;setZone();face.textContent='🐉 Nivel '+curLvl+' vs 👸';}
   function begin(){dragons=0;newDragon();running=true;msg.textContent='';btn.textContent='¡Ataca! ⚔️';cancelAnimationFrame(raf);loop();}
   function attempt(){
     if(!running){begin();return;}
@@ -697,7 +697,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
       hp--;hpEl.textContent=Math.max(0,hp);
       if(hp<=0){dragons++;if(dragons>best){best=dragons;localStorage.setItem('dragonBest',best);bestEl.textContent=best;}
         face.textContent='🐉💀 ¡Vencido!';msg.textContent=`¡${dragons} dragón(es) vencido(s)! 👑`;confetti();setTimeout(()=>{if(running)newDragon();},700);}
-      else{face.textContent='💥 ¡Golpe!';setTimeout(()=>{if(running&&hp>0)face.textContent='🐉 vs 👸';},220);zoneW=Math.max(12,zoneW-2);speed+=0.2;setZone();}
+      else{face.textContent='💥 ¡Golpe!';setTimeout(()=>{if(running&&hp>0)face.textContent='🐉 Nivel '+curLvl+' vs 👸';},200);zoneW=Math.max(8,zoneW-2.5);speed+=0.35;setZone();}
     }else{
       running=false;cancelAnimationFrame(raf);face.textContent='🔥 El dragón te achicharró 😵';
       msg.textContent=`¡${dragons} dragones vencidos! `+(dragons>=5?'¡Heroína legendaria! 🏆':dragons>=2?'¡Muy bien! 🥰':'¡Otra vez! 🐉');
