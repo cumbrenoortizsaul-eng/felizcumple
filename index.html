@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🏴‍☠️💰</title>
+<title>Para ti, mi amor 🏰👸</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#1f7a99; --pink-deep:#155e77; --rose:#e6dcc0; --cream:#f3ead3;
-    --ink:#3a2e1a; --soft:#7a6a4a; --card:#fff8ea; --gold:#d4a017;
-    --shadow:0 12px 40px rgba(21,94,119,.22);
+    --pink:#d46aa8; --pink-deep:#b04b8e; --rose:#f6dced; --cream:#fff0f8;
+    --ink:#4a2a48; --soft:#9a6a90; --card:#ffffff; --gold:#f0c04a;
+    --shadow:0 12px 40px rgba(176,75,142,.2);
   }
   html[data-theme="dark"]{
-    --cream:#0e2028; --card:#152e38; --rose:#1e3c46; --ink:#eaf3f0; --soft:#a8c2c8;
+    --cream:#221022; --card:#301830; --rose:#432342; --ink:#ffe6f6; --soft:#d8a8ce;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(212,160,23,.4), transparent 55%),
-      linear-gradient(180deg,#cfeaf2 0%,#8fc7d6 40%,#3d8aa5 70%,#1f5f78 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(240,192,74,.4), transparent 55%),
+      linear-gradient(180deg,#ffe9f6 0%,#f3d9f7 45%,#e6d2fb 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(212,160,23,.22), transparent 55%),
-      linear-gradient(180deg,#0e2028 0%,#123540 60%,#1a5570 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(240,192,74,.22), transparent 55%),
+      linear-gradient(180deg,#221022 0%,#301830 60%,#3a1a44 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -246,9 +246,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(212,160,23,.55), transparent 46%), linear-gradient(160deg,#1f7a99,#123540);
+    background:radial-gradient(circle at 50% 10%, rgba(240,192,74,.55), transparent 46%), linear-gradient(160deg,#d46aa8,#7a2a6e);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🏴‍☠️"}
+  #gate .lock::after{content:" 🏰"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -270,7 +270,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🏴‍☠️</div>
+<div class="moon">🏰</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -283,10 +283,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦜</span><span class="capi-mochi">🏴‍☠️</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">👸</span><span class="capi-mochi">🐉</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres el tesoro más valioso de los siete mares 🏴‍☠️💰</p>
-    <p class="hint" id="capiHint">Toca al loro 🫶</p>
+    <p class="sub">Eres la princesa de mi cuento favorito 👸💕</p>
+    <p class="hint" id="capiHint">Toca a la princesa 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -346,33 +346,6 @@
   </div>
 </section>
 
-<!-- ===== PERSIGUE EL OVILLO ===== -->
-<section id="yarn">
-  <div class="wrap">
-    <h2>Caza el tesoro 💰</h2>
-    <p class="lead">Mueve el dedo/ratón: el barco persigue la moneda que huye ⛵</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>⏱️ <b id="ynTime">25</b>s</span><span>💰 <b id="ynScore">0</b></span><span>🏆 <b id="ynBest">0</b></span></div>
-      <canvas id="ynCanvas" width="560" height="300" style="width:100%;max-width:560px;background:radial-gradient(circle at 70% 20%,rgba(212,160,23,.25),transparent 60%),linear-gradient(180deg,#8fc7d6,#2e7a94);border-radius:18px;display:block;margin:0 auto;cursor:crosshair;touch-action:none"></canvas>
-      <p class="piropo-txt" id="ynMsg" style="min-height:1.4em;margin-top:12px">Toca para empezar 🎮</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== BATALLA NAVAL ===== -->
-<section id="naval">
-  <div class="wrap">
-    <h2>Batalla naval 🚢</h2>
-    <p class="lead">Dispara a las casillas y hunde toda la flota enemiga 💥</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>💥 <b id="nvHits">0</b>/7</span><span>🎯 Disparos <b id="nvShots">0</b></span><span>🏆 <b id="nvBest">—</b></span></div>
-      <div class="naval-grid" id="nvGrid"></div>
-      <button class="piropo-btn" id="nvBtn" style="margin-top:12px">Nueva partida 🎮</button>
-      <p class="piropo-txt" id="nvMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -420,18 +393,18 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres el botín más bonito que he saqueado 💎",
-  "Guapa hasta con parche y pata de palo 😍",
-  "Me tienes anclado a ti para siempre ⚓",
-  "Eres mi sirena favorita 🧜‍♀️",
-  "Contigo zarparía ahora mismo ⛵",
-  "Preciosa como un cofre lleno de oro 💰",
-  "Eres la joya de mi barco 💍",
-  "Me hundo en tus ojos cada día 🌊",
-  "Guapísima, mi lobo de mar 🌊",
-  "Eres mi mapa y mi destino 🗺️",
-  "Contigo hasta el mar picado es bonito 🌊",
-  "Vales más que todo el oro pirata 🪙"
+  "Estás de cuento, princesa 👸",
+  "Eres más guapa que cualquier hada madrina ✨",
+  "Me tienes hechizado, mi reina 👑",
+  "Guapa de la cabeza a la corona 💖",
+  "Eres mi 'felices para siempre' 💍",
+  "Contigo cabalgaría hasta el fin del reino 🐴",
+  "Preciosa como un castillo al atardecer 🏰",
+  "Eres la joya de mi corona 💎",
+  "Me robas el corazón sin necesidad de magia 🌹",
+  "Guapísima, mi princesa 👸",
+  "Contigo todo brilla como el oro 🌟",
+  "Eres mi cuento favorito, sin duda 📖"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
@@ -476,9 +449,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Quién es mi tesoro? 💰";
+const PREGUNTA = "¿Quién es mi princesa? 👑";
 const RESPUESTAS = ["paula"];
-const PISTA = "Pista: mi tesoro más valioso… Paula 🏴‍☠️💕";
+const PISTA = "Pista: la princesa de mi cuento… Paula 👸💕";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -488,27 +461,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres el tesoro que ningún mapa puede medir 🗺️",
-  "Contigo cada día es una nueva aventura ⛵",
-  "Mi corazón zarpó y no quiere volver 🌊",
-  "Eres mi estrella para no perder el rumbo ⭐",
-  "Contigo naufragaría feliz mil veces 🚢",
-  "Eres la calma después de cualquier tormenta ⚓",
-  "Ningún cofre guarda algo tan bonito como tú 💰",
-  "Contigo el horizonte siempre es precioso 🌅",
-  "Eres mi sirena, mi tesoro y mi hogar 🧜‍♀️",
-  "Te llevo en el corazón, mejor que cualquier tatuaje 💙",
-  "Contigo cualquier isla desierta es un paraíso 🏝️",
-  "Eres el oro que de verdad me importa 🪙",
-  "Mi bandera solo ondea por ti 🏴‍☠️",
+  "Eres la princesa de mi cuento favorito 👸",
+  "Contigo vivo un 'felices para siempre' cada día ✨",
+  "Cruzaría cualquier reino por verte 🏰",
+  "Eres mi final feliz hecho realidad 💖",
+  "Ni el dragón más fiero me alejaría de ti 🐉",
+  "Contigo hasta lo normal es de cuento 📖",
+  "Eres la magia que le faltaba a mi historia ✨",
+  "Mi corazón te nombró su reina 👑",
+  "Contigo cualquier castillo es un hogar 🏰",
+  "Eres mi estrella de los deseos 🌟",
+  "Te elegiría en cualquier cuento, siempre 📚",
+  "Eres más bonita que cualquier hada 🧚‍♀️",
+  "Contigo el 'érase una vez' nunca termina 💕",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Contigo surcaría el mundo entero 🌊"
+  "Mi reino entero es tuyo, princesa 👑"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Mi tesoro 💰","Guapísima 😍","Mi capitana ⚓",
-  "¡Arrr! 🏴‍☠️","Contigo todo 🌊","Mi perla 🦪","Mi hogar 🏡❤️"
+  "Te quiero 💕","Mi princesa 👸","Guapísima 😍","Mi reina 👑",
+  "Eres mágica ✨","Contigo todo 🏰","Mi rosa 🌹","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -540,7 +513,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🏴‍☠️','⚓','🦜','🗺️','💰','⛵','🐚','🌊','💎','🪙'];
+  const c=document.getElementById('hearts'), emo=['🏰','👸','🐉','✨','👑','🦄','🌹','💖','🧚‍♀️','⭐'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -555,7 +528,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['🪙','💰','⭐','💎','🐚'];
+  const conf=['✨','👑','🌹','💖','⭐'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -608,14 +581,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['¡Arrr! 🏴‍☠️','Mi tesoro favorito 💰💕','Contigo a alta mar 🌊','Te quiero un montón 🦜❤️'];
+const CAPI_MSGS=['Mua 😘','Mi princesa favorita 👸💕','Eres pura magia ✨','Te quiero un montón 👑❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🪙','💰','🏴‍☠️','💎','💕','❤️','🩷','⭐'];
+  const emo=['👑','✨','🌹','💖','💕','❤️','🩷','⭐'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -663,77 +636,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
-})();
-
-/* ================= PERSIGUE EL OVILLO ================= */
-(function(){
-  const cv=document.getElementById('ynCanvas'),ctx=cv.getContext('2d');
-  const W=cv.width,H=cv.height;
-  const timeEl=document.getElementById('ynTime'),scoreEl=document.getElementById('ynScore'),bestEl=document.getElementById('ynBest'),msg=document.getElementById('ynMsg');
-  let best=+(localStorage.getItem('ovilloBest')||0);bestEl.textContent=best;
-  const rand=(a,b)=>a+Math.random()*(b-a);
-  let cat={x:W/2,y:H/2,tx:W/2,ty:H/2},yarn,score,time,running=false,raf,tickT;
-  function reset(){cat.x=cat.tx=W/2;cat.y=cat.ty=H/2;score=0;time=25;scoreEl.textContent=0;timeEl.textContent=25;
-    yarn={x:rand(40,W-40),y:rand(40,H-40),vx:0,vy:0};}
-  function setTarget(cx,cy){const r=cv.getBoundingClientRect();cat.tx=(cx-r.left)*(W/r.width);cat.ty=(cy-r.top)*(H/r.height);}
-  cv.addEventListener('mousemove',e=>{if(running)setTarget(e.clientX,e.clientY);});
-  cv.addEventListener('touchmove',e=>{e.preventDefault();if(running){const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:false});
-  cv.addEventListener('click',()=>{if(!running)start();});
-  cv.addEventListener('touchstart',e=>{if(!running)start();else{const t=e.touches[0];setTarget(t.clientX,t.clientY);}},{passive:true});
-  const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-  function start(){reset();running=true;msg.textContent='';cancelAnimationFrame(raf);clearInterval(tickT);tickT=setInterval(()=>{time--;timeEl.textContent=time;if(time<=0)end();},1000);loop();}
-  function loop(){
-    cat.x+=(cat.tx-cat.x)*0.2;cat.y+=(cat.ty-cat.y)*0.2;
-    const dx=yarn.x-cat.x,dy=yarn.y-cat.y,d=Math.hypot(dx,dy)||1;
-    if(d<150){yarn.vx+=(dx/d)*0.8;yarn.vy+=(dy/d)*0.8;}     // huye del gato
-    yarn.vx*=0.92;yarn.vy*=0.92;yarn.x+=yarn.vx;yarn.y+=yarn.vy;
-    if(yarn.x<16){yarn.x=16;yarn.vx*=-.6;}if(yarn.x>W-16){yarn.x=W-16;yarn.vx*=-.6;}
-    if(yarn.y<16){yarn.y=16;yarn.vy*=-.6;}if(yarn.y>H-16){yarn.y=H-16;yarn.vy*=-.6;}
-    if(dist(cat,yarn)<26){score++;scoreEl.textContent=score;yarn.x=rand(30,W-30);yarn.y=rand(30,H-30);yarn.vx=yarn.vy=0;}
-    draw();if(running)raf=requestAnimationFrame(loop);
-  }
-  function end(){running=false;cancelAnimationFrame(raf);clearInterval(tickT);
-    if(score>best){best=score;localStorage.setItem('ovilloBest',best);bestEl.textContent=best;}
-    draw();msg.textContent=`¡${score} monedas! `+(score>=18?'¡Pirata legendaria! 🏆💕':score>=9?'¡Muy bien! 🥰':'¡Otra vez! 💰');}
-  function draw(){ctx.clearRect(0,0,W,H);ctx.textBaseline='middle';ctx.textAlign='center';
-    ctx.font='26px serif';ctx.fillText('🪙',yarn.x,yarn.y);
-    ctx.font='30px serif';ctx.fillText('⛵',cat.x,cat.y);
-    ctx.textAlign='left';ctx.textBaseline='alphabetic';}
-  reset();draw();
-})();
-
-/* ================= BATALLA NAVAL ================= */
-(function(){
-  const grid=document.getElementById('nvGrid'),btn=document.getElementById('nvBtn'),msg=document.getElementById('nvMsg');
-  const hitsEl=document.getElementById('nvHits'),shotsEl=document.getElementById('nvShots'),bestEl=document.getElementById('nvBest');
-  const N=6,SHIPS=[3,2,2],TOTAL=7;
-  let board=[],fired=[],hits=0,shots=0,over=false,best=+(localStorage.getItem('navalBest')||0);
-  bestEl.textContent=best||'—';
-  function place(){
-    board=Array(N*N).fill(0);
-    for(const size of SHIPS){
-      let ok=false,guard=0;
-      while(!ok && guard++<500){
-        const horiz=Math.random()<0.5,r=Math.floor(Math.random()*N),c=Math.floor(Math.random()*N),cells=[];
-        for(let k=0;k<size;k++){const rr=horiz?r:r+k,cc=horiz?c+k:c;if(rr>=N||cc>=N){cells.length=0;break;}cells.push(rr*N+cc);}
-        if(cells.length===size && cells.every(x=>board[x]===0)){cells.forEach(x=>board[x]=1);ok=true;}
-      }
-    }
-  }
-  function build(){
-    grid.innerHTML='';fired=Array(N*N).fill(false);hits=0;shots=0;over=false;
-    hitsEl.textContent=0;shotsEl.textContent=0;msg.textContent='¡Encuentra los 3 barcos! 🚢';place();
-    for(let i=0;i<N*N;i++){const c=document.createElement('div');c.className='naval-cell';c.textContent='🌊';c.onclick=()=>fire(i,c);grid.appendChild(c);}
-    btn.textContent='Nueva partida 🎮';
-  }
-  function fire(i,c){
-    if(over||fired[i])return;fired[i]=true;shots++;shotsEl.textContent=shots;
-    if(board[i]===1){c.classList.add('hit');c.textContent='💥';hits++;hitsEl.textContent=hits;
-      if(hits===TOTAL){over=true;msg.textContent=`¡Flota hundida en ${shots} disparos! 🏴‍☠️💕`;confetti();
-        if(!best||shots<best){best=shots;localStorage.setItem('navalBest',best);bestEl.textContent=best;}}}
-    else{c.classList.add('miss');c.textContent='💦';}
-  }
-  btn.onclick=build;build();
 })();
 
 /* ================= LIGHTBOX ================= */
