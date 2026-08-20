@@ -346,6 +346,48 @@
   </div>
 </section>
 
+<!-- ===== VENCE AL DRAGÓN ===== -->
+<section id="dragon">
+  <div class="wrap">
+    <h2>Vence al dragón 🐉</h2>
+    <p class="lead">Pulsa cuando la marca esté en la zona dorada para atacar ⚔️</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🐉 Vida <b id="drHp">5</b></span><span>🏆 <b id="drBest">0</b></span></div>
+      <div class="doma-lion" id="drFace">🐉 vs 👸</div>
+      <div class="doma-bar" id="drBar"><div class="doma-zone" id="drZone"></div><div class="doma-marker" id="drMarker"></div></div>
+      <button class="piropo-btn" id="drBtn" style="margin-top:14px">Empezar 🎮</button>
+      <p class="piropo-txt" id="drMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEMORIA MÁGICA ===== -->
+<section id="magicmem">
+  <div class="wrap">
+    <h2>Memoria de objetos mágicos 💍</h2>
+    <p class="lead">Encuentra las parejas ✨</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="mem-grid" id="mmGrid"></div>
+      <p class="piropo-txt" id="mmMsg" style="min-height:1.4em;margin:12px 0"></p>
+      <button class="piropo-btn" id="mmBtn">Nueva partida 🔁</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ENCUENTRA LA CORONA ===== -->
+<section id="crown">
+  <div class="wrap">
+    <h2>Encuentra la corona 👑</h2>
+    <p class="lead">Sigue la copa donde está la corona 👀</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>👑 Aciertos <b id="cwScore">0</b></span></div>
+      <div class="trile" id="cwBox"></div>
+      <button class="piropo-btn" id="cwBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="cwMsg" style="min-height:1.4em;margin-top:10px"></p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -636,6 +678,79 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
+})();
+
+/* ================= VENCE AL DRAGÓN ================= */
+(function(){
+  const zone=document.getElementById('drZone'),marker=document.getElementById('drMarker'),btn=document.getElementById('drBtn');
+  const face=document.getElementById('drFace'),msg=document.getElementById('drMsg'),hpEl=document.getElementById('drHp'),bestEl=document.getElementById('drBest');
+  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,hp=5,dragons=0,best=+(localStorage.getItem('dragonBest')||0),raf;
+  bestEl.textContent=best;
+  function setZone(){zone.style.left=((100-zoneW)/2)+'%';zone.style.width=zoneW+'%';}
+  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
+  function newDragon(){hp=5;hpEl.textContent=hp;zoneW=Math.max(14,34-dragons*3);speed=1.6+dragons*0.35;setZone();face.textContent='🐉 vs 👸';}
+  function begin(){dragons=0;newDragon();running=true;msg.textContent='';btn.textContent='¡Ataca! ⚔️';cancelAnimationFrame(raf);loop();}
+  function attempt(){
+    if(!running){begin();return;}
+    const zs=(100-zoneW)/2,ze=zs+zoneW;
+    if(pos>=zs&&pos<=ze){
+      hp--;hpEl.textContent=Math.max(0,hp);
+      if(hp<=0){dragons++;if(dragons>best){best=dragons;localStorage.setItem('dragonBest',best);bestEl.textContent=best;}
+        face.textContent='🐉💀 ¡Vencido!';msg.textContent=`¡${dragons} dragón(es) vencido(s)! 👑`;confetti();setTimeout(()=>{if(running)newDragon();},700);}
+      else{face.textContent='💥 ¡Golpe!';setTimeout(()=>{if(running&&hp>0)face.textContent='🐉 vs 👸';},220);zoneW=Math.max(12,zoneW-2);speed+=0.2;setZone();}
+    }else{
+      running=false;cancelAnimationFrame(raf);face.textContent='🔥 El dragón te achicharró 😵';
+      msg.textContent=`¡${dragons} dragones vencidos! `+(dragons>=5?'¡Heroína legendaria! 🏆':dragons>=2?'¡Muy bien! 🥰':'¡Otra vez! 🐉');
+      btn.textContent='Reintentar 🎮';
+    }
+  }
+  btn.onclick=attempt;
+})();
+
+/* ================= MEMORIA DE OBJETOS MÁGICOS ================= */
+(function(){
+  const grid=document.getElementById('mmGrid'),msg=document.getElementById('mmMsg'),btn=document.getElementById('mmBtn');
+  const ITEMS=['👑','🪄','🌹','💎','🏰','🦄'];
+  let first=null,lock=false,matched=0,moves=0;
+  function nueva(){
+    grid.innerHTML='';msg.textContent='';first=null;lock=false;matched=0;moves=0;
+    const cards=[...ITEMS,...ITEMS].sort(()=>Math.random()-0.5);
+    cards.forEach(em=>{const c=document.createElement('div');c.className='mem-card';c.dataset.em=em;c.textContent='';c.onclick=()=>flip(c);grid.appendChild(c);});
+  }
+  function flip(c){
+    if(lock||c.classList.contains('flipped')||c.classList.contains('matched'))return;
+    c.classList.add('flipped');c.textContent=c.dataset.em;
+    if(!first){first=c;return;}moves++;
+    if(first.dataset.em===c.dataset.em){first.classList.add('matched');c.classList.add('matched');first=null;matched++;
+      if(matched===ITEMS.length){msg.textContent=`¡Completado en ${moves} intentos! 🏆💕`;confetti();}}
+    else{lock=true;const a=first,b=c;first=null;setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');a.textContent='';b.textContent='';lock=false;},700);}
+  }
+  btn.onclick=nueva;nueva();
+})();
+
+/* ================= ENCUENTRA LA CORONA ================= */
+(function(){
+  const cont=document.getElementById('cwBox'),btn=document.getElementById('cwBtn'),msg=document.getElementById('cwMsg'),scoreEl=document.getElementById('cwScore');
+  const POSX=[10,110,210];
+  let boxes=[],catIdx=0,lock=true,wins=0;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  function build(){cont.innerHTML='';boxes=[];for(let i=0;i<3;i++){const b=document.createElement('div');b.className='trile-cat';b.textContent='🥤';b.dataset.pos=i;b.style.left=POSX[i]+'px';b.onclick=()=>pick(b);cont.appendChild(b);boxes.push(b);}}
+  async function play(){
+    build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
+    catIdx=Math.floor(Math.random()*3);const cb=boxes[catIdx];cb.textContent='👑';cb.style.transform='translateY(-16px)';
+    await sleep(1100);cb.textContent='🥤';cb.style.transform='';msg.textContent='¡Mezclando! 🔀';
+    for(let k=0;k<14;k++){let a=Math.floor(Math.random()*3),b=Math.floor(Math.random()*3);while(b===a)b=Math.floor(Math.random()*3);
+      const pa=+boxes[a].dataset.pos,pb=+boxes[b].dataset.pos;boxes[a].dataset.pos=pb;boxes[b].dataset.pos=pa;
+      boxes[a].style.left=POSX[pb]+'px';boxes[b].style.left=POSX[pa]+'px';await sleep(250);}
+    lock=false;msg.textContent='¿Dónde está la corona? 👑';btn.textContent='Otra vez 🎮';
+  }
+  function pick(b){
+    if(lock)return;lock=true;const win=boxes.indexOf(b)===catIdx;
+    b.textContent=win?'👑':'🥤';if(!win)boxes[catIdx].textContent='👑';
+    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Encontraste la corona 👑💕';confetti();}
+    else msg.textContent='¡Casi! Ahí estaba la corona 👑';
+  }
+  btn.onclick=play;build();
 })();
 
 /* ================= LIGHTBOX ================= */
