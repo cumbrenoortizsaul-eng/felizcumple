@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- v 20260817152458 -->
+<!-- v 20260822182933 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🏰👸</title>
+<title>Para ti, mi amor 🍩🧁</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#d46aa8; --pink-deep:#b04b8e; --rose:#f6dced; --cream:#fff0f8;
-    --ink:#4a2a48; --soft:#9a6a90; --card:#ffffff; --gold:#f0c04a;
-    --shadow:0 12px 40px rgba(176,75,142,.2);
+    --pink:#ff8fab; --pink-deep:#f0609a; --rose:#ffe0ec; --cream:#fff6f0;
+    --ink:#6a3a2a; --soft:#b07a6a; --card:#ffffff; --gold:#ffb84d;
+    --shadow:0 12px 40px rgba(240,96,154,.2);
   }
   html[data-theme="dark"]{
-    --cream:#221022; --card:#301830; --rose:#432342; --ink:#ffe6f6; --soft:#d8a8ce;
+    --cream:#241417; --card:#33201f; --rose:#4a2630; --ink:#ffe6ea; --soft:#e0a89a;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(240,192,74,.4), transparent 55%),
-      linear-gradient(180deg,#ffe9f6 0%,#f3d9f7 45%,#e6d2fb 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(255,184,77,.4), transparent 55%),
+      linear-gradient(180deg,#fff0f3 0%,#ffe4ec 45%,#ffe9dd 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(240,192,74,.22), transparent 55%),
-      linear-gradient(180deg,#221022 0%,#301830 60%,#3a1a44 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(255,184,77,.22), transparent 55%),
+      linear-gradient(180deg,#241417 0%,#33201f 60%,#402028 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -246,9 +246,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(240,192,74,.55), transparent 46%), linear-gradient(160deg,#d46aa8,#7a2a6e);
+    background:radial-gradient(circle at 50% 10%, rgba(255,184,77,.55), transparent 46%), linear-gradient(160deg,#ff8fab,#c14b6e);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🏰"}
+  #gate .lock::after{content:" 🍩"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -270,7 +270,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🏰</div>
+<div class="moon">🍩</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -283,10 +283,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">👸</span><span class="capi-mochi">🐉</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧁</span><span class="capi-mochi">🍓</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres la princesa de mi cuento favorito 👸💕</p>
-    <p class="hint" id="capiHint">Toca a la princesa 🫶</p>
+    <p class="sub">Eres más dulce que todos los postres del mundo 🧁💕</p>
+    <p class="hint" id="capiHint">Toca el cupcake 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -346,48 +346,6 @@
   </div>
 </section>
 
-<!-- ===== VENCE AL DRAGÓN ===== -->
-<section id="dragon">
-  <div class="wrap">
-    <h2>Vence al dragón 🐉</h2>
-    <p class="lead">Pulsa cuando la marca esté en la zona dorada para atacar ⚔️</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🐉 Vida <b id="drHp">5</b></span><span>🏆 <b id="drBest">0</b></span></div>
-      <div class="doma-lion" id="drFace">🐉 vs 👸</div>
-      <div class="doma-bar" id="drBar"><div class="doma-zone" id="drZone"></div><div class="doma-marker" id="drMarker"></div></div>
-      <button class="piropo-btn" id="drBtn" style="margin-top:14px">Empezar 🎮</button>
-      <p class="piropo-txt" id="drMsg" style="min-height:1.4em;margin-top:12px"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== MEMORIA MÁGICA ===== -->
-<section id="magicmem">
-  <div class="wrap">
-    <h2>Memoria de objetos mágicos 💍</h2>
-    <p class="lead">Encuentra las parejas ✨</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="mem-grid" id="mmGrid"></div>
-      <p class="piropo-txt" id="mmMsg" style="min-height:1.4em;margin:12px 0"></p>
-      <button class="piropo-btn" id="mmBtn">Nueva partida 🔁</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ENCUENTRA LA CORONA ===== -->
-<section id="crown">
-  <div class="wrap">
-    <h2>Encuentra la corona 👑</h2>
-    <p class="lead">Sigue la copa donde está la corona 👀</p>
-    <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>👑 Aciertos <b id="cwScore">0</b></span></div>
-      <div class="trile" id="cwBox"></div>
-      <button class="piropo-btn" id="cwBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="cwMsg" style="min-height:1.4em;margin-top:10px"></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -435,24 +393,24 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Estás de cuento, princesa 👸",
-  "Eres más guapa que cualquier hada madrina ✨",
-  "Me tienes hechizado, mi reina 👑",
-  "Guapa de la cabeza a la corona 💖",
-  "Eres mi 'felices para siempre' 💍",
-  "Contigo cabalgaría hasta el fin del reino 🐴",
-  "Preciosa como un castillo al atardecer 🏰",
-  "Eres la joya de mi corona 💎",
-  "Me robas el corazón sin necesidad de magia 🌹",
-  "Guapísima, mi princesa 👸",
-  "Contigo todo brilla como el oro 🌟",
-  "Eres mi cuento favorito, sin duda 📖"
+  "Eres más dulce que un bombón 🍫",
+  "Guapa como un pastel recién hecho 🍰",
+  "Me endulzas hasta el peor día 🧁",
+  "Eres el azúcar de mi café ☕💕",
+  "Tan rica que me la comería a besos 😋",
+  "Eres mi capricho favorito 🍩",
+  "Preciosa como una fresa con nata 🍓",
+  "Contigo la vida sabe a caramelo 🍬",
+  "Eres pura miel, mi amor 🍯",
+  "Guapísima, mi merengue 🥧",
+  "Más dulce que todos los postres juntos 🍭",
+  "Eres el glaseado de mi cupcake 🧁💖"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi héroe 🦸‍♀️","¡POW! 💥","Preciosa ✨","Mi rayo ⚡",
-  "Ricura 😋","Mi mundo 🌍","Hermosa 💫","Mi amor 🥰","Imparable 🔥","Mía 💕"
+  "Dulce 🍬","Mi bombón 🍫","¡Ñam! 😋","Ricura 🧁","Mi caramelo 🍭",
+  "Bonita 🍓","Mi tarta 🍰","Hermosa 💫","Mi amor 🥰","Golosa 🍩","Mía 💕"
 ];
 
 /* ---- DESEOS (al tocar la estrella fugaz) ---- */
@@ -491,9 +449,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Quién es mi princesa? 👑";
+const PREGUNTA = "¿Quién es mi dulce favorito? 🧁";
 const RESPUESTAS = ["paula"];
-const PISTA = "Pista: la princesa de mi cuento… Paula 👸💕";
+const PISTA = "Pista: más dulce que cualquier postre… Paula 🍩💕";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -503,27 +461,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres la princesa de mi cuento favorito 👸",
-  "Contigo vivo un 'felices para siempre' cada día ✨",
-  "Cruzaría cualquier reino por verte 🏰",
-  "Eres mi final feliz hecho realidad 💖",
-  "Ni el dragón más fiero me alejaría de ti 🐉",
-  "Contigo hasta lo normal es de cuento 📖",
-  "Eres la magia que le faltaba a mi historia ✨",
-  "Mi corazón te nombró su reina 👑",
-  "Contigo cualquier castillo es un hogar 🏰",
-  "Eres mi estrella de los deseos 🌟",
-  "Te elegiría en cualquier cuento, siempre 📚",
-  "Eres más bonita que cualquier hada 🧚‍♀️",
-  "Contigo el 'érase una vez' nunca termina 💕",
+  "Eres el postre más dulce de mi vida 🍰",
+  "Contigo cada día sabe a caramelo 🍬",
+  "Eres la guinda de mi pastel 🍒",
+  "Endulzas hasta mis peores días 🧁",
+  "Eres mi chocolate favorito, sin discusión 🍫",
+  "Contigo la vida es dulce de verdad 🍩",
+  "Eres el azúcar que le faltaba a mi mundo ✨",
+  "Mi corazón te eligió como su capricho 🍭",
+  "Contigo hasta lo simple sabe a gloria 🥐",
+  "Eres mi antojo de cada mañana ☕💕",
+  "Te elegiría entre todos los dulces, siempre 🍪",
+  "Eres más rica que la nata con fresas 🍓",
+  "Contigo la dulzura nunca se acaba 💕",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Mi reino entero es tuyo, princesa 👑"
+  "Mi pastelería entera es tuya, mi amor 🧁"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Mi princesa 👸","Guapísima 😍","Mi reina 👑",
-  "Eres mágica ✨","Contigo todo 🏰","Mi rosa 🌹","Mi hogar 🏡❤️"
+  "Te quiero 💕","Mi bombón 🍫","Guapísima 😍","Mi tarta 🍰",
+  "Eres dulce ✨","Contigo todo 🧁","Mi fresita 🍓","Mi hogar 🏡❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -555,7 +513,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🏰','👸','🐉','✨','👑','🦄','🌹','💖','🧚‍♀️','⭐'];
+  const c=document.getElementById('hearts'), emo=['🍩','🧁','🍰','🍭','🍫','🍪','🍬','🥐','🍓','✨'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -570,7 +528,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['✨','👑','🌹','💖','⭐'];
+  const conf=['✨','🧁','🍓','💖','🍩'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -623,14 +581,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Mua 😘','Mi princesa favorita 👸💕','Eres pura magia ✨','Te quiero un montón 👑❤️'];
+const CAPI_MSGS=['Mua 😘','Mi bombón favorito 🍫💕','Eres pura azúcar ✨','Te quiero un montón 🧁❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['👑','✨','🌹','💖','💕','❤️','🩷','⭐'];
+  const emo=['🧁','✨','🍓','💖','💕','❤️','🩷','🍩'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -640,7 +598,7 @@ function confetti(){
     setTimeout(()=>p.remove(),3200);
   }
 }
-function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
+function welcome(){confetti();toast('¡Hola, mi amor! 🧁💕');}
 
 /* ================= CUENTA ATRÁS ================= */
 (function(){
@@ -678,79 +636,6 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🦫💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
-})();
-
-/* ================= VENCE AL DRAGÓN ================= */
-(function(){
-  const zone=document.getElementById('drZone'),marker=document.getElementById('drMarker'),btn=document.getElementById('drBtn');
-  const face=document.getElementById('drFace'),msg=document.getElementById('drMsg'),hpEl=document.getElementById('drHp'),bestEl=document.getElementById('drBest');
-  let pos=0,dir=1,speed=1.6,zoneW=34,running=false,hp=5,dragons=0,curLvl=1,best=+(localStorage.getItem('dragonBest')||0),raf;
-  bestEl.textContent=best;
-  function setZone(){zone.style.left=((100-zoneW)/2)+'%';zone.style.width=zoneW+'%';}
-  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
-  function newDragon(){curLvl=dragons+1;hp=4+curLvl*2;hpEl.textContent=hp;zoneW=Math.max(9,38-curLvl*4);speed=2+curLvl*0.6;setZone();face.textContent='🐉 Nivel '+curLvl+' vs 👸';}
-  function begin(){dragons=0;newDragon();running=true;msg.textContent='';btn.textContent='¡Ataca! ⚔️';cancelAnimationFrame(raf);loop();}
-  function attempt(){
-    if(!running){begin();return;}
-    const zs=(100-zoneW)/2,ze=zs+zoneW;
-    if(pos>=zs&&pos<=ze){
-      hp--;hpEl.textContent=Math.max(0,hp);
-      if(hp<=0){dragons++;if(dragons>best){best=dragons;localStorage.setItem('dragonBest',best);bestEl.textContent=best;}
-        face.textContent='🐉💀 ¡Vencido!';msg.textContent=`¡${dragons} dragón(es) vencido(s)! 👑`;confetti();setTimeout(()=>{if(running)newDragon();},700);}
-      else{face.textContent='💥 ¡Golpe!';setTimeout(()=>{if(running&&hp>0)face.textContent='🐉 Nivel '+curLvl+' vs 👸';},200);zoneW=Math.max(8,zoneW-2.5);speed+=0.35;setZone();}
-    }else{
-      running=false;cancelAnimationFrame(raf);face.textContent='🔥 El dragón te achicharró 😵';
-      msg.textContent=`¡${dragons} dragones vencidos! `+(dragons>=5?'¡Heroína legendaria! 🏆':dragons>=2?'¡Muy bien! 🥰':'¡Otra vez! 🐉');
-      btn.textContent='Reintentar 🎮';
-    }
-  }
-  btn.onclick=attempt;
-})();
-
-/* ================= MEMORIA DE OBJETOS MÁGICOS ================= */
-(function(){
-  const grid=document.getElementById('mmGrid'),msg=document.getElementById('mmMsg'),btn=document.getElementById('mmBtn');
-  const ITEMS=['👑','🪄','🌹','💎','🏰','🦄'];
-  let first=null,lock=false,matched=0,moves=0;
-  function nueva(){
-    grid.innerHTML='';msg.textContent='';first=null;lock=false;matched=0;moves=0;
-    const cards=[...ITEMS,...ITEMS].sort(()=>Math.random()-0.5);
-    cards.forEach(em=>{const c=document.createElement('div');c.className='mem-card';c.dataset.em=em;c.textContent='';c.onclick=()=>flip(c);grid.appendChild(c);});
-  }
-  function flip(c){
-    if(lock||c.classList.contains('flipped')||c.classList.contains('matched'))return;
-    c.classList.add('flipped');c.textContent=c.dataset.em;
-    if(!first){first=c;return;}moves++;
-    if(first.dataset.em===c.dataset.em){first.classList.add('matched');c.classList.add('matched');first=null;matched++;
-      if(matched===ITEMS.length){msg.textContent=`¡Completado en ${moves} intentos! 🏆💕`;confetti();}}
-    else{lock=true;const a=first,b=c;first=null;setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');a.textContent='';b.textContent='';lock=false;},700);}
-  }
-  btn.onclick=nueva;nueva();
-})();
-
-/* ================= ENCUENTRA LA CORONA ================= */
-(function(){
-  const cont=document.getElementById('cwBox'),btn=document.getElementById('cwBtn'),msg=document.getElementById('cwMsg'),scoreEl=document.getElementById('cwScore');
-  const POSX=[10,110,210];
-  let boxes=[],catIdx=0,lock=true,wins=0;
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  function build(){cont.innerHTML='';boxes=[];for(let i=0;i<3;i++){const b=document.createElement('div');b.className='trile-cat';b.textContent='🥤';b.dataset.pos=i;b.style.left=POSX[i]+'px';b.onclick=()=>pick(b);cont.appendChild(b);boxes.push(b);}}
-  async function play(){
-    build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
-    catIdx=Math.floor(Math.random()*3);const cb=boxes[catIdx];cb.textContent='👑';cb.style.transform='translateY(-16px)';
-    await sleep(1100);cb.textContent='🥤';cb.style.transform='';msg.textContent='¡Mezclando! 🔀';
-    for(let k=0;k<14;k++){let a=Math.floor(Math.random()*3),b=Math.floor(Math.random()*3);while(b===a)b=Math.floor(Math.random()*3);
-      const pa=+boxes[a].dataset.pos,pb=+boxes[b].dataset.pos;boxes[a].dataset.pos=pb;boxes[b].dataset.pos=pa;
-      boxes[a].style.left=POSX[pb]+'px';boxes[b].style.left=POSX[pa]+'px';await sleep(250);}
-    lock=false;msg.textContent='¿Dónde está la corona? 👑';btn.textContent='Otra vez 🎮';
-  }
-  function pick(b){
-    if(lock)return;lock=true;const win=boxes.indexOf(b)===catIdx;
-    b.textContent=win?'👑':'🥤';if(!win)boxes[catIdx].textContent='👑';
-    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Encontraste la corona 👑💕';confetti();}
-    else msg.textContent='¡Casi! Ahí estaba la corona 👑';
-  }
-  btn.onclick=play;build();
 })();
 
 /* ================= LIGHTBOX ================= */
