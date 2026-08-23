@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- v 20260822183507 -->
+<!-- v 20260823160911 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🍩🧁</title>
+<title>Para ti, mi amor 🐠🐚</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#ff8fab; --pink-deep:#f0609a; --rose:#ffe0ec; --cream:#fff6f0;
-    --ink:#6a3a2a; --soft:#b07a6a; --card:#ffffff; --gold:#ffb84d;
-    --shadow:0 12px 40px rgba(240,96,154,.2);
+    --pink:#22b8c4; --pink-deep:#0e8aa8; --rose:#d5f2f4; --cream:#eefbfc;
+    --ink:#0d3b4a; --soft:#4a8592; --card:#ffffff; --gold:#ffcf5c;
+    --shadow:0 12px 40px rgba(14,138,168,.2);
   }
   html[data-theme="dark"]{
-    --cream:#241417; --card:#33201f; --rose:#4a2630; --ink:#ffe6ea; --soft:#e0a89a;
+    --cream:#06202b; --card:#0c3040; --rose:#0f3d4e; --ink:#d6f4fa; --soft:#7fbccb;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(255,184,77,.4), transparent 55%),
-      linear-gradient(180deg,#fff0f3 0%,#ffe4ec 45%,#ffe9dd 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(255,207,92,.35), transparent 55%),
+      linear-gradient(180deg,#bff0f6 0%,#7fd8e6 45%,#2a9fc0 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(255,184,77,.22), transparent 55%),
-      linear-gradient(180deg,#241417 0%,#33201f 60%,#402028 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(255,207,92,.18), transparent 55%),
+      linear-gradient(180deg,#06202b 0%,#0a3040 60%,#0e4055 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -220,15 +220,8 @@
   .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
   @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
-  /* Decora el cupcake */
-  .cp-stage{position:relative;width:200px;height:200px;margin:6px auto 0;cursor:pointer;user-select:none;display:grid;place-items:center}
-  .cp-cup{font-size:7rem;line-height:1;transition:transform .15s}
-  .cp-stage:active .cp-cup{transform:scale(.94)}
-  .cp-layer{position:absolute;inset:0;pointer-events:none}
-  .cp-bit{position:absolute;font-size:1.5rem;transform:translate(-50%,-50%) scale(0);animation:tpop .25s forwards}
-
-  /* Torre de tartas */
-  .tw-piece{position:absolute;height:34px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:linear-gradient(135deg,var(--pink),var(--gold));border-radius:8px;box-shadow:0 3px 8px rgba(240,96,154,.35);overflow:hidden;white-space:nowrap}
+  /* Alimenta a los peces */
+  .fish{position:absolute;font-size:2.6rem;cursor:pointer;user-select:none;transform:scale(0);animation:tpop .2s forwards}
 
   /* Busca la perla */
   .shells{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -256,9 +249,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(255,184,77,.55), transparent 46%), linear-gradient(160deg,#ff8fab,#c14b6e);
+    background:radial-gradient(circle at 50% 10%, rgba(255,207,92,.45), transparent 46%), linear-gradient(160deg,#22b8c4,#0a4f6e);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🍩"}
+  #gate .lock::after{content:" 🐚"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -280,7 +273,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🍩</div>
+<div class="moon">🐚</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -293,10 +286,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧁</span><span class="capi-mochi">🍓</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧜‍♀️</span><span class="capi-mochi">🐠</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres más dulce que todos los postres del mundo 🧁💕</p>
-    <p class="hint" id="capiHint">Toca el cupcake 🫶</p>
+    <p class="sub">Eres mi sirena favorita de todo el océano 🧜‍♀️💕</p>
+    <p class="hint" id="capiHint">Toca a la sirena 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -356,32 +349,29 @@
   </div>
 </section>
 
-<!-- ===== DECORA EL CUPCAKE ===== -->
-<section id="cupcake">
+<!-- ===== ALIMENTA A LOS PECES ===== -->
+<section id="peces">
   <div class="wrap">
-    <h2>Decora el cupcake 🧁</h2>
-    <p class="lead">Toca para añadir glaseado, chispas y una fresa 🍓</p>
+    <h2>Alimenta a los peces 🐠</h2>
+    <p class="lead">Toca los peces que aparecen antes de que se vayan 🫧</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🧁 Toques <b id="cpCount">0</b>/12</span></div>
-      <div class="cp-stage" id="cpStage" title="¡Tócame!">
-        <div class="cp-cup">🧁</div>
-        <div class="cp-layer" id="cpLayer"></div>
-      </div>
-      <p class="piropo-txt" id="cpMsg" style="min-height:1.4em;margin-top:12px">Toca el cupcake 👆</p>
-      <button class="piropo-btn" id="cpBtn" style="margin-top:6px">Empezar de nuevo 🔁</button>
+      <div class="game-hud"><span>🐠 Comidos <b id="fzScore">0</b></span><span>⏱️ <b id="fzTime">30</b></span><span>🏆 <b id="fzBest">0</b></span></div>
+      <div class="game-board" id="fzBoard"><div class="game-start" id="fzStart"><button class="piropo-btn">Empezar 🎮</button></div></div>
+      <p class="piropo-txt" id="fzMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
 
-<!-- ===== TORRE DE TARTAS ===== -->
-<section id="torre">
+<!-- ===== ENCUENTRA LA PERLA ===== -->
+<section id="perla">
   <div class="wrap">
-    <h2>Torre de tartas 🎂</h2>
-    <p class="lead">Pulsa para soltar cada piso… ¡centra bien para no caer! 🍰</p>
+    <h2>Encuentra la perla 🦪</h2>
+    <p class="lead">¿En qué concha se esconde la perla? 👀</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🎂 Altura <b id="twScore">0</b></span><span>🏆 <b id="twBest">0</b></span></div>
-      <div class="game-board" id="twBoard" style="height:340px;cursor:pointer"></div>
-      <p class="piropo-txt" id="twMsg" style="min-height:1.4em;margin-top:12px">Pulsa para empezar 🎮</p>
+      <div class="game-hud"><span>🦪 Aciertos <b id="plScore">0</b></span></div>
+      <div class="trile" id="plBox"></div>
+      <button class="piropo-btn" id="plBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="plMsg" style="min-height:1.4em;margin-top:10px"></p>
     </div>
   </div>
 </section>
@@ -433,24 +423,24 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres más dulce que un bombón 🍫",
-  "Guapa como un pastel recién hecho 🍰",
-  "Me endulzas hasta el peor día 🧁",
-  "Eres el azúcar de mi café ☕💕",
-  "Tan rica que me la comería a besos 😋",
-  "Eres mi capricho favorito 🍩",
-  "Preciosa como una fresa con nata 🍓",
-  "Contigo la vida sabe a caramelo 🍬",
-  "Eres pura miel, mi amor 🍯",
-  "Guapísima, mi merengue 🥧",
-  "Más dulce que todos los postres juntos 🍭",
-  "Eres el glaseado de mi cupcake 🧁💖"
+  "Eres la sirena más guapa del mar 🧜‍♀️",
+  "Me tienes nadando en tu mirada 🌊",
+  "Brillas más que cualquier perla 🦪",
+  "Contigo me sumergiría hasta el fondo 🤿",
+  "Eres mi ola favorita, siempre 🌊",
+  "Preciosa como el mar al amanecer 🌅",
+  "Me robas el aire como el océano 🫧",
+  "Eres el tesoro de mi barco 🏴‍☠️💙",
+  "Guapa de aquí hasta el fondo del mar 🐠",
+  "Contigo cualquier día es de playa ☀️",
+  "Eres mi estrella de mar favorita ⭐",
+  "Más bonita que todo el arrecife 🐚💖"
 ];
 
-/* ---- PIROPOS CORTOS (los que sueltan los marcianitos del juego) ---- */
+/* ---- PIROPOS CORTOS (los que sueltan los pececitos del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Dulce 🍬","Mi bombón 🍫","¡Ñam! 😋","Ricura 🧁","Mi caramelo 🍭",
-  "Bonita 🍓","Mi tarta 🍰","Hermosa 💫","Mi amor 🥰","Golosa 🍩","Mía 💕"
+  "Guapa 😍","Mi sirena 🧜‍♀️","¡Splash! 🌊","Preciosa 🫧","Mi perla 🦪",
+  "Bonita 🐠","Mi tesoro 💙","Hermosa 💫","Mi amor 🥰","Brillante ⭐","Mía 💕"
 ];
 
 /* ---- DESEOS (al tocar la estrella fugaz) ---- */
@@ -489,9 +479,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "¿Qué vamos a ser? 💍";
-const RESPUESTAS = ["marido y mujer","mujer y marido","marido y esposa","esposos","marido y mujer para siempre"];
-const PISTA = "Pista: para toda la vida… marido y mujer 💍💕";
+const PREGUNTA = "Paula es… 🧜‍♀️";
+const RESPUESTAS = ["una sirena","sirena","mi sirena","una sirenita","sirenita"];
+const PISTA = "Pista: la más guapa del océano… una sirena 🧜‍♀️💕";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -501,27 +491,27 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres el postre más dulce de mi vida 🍰",
-  "Contigo cada día sabe a caramelo 🍬",
-  "Eres la guinda de mi pastel 🍒",
-  "Endulzas hasta mis peores días 🧁",
-  "Eres mi chocolate favorito, sin discusión 🍫",
-  "Contigo la vida es dulce de verdad 🍩",
-  "Eres el azúcar que le faltaba a mi mundo ✨",
-  "Mi corazón te eligió como su capricho 🍭",
-  "Contigo hasta lo simple sabe a gloria 🥐",
-  "Eres mi antojo de cada mañana ☕💕",
-  "Te elegiría entre todos los dulces, siempre 🍪",
-  "Eres más rica que la nata con fresas 🍓",
-  "Contigo la dulzura nunca se acaba 💕",
+  "Eres mi sirena favorita de todo el mar 🧜‍♀️",
+  "Contigo navego feliz cada día ⛵",
+  "Eres la perla más bonita del océano 🦪",
+  "Me sumergería mil veces por tu sonrisa 🤿",
+  "Eres la calma de mi mar cuando hay tormenta 🌊",
+  "Contigo hasta el fondo del mar es bonito 🐠",
+  "Eres la marea que siempre vuelve a mí 🌙🌊",
+  "Mi corazón te eligió como su tesoro 💙",
+  "Contigo cualquier orilla es mi hogar 🏝️",
+  "Eres mi estrella de mar de la suerte ⭐",
+  "Te elegiría entre todo el océano, siempre 🐚",
+  "Eres más bonita que un arrecife de coral 🪸",
+  "Contigo el amor no tiene fondo 🌊💕",
   "Eres mi hoy bonito y mi mañana seguro.",
-  "Mi pastelería entera es tuya, mi amor 🧁"
+  "Todo mi mar es tuyo, mi sirena 🧜‍♀️"
 ];
 
-// Mensajitos que aparecen al tocar un corazón del fondo 💕
+// Mensajitos que aparecen al tocar un pez del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Mi bombón 🍫","Guapísima 😍","Mi tarta 🍰",
-  "Eres dulce ✨","Contigo todo 🧁","Mi fresita 🍓","Mi hogar 🏡❤️"
+  "Te quiero 💕","Mi sirena 🧜‍♀️","Guapísima 😍","Mi perla 🦪",
+  "Eres mi mar 🌊","Contigo todo 🐠","Mi tesoro 💙","Mi hogar 🏝️❤️"
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -553,7 +543,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🍩','🧁','🍰','🍭','🍫','🍪','🍬','🥐','🍓','✨'];
+  const c=document.getElementById('hearts'), emo=['🐠','🐟','🐡','🐙','🐚','🌊','🫧','🐬','⭐','🐳'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -568,7 +558,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['✨','🧁','🍓','💖','🍩'];
+  const conf=['🫧','🐠','🐚','💙','⭐'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -621,14 +611,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Mua 😘','Mi bombón favorito 🍫💕','Eres pura azúcar ✨','Te quiero un montón 🧁❤️'];
+const CAPI_MSGS=['Mua 😘','Mi sirena favorita 🧜‍♀️💕','Contigo nado feliz 🌊','Te quiero un océano 🐳❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🧁','✨','🍓','💖','💕','❤️','🩷','🍩'];
+  const emo=['🐠','🫧','🐚','💙','💕','❤️','🩵','⭐'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -638,7 +628,7 @@ function confetti(){
     setTimeout(()=>p.remove(),3200);
   }
 }
-function welcome(){confetti();toast('¡Hola, mi amor! 🧁💕');}
+function welcome(){confetti();toast('¡Hola, mi amor! 🧜‍♀️💕');}
 
 /* ================= CUENTA ATRÁS ================= */
 (function(){
@@ -678,97 +668,79 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🧁💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= DECORA EL CUPCAKE ================= */
+/* ================= ALIMENTA A LOS PECES ================= */
 (function(){
-  const stage=document.getElementById('cpStage'),layer=document.getElementById('cpLayer'),
-        countEl=document.getElementById('cpCount'),msg=document.getElementById('cpMsg'),btn=document.getElementById('cpBtn');
-  if(!stage) return;
-  const MAX=12, DECO=['🍥','🌸','✨','🍬','🍫','⭐','💗','🟣','🟠'];
-  let n=0, done=false;
-  function reset(){n=0;done=false;layer.innerHTML='';countEl.textContent=0;msg.textContent='Toca el cupcake 👆';}
-  function addBit(x,y){
-    const b=document.createElement('span');b.className='cp-bit';
-    if(n>=MAX-1){b.textContent='🍓';b.style.fontSize='2rem';x=50;y=16;}
-    else b.textContent=DECO[Math.floor(Math.random()*DECO.length)];
-    b.style.left=x+'%';b.style.top=y+'%';layer.appendChild(b);
-  }
-  function tap(e){
-    if(done)return;
-    const r=stage.getBoundingClientRect();
-    const cx=e.touches?e.touches[0].clientX:e.clientX, cy=e.touches?e.touches[0].clientY:e.clientY;
-    let x=((cx-r.left)/r.width)*100, y=((cy-r.top)/r.height)*100;
-    x=Math.max(12,Math.min(88,x)); y=Math.max(10,Math.min(70,y));
-    addBit(x,y);n++;countEl.textContent=n;
-    if(n<MAX) msg.textContent=['¡Qué rico va quedando! 😋','Un poquito más… 🧁','¡Precioso! ✨'][n%3];
-    if(n>=MAX){done=true;msg.textContent='¡Listo! '+PIROPOS[Math.floor(Math.random()*PIROPOS.length)];confetti();}
-  }
-  stage.addEventListener('click',tap);
-  btn.onclick=reset;
-  reset();
-})();
-
-/* ================= TORRE DE TARTAS ================= */
-(function(){
-  const board=document.getElementById('twBoard'),msg=document.getElementById('twMsg'),
-        scoreEl=document.getElementById('twScore'),bestEl=document.getElementById('twBest');
+  const board=document.getElementById('fzBoard'),startEl=document.getElementById('fzStart'),
+        scoreEl=document.getElementById('fzScore'),timeEl=document.getElementById('fzTime'),
+        bestEl=document.getElementById('fzBest'),msg=document.getElementById('fzMsg');
   if(!board) return;
-  const EMO=['🎂','🍰','🧁','🥧','🍮'];
-  const PH=34; // piece height px
-  let W=0,H=0,pieceW=120,pos=0,dir=1,speed=2.2,cur=null,curBottom=0,curLeft=0,
-      score=0,best=+(localStorage.getItem('torreBest')||0),running=false,over=false,raf,stack=[];
+  const FISH=['🐠','🐟','🐡','🐙','🦑','🦀','🐬'];
+  let score=0,time=30,best=+(localStorage.getItem('pecesBest')||0),playing=false,spawnT,tickT;
   bestEl.textContent=best;
-  function size(){W=board.clientWidth;H=board.clientHeight;}
-  function makePiece(bottom,left,w){
-    const p=document.createElement('div');p.className='tw-piece';
-    p.style.width=w+'px';p.style.bottom=bottom+'px';p.style.left=left+'px';
-    p.textContent=EMO[Math.floor(Math.random()*EMO.length)];
-    board.appendChild(p);return p;
+  function spawn(){
+    if(!playing)return;
+    const f=document.createElement('div');f.className='fish';
+    f.textContent=FISH[Math.floor(Math.random()*FISH.length)];
+    const bw=board.clientWidth,bh=board.clientHeight;
+    f.style.left=(10+Math.random()*(bw-70))+'px';
+    f.style.top=(10+Math.random()*(bh-70))+'px';
+    let gone=setTimeout(()=>{f.remove();},1100);
+    f.addEventListener('click',()=>{
+      clearTimeout(gone);
+      score++;scoreEl.textContent=score;
+      const fp=document.createElement('div');fp.className='float-piropo';
+      fp.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
+      fp.style.left=f.style.left;fp.style.top=f.style.top;board.appendChild(fp);
+      setTimeout(()=>fp.remove(),1000);
+      f.remove();
+    });
+    board.appendChild(f);
+    spawnT=setTimeout(spawn,Math.max(380,760-score*12));
   }
-  function newPiece(){
-    curBottom=(stack.length)*PH;
-    cur=makePiece(curBottom,0,pieceW);
-    pos=0;dir=1;speed=2.2+Math.min(3,stack.length*0.15);
-    running=true;loop();
+  function tick(){
+    if(!playing)return;
+    time--;timeEl.textContent=time;
+    if(time<=0){end();return;}
+    tickT=setTimeout(tick,1000);
   }
-  function loop(){
-    pos+=dir*speed;
-    const max=W-pieceW;
-    if(pos<=0){pos=0;dir=1;} if(pos>=max){pos=max;dir=-1;}
-    curLeft=pos;cur.style.left=pos+'px';
-    if(running)raf=requestAnimationFrame(loop);
-  }
-  function drop(){
-    if(over){start();return;}
-    if(!running){newPiece();return;}
-    running=false;cancelAnimationFrame(raf);
-    if(stack.length===0){ // base
-      stack.push({left:curLeft,w:pieceW});score++;scoreEl.textContent=score;msg.textContent='¡Bien! Sigue 🍰';newPiece();return;
-    }
-    const prev=stack[stack.length-1];
-    const overlapL=Math.max(curLeft,prev.left), overlapR=Math.min(curLeft+pieceW,prev.left+prev.w);
-    const overlap=overlapR-overlapL;
-    if(overlap<=6){ // fell
-      over=true;cur.style.transition='top .6s ease-in';cur.style.top=H+'px';
-      if(score>best){best=score;localStorage.setItem('torreBest',best);bestEl.textContent=best;}
-      msg.textContent='¡Se cayó! 🫠 Altura: '+score+'. '+(score>=6?'¡Espectacular! 🏆':score>=3?'¡Muy bien! 🥰':'Pulsa para reintentar 🎮');
-      return;
-    }
-    // trim to overlap
-    pieceW=overlap;curLeft=overlapL;
-    cur.style.width=pieceW+'px';cur.style.left=curLeft+'px';
-    stack.push({left:curLeft,w:pieceW});
-    score++;scoreEl.textContent=score;
-    if(score%3===0){msg.textContent=PIROPOS[Math.floor(Math.random()*PIROPOS.length)];confetti();}
-    else msg.textContent=['¡Arriba! 🎂','¡Qué torre! 🍰','¡Sigue así! ✨'][score%3];
-    newPiece();
+  function end(){
+    playing=false;clearTimeout(spawnT);clearTimeout(tickT);
+    board.querySelectorAll('.fish').forEach(f=>f.remove());
+    if(score>best){best=score;localStorage.setItem('pecesBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Alimentaste ${score} peces! `+(score>=20?'¡Sirena experta! 🏆':score>=10?'¡Muy bien! 🥰':'¡Otra vez! 🐠');
+    startEl.style.display='grid';startEl.querySelector('button').textContent='Jugar otra vez 🔁';
   }
   function start(){
-    size();board.innerHTML='';stack=[];score=0;over=false;pieceW=Math.min(120,W*0.4);
-    scoreEl.textContent=0;msg.textContent='¡Pulsa para soltar! 👆';newPiece();
+    score=0;time=30;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡Toca los peces! 🫧';
+    startEl.style.display='none';spawn();tick();
   }
-  board.addEventListener('click',drop);
-  window.addEventListener('resize',()=>{if(!running&&!over)size();});
-  start();
+  startEl.querySelector('button').onclick=start;
+})();
+
+/* ================= ENCUENTRA LA PERLA ================= */
+(function(){
+  const cont=document.getElementById('plBox'),btn=document.getElementById('plBtn'),msg=document.getElementById('plMsg'),scoreEl=document.getElementById('plScore');
+  if(!cont) return;
+  const POSX=[10,110,210];
+  let boxes=[],pearlIdx=0,lock=true,wins=0;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  function build(){cont.innerHTML='';boxes=[];for(let i=0;i<3;i++){const b=document.createElement('div');b.className='trile-cat';b.textContent='🐚';b.dataset.pos=i;b.style.left=POSX[i]+'px';b.onclick=()=>pick(b);cont.appendChild(b);boxes.push(b);}}
+  async function play(){
+    build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
+    pearlIdx=Math.floor(Math.random()*3);const pb=boxes[pearlIdx];pb.textContent='🦪';pb.style.transform='translateY(-16px)';
+    await sleep(1100);pb.textContent='🐚';pb.style.transform='';msg.textContent='¡Mezclando! 🔀';
+    for(let k=0;k<14;k++){let a=Math.floor(Math.random()*3),b=Math.floor(Math.random()*3);while(b===a)b=Math.floor(Math.random()*3);
+      const pa=+boxes[a].dataset.pos,pbp=+boxes[b].dataset.pos;boxes[a].dataset.pos=pbp;boxes[b].dataset.pos=pa;
+      boxes[a].style.left=POSX[pbp]+'px';boxes[b].style.left=POSX[pa]+'px';await sleep(250);}
+    lock=false;msg.textContent='¿Dónde está la perla? 🦪';btn.textContent='Otra vez 🎮';
+  }
+  function pick(b){
+    if(lock)return;lock=true;const win=boxes.indexOf(b)===pearlIdx;
+    b.textContent=win?'🦪':'🐚';if(!win)boxes[pearlIdx].textContent='🦪';
+    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Encontraste la perla 🦪💕';confetti();}
+    else msg.textContent='¡Casi! Ahí estaba la perla 🦪';
+  }
+  btn.onclick=play;build();
 })();
 
 /* ================= LIGHTBOX ================= */
