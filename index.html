@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v 20260828132608 -->
+<!-- v 20260828134505 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -220,6 +220,19 @@
   .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
   @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
+  /* Prepara el café */
+  .cf-cup{position:relative;width:120px;height:120px;margin:8px auto;border-radius:0 0 40px 40px;border:4px solid var(--pink-deep);overflow:hidden;display:grid;place-items:center;background:var(--card)}
+  .cf-fill{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,#c98a4a,#6a3a20);transition:height .3s}
+  .cf-emoji{position:relative;z-index:2;font-size:2.6rem}
+  .cf-bar{position:relative;height:26px;max-width:340px;margin:12px auto 0;background:var(--rose);border-radius:40px;overflow:hidden}
+  .cf-zone{position:absolute;top:0;bottom:0;background:rgba(90,180,90,.55)}
+  .cf-marker{position:absolute;top:0;bottom:0;width:8px;left:0;background:var(--pink-deep);border-radius:4px}
+
+  /* Sigue el ritmo */
+  .rt-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:340px;margin:6px auto 0}
+  .rt-key{aspect-ratio:1;border:none;border-radius:16px;font-size:1.8rem;cursor:pointer;background:var(--kc);opacity:.55;transition:opacity .12s,transform .12s;box-shadow:0 6px 16px rgba(138,90,46,.3)}
+  .rt-key.lit{opacity:1;transform:scale(1.06)}
+
   /* Busca la perla */
   .shells{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
   .shell{font-size:3.2rem;cursor:pointer;user-select:none;transition:transform .2s;animation:flota 3s ease-in-out infinite}
@@ -346,6 +359,40 @@
   </div>
 </section>
 
+<!-- ===== PREPARA EL CAFÉ PERFECTO ===== -->
+<section id="cafe">
+  <div class="wrap">
+    <h2>Prepara el café perfecto ☕</h2>
+    <p class="lead">Pulsa cuando la barra esté en la zona verde para echar cada ingrediente en su punto ✨</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span id="cfIng">☕ Café</span><span>Punto <b id="cfStep">1</b>/7</span><span>⭐ <b id="cfPerf">0</b></span></div>
+      <div class="cf-cup"><div class="cf-fill" id="cfFill"></div><span class="cf-emoji" id="cfCupEmo">☕</span></div>
+      <div class="cf-bar" id="cfBar"><div class="cf-zone" id="cfZone"></div><div class="cf-marker" id="cfMarker"></div></div>
+      <button class="piropo-btn" id="cfBtn" style="margin-top:14px">Empezar ☕</button>
+      <p class="piropo-txt" id="cfMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGUE EL RITMO ===== -->
+<section id="ritmo">
+  <div class="wrap">
+    <h2>Sigue el ritmo 🎵</h2>
+    <p class="lead">Mira la melodía y repítela tocando las teclas en el mismo orden 🎹</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🎵 Ronda <b id="rtRound">0</b></span><span>🏆 <b id="rtBest">0</b></span></div>
+      <div class="rt-keys" id="rtKeys">
+        <button class="rt-key" data-k="0" style="--kc:#e6a86a">🎵</button>
+        <button class="rt-key" data-k="1" style="--kc:#c98a4a">🎶</button>
+        <button class="rt-key" data-k="2" style="--kc:#a86a3a">🎵</button>
+        <button class="rt-key" data-k="3" style="--kc:#8a5a2e">🎶</button>
+      </div>
+      <button class="piropo-btn" id="rtBtn" style="margin-top:14px">Empezar 🎮</button>
+      <p class="piropo-txt" id="rtMsg" style="min-height:1.4em;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
 <!-- ===== GALERÍA ===== -->
 <section id="photos">
   <div class="wrap">
@@ -449,9 +496,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "Paula es… 🧜‍♀️";
-const RESPUESTAS = ["una sirena","sirena","mi sirena","una sirenita","sirenita"];
-const PISTA = "Pista: la más guapa del océano… una sirena 🧜‍♀️💕";
+const PREGUNTA = "20+20+20=60. ¿Cómo puedes hacer 60 otra vez usando el mismo número 3 veces? 🤔";
+const RESPUESTAS = ["55+5","55+5=60","5+55","5+55=60","55 + 5","55 mas 5"];
+const PISTA = "Piensa un poco más… tú puedes 💗";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -635,6 +682,94 @@ function welcome(){confetti();toast('¡Hola, mi amor! ☕💕');}
             h<20 ? "Buenas tardes, mi amor 🌇" :
                    "Buenas noches, mi amor 🌙";
   document.getElementById('saludo').textContent=s;
+})();
+
+/* ================= PREPARA EL CAFÉ PERFECTO ================= */
+(function(){
+  const bar=document.getElementById('cfBar'),zone=document.getElementById('cfZone'),marker=document.getElementById('cfMarker'),
+        btn=document.getElementById('cfBtn'),msg=document.getElementById('cfMsg'),ingEl=document.getElementById('cfIng'),
+        stepEl=document.getElementById('cfStep'),perfEl=document.getElementById('cfPerf'),
+        fill=document.getElementById('cfFill'),cupEmo=document.getElementById('cfCupEmo');
+  if(!bar) return;
+  const ING=[
+    {n:'☕ Café',e:'☕'},{n:'💧 Agua',e:'💧'},{n:'🥛 Leche',e:'🥛'},{n:'🍬 Azúcar',e:'🍬'},
+    {n:'🍫 Cacao',e:'🍫'},{n:'🌿 Canela',e:'🌿'},{n:'🍦 Nata',e:'🍦'}
+  ];
+  let pos=0,dir=1,speed=1.9,zoneW=26,running=false,step=0,perfect=0,raf;
+  function setZone(){const left=8+Math.random()*(100-zoneW-16);zone.dataset.l=left;zone.style.left=left+'%';zone.style.width=zoneW+'%';}
+  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
+  function nextIng(){
+    ingEl.textContent=ING[step].n;stepEl.textContent=step+1;cupEmo.textContent=ING[step].e;
+    zoneW=Math.max(14,26-step*1.5);speed=1.9+step*0.25;setZone();
+  }
+  function begin(){step=0;perfect=0;perfEl.textContent=0;running=true;msg.textContent='';btn.textContent='¡Echa! 👇';fill.style.height='0%';nextIng();cancelAnimationFrame(raf);loop();}
+  function tap(){
+    if(!running){begin();return;}
+    const zl=+zone.dataset.l, zr=zl+zoneW;
+    const ok = pos>=zl && pos<=zr;
+    if(ok){perfect++;perfEl.textContent=perfect;cupEmo.textContent='✅';}
+    else cupEmo.textContent='💧';
+    step++;fill.style.height=Math.round(step/ING.length*100)+'%';
+    if(step>=ING.length){
+      running=false;cancelAnimationFrame(raf);cupEmo.textContent='☕';
+      const p = perfect>=6?'¡Café de barista! ☕🏆 ':perfect>=4?'¡Muy rico! 😋 ':'¡Servido con amor! 💕 ';
+      msg.textContent=p+PIROPOS[Math.floor(Math.random()*PIROPOS.length)];confetti();
+      btn.textContent='Preparar otro ☕';
+    }else{
+      msg.textContent=ok?'¡En su punto! ⭐':'Casi… sigue 💗';
+      setTimeout(()=>{if(!running)return;cupEmo.textContent=ING[step].e;},180);
+      nextIng();
+    }
+  }
+  btn.onclick=tap;
+})();
+
+/* ================= SIGUE EL RITMO ================= */
+(function(){
+  const keysWrap=document.getElementById('rtKeys'),btn=document.getElementById('rtBtn'),msg=document.getElementById('rtMsg'),
+        roundEl=document.getElementById('rtRound'),bestEl=document.getElementById('rtBest');
+  if(!keysWrap) return;
+  const keys=[...keysWrap.querySelectorAll('.rt-key')];
+  let seq=[],idx=0,round=0,best=+(localStorage.getItem('ritmoBest')||0),playing=false,accepting=false;
+  bestEl.textContent=best;
+  let actx;
+  function beep(k){
+    try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.frequency.value=[330,392,494,587][k];o.type='sine';o.connect(g);g.connect(actx.destination);
+      g.gain.setValueAtTime(.001,actx.currentTime);g.gain.exponentialRampToValueAtTime(.25,actx.currentTime+.02);
+      g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+.32);o.start();o.stop(actx.currentTime+.34);
+    }catch(e){}
+  }
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  function lite(k){const el=keys[k];el.classList.add('lit');beep(k);setTimeout(()=>el.classList.remove('lit'),260);}
+  async function playSeq(){
+    accepting=false;msg.textContent='Mira bien… 👀';
+    await sleep(500);
+    const spd=Math.max(280,560-round*22); // nivel medio: se acelera con las rondas
+    for(const k of seq){lite(k);await sleep(spd);}
+    accepting=true;idx=0;msg.textContent='¡Tu turno! 🎹';
+  }
+  function addRound(){round++;roundEl.textContent=round;seq.push(Math.floor(Math.random()*4));playSeq();}
+  function press(k){
+    if(!accepting)return;lite(k);
+    if(k===seq[idx]){
+      idx++;
+      if(idx===seq.length){
+        accepting=false;
+        if(round>best){best=round;localStorage.setItem('ritmoBest',best);bestEl.textContent=best;}
+        if(round%3===0){msg.textContent=PIROPOS[Math.floor(Math.random()*PIROPOS.length)];confetti();}
+        else msg.textContent='¡Bien! Sigue 🎶';
+        setTimeout(addRound,700);
+      }
+    }else{
+      accepting=false;playing=false;
+      msg.textContent=`¡Uy! Llegaste a la ronda ${round}. `+(round>=8?'¡Oído de músico! 🏆':round>=4?'¡Muy bien! 🥰':'¡Otra vez! 🎵');
+      btn.textContent='Jugar otra vez 🔁';
+    }
+  }
+  keys.forEach((el,k)=>el.addEventListener('click',()=>press(k)));
+  btn.onclick=()=>{if(playing)return;playing=true;seq=[];round=0;msg.textContent='';btn.textContent='Sonando… 🎶';addRound();};
 })();
 
 /* ================= LIGHTBOX ================= */
