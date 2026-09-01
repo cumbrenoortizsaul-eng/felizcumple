@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v 20260901151228 -->
+<!-- v 20260901152335 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -142,11 +142,6 @@
   .gift-msg p{font-size:clamp(1.2rem,4vw,1.6rem);font-family:'Dancing Script',cursive;font-weight:700;color:var(--pink-deep);margin-top:16px}
 
   /* Cuenta atrás */
-  .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .cd .box{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-radius:18px;min-width:82px;padding:16px 10px;box-shadow:0 10px 30px rgba(255,77,121,.35)}
-  .cd .box .n{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:700;line-height:1}
-  .cd .box .l{font-size:.8rem;opacity:.9;margin-top:4px;letter-spacing:.5px}
-  #cdDone{display:none;font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--pink-deep);text-align:center}
 
   /* Toca para una sorpresa */
   #piropo .card{text-align:center;max-width:600px}
@@ -269,22 +264,6 @@
   .app-tab.active{color:var(--pink-deep)}
   .app-tab.active .ic{transform:scale(1.18) translateY(-1px)}
 
-  /* Ábreme cuando… */
-  .open-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;max-width:660px;margin:0 auto}
-  .open-card{background:var(--card);border:2px solid var(--rose);border-radius:20px;padding:20px 14px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,border-color .2s}
-  .open-card:hover{border-color:var(--pink)}
-  .open-card:active{transform:scale(.96)}
-  .open-card .oe{font-size:2.5rem;line-height:1}
-  .open-card .ot{font-family:'Quicksand';font-weight:700;color:var(--ink);margin-top:8px;font-size:.98rem;line-height:1.3}
-  .open-card.opened{opacity:.7}
-  .open-card .odone{font-size:.72rem;color:var(--soft);margin-top:4px}
-  .open-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.55)}
-  .open-modal.show{display:flex}
-  .open-inner{background:var(--card);border-radius:24px;max-width:460px;width:100%;padding:30px 26px;box-shadow:0 20px 60px rgba(0,0,0,.4);text-align:center;animation:scrIn .3s ease}
-  .open-inner .oe{font-size:3.2rem}
-  .open-inner h3{font-family:'Dancing Script',cursive;font-size:1.9rem;color:var(--pink-deep);margin:8px 0 12px}
-  .open-inner .otxt{color:var(--ink);line-height:1.75;font-size:1.04rem}
-  .open-inner .oclose{margin-top:20px}
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
@@ -362,23 +341,6 @@
   </div>
 </section>
 
-<!-- ===== CUENTA ATRÁS ===== -->
-<section id="countdown">
-  <div class="wrap">
-    <h2>Cuenta atrás</h2>
-    <p class="lead">Lo que falta para vernos: el 24 de agosto a las 9:00 🥰</p>
-    <div class="card reveal" style="max-width:560px">
-      <div class="cd" id="cd">
-        <div class="box"><div class="n" id="cdD">0</div><div class="l">DÍAS</div></div>
-        <div class="box"><div class="n" id="cdH">0</div><div class="l">HORAS</div></div>
-        <div class="box"><div class="n" id="cdM">0</div><div class="l">MIN</div></div>
-        <div class="box"><div class="n" id="cdS">0</div><div class="l">SEG</div></div>
-      </div>
-      <div id="cdDone">¡Hoy nos vemos! 🥰💕</div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== TOCA PARA UNA SORPRESA ===== -->
 <section id="piropo">
   <div class="wrap">
@@ -392,17 +354,6 @@
 </section>
 
 </div><!-- /pantalla inicio -->
-
-<!-- ==================== PANTALLA: ÁBREME CUANDO… ==================== -->
-<div class="screen" data-scr="abreme">
-<section id="abreme">
-  <div class="wrap">
-    <h2>Ábreme cuando… 💌</h2>
-    <p class="lead">Cartitas para cada momento. Abre la que necesites 🤍</p>
-    <div class="open-grid reveal" id="openGrid"></div>
-  </div>
-</section>
-</div><!-- /pantalla abreme -->
 
 <!-- ==================== PANTALLA: JUEGOS ==================== -->
 <div class="screen" data-scr="juegos">
@@ -493,20 +444,9 @@
 
 <div id="lb"><span class="x">×</span><img alt=""></div>
 
-<!-- Carta modal de "Ábreme cuando…" -->
-<div class="open-modal" id="openModal">
-  <div class="open-inner">
-    <div class="oe" id="omEmoji">💌</div>
-    <h3 id="omTitle"></h3>
-    <p class="otxt" id="omText"></p>
-    <button class="piropo-btn oclose" id="omClose">Cerrar 🤍</button>
-  </div>
-</div>
-
 <!-- ==================== NAVEGACIÓN (barra inferior) ==================== -->
 <nav class="appnav" id="appnav">
   <button class="app-tab active" data-go="inicio"><span class="ic">🏠</span>Inicio</button>
-  <button class="app-tab" data-go="abreme"><span class="ic">💌</span>Ábreme</button>
   <button class="app-tab" data-go="fotos"><span class="ic">📸</span>Fotos</button>
   <button class="app-tab" data-go="juegos"><span class="ic">🎮</span>Juegos</button>
   <button class="app-tab" data-go="nosotros"><span class="ic">💕</span>Nosotros</button>
@@ -520,7 +460,6 @@ const INICIO = new Date(2026, 6, 30);
 const CUMPLE = {mes:7, dia:30};
 // Fecha de la próxima cita/reencuentro (año, mes 1-12, día, hora, minuto)
 // Fecha para vernos: 24 de agosto a las 9:00 (año, mes 1-12, día, hora, minuto)
-const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
@@ -614,17 +553,6 @@ const MENSAJES = [
   "Eres calentita 🤎","Contigo todo 🍂","Mi rincón 🕯️","Mi hogar 🏠❤️"
 ];
 
-// 💌 Cartitas "Ábreme cuando…"  (edita el texto a tu gusto)
-const CARTAS_ABRIR = [
-  {e:'🥺', when:'me eches de menos', text:'Ey, mi niña. Si estás leyendo esto es que me echas de menos… pues ya somos dos, porque yo te pienso todo el rato, en serio. Cierra los ojos un segundo y hazte a la idea de que te estoy abrazando por detrás, de esos que no te suelto. Aguanta un poquito más, que lo que queda es nada. Te quiero muchísimo. — Tuyo 💕'},
-  {e:'😔', when:'estés triste', text:'Oye, ven aquí. No sé qué ha pasado, pero sé que esto también se va a pasar, te lo prometo. Eres mucho más fuerte de lo que te crees, y por si acaso, aquí estoy yo para lo que necesites, a la hora que sea. Llámame, escríbeme, lo que quieras. No estás sola, mi vida. Un beso enorme 🤍'},
-  {e:'😂', when:'quieras reír', text:'Acuérdate de la última tontería que hicimos y que nos entró la risa floja… yo me sigo riendo solo, te lo juro. Contigo hasta las chorradas son las mejores del mundo. Anda, ríete un poco, que estás más guapa cuando te ríes 😜'},
-  {e:'🌙', when:'no puedas dormir', text:'¿Otra vez sin dormir, bonita? Va, hacemos una cosa: en vez de ovejas me cuentas a mí. Un beso, dos besos, tres… y así hasta que te quedes frita pensando en mí. Duérmete tranquila, que mañana seguimos queriéndonos. Buenas noches, mi amor 🌙'},
-  {e:'💪', when:'estés agobiada', text:'Respira, mi niña. Una cosa detrás de otra, sin agobiarte por todo a la vez. Y lo que no puedas sola, me lo cuentas y lo sacamos entre los dos, como siempre. Puedes con esto y con mucho más, aunque ahora no lo veas. Confía en ti, que yo confío un montón 💪❤️'},
-  {e:'😍', when:'quieras sentirte guapa', text:'Te voy a contar un secreto: eres preciosa. Y no lo digo por decir, lo pienso cada vez que te miro. Me tienes loco desde el primer día y cada día un poco más. Así que ponte guapa si quieres, pero para mí ya lo eres siempre. La más guapa, sin discusión 😍'},
-  {e:'❤️', when:'dudes de cuánto te quiero', text:'¿Dudando otra vez de cuánto te quiero? Pues mira: te quiero más de lo que sé explicar con palabras. Más que ayer y menos que mañana. Yo te elegí a ti, y te vuelvo a elegir cada mañana al despertar. No lo dudes nunca. Para siempre, y un poquito más 💍'},
-  {e:'🎉', when:'estemos por fin juntos', text:'¡Esta la abres conmigo al lado! Porque este momento lo llevo esperando con unas ganas que no veas. Se acabaron las pantallas y la distancia: solo tú y yo y todo el tiempo del mundo. Ven aquí que te como a besos 🥹💕'}
-];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
 // El primer valor es la imagen y el segundo su pie de foto.
@@ -745,22 +673,6 @@ function confetti(){
   }
 }
 function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
-
-/* ================= CUENTA ATRÁS ================= */
-(function(){
-  const D=document.getElementById('cdD'),H=document.getElementById('cdH'),M=document.getElementById('cdM'),S=document.getElementById('cdS');
-  const cd=document.getElementById('cd'),done=document.getElementById('cdDone');
-  function tick(){
-    const diff=FECHA_CITA-new Date();
-    if(diff<=0){cd.style.display='none';done.style.display='block';return;}
-    const s=Math.floor(diff/1000);
-    D.textContent=Math.floor(s/86400);
-    H.textContent=Math.floor(s%86400/3600);
-    M.textContent=Math.floor(s%3600/60);
-    S.textContent=s%60;
-  }
-  tick();setInterval(tick,1000);
-})();
 
 /* ================= TOCA PARA UNA SORPRESA ================= */
 (function(){
@@ -954,34 +866,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   window.irA=go; // por si quiero enlazar desde un botón
 })();
 
-/* ================= ÁBREME CUANDO… ================= */
-(function(){
-  const grid=document.getElementById('openGrid');
-  if(!grid) return;
-  const modal=document.getElementById('openModal'),omE=document.getElementById('omEmoji'),
-        omT=document.getElementById('omTitle'),omX=document.getElementById('omText'),omC=document.getElementById('omClose');
-  let opened={};
-  try{opened=JSON.parse(localStorage.getItem('cartasAbiertas')||'{}');}catch(e){opened={};}
-  function render(){
-    grid.innerHTML='';
-    CARTAS_ABRIR.forEach((c,i)=>{
-      const card=document.createElement('div');card.className='open-card'+(opened[i]?' opened':'');
-      card.innerHTML=`<div class="oe">${c.e}</div><div class="ot">Ábreme cuando… ${c.when}</div>`+(opened[i]?'<div class="odone">Abierta 🤍</div>':'');
-      card.onclick=()=>openCard(i);grid.appendChild(card);
-    });
-  }
-  function openCard(i){
-    const c=CARTAS_ABRIR[i];
-    omE.textContent=c.e;omT.textContent='Ábreme cuando… '+c.when;omX.textContent=c.text;
-    modal.classList.add('show');
-    if(!opened[i]){opened[i]=1;try{localStorage.setItem('cartasAbiertas',JSON.stringify(opened));}catch(e){}render();}
-    confetti();
-  }
-  function close(){modal.classList.remove('show');}
-  omC.onclick=close;
-  modal.addEventListener('click',e=>{if(e.target===modal)close();});
-  render();
-})();
 </script>
 </body>
 </html>
