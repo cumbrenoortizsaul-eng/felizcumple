@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v 20260901152335 -->
+<!-- v 20260901153041 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -142,6 +142,11 @@
   .gift-msg p{font-size:clamp(1.2rem,4vw,1.6rem);font-family:'Dancing Script',cursive;font-weight:700;color:var(--pink-deep);margin-top:16px}
 
   /* Cuenta atrás */
+  .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cd .box{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-radius:18px;min-width:82px;padding:16px 10px;box-shadow:0 10px 30px rgba(255,77,121,.35)}
+  .cd .box .n{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:700;line-height:1}
+  .cd .box .l{font-size:.8rem;opacity:.9;margin-top:4px;letter-spacing:.5px}
+  #cdDone{display:none;font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--pink-deep);text-align:center}
 
   /* Toca para una sorpresa */
   #piropo .card{text-align:center;max-width:600px}
@@ -215,6 +220,13 @@
   .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
   @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
+  /* Cofre de poemas */
+  .poema-cofre{font-size:4.4rem;line-height:1}
+  .poema-body{margin-top:10px;animation:scrIn .4s ease}
+  .poema-tit{font-family:'Dancing Script',cursive;font-size:clamp(1.6rem,6vw,2.2rem);color:var(--pink-deep);margin-bottom:10px}
+  .poema-txt{white-space:pre-line;line-height:1.9;font-size:1.06rem;color:var(--ink);max-width:34ch;margin:0 auto}
+  .poema-date{margin-top:14px;font-size:.85rem;color:var(--soft)}
+
   /* Atrapa las hojas */
   .leaf{position:absolute;font-size:2rem;user-select:none;pointer-events:none;z-index:2}
   .basket{position:absolute;bottom:6px;font-size:2.6rem;transform:translateX(-50%);user-select:none;pointer-events:none;z-index:3}
@@ -264,6 +276,22 @@
   .app-tab.active{color:var(--pink-deep)}
   .app-tab.active .ic{transform:scale(1.18) translateY(-1px)}
 
+  /* Ábreme cuando… */
+  .open-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;max-width:660px;margin:0 auto}
+  .open-card{background:var(--card);border:2px solid var(--rose);border-radius:20px;padding:20px 14px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,border-color .2s}
+  .open-card:hover{border-color:var(--pink)}
+  .open-card:active{transform:scale(.96)}
+  .open-card .oe{font-size:2.5rem;line-height:1}
+  .open-card .ot{font-family:'Quicksand';font-weight:700;color:var(--ink);margin-top:8px;font-size:.98rem;line-height:1.3}
+  .open-card.opened{opacity:.7}
+  .open-card .odone{font-size:.72rem;color:var(--soft);margin-top:4px}
+  .open-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.55)}
+  .open-modal.show{display:flex}
+  .open-inner{background:var(--card);border-radius:24px;max-width:460px;width:100%;padding:30px 26px;box-shadow:0 20px 60px rgba(0,0,0,.4);text-align:center;animation:scrIn .3s ease}
+  .open-inner .oe{font-size:3.2rem}
+  .open-inner h3{font-family:'Dancing Script',cursive;font-size:1.9rem;color:var(--pink-deep);margin:8px 0 12px}
+  .open-inner .otxt{color:var(--ink);line-height:1.75;font-size:1.04rem}
+  .open-inner .oclose{margin-top:20px}
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
@@ -354,6 +382,25 @@
 </section>
 
 </div><!-- /pantalla inicio -->
+
+<!-- ==================== PANTALLA: COFRE DE POEMAS ==================== -->
+<div class="screen" data-scr="cofre">
+<section id="cofre">
+  <div class="wrap">
+    <h2>Cofre de poemas 📜</h2>
+    <p class="lead">Un poema de amor nuevo cada día, solo para ti 💌</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="poema-cofre" id="poemaCofre">💌</div>
+      <div class="poema-body" id="poemaBody" hidden>
+        <h3 class="poema-tit" id="poemaTit"></h3>
+        <p class="poema-txt" id="poemaTxt"></p>
+        <p class="poema-date" id="poemaDate"></p>
+      </div>
+      <button class="piropo-btn" id="poemaBtn" style="margin-top:14px">Abrir el cofre 💌</button>
+    </div>
+  </div>
+</section>
+</div><!-- /pantalla cofre -->
 
 <!-- ==================== PANTALLA: JUEGOS ==================== -->
 <div class="screen" data-scr="juegos">
@@ -447,6 +494,7 @@
 <!-- ==================== NAVEGACIÓN (barra inferior) ==================== -->
 <nav class="appnav" id="appnav">
   <button class="app-tab active" data-go="inicio"><span class="ic">🏠</span>Inicio</button>
+  <button class="app-tab" data-go="cofre"><span class="ic">📜</span>Poema</button>
   <button class="app-tab" data-go="fotos"><span class="ic">📸</span>Fotos</button>
   <button class="app-tab" data-go="juegos"><span class="ic">🎮</span>Juegos</button>
   <button class="app-tab" data-go="nosotros"><span class="ic">💕</span>Nosotros</button>
@@ -551,6 +599,24 @@ const FRASES = [
 const MENSAJES = [
   "Te quiero 💕","Mi mantita 🧣","Guapísima 😍","Mi castañita 🌰",
   "Eres calentita 🤎","Contigo todo 🍂","Mi rincón 🕯️","Mi hogar 🏠❤️"
+];
+
+// 📜 Poemas de amor (uno por día). Edita o añade los que quieras.
+const POEMAS = [
+  {t:"Para ti", v:"Si el mundo se apagara de repente,\ny me dejaran solo una lucecita,\nte elegiría a ti, mi niña bonita,\npara alumbrarme el alma eternamente."},
+  {t:"Distancia", v:"Nos separan kilómetros y horas,\npero no hay mapa que nos pueda vencer:\nporque te llevo dentro al amanecer\ny en cada noche que sin ti demoras."},
+  {t:"Tu sonrisa", v:"Tienes una sonrisa que desarma,\nque me ordena el caos y me da calma.\nY aunque no estés, la guardo en la memoria\ncomo se guarda la mejor historia."},
+  {t:"Mi suerte", v:"De todas las personas de este mundo,\nla vida quiso que te conociera.\nY no hay regalo, por bonito que fuera,\nque supere el quererte tan profundo."},
+  {t:"Cada día", v:"No te quiero solo hoy, ni de repente:\nte quiero en lo pequeño, en lo de siempre,\nen el café, en la risa, en la rutina,\nen cada día que a tu lado camina."},
+  {t:"Tus ojos", v:"Me pierdo en tus ojos y no quiero mapa,\nque hasta perderme en ti me sabe a hogar.\nSon dos faros que me enseñan a soñar\ny un abrigo que del frío me atrapa."},
+  {t:"Promesa", v:"Te prometo los días buenos y los malos,\nlas cosquillas, los abrazos, los regalos;\ny cuando todo tiemble y salga mal,\nseguir eligiéndote, mi amor, igual."},
+  {t:"Contigo", v:"Contigo el tiempo corre y no me importa,\ncontigo hasta la espera se hace corta.\nY si me preguntaran qué es la calma,\ndiría que es tu nombre, mi alma."},
+  {t:"Mi niña", v:"Mi niña de la risa contagiosa,\nmi trocito de todo, mi persona:\ncontigo cualquier cosa se hace bonita\ny cualquier día contigo es una fiesta."},
+  {t:"Volver a ti", v:"No importa dónde vaya ni qué haga,\nsiempre hay un camino que me trae:\ntú eres el sitio donde el alma cae\ny el único lugar que nunca amaga."},
+  {t:"Lo nuestro", v:"Lo nuestro no es de un día ni de un rato,\nlo nuestro es de esos que se cuidan lento;\ncomo quien riega y cree en lo que siento,\nasí te quiero: entero, y sin recato."},
+  {t:"Faltas tú", v:"Tengo mil planes, sueños y proyectos,\ny todos, si te miro, tienen sentido.\nPorque de nada sirve haber crecido\nsi al final del camino faltas tú."},
+  {t:"Buenos días", v:"Ojalá despertarte cada aurora\ncon un beso y un “te quiero” en la boca.\nMientras llega ese día que me toca,\nte mando este poema, hora tras hora."},
+  {t:"Tú y yo", v:"Que el resto tenga estrellas y sus mares,\nyo me conformo con tenerte a ti;\nporque contigo aprendí a ser feliz\ny a no querer estar en otros lares."}
 ];
 
 
@@ -807,6 +873,21 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
   function start(){build();score=0;time=30;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡Pilla las ardillas! 🐿️';btn.textContent='Jugando…';pop();tick();}
   btn.onclick=()=>{if(playing)return;start();};
   build();
+})();
+
+/* ================= COFRE DE POEMAS ================= */
+(function(){
+  const cofre=document.getElementById('poemaCofre'),body=document.getElementById('poemaBody'),
+        tit=document.getElementById('poemaTit'),txt=document.getElementById('poemaTxt'),
+        dateEl=document.getElementById('poemaDate'),btn=document.getElementById('poemaBtn');
+  if(!btn) return;
+  let idx = dayOfYear(new Date()) % POEMAS.length, opened=false;
+  function show(){const p=POEMAS[idx];tit.textContent=p.t;txt.textContent=p.v;}
+  const hoy=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  btn.onclick=()=>{
+    if(!opened){opened=true;cofre.textContent='📜';body.hidden=false;dateEl.textContent='📅 '+hoy;show();confetti();btn.textContent='Otro poema 📜';}
+    else{idx=(idx+1)%POEMAS.length;show();}
+  };
 })();
 
 /* ================= LIGHTBOX ================= */
