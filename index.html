@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- v 20260901101130 -->
+<!-- v 20260901102801 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor ☕🌧️</title>
+<title>Para ti, mi amor 🍂🍁</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#b07a4a; --pink-deep:#8a5a2e; --rose:#efe0cf; --cream:#fbf3e9;
-    --ink:#43301f; --soft:#8a6f56; --card:#fffaf3; --gold:#d9a441;
-    --shadow:0 12px 40px rgba(138,90,46,.2);
+    --pink:#d9772e; --pink-deep:#a6421c; --rose:#f6e2cc; --cream:#fdf2e2;
+    --ink:#4a2c1a; --soft:#9c6b4a; --card:#fffaf2; --gold:#e0a92e;
+    --shadow:0 12px 40px rgba(166,66,28,.2);
   }
   html[data-theme="dark"]{
-    --cream:#1e1611; --card:#2b201a; --rose:#3a2c22; --ink:#f2e4d5; --soft:#c8a888;
+    --cream:#1c1310; --card:#2a1c14; --rose:#3c281c; --ink:#f5e6d6; --soft:#d0a074;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(217,164,65,.30), transparent 55%),
-      linear-gradient(180deg,#f5e7d5 0%,#e6cdb0 45%,#c9a982 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(224,169,46,.32), transparent 55%),
+      linear-gradient(180deg,#fbe6c8 0%,#f0c489 45%,#d68a3f 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(217,164,65,.14), transparent 55%),
-      linear-gradient(180deg,#1e1611 0%,#2b201a 60%,#3a2a20 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(224,169,46,.14), transparent 55%),
+      linear-gradient(180deg,#1c1310 0%,#2a1c14 60%,#3a241a 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -220,18 +220,15 @@
   .float-piropo{position:absolute;font-family:'Dancing Script',cursive;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 2px 6px rgba(255,77,121,.9);pointer-events:none;white-space:nowrap;z-index:5;animation:floatUp 1s ease-out forwards}
   @keyframes floatUp{to{transform:translateY(-46px);opacity:0}}
 
-  /* Prepara el café */
-  .cf-cup{position:relative;width:120px;height:120px;margin:8px auto;border-radius:0 0 40px 40px;border:4px solid var(--pink-deep);overflow:hidden;display:grid;place-items:center;background:var(--card)}
-  .cf-fill{position:absolute;left:0;right:0;bottom:0;height:0%;background:linear-gradient(180deg,#c98a4a,#6a3a20);transition:height .3s}
-  .cf-emoji{position:relative;z-index:2;font-size:2.6rem}
-  .cf-bar{position:relative;height:26px;max-width:340px;margin:12px auto 0;background:var(--rose);border-radius:40px;overflow:hidden}
-  .cf-zone{position:absolute;top:0;bottom:0;background:rgba(90,180,90,.55)}
-  .cf-marker{position:absolute;top:0;bottom:0;width:8px;left:0;background:var(--pink-deep);border-radius:4px}
+  /* Atrapa las hojas */
+  .leaf{position:absolute;font-size:2rem;user-select:none;pointer-events:none;z-index:2}
+  .basket{position:absolute;bottom:6px;font-size:2.6rem;transform:translateX(-50%);user-select:none;pointer-events:none;z-index:3}
 
-  /* Sigue el ritmo */
-  .rt-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:340px;margin:6px auto 0}
-  .rt-key{aspect-ratio:1;border:none;border-radius:16px;font-size:1.8rem;cursor:pointer;background:var(--kc);opacity:.55;transition:opacity .12s,transform .12s;box-shadow:0 6px 16px rgba(138,90,46,.3)}
-  .rt-key.lit{opacity:1;transform:scale(1.06)}
+  /* Pilla la ardilla */
+  .ar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:320px;margin:4px auto 0}
+  .ar-hole{aspect-ratio:1;border-radius:50%;background:var(--rose);display:grid;place-items:center;font-size:2rem;cursor:pointer;user-select:none;overflow:hidden;box-shadow:inset 0 4px 10px rgba(0,0,0,.15)}
+  .ar-hole .mole{transform:translateY(120%);transition:transform .12s}
+  .ar-hole.up .mole{transform:translateY(0)}
 
   /* Busca la perla */
   .shells{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -291,9 +288,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(217,164,65,.4), transparent 46%), linear-gradient(160deg,#b07a4a,#5a3a20);
+    background:radial-gradient(circle at 50% 10%, rgba(224,169,46,.42), transparent 46%), linear-gradient(160deg,#d9772e,#5a2a12);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" ☕"}
+  #gate .lock::after{content:" 🍂"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -315,7 +312,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🌧️</div>
+<div class="moon">🍂</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -331,10 +328,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">☕</span><span class="capi-mochi">🍰</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧸</span><span class="capi-mochi">🍂</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Mi café favorito, mi día de lluvia perfecto contigo ☕🌧️💕</p>
-    <p class="hint" id="capiHint">Toca el cafecito 🫶</p>
+    <p class="sub">Mi tarde de mantita, hojas y chocolate caliente eres tú 🍂🤎</p>
+    <p class="hint" id="capiHint">Toca el ositito 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -410,36 +407,42 @@
 <!-- ==================== PANTALLA: JUEGOS ==================== -->
 <div class="screen" data-scr="juegos">
 
-<!-- ===== PREPARA EL CAFÉ PERFECTO ===== -->
-<section id="cafe">
+<!-- ===== ATRAPA LAS HOJAS ===== -->
+<section id="hojas">
   <div class="wrap">
-    <h2>Prepara el café perfecto ☕</h2>
-    <p class="lead">Pulsa cuando la barra esté en la zona verde para echar cada ingrediente en su punto ✨</p>
+    <h2>Atrapa las hojas 🍂</h2>
+    <p class="lead">Mueve la cesta y recoge las hojas y castañas que caen 🧺</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span id="cfIng">☕ Café</span><span>Punto <b id="cfStep">1</b>/7</span><span>⭐ <b id="cfPerf">0</b></span></div>
-      <div class="cf-cup"><div class="cf-fill" id="cfFill"></div><span class="cf-emoji" id="cfCupEmo">☕</span></div>
-      <div class="cf-bar" id="cfBar"><div class="cf-zone" id="cfZone"></div><div class="cf-marker" id="cfMarker"></div></div>
-      <button class="piropo-btn" id="cfBtn" style="margin-top:14px">Empezar ☕</button>
-      <p class="piropo-txt" id="cfMsg" style="min-height:1.4em;margin-top:12px"></p>
+      <div class="game-hud"><span>🍂 Recogidas <b id="hjScore">0</b></span><span>⏱️ <b id="hjTime">30</b></span><span>🏆 <b id="hjBest">0</b></span></div>
+      <div class="game-board" id="hjBoard" style="height:360px"><div class="game-start" id="hjStart"><button class="piropo-btn">Empezar 🎮</button></div></div>
+      <p class="piropo-txt" id="hjMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
 
-<!-- ===== SIGUE EL RITMO ===== -->
-<section id="ritmo">
+<!-- ===== MEMORY DE OTOÑO ===== -->
+<section id="memo">
   <div class="wrap">
-    <h2>Sigue el ritmo 🎵</h2>
-    <p class="lead">Mira la melodía y repítela tocando las teclas en el mismo orden 🎹</p>
+    <h2>Memory de otoño 🍁</h2>
+    <p class="lead">Encuentra las parejas otoñales 🌰</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🎵 Ronda <b id="rtRound">0</b></span><span>🏆 <b id="rtBest">0</b></span></div>
-      <div class="rt-keys" id="rtKeys">
-        <button class="rt-key" data-k="0" style="--kc:#e6a86a">🎵</button>
-        <button class="rt-key" data-k="1" style="--kc:#c98a4a">🎶</button>
-        <button class="rt-key" data-k="2" style="--kc:#a86a3a">🎵</button>
-        <button class="rt-key" data-k="3" style="--kc:#8a5a2e">🎶</button>
-      </div>
-      <button class="piropo-btn" id="rtBtn" style="margin-top:14px">Empezar 🎮</button>
-      <p class="piropo-txt" id="rtMsg" style="min-height:1.4em;margin-top:12px"></p>
+      <div class="mem-grid" id="moGrid"></div>
+      <p class="piropo-txt" id="moMsg" style="min-height:1.4em;margin:12px 0"></p>
+      <button class="piropo-btn" id="moBtn">Nueva partida 🔁</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PILLA LA ARDILLA ===== -->
+<section id="ardilla">
+  <div class="wrap">
+    <h2>Pilla la ardilla 🐿️</h2>
+    <p class="lead">Toca las ardillas que asoman antes de que se escondan 🌰</p>
+    <div class="card reveal" style="text-align:center">
+      <div class="game-hud"><span>🐿️ Pilladas <b id="arScore">0</b></span><span>⏱️ <b id="arTime">30</b></span><span>🏆 <b id="arBest">0</b></span></div>
+      <div class="ar-grid" id="arGrid"></div>
+      <button class="piropo-btn" id="arBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="arMsg" style="min-height:1.4em;margin-top:10px"></p>
     </div>
   </div>
 </section>
@@ -521,24 +524,24 @@ const FECHA_CITA = new Date(2026, 7, 24, 9, 0);
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres mi café de cada mañana ☕",
-  "Contigo hasta la lluvia es acogedora 🌧️",
-  "Me calientas más que un cortado 🤎",
-  "Eres mi rincón favorito del mundo 🛋️",
-  "Guapa como una tarde de manta y peli 📖",
-  "Endulzas mi día sin echar azúcar 🍰",
-  "Contigo cualquier café sabe mejor 😋",
-  "Eres el aroma que me alegra el día ☕💕",
-  "Preciosa como la lluvia en la ventana 💧",
-  "Contigo me quedaría horas hablando ☕",
-  "Eres mi cita favorita, siempre 🥐",
-  "Más bonita que un latte con corazón 🤎💖"
+  "Eres mi mantita en un día frío 🧣",
+  "Me calientas más que un chocolate caliente 🍫",
+  "Guapa como una tarde de otoño 🍂",
+  "Contigo apetece quedarse en casa 🏠",
+  "Eres mi hoja favorita de todo el bosque 🍁",
+  "Más dulce que una castaña asada 🌰",
+  "Contigo hasta el frío es acogedor 🤎",
+  "Eres el solecito de mis días grises ☀️🍂",
+  "Preciosa como el bosque en octubre 🌳",
+  "Contigo me arroparía para siempre 🛋️",
+  "Eres mi rincón calentito favorito 🕯️",
+  "Más bonita que las hojas al caer 🍂💖"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi cafecito ☕","¡Rica! 😋","Preciosa 🍰","Mi manta 🛋️",
-  "Bonita 🤎","Mi tesoro 💧","Hermosa 💫","Mi amor 🥰","Calentita 🔥","Mía 💕"
+  "Guapa 😍","Mi mantita 🧣","¡Ricura! 😋","Preciosa 🍂","Mi castañita 🌰",
+  "Bonita 🤎","Mi tesoro 🍁","Hermosa 💫","Mi amor 🥰","Calentita 🔥","Mía 💕"
 ];
 
 /* ---- DESEOS (al tocar la estrella fugaz) ---- */
@@ -589,38 +592,38 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres mi café favorito de cada día ☕",
-  "Contigo hasta los días de lluvia son bonitos 🌧️",
-  "Eres el calorcito de mi taza en invierno 🤎",
-  "Me haces sentir en casa estés donde estés 🛋️",
-  "Eres mi tarde perfecta de manta y peli 📖",
-  "Contigo el mundo va más despacio y mejor ☕",
-  "Eres el aroma que me alegra la mañana 🥐",
-  "Mi corazón te pidió para siempre, sin azúcar 🍰",
-  "Contigo cualquier rincón es mi lugar feliz 🪑",
-  "Eres la lluvia bonita en mi ventana 💧",
-  "Te elegiría en cada café de mi vida, siempre ☕",
-  "Eres más dulce que un buen chocolate caliente 🍫",
+  "Eres mi tarde perfecta de mantita y peli 🍂",
+  "Contigo hasta el frío se pone bonito 🧣",
+  "Eres el calorcito de mi chocolate caliente 🍫",
+  "Me haces sentir en casa estés donde estés 🏠",
+  "Contigo pasear entre hojas es lo mejor 🍁",
+  "Eres el solecito de mis días grises ☀️",
+  "Contigo el mundo va más despacio y mejor 🍂",
+  "Mi corazón te eligió para arroparse siempre 🛋️",
+  "Eres mi rincón calentito favorito 🕯️",
+  "Contigo cualquier día de otoño es un regalo 🌰",
+  "Te elegiría en cada estación de mi vida, siempre 🍂",
+  "Eres más dulce que las castañas asadas 🌰",
   "Contigo da gusto quedarse en casa 🏠💕",
-  "Toda mi cafetería es tuya, mi amor 🤎"
+  "Todo mi otoño es tuyo, mi amor 🤎"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Mi cafecito ☕","Guapísima 😍","Mi tarta 🍰",
-  "Eres calentita 🤎","Contigo todo 🌧️","Mi rincón 🛋️","Mi hogar 🏠❤️"
+  "Te quiero 💕","Mi mantita 🧣","Guapísima 😍","Mi castañita 🌰",
+  "Eres calentita 🤎","Contigo todo 🍂","Mi rincón 🕯️","Mi hogar 🏠❤️"
 ];
 
 // 💌 Cartitas "Ábreme cuando…"  (edita el texto a tu gusto)
 const CARTAS_ABRIR = [
-  {e:'🥺', when:'me eches de menos', text:'Cierra los ojos: yo también te estoy pensando justo ahora. La distancia es solo tiempo, y el tiempo se acaba. Muy pronto un abrazo de los nuestros, de los que no se acaban nunca. Te quiero 💕'},
-  {e:'😔', when:'estés triste', text:'Oye… eres fuerte, eres luz y no estás sola. Respira, que esto también pasa, y yo sigo aquí para lo que sea, a la hora que sea. Un beso enorme y bien apretado 🤍'},
-  {e:'😂', when:'quieras reír', text:'Acuérdate de esa vez que nos entró la risa tonta y no podíamos parar. Yo me sigo riendo solo. Contigo hasta las tonterías son las mejores. Va, sonríe 😜'},
-  {e:'🌙', when:'no puedas dormir', text:'Cuenta conmigo en vez de ovejas: 1 beso, 2 besos, 3 besos… y así hasta quedarte dormida pensando en mí. Descansa, mi vida, que mañana es otro día para querernos 🌙✨'},
-  {e:'💪', when:'estés agobiada', text:'Una cosa cada vez. Tú puedes con todo, y con lo que no puedas, me lo cuentas y lo llevamos entre los dos. Eres increíble, aunque a veces se te olvide 💪❤️'},
-  {e:'😍', when:'quieras sentirte guapa', text:'Noticia de última hora: lo eres. Por dentro y por fuera. Me tienes loco desde el primer día, y cada día un poquito más. La más guapa, siempre 😍'},
-  {e:'❤️', when:'dudes de cuánto te quiero', text:'Te quiero más de lo que sé decir. Más que ayer y menos que mañana. Elegí quererte, y te elijo cada día otra vez. Para siempre, y un poquito más 💍'},
-  {e:'🎉', when:'estemos por fin juntos', text:'¡Esta ábrela conmigo delante! Porque este momento lo he esperado con todas mis ganas. Se acabaron las pantallas: solo tú y yo, y todo el tiempo del mundo 🥹💕'}
+  {e:'🥺', when:'me eches de menos', text:'Ey, mi niña. Si estás leyendo esto es que me echas de menos… pues ya somos dos, porque yo te pienso todo el rato, en serio. Cierra los ojos un segundo y hazte a la idea de que te estoy abrazando por detrás, de esos que no te suelto. Aguanta un poquito más, que lo que queda es nada. Te quiero muchísimo. — Tuyo 💕'},
+  {e:'😔', when:'estés triste', text:'Oye, ven aquí. No sé qué ha pasado, pero sé que esto también se va a pasar, te lo prometo. Eres mucho más fuerte de lo que te crees, y por si acaso, aquí estoy yo para lo que necesites, a la hora que sea. Llámame, escríbeme, lo que quieras. No estás sola, mi vida. Un beso enorme 🤍'},
+  {e:'😂', when:'quieras reír', text:'Acuérdate de la última tontería que hicimos y que nos entró la risa floja… yo me sigo riendo solo, te lo juro. Contigo hasta las chorradas son las mejores del mundo. Anda, ríete un poco, que estás más guapa cuando te ríes 😜'},
+  {e:'🌙', when:'no puedas dormir', text:'¿Otra vez sin dormir, bonita? Va, hacemos una cosa: en vez de ovejas me cuentas a mí. Un beso, dos besos, tres… y así hasta que te quedes frita pensando en mí. Duérmete tranquila, que mañana seguimos queriéndonos. Buenas noches, mi amor 🌙'},
+  {e:'💪', when:'estés agobiada', text:'Respira, mi niña. Una cosa detrás de otra, sin agobiarte por todo a la vez. Y lo que no puedas sola, me lo cuentas y lo sacamos entre los dos, como siempre. Puedes con esto y con mucho más, aunque ahora no lo veas. Confía en ti, que yo confío un montón 💪❤️'},
+  {e:'😍', when:'quieras sentirte guapa', text:'Te voy a contar un secreto: eres preciosa. Y no lo digo por decir, lo pienso cada vez que te miro. Me tienes loco desde el primer día y cada día un poco más. Así que ponte guapa si quieres, pero para mí ya lo eres siempre. La más guapa, sin discusión 😍'},
+  {e:'❤️', when:'dudes de cuánto te quiero', text:'¿Dudando otra vez de cuánto te quiero? Pues mira: te quiero más de lo que sé explicar con palabras. Más que ayer y menos que mañana. Yo te elegí a ti, y te vuelvo a elegir cada mañana al despertar. No lo dudes nunca. Para siempre, y un poquito más 💍'},
+  {e:'🎉', when:'estemos por fin juntos', text:'¡Esta la abres conmigo al lado! Porque este momento lo llevo esperando con unas ganas que no veas. Se acabaron las pantallas y la distancia: solo tú y yo y todo el tiempo del mundo. Ven aquí que te como a besos 🥹💕'}
 ];
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -652,7 +655,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['☕','🌧️','☔','🍰','🥐','🍪','📖','🎵','💧','🤎'];
+  const c=document.getElementById('hearts'), emo=['🍂','🍁','🌰','🍫','🧣','🧸','🍄','🦔','🐿️','🤎'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -667,7 +670,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['☕','🍰','🤎','💧','🎵'];
+  const conf=['🍂','🍁','🌰','🤎','🧡'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -720,14 +723,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Mua 😘','Mi cafecito favorito ☕💕','Contigo llueve bonito 🌧️','Te quiero calentito 🤎❤️'];
+const CAPI_MSGS=['Mua 😘','Mi solecito de otoño 🍂💕','Contigo apetece mantita 🧣','Te quiero calentito 🤎❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['☕','🍰','🤎','💧','💕','❤️','🧡','🎵'];
+  const emo=['🍂','🍁','🌰','🤎','💕','❤️','🧡','🍫'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -737,7 +740,7 @@ function confetti(){
     setTimeout(()=>p.remove(),3200);
   }
 }
-function welcome(){confetti();toast('¡Hola, mi amor! ☕💕');}
+function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
 
 /* ================= CUENTA ATRÁS ================= */
 (function(){
@@ -777,92 +780,117 @@ function welcome(){confetti();toast('¡Hola, mi amor! ☕💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= PREPARA EL CAFÉ PERFECTO ================= */
+/* ================= ATRAPA LAS HOJAS ================= */
 (function(){
-  const bar=document.getElementById('cfBar'),zone=document.getElementById('cfZone'),marker=document.getElementById('cfMarker'),
-        btn=document.getElementById('cfBtn'),msg=document.getElementById('cfMsg'),ingEl=document.getElementById('cfIng'),
-        stepEl=document.getElementById('cfStep'),perfEl=document.getElementById('cfPerf'),
-        fill=document.getElementById('cfFill'),cupEmo=document.getElementById('cfCupEmo');
-  if(!bar) return;
-  const ING=[
-    {n:'☕ Café',e:'☕'},{n:'💧 Agua',e:'💧'},{n:'🥛 Leche',e:'🥛'},{n:'🍬 Azúcar',e:'🍬'},
-    {n:'🍫 Cacao',e:'🍫'},{n:'🌿 Canela',e:'🌿'},{n:'🍦 Nata',e:'🍦'}
-  ];
-  let pos=0,dir=1,speed=2.8,zoneW=20,running=false,step=0,perfect=0,raf;
-  function setZone(){const left=8+Math.random()*(100-zoneW-16);zone.dataset.l=left;zone.style.left=left+'%';zone.style.width=zoneW+'%';}
-  function loop(){pos+=dir*speed;if(pos<=0){pos=0;dir=1;}if(pos>=100){pos=100;dir=-1;}marker.style.left='calc('+pos+'% - 4px)';if(running)raf=requestAnimationFrame(loop);}
-  function nextIng(){
-    ingEl.textContent=ING[step].n;stepEl.textContent=step+1;cupEmo.textContent=ING[step].e;
-    zoneW=Math.max(8,20-step*2);speed=2.8+step*0.5;setZone();
+  const board=document.getElementById('hjBoard'),startEl=document.getElementById('hjStart'),
+        scoreEl=document.getElementById('hjScore'),timeEl=document.getElementById('hjTime'),
+        bestEl=document.getElementById('hjBest'),msg=document.getElementById('hjMsg');
+  if(!board) return;
+  const GOOD=['🍂','🍁','🌰','🍄'],BAD=['🐛'];
+  let basket,bx=50,score=0,time=30,best=+(localStorage.getItem('hojasBest')||0),playing=false,raf,spawnT,tickT,items=[];
+  bestEl.textContent=best;
+  function setX(clientX){const r=board.getBoundingClientRect();bx=Math.max(7,Math.min(93,((clientX-r.left)/r.width)*100));if(basket)basket.style.left=bx+'%';}
+  board.addEventListener('pointermove',e=>{if(playing)setX(e.clientX);});
+  board.addEventListener('touchmove',e=>{if(playing){setX(e.touches[0].clientX);e.preventDefault();}},{passive:false});
+  function spawn(){
+    if(!playing)return;
+    const bad=Math.random()<0.18;
+    const el=document.createElement('div');el.className='leaf';
+    el.textContent=bad?BAD[0]:GOOD[Math.floor(Math.random()*GOOD.length)];
+    el.dataset.bad=bad?1:0;el.dataset.x=6+Math.random()*88;el.dataset.y=-8;
+    el.dataset.v=1.6+Math.random()*1.4+score*0.02;
+    el.style.left=el.dataset.x+'%';el.style.top='-8%';
+    board.appendChild(el);items.push(el);
+    spawnT=setTimeout(spawn,Math.max(420,820-score*10));
   }
-  function begin(){step=0;perfect=0;perfEl.textContent=0;running=true;msg.textContent='';btn.textContent='¡Echa! 👇';fill.style.height='0%';nextIng();cancelAnimationFrame(raf);loop();}
-  function tap(){
-    if(!running){begin();return;}
-    const zl=+zone.dataset.l, zr=zl+zoneW;
-    const ok = pos>=zl && pos<=zr;
-    if(ok){perfect++;perfEl.textContent=perfect;cupEmo.textContent='✅';}
-    else cupEmo.textContent='💧';
-    step++;fill.style.height=Math.round(step/ING.length*100)+'%';
-    if(step>=ING.length){
-      running=false;cancelAnimationFrame(raf);cupEmo.textContent='☕';
-      const p = perfect>=6?'¡Café de barista! ☕🏆 ':perfect>=4?'¡Muy rico! 😋 ':'¡Servido con amor! 💕 ';
-      msg.textContent=p+PIROPOS[Math.floor(Math.random()*PIROPOS.length)];confetti();
-      btn.textContent='Preparar otro ☕';
-    }else{
-      msg.textContent=ok?'¡En su punto! ⭐':'Casi… sigue 💗';
-      setTimeout(()=>{if(!running)return;cupEmo.textContent=ING[step].e;},180);
-      nextIng();
+  function loop(){
+    if(!playing)return;
+    for(let i=items.length-1;i>=0;i--){
+      const el=items[i];let y=+el.dataset.y+(+el.dataset.v)*0.6;el.dataset.y=y;el.style.top=y+'%';
+      const ex=+el.dataset.x;
+      if(y>84 && y<96 && Math.abs(ex-bx)<10){
+        const bad=el.dataset.bad==='1';
+        if(bad){score=Math.max(0,score-2);flash('¡Ups! 🐛');}
+        else{score++;if(score%6===0)flash(PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)]);}
+        scoreEl.textContent=score;el.remove();items.splice(i,1);continue;
+      }
+      if(y>104){el.remove();items.splice(i,1);}
     }
+    raf=requestAnimationFrame(loop);
   }
-  btn.onclick=tap;
+  function flash(t){const fp=document.createElement('div');fp.className='float-piropo';fp.textContent=t;fp.style.left='50%';fp.style.top='18%';fp.style.transform='translateX(-50%)';board.appendChild(fp);setTimeout(()=>fp.remove(),1000);}
+  function tick(){if(!playing)return;time--;timeEl.textContent=time;if(time<=0){end();return;}tickT=setTimeout(tick,1000);}
+  function clearItems(){items.forEach(el=>el.remove());items=[];}
+  function end(){
+    playing=false;clearTimeout(spawnT);clearTimeout(tickT);cancelAnimationFrame(raf);clearItems();
+    if(score>best){best=score;localStorage.setItem('hojasBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Recogiste ${score}! `+(score>=25?'¡Reina del otoño! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🍂');
+    startEl.style.display='grid';startEl.querySelector('button').textContent='Jugar otra vez 🔁';
+  }
+  function start(){
+    clearItems();score=0;time=30;bx=50;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡A recoger! 🧺';
+    startEl.style.display='none';
+    if(!basket){basket=document.createElement('div');basket.className='basket';basket.textContent='🧺';board.appendChild(basket);}
+    basket.style.left='50%';basket.style.display='block';
+    spawn();tick();raf=requestAnimationFrame(loop);
+  }
+  startEl.querySelector('button').onclick=start;
 })();
 
-/* ================= SIGUE EL RITMO ================= */
+/* ================= MEMORY DE OTOÑO ================= */
 (function(){
-  const keysWrap=document.getElementById('rtKeys'),btn=document.getElementById('rtBtn'),msg=document.getElementById('rtMsg'),
-        roundEl=document.getElementById('rtRound'),bestEl=document.getElementById('rtBest');
-  if(!keysWrap) return;
-  const keys=[...keysWrap.querySelectorAll('.rt-key')];
-  let seq=[],idx=0,round=0,best=+(localStorage.getItem('ritmoBest')||0),playing=false,accepting=false;
+  const grid=document.getElementById('moGrid'),msg=document.getElementById('moMsg'),btn=document.getElementById('moBtn');
+  if(!grid) return;
+  const ITEMS=['🍂','🍁','🌰','🍄','🧣','🎃'];
+  let first=null,lock=false,matched=0,moves=0;
+  function nueva(){
+    grid.innerHTML='';msg.textContent='';first=null;lock=false;matched=0;moves=0;
+    const cards=[...ITEMS,...ITEMS].sort(()=>Math.random()-0.5);
+    cards.forEach(em=>{const c=document.createElement('div');c.className='mem-card';c.dataset.em=em;c.textContent='';c.onclick=()=>flip(c);grid.appendChild(c);});
+  }
+  function flip(c){
+    if(lock||c.classList.contains('flipped')||c.classList.contains('matched'))return;
+    c.classList.add('flipped');c.textContent=c.dataset.em;
+    if(!first){first=c;return;}moves++;
+    if(first.dataset.em===c.dataset.em){first.classList.add('matched');c.classList.add('matched');first=null;matched++;
+      if(matched===ITEMS.length){msg.textContent=`¡Completado en ${moves} intentos! 🏆💕`;confetti();}}
+    else{lock=true;const a=first,b=c;first=null;setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');a.textContent='';b.textContent='';lock=false;},700);}
+  }
+  btn.onclick=nueva;nueva();
+})();
+
+/* ================= PILLA LA ARDILLA ================= */
+(function(){
+  const grid=document.getElementById('arGrid'),btn=document.getElementById('arBtn'),msg=document.getElementById('arMsg'),
+        scoreEl=document.getElementById('arScore'),timeEl=document.getElementById('arTime'),bestEl=document.getElementById('arBest');
+  if(!grid) return;
+  const N=9;let holes=[],score=0,time=30,best=+(localStorage.getItem('ardillaBest')||0),playing=false,popT,tickT;
   bestEl.textContent=best;
-  let actx;
-  function beep(k){
-    try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();
-      const o=actx.createOscillator(),g=actx.createGain();
-      o.frequency.value=[330,392,494,587][k];o.type='sine';o.connect(g);g.connect(actx.destination);
-      g.gain.setValueAtTime(.001,actx.currentTime);g.gain.exponentialRampToValueAtTime(.25,actx.currentTime+.02);
-      g.gain.exponentialRampToValueAtTime(.001,actx.currentTime+.32);o.start();o.stop(actx.currentTime+.34);
-    }catch(e){}
+  function build(){grid.innerHTML='';holes=[];for(let i=0;i<N;i++){const h=document.createElement('div');h.className='ar-hole';h.innerHTML='<span class="mole">🐿️</span>';h.onclick=()=>whack(h);grid.appendChild(h);holes.push(h);}}
+  function whack(h){
+    if(!playing||!h.classList.contains('up'))return;
+    h.classList.remove('up');h.querySelector('.mole').textContent='🌰';
+    setTimeout(()=>{if(h.querySelector('.mole'))h.querySelector('.mole').textContent='🐿️';},250);
+    score++;scoreEl.textContent=score;
+    if(score%8===0)msg.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
   }
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  function lite(k){const el=keys[k];el.classList.add('lit');beep(k);setTimeout(()=>el.classList.remove('lit'),260);}
-  async function playSeq(){
-    accepting=false;msg.textContent='Mira bien… 👀';
-    await sleep(500);
-    const spd=Math.max(280,560-round*22); // nivel medio: se acelera con las rondas
-    for(const k of seq){lite(k);await sleep(spd);}
-    accepting=true;idx=0;msg.textContent='¡Tu turno! 🎹';
+  function pop(){
+    if(!playing)return;
+    holes.forEach(h=>h.classList.remove('up'));
+    const k=1+(score>10?1:0);
+    for(let j=0;j<k;j++){const h=holes[Math.floor(Math.random()*N)];h.classList.add('up');}
+    popT=setTimeout(pop,Math.max(560,1000-score*14));
   }
-  function addRound(){round++;roundEl.textContent=round;seq.push(Math.floor(Math.random()*4));playSeq();}
-  function press(k){
-    if(!accepting)return;lite(k);
-    if(k===seq[idx]){
-      idx++;
-      if(idx===seq.length){
-        accepting=false;
-        if(round>best){best=round;localStorage.setItem('ritmoBest',best);bestEl.textContent=best;}
-        if(round%3===0){msg.textContent=PIROPOS[Math.floor(Math.random()*PIROPOS.length)];confetti();}
-        else msg.textContent='¡Bien! Sigue 🎶';
-        setTimeout(addRound,700);
-      }
-    }else{
-      accepting=false;playing=false;
-      msg.textContent=`¡Uy! Llegaste a la ronda ${round}. `+(round>=8?'¡Oído de músico! 🏆':round>=4?'¡Muy bien! 🥰':'¡Otra vez! 🎵');
-      btn.textContent='Jugar otra vez 🔁';
-    }
+  function tick(){if(!playing)return;time--;timeEl.textContent=time;if(time<=0){end();return;}tickT=setTimeout(tick,1000);}
+  function end(){
+    playing=false;clearTimeout(popT);clearTimeout(tickT);holes.forEach(h=>h.classList.remove('up'));
+    if(score>best){best=score;localStorage.setItem('ardillaBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Pillaste ${score}! `+(score>=25?'¡Cazadora experta! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🐿️');
+    btn.textContent='Jugar otra vez 🔁';
   }
-  keys.forEach((el,k)=>el.addEventListener('click',()=>press(k)));
-  btn.onclick=()=>{if(playing)return;playing=true;seq=[];round=0;msg.textContent='';btn.textContent='Sonando… 🎶';addRound();};
+  function start(){build();score=0;time=30;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡Pilla las ardillas! 🐿️';btn.textContent='Jugando…';pop();tick();}
+  btn.onclick=()=>{if(playing)return;start();};
+  build();
 })();
 
 /* ================= LIGHTBOX ================= */
