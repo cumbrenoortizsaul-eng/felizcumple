@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- v 20260901153041 -->
+<!-- v 20260903143038 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🍂🍁</title>
+<title>Para ti, mi amor 🍣🥢</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#d9772e; --pink-deep:#a6421c; --rose:#f6e2cc; --cream:#fdf2e2;
-    --ink:#4a2c1a; --soft:#9c6b4a; --card:#fffaf2; --gold:#e0a92e;
-    --shadow:0 12px 40px rgba(166,66,28,.2);
+    --pink:#ee6c4d; --pink-deep:#b83b26; --rose:#ffe0d6; --cream:#fff5ef;
+    --ink:#33291f; --soft:#9c7a66; --card:#fffaf6; --gold:#e0a94e;
+    --shadow:0 12px 40px rgba(184,59,38,.2);
   }
   html[data-theme="dark"]{
-    --cream:#1c1310; --card:#2a1c14; --rose:#3c281c; --ink:#f5e6d6; --soft:#d0a074;
+    --cream:#1a1512; --card:#271d18; --rose:#3a281f; --ink:#f5e7dd; --soft:#cf9f86;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(224,169,46,.32), transparent 55%),
-      linear-gradient(180deg,#fbe6c8 0%,#f0c489 45%,#d68a3f 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(224,169,78,.28), transparent 55%),
+      linear-gradient(180deg,#fff2e9 0%,#ffd9c7 45%,#e79b7e 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(224,169,46,.14), transparent 55%),
-      linear-gradient(180deg,#1c1310 0%,#2a1c14 60%,#3a241a 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(224,169,78,.14), transparent 55%),
+      linear-gradient(180deg,#1a1512 0%,#271d18 60%,#35241c 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -295,9 +295,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(224,169,46,.42), transparent 46%), linear-gradient(160deg,#d9772e,#5a2a12);
+    background:radial-gradient(circle at 50% 10%, rgba(224,169,78,.4), transparent 46%), linear-gradient(160deg,#ee6c4d,#7a2418);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🍂"}
+  #gate .lock::after{content:" 🍣"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -319,7 +319,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🍂</div>
+<div class="moon">🍣</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -335,10 +335,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🧸</span><span class="capi-mochi">🍂</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🍣</span><span class="capi-mochi">🥢</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Mi tarde de mantita, hojas y chocolate caliente eres tú 🍂🤎</p>
-    <p class="hint" id="capiHint">Toca el ositito 🫶</p>
+    <p class="sub">Eres mi pieza favorita de todo el menú 🍣💕</p>
+    <p class="hint" id="capiHint">Toca el sushi 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -405,24 +405,24 @@
 <!-- ==================== PANTALLA: JUEGOS ==================== -->
 <div class="screen" data-scr="juegos">
 
-<!-- ===== ATRAPA LAS HOJAS ===== -->
-<section id="hojas">
+<!-- ===== ATRAPA EL SUSHI ===== -->
+<section id="sushicatch">
   <div class="wrap">
-    <h2>Atrapa las hojas 🍂</h2>
-    <p class="lead">Mueve la cesta y recoge las hojas y castañas que caen 🧺</p>
+    <h2>Atrapa el sushi 🍣</h2>
+    <p class="lead">Mueve el plato y recoge los sushis… ¡esquiva el wasabi 🌶️!</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🍂 Recogidas <b id="hjScore">0</b></span><span>⏱️ <b id="hjTime">30</b></span><span>🏆 <b id="hjBest">0</b></span></div>
-      <div class="game-board" id="hjBoard" style="height:360px"><div class="game-start" id="hjStart"><button class="piropo-btn">Empezar 🎮</button></div></div>
-      <p class="piropo-txt" id="hjMsg" style="min-height:1.4em;margin-top:12px"></p>
+      <div class="game-hud"><span>🍣 Comidos <b id="scScore">0</b></span><span>⏱️ <b id="scTime">30</b></span><span>🏆 <b id="scBest">0</b></span></div>
+      <div class="game-board" id="scBoard" style="height:360px"><div class="game-start" id="scStart"><button class="piropo-btn">Empezar 🎮</button></div></div>
+      <p class="piropo-txt" id="scMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
 
-<!-- ===== MEMORY DE OTOÑO ===== -->
+<!-- ===== MEMORY DE SUSHI ===== -->
 <section id="memo">
   <div class="wrap">
-    <h2>Memory de otoño 🍁</h2>
-    <p class="lead">Encuentra las parejas otoñales 🌰</p>
+    <h2>Memory de sushi 🍙</h2>
+    <p class="lead">Encuentra las parejas del menú 🥢</p>
     <div class="card reveal" style="text-align:center">
       <div class="mem-grid" id="moGrid"></div>
       <p class="piropo-txt" id="moMsg" style="min-height:1.4em;margin:12px 0"></p>
@@ -431,16 +431,16 @@
   </div>
 </section>
 
-<!-- ===== PILLA LA ARDILLA ===== -->
-<section id="ardilla">
+<!-- ===== ¿DÓNDE ESTÁ EL SALMÓN? ===== -->
+<section id="salmon">
   <div class="wrap">
-    <h2>Pilla la ardilla 🐿️</h2>
-    <p class="lead">Toca las ardillas que asoman antes de que se escondan 🌰</p>
+    <h2>¿Dónde está el salmón? 🍥</h2>
+    <p class="lead">Sigue la caja donde se esconde el salmón 👀</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🐿️ Pilladas <b id="arScore">0</b></span><span>⏱️ <b id="arTime">30</b></span><span>🏆 <b id="arBest">0</b></span></div>
-      <div class="ar-grid" id="arGrid"></div>
-      <button class="piropo-btn" id="arBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="arMsg" style="min-height:1.4em;margin-top:10px"></p>
+      <div class="game-hud"><span>🐟 Aciertos <b id="slScore">0</b></span></div>
+      <div class="trile" id="slBox"></div>
+      <button class="piropo-btn" id="slBtn" style="margin-top:12px">Empezar 🎮</button>
+      <p class="piropo-txt" id="slMsg" style="min-height:1.4em;margin-top:10px"></p>
     </div>
   </div>
 </section>
@@ -511,25 +511,25 @@ const CUMPLE = {mes:7, dia:30};
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres mi mantita en un día frío 🧣",
-  "Me calientas más que un chocolate caliente 🍫",
-  "Guapa como una tarde de otoño 🍂",
-  "Contigo apetece quedarse en casa 🏠",
-  "Eres mi hoja favorita de todo el bosque 🍁",
-  "Más dulce que una castaña asada 🌰",
-  "Contigo hasta el frío es acogedor 🤎",
-  "Eres el solecito de mis días grises ☀️🍂",
-  "Preciosa como el bosque en octubre 🌳",
-  "Contigo me arroparía para siempre 🛋️",
-  "Eres mi rincón calentito favorito 🕯️",
-  "Más bonita que las hojas al caer 🍂💖"
-];
+  "Eres mi sushi favorito 🍣",
+  "Más fresca que el salmón del día 🐟",
+  "Guapa como un plato bien montado 🍱",
+  "Contigo todo sabe mejor 😋",
+  "Eres mi trocito de mochi 🍡",
+  "Me tienes con el corazón a fuego lento 🔥",
+  "Preciosa de la cabeza a los palillos 🥢",
+  "Eres el wasabi que le da chispa a mi vida 🌶️",
+  "Más rica que el arroz calentito 🍚",
+  "Contigo me quedaría a cenar siempre 🍤",
+  "Eres mi antojo de cada día 🍣",
+  "Más bonita que un maki recién hecho 🍥💖"
+]
 
 /* ---- PIROPOS CORTOS (los que sueltan del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi mantita 🧣","¡Ricura! 😋","Preciosa 🍂","Mi castañita 🌰",
-  "Bonita 🤎","Mi tesoro 🍁","Hermosa 💫","Mi amor 🥰","Calentita 🔥","Mía 💕"
-];
+  "Guapa 😍","Mi sushi 🍣","¡Rica! 😋","Preciosa 🍱","Mi maki 🍥",
+  "Bonita 🐟","Mi tesoro 🥢","Hermosa 💫","Mi amor 🥰","Fresca 🍤","Mía 💕"
+]
 
 /* ---- DESEOS (al tocar la estrella fugaz) ---- */
 const DESEOS = [
@@ -567,9 +567,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "Oro parece, plata no es… ¿qué fruta es? 🤔";
-const RESPUESTAS = ["platano","el platano","platanos","los platanos","banana","la banana","el banano"];
-const PISTA = "Pista: es amarilla y alargada 🍌";
+const PREGUNTA = "Blanca por dentro, verde por fuera; si quieres que te lo diga… espera 🍐";
+const RESPUESTAS = ["pera","la pera","peras","una pera","las peras"];
+const PISTA = "Pista: es una fruta verde y jugosa 🍐";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -579,45 +579,43 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres mi tarde perfecta de mantita y peli 🍂",
-  "Contigo hasta el frío se pone bonito 🧣",
-  "Eres el calorcito de mi chocolate caliente 🍫",
-  "Me haces sentir en casa estés donde estés 🏠",
-  "Contigo pasear entre hojas es lo mejor 🍁",
-  "Eres el solecito de mis días grises ☀️",
-  "Contigo el mundo va más despacio y mejor 🍂",
-  "Mi corazón te eligió para arroparse siempre 🛋️",
-  "Eres mi rincón calentito favorito 🕯️",
-  "Contigo cualquier día de otoño es un regalo 🌰",
-  "Te elegiría en cada estación de mi vida, siempre 🍂",
-  "Eres más dulce que las castañas asadas 🌰",
-  "Contigo da gusto quedarse en casa 🏠💕",
-  "Todo mi otoño es tuyo, mi amor 🤎"
-];
+  "Eres mi pieza favorita de todo el menú 🍣",
+  "Contigo hasta lo sencillo sabe a gloria 🍚",
+  "Eres el toque de wasabi que me despierta 🌶️",
+  "Contigo comería sushi toda la vida 🥢",
+  "Eres mi combo perfecto, sin discusión 🍱",
+  "Más rica que el salmón más fresco 🐟",
+  "Contigo cualquier plan me sabe mejor 🍣",
+  "Mi corazón te eligió como su favorita 💕",
+  "Eres el arroz que une todo lo mío 🍚",
+  "Contigo repetiría plato mil veces 😋",
+  "Te elegiría en cualquier carta, siempre 📖🍣",
+  "Eres más dulce que el mochi de postre 🍡",
+  "Contigo comparto hasta el último bocado 🥢💕",
+  "Todo mi menú es tuyo, mi amor 🍣"
+]
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Mi mantita 🧣","Guapísima 😍","Mi castañita 🌰",
-  "Eres calentita 🤎","Contigo todo 🍂","Mi rincón 🕯️","Mi hogar 🏠❤️"
-];
+  "Te quiero 💕","Mi sushi 🍣","Guapísima 😍","Mi maki 🍥",
+  "Eres rica 😋","Contigo todo 🥢","Mi salmón 🐟","Mi hogar 🍱❤️"
+]
 
 // 📜 Poemas de amor (uno por día). Edita o añade los que quieras.
 const POEMAS = [
-  {t:"Para ti", v:"Si el mundo se apagara de repente,\ny me dejaran solo una lucecita,\nte elegiría a ti, mi niña bonita,\npara alumbrarme el alma eternamente."},
-  {t:"Distancia", v:"Nos separan kilómetros y horas,\npero no hay mapa que nos pueda vencer:\nporque te llevo dentro al amanecer\ny en cada noche que sin ti demoras."},
-  {t:"Tu sonrisa", v:"Tienes una sonrisa que desarma,\nque me ordena el caos y me da calma.\nY aunque no estés, la guardo en la memoria\ncomo se guarda la mejor historia."},
-  {t:"Mi suerte", v:"De todas las personas de este mundo,\nla vida quiso que te conociera.\nY no hay regalo, por bonito que fuera,\nque supere el quererte tan profundo."},
-  {t:"Cada día", v:"No te quiero solo hoy, ni de repente:\nte quiero en lo pequeño, en lo de siempre,\nen el café, en la risa, en la rutina,\nen cada día que a tu lado camina."},
-  {t:"Tus ojos", v:"Me pierdo en tus ojos y no quiero mapa,\nque hasta perderme en ti me sabe a hogar.\nSon dos faros que me enseñan a soñar\ny un abrigo que del frío me atrapa."},
-  {t:"Promesa", v:"Te prometo los días buenos y los malos,\nlas cosquillas, los abrazos, los regalos;\ny cuando todo tiemble y salga mal,\nseguir eligiéndote, mi amor, igual."},
-  {t:"Contigo", v:"Contigo el tiempo corre y no me importa,\ncontigo hasta la espera se hace corta.\nY si me preguntaran qué es la calma,\ndiría que es tu nombre, mi alma."},
-  {t:"Mi niña", v:"Mi niña de la risa contagiosa,\nmi trocito de todo, mi persona:\ncontigo cualquier cosa se hace bonita\ny cualquier día contigo es una fiesta."},
-  {t:"Volver a ti", v:"No importa dónde vaya ni qué haga,\nsiempre hay un camino que me trae:\ntú eres el sitio donde el alma cae\ny el único lugar que nunca amaga."},
-  {t:"Lo nuestro", v:"Lo nuestro no es de un día ni de un rato,\nlo nuestro es de esos que se cuidan lento;\ncomo quien riega y cree en lo que siento,\nasí te quiero: entero, y sin recato."},
-  {t:"Faltas tú", v:"Tengo mil planes, sueños y proyectos,\ny todos, si te miro, tienen sentido.\nPorque de nada sirve haber crecido\nsi al final del camino faltas tú."},
-  {t:"Buenos días", v:"Ojalá despertarte cada aurora\ncon un beso y un “te quiero” en la boca.\nMientras llega ese día que me toca,\nte mando este poema, hora tras hora."},
-  {t:"Tú y yo", v:"Que el resto tenga estrellas y sus mares,\nyo me conformo con tenerte a ti;\nporque contigo aprendí a ser feliz\ny a no querer estar en otros lares."}
-];
+  {t:"Lo cotidiano", v:"Te quiero en los días grandes\ny en los días de nada,\nen el lunes sin gracia\ny en el domingo de sábanas.\nTe quiero sobre todo\ncuando no pasa nada:\nporque contigo, hasta la nada\nvale muchísimo la pena."},
+  {t:"Certeza", v:"De casi todo dudo,\nmenos de esto:\nde que te quiero\nmás de lo que sé decir.\nY aunque el resto sea niebla,\ntú eres la única certeza\nque no necesito comprobar."},
+  {t:"Pequeñas cosas", v:"No me enamoran los grandes gestos,\nsino las cosas mínimas:\ntu risa a media frase,\ntu manía de tener frío,\ncómo dices mi nombre\ncuando nadie más escucha.\nEn lo pequeño vives grande."},
+  {t:"Costumbre", v:"Me acostumbré a quererte\ncomo quien respira:\nsin pensarlo,\ntodo el rato.\nY ahora, si te vas un momento,\nse me olvida cómo se hacía\nvivir sin tenerte cerca."},
+  {t:"Defensa", v:"No te pido la luna\nni promesas enormes;\nme basta con tu mano\ncuando el mundo se pone cuesta arriba.\nLo demás son adornos:\nlo importante es que te quedes\ny que, si me caigo,\nme caiga hacia tu lado."},
+  {t:"Regreso", v:"Da igual dónde me lleve el día:\nal final siempre vuelvo a ti,\ncomo vuelve el río al mar\naunque no se lo proponga.\nTú eres mi sitio,\nel único lugar\ndonde sé descansar el alma."},
+  {t:"Te quiero así", v:"Te quiero despeinada\ny también arreglada,\nte quiero contenta\ny también en tus días grises.\nNo te quiero perfecta:\nte quiero verdadera,\nque es mucho más difícil\ny mucho más bonito."},
+  {t:"Futuro", v:"Hago planes contigo\nsin pedirte permiso:\nte cuelo en mis mañanas,\nen mis viajes, en mis años.\nY en todos, sin excepción,\napareces tú\ncomo aparece el sol:\nsin avisar, pero seguro."},
+  {t:"Distancia", v:"La distancia es un truco:\nparece que separa\ny en realidad enseña\nlo mucho que hacías falta.\nTe quiero también de lejos,\nque quererte de cerca\nlo sabe hacer cualquiera."},
+  {t:"Gracias", v:"Gracias por lo fácil que es\nquererte cada día,\npor reírte de mis chistes malos,\npor aguantar mis rarezas.\nGracias por elegirme\ncuando podías elegir\ncualquier otra cosa\nmenos complicada."},
+  {t:"Inventario", v:"Si tuviera que hacer la lista\nde lo que quiero en la vida,\nsería corta y repetida:\ntú, tú, y otra vez tú.\nLo demás lo negocio,\npero en ese renglón\nno acepto cambios."},
+  {t:"Buenas noches", v:"Antes de que te duermas\nquiero que sepas una cosa:\nque mañana, al despertar,\nte seguiré queriendo igual.\nNo es mérito ninguno,\nes lo más fácil que hago:\nquererte hoy, mañana,\ny todos los días de después."}
+]
 
 
 // Fotos incrustadas dentro del propio archivo (funciona sin carpetas).
@@ -653,7 +651,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🍂','🍁','🌰','🍫','🧣','🧸','🍄','🦔','🐿️','🤎'];
+  const c=document.getElementById('hearts'), emo=['🍣','🍤','🍙','🍱','🥢','🐟','🥑','🍚','🍥','🫶'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -668,7 +666,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['🍂','🍁','🌰','🤎','🧡'];
+  const conf=['🍣','🍤','🥢','🍥','🍚'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -721,14 +719,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Mua 😘','Mi solecito de otoño 🍂💕','Contigo apetece mantita 🧣','Te quiero calentito 🤎❤️'];
+const CAPI_MSGS=['Mua 😘','Mi sushi favorito 🍣💕','Contigo todo sabe mejor 🥢','Te quiero un montón 🍤❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🍂','🍁','🌰','🤎','💕','❤️','🧡','🍫'];
+  const emo=['🍣','🍤','🍙','🥢','💕','❤️','🧡','🐟'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -738,7 +736,7 @@ function confetti(){
     setTimeout(()=>p.remove(),3200);
   }
 }
-function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
+function welcome(){confetti();toast('¡Hola, mi amor! 🍣💕');}
 
 /* ================= TOCA PARA UNA SORPRESA ================= */
 (function(){
@@ -762,14 +760,14 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= ATRAPA LAS HOJAS ================= */
+/* ================= ATRAPA EL SUSHI ================= */
 (function(){
-  const board=document.getElementById('hjBoard'),startEl=document.getElementById('hjStart'),
-        scoreEl=document.getElementById('hjScore'),timeEl=document.getElementById('hjTime'),
-        bestEl=document.getElementById('hjBest'),msg=document.getElementById('hjMsg');
+  const board=document.getElementById('scBoard'),startEl=document.getElementById('scStart'),
+        scoreEl=document.getElementById('scScore'),timeEl=document.getElementById('scTime'),
+        bestEl=document.getElementById('scBest'),msg=document.getElementById('scMsg');
   if(!board) return;
-  const GOOD=['🍂','🍁','🌰','🍄'],BAD=['🐛'];
-  let basket,bx=50,score=0,time=30,best=+(localStorage.getItem('hojasBest')||0),playing=false,raf,spawnT,tickT,items=[];
+  const GOOD=['🍣','🍤','🍙','🍥','🍱'],BAD=['🌶️'];
+  let basket,bx=50,score=0,time=30,best=+(localStorage.getItem('sushiBest')||0),playing=false,raf,spawnT,tickT,items=[];
   bestEl.textContent=best;
   function setX(clientX){const r=board.getBoundingClientRect();bx=Math.max(7,Math.min(93,((clientX-r.left)/r.width)*100));if(basket)basket.style.left=bx+'%';}
   board.addEventListener('pointermove',e=>{if(playing)setX(e.clientX);});
@@ -792,7 +790,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
       const ex=+el.dataset.x;
       if(y>84 && y<96 && Math.abs(ex-bx)<10){
         const bad=el.dataset.bad==='1';
-        if(bad){score=Math.max(0,score-2);flash('¡Ups! 🐛');}
+        if(bad){score=Math.max(0,score-2);flash('¡Pica! 🌶️');}
         else{score++;if(score%6===0)flash(PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)]);}
         scoreEl.textContent=score;el.remove();items.splice(i,1);continue;
       }
@@ -805,25 +803,25 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
   function clearItems(){items.forEach(el=>el.remove());items=[];}
   function end(){
     playing=false;clearTimeout(spawnT);clearTimeout(tickT);cancelAnimationFrame(raf);clearItems();
-    if(score>best){best=score;localStorage.setItem('hojasBest',best);bestEl.textContent=best;}
-    msg.textContent=`¡Recogiste ${score}! `+(score>=25?'¡Reina del otoño! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🍂');
+    if(score>best){best=score;localStorage.setItem('sushiBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Comiste ${score}! `+(score>=25?'¡Maestra del sushi! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🍣');
     startEl.style.display='grid';startEl.querySelector('button').textContent='Jugar otra vez 🔁';
   }
   function start(){
-    clearItems();score=0;time=30;bx=50;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡A recoger! 🧺';
+    clearItems();score=0;time=30;bx=50;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡A comer! 🥢';
     startEl.style.display='none';
-    if(!basket){basket=document.createElement('div');basket.className='basket';basket.textContent='🧺';board.appendChild(basket);}
+    if(!basket){basket=document.createElement('div');basket.className='basket';basket.textContent='🍽️';board.appendChild(basket);}
     basket.style.left='50%';basket.style.display='block';
     spawn();tick();raf=requestAnimationFrame(loop);
   }
   startEl.querySelector('button').onclick=start;
 })();
 
-/* ================= MEMORY DE OTOÑO ================= */
+/* ================= MEMORY DE SUSHI ================= */
 (function(){
   const grid=document.getElementById('moGrid'),msg=document.getElementById('moMsg'),btn=document.getElementById('moBtn');
   if(!grid) return;
-  const ITEMS=['🍂','🍁','🌰','🍄','🧣','🎃'];
+  const ITEMS=['🍣','🍤','🍙','🍥','🍱','🐟'];
   let first=null,lock=false,matched=0,moves=0;
   function nueva(){
     grid.innerHTML='';msg.textContent='';first=null;lock=false;matched=0;moves=0;
@@ -836,43 +834,35 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🍂💕');}
     if(!first){first=c;return;}moves++;
     if(first.dataset.em===c.dataset.em){first.classList.add('matched');c.classList.add('matched');first=null;matched++;
       if(matched===ITEMS.length){msg.textContent=`¡Completado en ${moves} intentos! 🏆💕`;confetti();}}
-    else{lock=true;const a=first,b=c;first=null;setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');a.textContent='';b.textContent='';lock=false;},700);}
+    else{lock=true;const x=first,y=c;first=null;setTimeout(()=>{x.classList.remove('flipped');y.classList.remove('flipped');x.textContent='';y.textContent='';lock=false;},700);}
   }
   btn.onclick=nueva;nueva();
 })();
 
-/* ================= PILLA LA ARDILLA ================= */
+/* ================= ¿DÓNDE ESTÁ EL SALMÓN? ================= */
 (function(){
-  const grid=document.getElementById('arGrid'),btn=document.getElementById('arBtn'),msg=document.getElementById('arMsg'),
-        scoreEl=document.getElementById('arScore'),timeEl=document.getElementById('arTime'),bestEl=document.getElementById('arBest');
-  if(!grid) return;
-  const N=9;let holes=[],score=0,time=30,best=+(localStorage.getItem('ardillaBest')||0),playing=false,popT,tickT;
-  bestEl.textContent=best;
-  function build(){grid.innerHTML='';holes=[];for(let i=0;i<N;i++){const h=document.createElement('div');h.className='ar-hole';h.innerHTML='<span class="mole">🐿️</span>';h.onclick=()=>whack(h);grid.appendChild(h);holes.push(h);}}
-  function whack(h){
-    if(!playing||!h.classList.contains('up'))return;
-    h.classList.remove('up');h.querySelector('.mole').textContent='🌰';
-    setTimeout(()=>{if(h.querySelector('.mole'))h.querySelector('.mole').textContent='🐿️';},250);
-    score++;scoreEl.textContent=score;
-    if(score%8===0)msg.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];
+  const cont=document.getElementById('slBox'),btn=document.getElementById('slBtn'),msg=document.getElementById('slMsg'),scoreEl=document.getElementById('slScore');
+  if(!cont) return;
+  const POSX=[10,110,210];
+  let boxes=[],idx=0,lock=true,wins=0;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  function build(){cont.innerHTML='';boxes=[];for(let i=0;i<3;i++){const b=document.createElement('div');b.className='trile-cat';b.textContent='🥡';b.dataset.pos=i;b.style.left=POSX[i]+'px';b.onclick=()=>pick(b);cont.appendChild(b);boxes.push(b);}}
+  async function play(){
+    build();lock=true;msg.textContent='¡Mira bien! 👀';btn.textContent='Mezclando…';
+    idx=Math.floor(Math.random()*3);const cb=boxes[idx];cb.textContent='🐟';cb.style.transform='translateY(-16px)';
+    await sleep(1100);cb.textContent='🥡';cb.style.transform='';msg.textContent='¡Mezclando! 🔀';
+    for(let k=0;k<14;k++){let x=Math.floor(Math.random()*3),y=Math.floor(Math.random()*3);while(y===x)y=Math.floor(Math.random()*3);
+      const px=+boxes[x].dataset.pos,py=+boxes[y].dataset.pos;boxes[x].dataset.pos=py;boxes[y].dataset.pos=px;
+      boxes[x].style.left=POSX[py]+'px';boxes[y].style.left=POSX[px]+'px';await sleep(250);}
+    lock=false;msg.textContent='¿Dónde está el salmón? 🐟';btn.textContent='Otra vez 🎮';
   }
-  function pop(){
-    if(!playing)return;
-    holes.forEach(h=>h.classList.remove('up'));
-    const k=1+(score>10?1:0);
-    for(let j=0;j<k;j++){const h=holes[Math.floor(Math.random()*N)];h.classList.add('up');}
-    popT=setTimeout(pop,Math.max(560,1000-score*14));
+  function pick(b){
+    if(lock)return;lock=true;const win=boxes.indexOf(b)===idx;
+    b.textContent=win?'🐟':'🥡';if(!win)boxes[idx].textContent='🐟';
+    if(win){wins++;scoreEl.textContent=wins;msg.textContent='¡Bravo! Ahí estaba el salmón 🐟💕';confetti();}
+    else msg.textContent='¡Casi! El salmón estaba ahí 🐟';
   }
-  function tick(){if(!playing)return;time--;timeEl.textContent=time;if(time<=0){end();return;}tickT=setTimeout(tick,1000);}
-  function end(){
-    playing=false;clearTimeout(popT);clearTimeout(tickT);holes.forEach(h=>h.classList.remove('up'));
-    if(score>best){best=score;localStorage.setItem('ardillaBest',best);bestEl.textContent=best;}
-    msg.textContent=`¡Pillaste ${score}! `+(score>=25?'¡Cazadora experta! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🐿️');
-    btn.textContent='Jugar otra vez 🔁';
-  }
-  function start(){build();score=0;time=30;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡Pilla las ardillas! 🐿️';btn.textContent='Jugando…';pop();tick();}
-  btn.onclick=()=>{if(playing)return;start();};
-  build();
+  btn.onclick=play;build();
 })();
 
 /* ================= COFRE DE POEMAS ================= */
