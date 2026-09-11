@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- v 20260905183556 -->
+<!-- v 20260911162337 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti, mi amor 🖼️🏛️</title>
+<title>Para ti, mi amor 🏝️🌴</title>
 <meta name="description" content="Una web hecha con todo mi cariño para ti.">
 <meta name="theme-color" content="#ff6b9d">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff4d79' d='M50 88C22 68 8 52 8 34 8 20 19 10 32 10c9 0 15 5 18 11 3-6 9-11 18-11 13 0 24 10 24 24 0 18-14 34-42 54Z'/%3E%3C/svg%3E">
@@ -13,12 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --pink:#a34a5e; --pink-deep:#6e2f3d; --rose:#efe4e6; --cream:#f8f2e9;
-    --ink:#2e2620; --soft:#8a6f74; --card:#fffdf8; --gold:#c9a227;
-    --shadow:0 12px 40px rgba(110,47,61,.22);
+    --pink:#ff7a59; --pink-deep:#e05537; --rose:#ffe1d3; --cream:#f2fbf9;
+    --ink:#0f3b3a; --soft:#5f938c; --card:#ffffff; --gold:#ffc23c;
+    --shadow:0 12px 40px rgba(224,85,55,.22);
   }
   html[data-theme="dark"]{
-    --cream:#161311; --card:#211b1a; --rose:#33262a; --ink:#f2e9df; --soft:#c8a9ad;
+    --cream:#07211f; --card:#0c302d; --rose:#123f3a; --ink:#dff6f2; --soft:#79bcb3;
     --shadow:0 12px 40px rgba(0,0,0,.5);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -26,16 +26,16 @@
   body{
     font-family:'Quicksand',system-ui,sans-serif; color:var(--ink);
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(201,162,39,.28), transparent 55%),
-      linear-gradient(180deg,#f7f0e4 0%,#e7d6c2 45%,#b3808e 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(255,194,60,.3), transparent 55%),
+      linear-gradient(180deg,#c7f2ec 0%,#6fd8cf 45%,#1fa9a2 100%);
     background-attachment:fixed;
     overflow-x:hidden; line-height:1.6;
     transition:background .4s,color .4s;
   }
   html[data-theme="dark"] body{
     background:
-      radial-gradient(55% 40% at 82% 8%, rgba(201,162,39,.14), transparent 55%),
-      linear-gradient(180deg,#161311 0%,#211b1a 60%,#2c2024 100%);
+      radial-gradient(55% 40% at 82% 8%, rgba(255,194,60,.14), transparent 55%),
+      linear-gradient(180deg,#07211f 0%,#0c302d 60%,#0f403a 100%);
   }
   h1,h2,.script{font-family:'Dancing Script',cursive}
 
@@ -142,11 +142,6 @@
   .gift-msg p{font-size:clamp(1.2rem,4vw,1.6rem);font-family:'Dancing Script',cursive;font-weight:700;color:var(--pink-deep);margin-top:16px}
 
   /* Cuenta atrás */
-  .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .cd .box{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-radius:18px;min-width:82px;padding:16px 10px;box-shadow:0 10px 30px rgba(255,77,121,.35)}
-  .cd .box .n{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:700;line-height:1}
-  .cd .box .l{font-size:.8rem;opacity:.9;margin-top:4px;letter-spacing:.5px}
-  #cdDone{display:none;font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--pink-deep);text-align:center}
 
   /* Toca para una sorpresa */
   #piropo .card{text-align:center;max-width:600px}
@@ -213,6 +208,16 @@
   .mem-card{aspect-ratio:1;border-radius:14px;background:var(--rose);display:grid;place-items:center;font-size:1.9rem;cursor:pointer;user-select:none;transition:transform .15s,background .2s}
   .mem-card.flipped{background:var(--card);box-shadow:var(--shadow)}
   .mem-card.matched{background:var(--pink);color:#fff}
+  /* Ruleta tropical */
+  .ruleta-wrap{position:relative;width:210px;height:210px;margin:10px auto 0}
+  .ruleta-wheel{width:210px;height:210px;border-radius:50%;display:grid;place-items:center;font-size:3.4rem;background:conic-gradient(var(--pink) 0turn .167turn,var(--gold) .167turn .333turn,var(--pink-deep) .333turn .5turn,var(--pink) .5turn .667turn,var(--gold) .667turn .833turn,var(--pink-deep) .833turn 1turn);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 0 8px var(--card);transition:transform 2.6s cubic-bezier(.15,.7,.15,1)}
+  .ruleta-pin{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:1.7rem;z-index:2}
+  /* Cuenta atras */
+  .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cd .box{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-radius:18px;min-width:82px;padding:16px 10px;box-shadow:0 10px 30px rgba(224,85,55,.35)}
+  .cd .box .n{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:700;line-height:1}
+  .cd .box .l{font-size:.8rem;opacity:.9;margin-top:4px;letter-spacing:.5px}
+  #cdDone{display:none;font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.6rem);color:var(--pink-deep);text-align:center}
   .game-board{position:relative;height:320px;background:var(--rose);border-radius:18px;overflow:hidden;touch-action:manipulation}
   .game-start{position:absolute;inset:0;display:grid;place-items:center}
   .turtle{position:absolute;font-size:2.4rem;cursor:pointer;user-select:none;transform:scale(0);animation:tpop .2s forwards}
@@ -295,9 +300,9 @@
 
   /* Portada con contraseña */
   #gate{position:fixed;inset:0;z-index:100;
-    background:radial-gradient(circle at 50% 10%, rgba(201,162,39,.42), transparent 46%), linear-gradient(160deg,#a34a5e,#3a1f28);
+    background:radial-gradient(circle at 50% 10%, rgba(255,194,60,.45), transparent 46%), linear-gradient(160deg,#ff7a59,#0a6e6a);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;color:#fff;transition:opacity .6s}
-  #gate .lock::after{content:" 🖼️"}
+  #gate .lock::after{content:" 🏝️"}
   #gate.hide{opacity:0;pointer-events:none}
   #gate .lock{font-size:4rem;margin-bottom:10px}
   #gate h3{font-family:'Dancing Script',cursive;font-size:clamp(2rem,7vw,3rem);margin-bottom:6px}
@@ -319,7 +324,7 @@
   <p class="ghint" id="gateHint"></p>
 </div>
 
-<div class="moon">🏛️</div>
+<div class="moon">🌴</div>
 <div id="hearts"></div>
 <div id="toast"></div>
 
@@ -335,10 +340,10 @@
 <header class="hero">
   <div class="wrap">
     <p class="saludo" id="saludo"></p>
-    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🖼️</span><span class="capi-mochi">🎨</span></div>
+    <div class="capi" id="capi" title="¡Tócame!"><span class="capi-emoji">🦜</span><span class="capi-mochi">🌴</span></div>
     <h1>Para ti,<br>mi amor</h1>
-    <p class="sub">Eres la obra de arte más bonita de todo el museo 🖼️💕</p>
-    <p class="hint" id="capiHint">Toca el cuadro 🫶</p>
+    <p class="sub">Eres mi paraíso favorito, mi isla en medio de todo 🏝️💕</p>
+    <p class="hint" id="capiHint">Toca al lorito 🫶</p>
     <div class="scroll-cue">⬇️</div>
   </div>
 </header>
@@ -381,6 +386,23 @@
   </div>
 </section>
 
+<!-- ===== CUENTA ATRÁS ===== -->
+<section id="countdown">
+  <div class="wrap">
+    <h2>Cuenta atrás</h2>
+    <p class="lead">Lo que falta para vernos: el domingo a las 20:00 🥰</p>
+    <div class="card reveal" style="max-width:560px">
+      <div class="cd" id="cd">
+        <div class="box"><div class="n" id="cdD">0</div><div class="l">DÍAS</div></div>
+        <div class="box"><div class="n" id="cdH">0</div><div class="l">HORAS</div></div>
+        <div class="box"><div class="n" id="cdM">0</div><div class="l">MIN</div></div>
+        <div class="box"><div class="n" id="cdS">0</div><div class="l">SEG</div></div>
+      </div>
+      <div id="cdDone">¡Hoy nos vemos! 🥰💕</div>
+    </div>
+  </div>
+</section>
+
 </div><!-- /pantalla inicio -->
 
 <!-- ==================== PANTALLA: COFRE DE POEMAS ==================== -->
@@ -405,24 +427,24 @@
 <!-- ==================== PANTALLA: JUEGOS ==================== -->
 <div class="screen" data-scr="juegos">
 
-<!-- ===== ATRAPA LAS OBRAS ===== -->
-<section id="obras">
+<!-- ===== ATRAPA LOS COCOS ===== -->
+<section id="cocos">
   <div class="wrap">
-    <h2>Atrapa las obras 🖼️</h2>
-    <p class="lead">Mueve el carrito y recoge las obras… ¡esquiva al ladrón 🥷!</p>
+    <h2>Atrapa los cocos 🥥</h2>
+    <p class="lead">Mueve la cesta y recoge cocos y frutas… ¡esquiva el cangrejo 🦀!</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🖼️ Salvadas <b id="obScore">0</b></span><span>⏱️ <b id="obTime">30</b></span><span>🏆 <b id="obBest">0</b></span></div>
-      <div class="game-board" id="obBoard" style="height:360px"><div class="game-start" id="obStart"><button class="piropo-btn">Empezar 🎮</button></div></div>
-      <p class="piropo-txt" id="obMsg" style="min-height:1.4em;margin-top:12px"></p>
+      <div class="game-hud"><span>🥥 Recogidos <b id="coScore">0</b></span><span>⏱️ <b id="coTime">30</b></span><span>🏆 <b id="coBest">0</b></span></div>
+      <div class="game-board" id="coBoard" style="height:360px"><div class="game-start" id="coStart"><button class="piropo-btn">Empezar 🎮</button></div></div>
+      <p class="piropo-txt" id="coMsg" style="min-height:1.4em;margin-top:12px"></p>
     </div>
   </div>
 </section>
 
-<!-- ===== MEMORY DEL MUSEO ===== -->
+<!-- ===== MEMORY DE LA PLAYA ===== -->
 <section id="memo">
   <div class="wrap">
-    <h2>Memory del museo 🎨</h2>
-    <p class="lead">Encuentra las parejas de la galería 🖼️</p>
+    <h2>Memory de la playa 🐚</h2>
+    <p class="lead">Encuentra las parejas tropicales 🌴</p>
     <div class="card reveal" style="text-align:center">
       <div class="mem-grid" id="moGrid"></div>
       <p class="piropo-txt" id="moMsg" style="min-height:1.4em;margin:12px 0"></p>
@@ -431,16 +453,15 @@
   </div>
 </section>
 
-<!-- ===== PILLA AL LADRÓN ===== -->
-<section id="ladron">
+<!-- ===== RULETA TROPICAL ===== -->
+<section id="ruleta">
   <div class="wrap">
-    <h2>Pilla al ladrón 🕵️</h2>
-    <p class="lead">Toca a los ladrones 🥷 que asoman… ¡pero no a los cuadros 🖼️!</p>
+    <h2>Ruleta tropical 🍹</h2>
+    <p class="lead">Gira la ruleta y descubre tu sorpresa 🌴</p>
     <div class="card reveal" style="text-align:center">
-      <div class="game-hud"><span>🕵️ Pillados <b id="laScore">0</b></span><span>⏱️ <b id="laTime">30</b></span><span>🏆 <b id="laBest">0</b></span></div>
-      <div class="ar-grid" id="laGrid"></div>
-      <button class="piropo-btn" id="laBtn" style="margin-top:12px">Empezar 🎮</button>
-      <p class="piropo-txt" id="laMsg" style="min-height:1.4em;margin-top:10px"></p>
+      <div class="ruleta-wrap"><div class="ruleta-pin">🔻</div><div class="ruleta-wheel" id="ruWheel">🍹</div></div>
+      <button class="piropo-btn" id="ruBtn" style="margin-top:16px">Girar 🎡</button>
+      <p class="piropo-txt" id="ruMsg" style="min-height:1.4em;margin-top:12px">¡Pulsa para girar! 👆</p>
     </div>
   </div>
 </section>
@@ -504,6 +525,7 @@
 /* ================= DATOS EDITABLES ================= */
 // Fecha en la que empezáis (año, mes 1-12, día). El 30 que se lo pides 🥹
 const INICIO = new Date(2026, 6, 30);
+const FECHA_CITA = new Date(2026, 8, 13, 20, 0); // domingo a las 20:00
 // Fecha del cumpleaños (mes 1-12, día)
 const CUMPLE = {mes:7, dia:30};
 // Fecha de la próxima cita/reencuentro (año, mes 1-12, día, hora, minuto)
@@ -511,24 +533,24 @@ const CUMPLE = {mes:7, dia:30};
 
 /* ---- PIROPOS (botón "toca para una sorpresa") ---- */
 const PIROPOS = [
-  "Eres una obra de arte 🖼️",
-  "Más bonita que un cuadro de museo 🎨",
-  "Guapa como una escultura clásica 🗿",
-  "Contigo todo se vuelve más bonito 🖌️",
-  "Eres mi obra maestra favorita ✨",
-  "Me tienes admirándote como en una galería 👀",
-  "Preciosa de marco a marco 🖼️",
-  "Eres el arte que le faltaba a mi vida 🎨",
-  "Más valiosa que cualquier tesoro del museo 💎",
-  "Contigo me quedaría toda la visita 🏛️",
-  "Eres mi cuadro favorito de todos 🖼️",
-  "Más bonita que la mejor exposición 🎨💖"
+  "Eres mi paraíso 🏝️",
+  "Más guapa que un atardecer en la playa 🌅",
+  "Contigo todo es vacaciones 🌴",
+  "Eres mi cóctel favorito 🍹",
+  "Dulce como un coco fresquito 🥥",
+  "Me tienes en modo verano todo el año ☀️",
+  "Preciosa como una flor tropical 🌺",
+  "Eres la brisa que me alegra el día 🌴",
+  "Más bonita que el mar turquesa 🌊",
+  "Contigo me quedaría en la isla para siempre 🏖️",
+  "Eres mi rinconcito de playa favorito 🐚",
+  "Más guapa que una postal de paraíso 🏝️💖"
 ];
 
 /* ---- PIROPOS CORTOS (los que sueltan del juego) ---- */
 const PIROPOS_JUEGO = [
-  "Guapa 😍","Mi obra 🖼️","¡Arte! 🎨","Preciosa ✨","Mi tesoro 💎",
-  "Bonita 🗿","Mi musa 🎨","Hermosa 💫","Mi amor 🥰","Única 🖼️","Mía 💕"
+  "Guapa 😍","Mi isla 🏝️","¡Rica! 🥥","Preciosa 🌺","Mi solecito ☀️",
+  "Bonita 🌴","Mi tesoro 🐚","Hermosa 💫","Mi amor 🥰","Fresca 🍹","Mía 💕"
 ];
 
 /* ---- DESEOS (al tocar la estrella fugaz) ---- */
@@ -567,9 +589,9 @@ const PERLA_PREMIOS = [
 
 /* ---- CONTRASEÑA (solo para ella) ---- */
 // La pregunta que verá y las respuestas válidas (en minúsculas, sin importar tildes)
-const PREGUNTA = "Tengo agujas y no sé coser; tengo números y no sé leer. ¿Qué soy? ⏰";
-const RESPUESTAS = ["reloj","el reloj","un reloj","reloj de pared","los relojes"];
-const PISTA = "Pista: te dice la hora ⏰";
+const PREGUNTA = "Tengo hojas y no soy libro, doy cocos y sombra en la playa. ¿Qué soy? 🌴";
+const RESPUESTAS = ["palmera","la palmera","palmeras","una palmera","arbol","un arbol"];
+const PISTA = "Pista: da cocos y sombra en la playa 🌴";
 
 /* ---- MÚSICA ---- */
 // Vacío ("") = suena vuestra canción de Spotify. Pon un ID de YouTube para otra melodía.
@@ -579,42 +601,42 @@ const SPOTIFY_ID = "4lKLWl61Wx2bKfA32G564t";
 
 // Frases bonitas: cambian solas cada día, en orden.
 const FRASES = [
-  "Eres la obra de arte más bonita del museo 🖼️",
-  "Contigo hasta lo cotidiano parece una pintura 🎨",
-  "Eres mi cuadro favorito, sin discusión 🖼️",
-  "Te miraría durante horas, como en una galería 👀",
-  "Eres una obra maestra de las de verdad 🗿",
-  "Contigo cualquier rincón se vuelve arte 🖌️",
-  "Eres el detalle bonito que le da sentido a todo ✨",
-  "Mi corazón te puso en su sala principal ❤️🏛️",
-  "Eres la luz que ilumina mi museo 🕯️",
-  "Contigo daría mil vueltas por la misma sala 🚶",
-  "Te elegiría entre todas las obras, siempre 🖼️",
-  "Eres más bonita que cualquier cuadro famoso 🎨",
-  "Contigo la vida es una exposición preciosa 💕",
-  "Todo mi museo es tuyo, mi amor 🏛️"
+  "Eres mi paraíso favorito, mi isla 🏝️",
+  "Contigo cualquier día es de vacaciones 🌴",
+  "Eres el solecito que alegra mi playa ☀️",
+  "Contigo hasta la brisa sabe mejor 🌺",
+  "Eres mi cóctel favorito de la vida 🍹",
+  "Más dulce que un coco recién abierto 🥥",
+  "Contigo cualquier orilla es mi hogar 🏖️",
+  "Mi corazón te eligió como su isla 💕🏝️",
+  "Eres la ola bonita a la que siempre vuelvo 🌊",
+  "Contigo me tumbaría al sol para siempre ☀️",
+  "Te elegiría en cualquier playa, siempre 🏝️",
+  "Eres más bonita que un atardecer tropical 🌅",
+  "Contigo la vida es una isla sin prisas 🌴💕",
+  "Todo mi paraíso es tuyo, mi amor 🏝️"
 ];
 
 // Mensajitos que aparecen al tocar un corazón del fondo 💕
 const MENSAJES = [
-  "Te quiero 💕","Mi obra 🖼️","Guapísima 😍","Mi musa 🎨",
-  "Eres arte ✨","Contigo todo 🏛️","Mi tesoro 💎","Mi hogar 🖼️❤️"
+  "Te quiero 💕","Mi isla 🏝️","Guapísima 😍","Mi flor 🌺",
+  "Eres verano ☀️","Contigo todo 🌴","Mi coco 🥥","Mi hogar 🏖️❤️"
 ];
 
 // 📜 Poemas de amor (uno por día). Edita o añade los que quieras.
 const POEMAS = [
-  {t:"Te nombro", v:"Te nombro y algo se enciende,\ncomo si el mar guardara tu nombre\nen el fondo de todas sus olas.\nTe amo con la paciencia de la tierra\nque espera la lluvia sin quejarse,\ny en cada gota, vuelves."},
-  {t:"Raíz", v:"Echaste raíces en mí\nsin pedir permiso,\ncomo la enredadera en el muro viejo.\nY ya no sé dónde termino yo\nni dónde empiezas tú:\ncrecemos hacia la misma luz."},
-  {t:"Fuego pequeño", v:"Hay noches en que digo tu nombre\ny el frío se retira.\nEres mi pequeña hoguera,\nel rescoldo que guardo\npara cuando el mundo se pone oscuro.\nArde, amor, que me caliento en ti."},
-  {t:"El mar y tú", v:"Te comparo con el mar\ny el mar se queda corto:\nél va y viene, se cansa;\ntú te quedas.\nEres marea que no baja,\nagua dulce en medio de la sal."},
-  {t:"Pan", v:"Te amo como se ama el pan:\nsin ceremonia, cada día,\ncon el hambre sencilla\nde quien sabe lo que vale.\nEres mi mesa y mi trigo,\nlo que me sostiene de pie."},
-  {t:"Nocturno", v:"En la noche te busco a tientas\ny siempre estás:\ncomo la luna, que aunque no se vea,\nsigue tirando de la marea.\nTú tiras de mí, en silencio,\nhacia el lado bueno de la vida."},
-  {t:"A contraestación", v:"Que caigan las hojas, que venga el frío:\nmientras tú estés,\ntengo primavera guardada\nen el bolsillo del pecho.\nTe amo a destiempo,\nflorezco cuando me miras."},
-  {t:"Manos", v:"Tus manos son dos pájaros\nque aprendieron a posarse en las mías.\nNo pido cielo ni fortuna:\nme basta con ese vuelo pequeño,\ncon el calor de tus dedos\ndiciéndome que no me suelte."},
-  {t:"Confesión", v:"No sé escribir como los grandes,\npero sé quererte como los ríos:\nsin mapa, sin descanso,\nbuscándote siempre mar adentro.\nY si me pierdo,\nme pierdo hacia ti."},
-  {t:"Semilla", v:"Sembraste un beso en mi boca\ny me creció el verano entero.\nDesde entonces todo en mí da fruto:\nla risa, la esperanza, las ganas.\nEres la lluvia y la tierra,\nlo que hace que yo florezca."},
-  {t:"Idioma", v:"Hay un idioma que hablamos tú y yo:\nel de las miradas largas,\nel de las manos que se buscan\nsin necesidad de palabras.\nTe amo también en el silencio,\ndonde el amor se entiende mejor."},
-  {t:"Mis días", v:"No te prometo la eternidad,\nporque no soy dueño del tiempo;\nte prometo mis días,\nuno detrás de otro,\ngastados enteros en quererte,\nque es lo único que sé hacer bien."}
+  {t:"Tú", v:"¿Qué es la luz? —me preguntabas\nmientras yo miraba tus ojos.\n¿Qué es la luz? Y no supe\nmás respuesta que nombrarte."},
+  {t:"Presencia", v:"Cuando la noche me abruma\ny el silencio pesa tanto,\nbasta pensar que respiras\npara que amanezca el alma."},
+  {t:"Constancia", v:"Podrán secarse los ríos,\npodrán caerse los astros;\npero mientras yo aliente,\nseguiré, mi bien, amándote."},
+  {t:"Distancia", v:"Nos separa la distancia,\nesa niebla de los mapas;\nmas no hay legua ni frontera\nque separe a dos que se aman."},
+  {t:"Tu voz", v:"Hay músicas que se olvidan\napenas dejan de sonar;\nla tuya no: tu voz se queda\ntemblando dentro de mí."},
+  {t:"El faro", v:"En medio de mis tormentas,\ncuando todo se oscurece,\ntú eres la única luz\nque me dice dónde vuelvo."},
+  {t:"Rima breve", v:"¿Qué es querer? —me preguntaron.\nY no supe qué decir.\nCallé, te miré un instante,\ny en tus ojos lo aprendí."},
+  {t:"Perpetuo", v:"Pasarán los años, muchos,\nse irá borrando lo demás;\npero el modo en que te quiero\nno lo alcanza el tiempo, no."},
+  {t:"Solo tú", v:"Se marcharán los veranos,\nvolverán, se irán de nuevo;\nasí el mundo, siempre en fuga.\nSolo tú, mi amor, te quedas."},
+  {t:"Nocturno", v:"De noche, cuando no me ves,\ntambién te sigo queriendo;\nque el amor no necesita\nque lo miren para arder."},
+  {t:"Confesión", v:"No tengo versos hermosos\nni palabras de poeta;\ntengo un corazón que es tuyo:\nllévatelo, que es lo que hay."},
+  {t:"Siempre", v:"Y cuando ya no esté el mundo\ny se apague hasta la luz,\nbuscaré, de sombra en sombra,\nel eco de un beso: tú."}
 ]
 
 
@@ -651,7 +673,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
 
 /* ================= CORAZONES + MENSAJES ================= */
 (function(){
-  const c=document.getElementById('hearts'), emo=['🖼️','🏛️','🎨','🗿','⛲','🖌️','🕯️','📜','✨','🫶'];
+  const c=document.getElementById('hearts'), emo=['🏝️','🌴','🥥','🍍','🍹','🦜','🐚','🌺','☀️','🫶'];
   const n = window.innerWidth<600?13:22;
   for(let i=0;i<n;i++){
     const h=document.createElement('div');h.className='fh';
@@ -666,7 +688,7 @@ gInput.addEventListener('keydown',e=>{if(e.key==='Enter')tryEnter();});
     c.appendChild(h);
   }
   // Confeti del circo cayendo 🎉
-  const conf=['🖼️','🎨','🗿','✨','🏛️'];
+  const conf=['🌴','🥥','🍹','🌺','☀️'];
   const nh = window.innerWidth<600?14:22;
   for(let i=0;i<nh;i++){
     const p=document.createElement('div');p.className='petal';
@@ -719,14 +741,14 @@ eb.onclick=()=>{const o=lb2.classList.toggle('open');eb.textContent=o?'💗':'�
 
 /* ================= CAPIBARA + CONFETI ================= */
 const capi=document.getElementById('capi'),ch=document.getElementById('capiHint');
-const CAPI_MSGS=['Mua 😘','Mi obra maestra 🖼️💕','Contigo todo es arte 🎨','Te quiero un museo entero 🏛️❤️'];
+const CAPI_MSGS=['Mua 😘','Mi paraíso favorito 🏝️💕','Contigo todo es vacaciones 🌴','Te quiero como al sol ☀️❤️'];
 let capiI=0;
 capi.onclick=()=>{
   ch.textContent=CAPI_MSGS[capiI%CAPI_MSGS.length];capiI++;
   confetti();
 };
 function confetti(){
-  const emo=['🖼️','🎨','🗿','✨','💕','❤️','🧡','🏛️'];
+  const emo=['🌴','🥥','🍍','🌺','💕','❤️','🧡','🏝️'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div');
     p.textContent=emo[Math.floor(Math.random()*emo.length)];
@@ -736,7 +758,7 @@ function confetti(){
     setTimeout(()=>p.remove(),3200);
   }
 }
-function welcome(){confetti();toast('¡Hola, mi amor! 🖼️💕');}
+function welcome(){confetti();toast('¡Hola, mi amor! 🏝️💕');}
 
 /* ================= TOCA PARA UNA SORPRESA ================= */
 (function(){
@@ -760,16 +782,16 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🖼️💕');}
   document.getElementById('saludo').textContent=s;
 })();
 
-/* ================= ATRAPA LAS OBRAS ================= */
+/* ================= ATRAPA LOS COCOS ================= */
 (function(){
-  const board=document.getElementById('obBoard'),startEl=document.getElementById('obStart'),
-        scoreEl=document.getElementById('obScore'),timeEl=document.getElementById('obTime'),
-        bestEl=document.getElementById('obBest'),msg=document.getElementById('obMsg');
+  const board=document.getElementById('coBoard'),startEl=document.getElementById('coStart'),
+        scoreEl=document.getElementById('coScore'),timeEl=document.getElementById('coTime'),
+        bestEl=document.getElementById('coBest'),msg=document.getElementById('coMsg');
   if(!board) return;
-  const GOOD=['🖼️','🎨','🗿','🏺','💎'],BAD=['🥷'];
-  let cart,bx=50,score=0,time=30,best=+(localStorage.getItem('obrasBest')||0),playing=false,raf,spawnT,tickT,items=[];
+  const GOOD=['🥥','🍍','🍹','🌺','🐚'],BAD=['🦀'];
+  let basket,bx=50,score=0,time=30,best=+(localStorage.getItem('cocosBest')||0),playing=false,raf,spawnT,tickT,items=[];
   bestEl.textContent=best;
-  function setX(clientX){const r=board.getBoundingClientRect();bx=Math.max(7,Math.min(93,((clientX-r.left)/r.width)*100));if(cart)cart.style.left=bx+'%';}
+  function setX(clientX){const r=board.getBoundingClientRect();bx=Math.max(7,Math.min(93,((clientX-r.left)/r.width)*100));if(basket)basket.style.left=bx+'%';}
   board.addEventListener('pointermove',e=>{if(playing)setX(e.clientX);});
   board.addEventListener('touchmove',e=>{if(playing){setX(e.touches[0].clientX);e.preventDefault();}},{passive:false});
   function spawn(){
@@ -790,7 +812,7 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🖼️💕');}
       const ex=+el.dataset.x;
       if(y>84 && y<96 && Math.abs(ex-bx)<10){
         const bad=el.dataset.bad==='1';
-        if(bad){score=Math.max(0,score-2);flash('¡Ladrón! 🥷');}
+        if(bad){score=Math.max(0,score-2);flash('¡Pincha! 🦀');}
         else{score++;if(score%6===0)flash(PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)]);}
         scoreEl.textContent=score;el.remove();items.splice(i,1);continue;
       }
@@ -803,25 +825,25 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🖼️💕');}
   function clearItems(){items.forEach(el=>el.remove());items=[];}
   function end(){
     playing=false;clearTimeout(spawnT);clearTimeout(tickT);cancelAnimationFrame(raf);clearItems();
-    if(score>best){best=score;localStorage.setItem('obrasBest',best);bestEl.textContent=best;}
-    msg.textContent=`¡Salvaste ${score} obras! `+(score>=25?'¡Directora del museo! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🖼️');
+    if(score>best){best=score;localStorage.setItem('cocosBest',best);bestEl.textContent=best;}
+    msg.textContent=`¡Recogiste ${score}! `+(score>=25?'¡Reina de la playa! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🥥');
     startEl.style.display='grid';startEl.querySelector('button').textContent='Jugar otra vez 🔁';
   }
   function start(){
-    clearItems();score=0;time=30;bx=50;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡A salvar el arte! 🖼️';
+    clearItems();score=0;time=30;bx=50;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡A recoger! 🌴';
     startEl.style.display='none';
-    if(!cart){cart=document.createElement('div');cart.className='basket';cart.textContent='🛒';board.appendChild(cart);}
-    cart.style.left='50%';cart.style.display='block';
+    if(!basket){basket=document.createElement('div');basket.className='basket';basket.textContent='🧺';board.appendChild(basket);}
+    basket.style.left='50%';basket.style.display='block';
     spawn();tick();raf=requestAnimationFrame(loop);
   }
   startEl.querySelector('button').onclick=start;
 })();
 
-/* ================= MEMORY DEL MUSEO ================= */
+/* ================= MEMORY DE LA PLAYA ================= */
 (function(){
   const grid=document.getElementById('moGrid'),msg=document.getElementById('moMsg'),btn=document.getElementById('moBtn');
   if(!grid) return;
-  const ITEMS=['🖼️','🎨','🗿','🏛️','🖌️','🏺'];
+  const ITEMS=['🏝️','🌴','🥥','🍍','🌺','🐚'];
   let first=null,lock=false,matched=0,moves=0;
   function nueva(){
     grid.innerHTML='';msg.textContent='';first=null;lock=false;matched=0;moves=0;
@@ -839,43 +861,46 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🖼️💕');}
   btn.onclick=nueva;nueva();
 })();
 
-/* ================= PILLA AL LADRÓN ================= */
+/* ================= RULETA TROPICAL ================= */
 (function(){
-  const grid=document.getElementById('laGrid'),btn=document.getElementById('laBtn'),msg=document.getElementById('laMsg'),
-        scoreEl=document.getElementById('laScore'),timeEl=document.getElementById('laTime'),bestEl=document.getElementById('laBest');
-  if(!grid) return;
-  const N=9;let holes=[],score=0,time=30,best=+(localStorage.getItem('ladronBest')||0),playing=false,popT,tickT;
-  bestEl.textContent=best;
-  function build(){grid.innerHTML='';holes=[];for(let i=0;i<N;i++){const h=document.createElement('div');h.className='ar-hole';h.innerHTML='<span class="mole">🥷</span>';h.dataset.thief='1';h.onclick=()=>whack(h);grid.appendChild(h);holes.push(h);}}
-  function whack(h){
-    if(!playing||!h.classList.contains('up'))return;
-    const thief=h.dataset.thief==='1';
-    h.classList.remove('up');
-    if(thief){score++;scoreEl.textContent=score;h.querySelector('.mole').textContent='💥';
-      setTimeout(()=>{if(h.querySelector('.mole'))h.querySelector('.mole').textContent='🥷';},250);
-      if(score%8===0)msg.textContent=PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];}
-    else{score=Math.max(0,score-2);scoreEl.textContent=score;msg.textContent='¡Ese es un cuadro! 🖼️';}
+  const wheel=document.getElementById('ruWheel'),btn=document.getElementById('ruBtn'),msg=document.getElementById('ruMsg');
+  if(!wheel) return;
+  const PREMIOS=[
+    'Un cóctel juntos al atardecer 🍹',
+    'Un beso bajo la palmera 🌴😘',
+    'Un baño en el mar contigo 🌊',
+    'Mil piropos para ti 💕',
+    'Una siesta abrazados 😴',
+    'Un paseo por la orilla 🏖️',
+    'Te quiero infinito ❤️',
+    'Bailar sin música contigo 💃',
+    'Un atardecer solo para dos 🌅',
+    'Un achuchón bien fuerte 🤗'
+  ];
+  let deg=0,spin=false;
+  btn.onclick=()=>{
+    if(spin)return; spin=true; msg.textContent='Girando… 🎡';
+    deg += 1440 + Math.floor(Math.random()*360);
+    wheel.style.transform='rotate('+deg+'deg)';
+    setTimeout(()=>{spin=false; msg.textContent='✨ '+PREMIOS[Math.floor(Math.random()*PREMIOS.length)]; confetti();},2700);
+  };
+})();
+
+/* ================= CUENTA ATRÁS ================= */
+(function(){
+  const D=document.getElementById('cdD'),H=document.getElementById('cdH'),M=document.getElementById('cdM'),S=document.getElementById('cdS');
+  const cd=document.getElementById('cd'),done=document.getElementById('cdDone');
+  if(!cd) return;
+  function tick(){
+    const diff=FECHA_CITA-new Date();
+    if(diff<=0){cd.style.display='none';done.style.display='block';return;}
+    const s=Math.floor(diff/1000);
+    D.textContent=Math.floor(s/86400);
+    H.textContent=Math.floor(s%86400/3600);
+    M.textContent=Math.floor(s%3600/60);
+    S.textContent=s%60;
   }
-  function pop(){
-    if(!playing)return;
-    holes.forEach(h=>h.classList.remove('up'));
-    const k=1+(score>10?1:0);
-    for(let j=0;j<k;j++){const h=holes[Math.floor(Math.random()*N)];
-      const thief=Math.random()<0.72; h.dataset.thief=thief?'1':'0';
-      h.querySelector('.mole').textContent=thief?'🥷':'🖼️';
-      h.classList.add('up');}
-    popT=setTimeout(pop,Math.max(620,1050-score*14));
-  }
-  function tick(){if(!playing)return;time--;timeEl.textContent=time;if(time<=0){end();return;}tickT=setTimeout(tick,1000);}
-  function end(){
-    playing=false;clearTimeout(popT);clearTimeout(tickT);holes.forEach(h=>h.classList.remove('up'));
-    if(score>best){best=score;localStorage.setItem('ladronBest',best);bestEl.textContent=best;}
-    msg.textContent=`¡Pillaste ${score}! `+(score>=25?'¡Guardia de honor! 🏆':score>=12?'¡Muy bien! 🥰':'¡Otra vez! 🕵️');
-    btn.textContent='Jugar otra vez 🔁';
-  }
-  function start(){build();score=0;time=30;playing=true;scoreEl.textContent=0;timeEl.textContent=30;msg.textContent='¡Pilla a los ladrones! 🥷';btn.textContent='Jugando…';pop();tick();}
-  btn.onclick=()=>{if(playing)return;start();};
-  build();
+  tick();setInterval(tick,1000);
 })();
 
 /* ================= COFRE DE POEMAS ================= */
