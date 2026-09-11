@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v 20260911162337 -->
+<!-- v 20260911163627 -->
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -208,10 +208,11 @@
   .mem-card{aspect-ratio:1;border-radius:14px;background:var(--rose);display:grid;place-items:center;font-size:1.9rem;cursor:pointer;user-select:none;transition:transform .15s,background .2s}
   .mem-card.flipped{background:var(--card);box-shadow:var(--shadow)}
   .mem-card.matched{background:var(--pink);color:#fff}
-  /* Ruleta tropical */
-  .ruleta-wrap{position:relative;width:210px;height:210px;margin:10px auto 0}
-  .ruleta-wheel{width:210px;height:210px;border-radius:50%;display:grid;place-items:center;font-size:3.4rem;background:conic-gradient(var(--pink) 0turn .167turn,var(--gold) .167turn .333turn,var(--pink-deep) .333turn .5turn,var(--pink) .5turn .667turn,var(--gold) .667turn .833turn,var(--pink-deep) .833turn 1turn);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 0 8px var(--card);transition:transform 2.6s cubic-bezier(.15,.7,.15,1)}
-  .ruleta-pin{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:1.7rem;z-index:2}
+  /* Pesca cuando pique */
+  .pesca-pond{position:relative;height:210px;border-radius:18px;background:linear-gradient(180deg,#7fd8e6,#1f9aa2);display:grid;place-items:center;cursor:pointer;user-select:none;overflow:hidden;transition:background .12s;text-align:center;padding:12px}
+  .pesca-pond.bite{background:linear-gradient(180deg,#ffd36b,#ff8c42)}
+  .pesca-state{font-family:'Quicksand';font-weight:700;font-size:1.3rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.3);line-height:1.35}
+  .pesca-fish{font-size:3rem;display:inline-block}
   /* Cuenta atras */
   .cd{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .cd .box{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-radius:18px;min-width:82px;padding:16px 10px;box-shadow:0 10px 30px rgba(224,85,55,.35)}
@@ -453,15 +454,16 @@
   </div>
 </section>
 
-<!-- ===== RULETA TROPICAL ===== -->
-<section id="ruleta">
+<!-- ===== PESCA CUANDO PIQUE ===== -->
+<section id="pesca">
   <div class="wrap">
-    <h2>Ruleta tropical 🍹</h2>
-    <p class="lead">Gira la ruleta y descubre tu sorpresa 🌴</p>
+    <h2>Pesca cuando pique 🎣</h2>
+    <p class="lead">Espera… y toca en cuanto el pez pique. ¡Sin adelantarte! 🐟</p>
     <div class="card reveal" style="text-align:center">
-      <div class="ruleta-wrap"><div class="ruleta-pin">🔻</div><div class="ruleta-wheel" id="ruWheel">🍹</div></div>
-      <button class="piropo-btn" id="ruBtn" style="margin-top:16px">Girar 🎡</button>
-      <p class="piropo-txt" id="ruMsg" style="min-height:1.4em;margin-top:12px">¡Pulsa para girar! 👆</p>
+      <div class="game-hud"><span>⚡ Último <b id="peLast">–</b></span><span>🏆 Mejor <b id="peBest">–</b></span></div>
+      <div class="pesca-pond" id="pePond"><div class="pesca-state" id="peState">🎣 Pulsa "Lanzar el sedal"</div></div>
+      <button class="piropo-btn" id="peBtn" style="margin-top:12px">Lanzar el sedal 🎣</button>
+      <p class="piropo-txt" id="peMsg" style="min-height:1.4em;margin-top:10px"></p>
     </div>
   </div>
 </section>
@@ -861,46 +863,32 @@ function welcome(){confetti();toast('¡Hola, mi amor! 🏝️💕');}
   btn.onclick=nueva;nueva();
 })();
 
-/* ================= RULETA TROPICAL ================= */
+/* ================= PESCA CUANDO PIQUE ================= */
 (function(){
-  const wheel=document.getElementById('ruWheel'),btn=document.getElementById('ruBtn'),msg=document.getElementById('ruMsg');
-  if(!wheel) return;
-  const PREMIOS=[
-    'Un cóctel juntos al atardecer 🍹',
-    'Un beso bajo la palmera 🌴😘',
-    'Un baño en el mar contigo 🌊',
-    'Mil piropos para ti 💕',
-    'Una siesta abrazados 😴',
-    'Un paseo por la orilla 🏖️',
-    'Te quiero infinito ❤️',
-    'Bailar sin música contigo 💃',
-    'Un atardecer solo para dos 🌅',
-    'Un achuchón bien fuerte 🤗'
-  ];
-  let deg=0,spin=false;
-  btn.onclick=()=>{
-    if(spin)return; spin=true; msg.textContent='Girando… 🎡';
-    deg += 1440 + Math.floor(Math.random()*360);
-    wheel.style.transform='rotate('+deg+'deg)';
-    setTimeout(()=>{spin=false; msg.textContent='✨ '+PREMIOS[Math.floor(Math.random()*PREMIOS.length)]; confetti();},2700);
-  };
-})();
-
-/* ================= CUENTA ATRÁS ================= */
-(function(){
-  const D=document.getElementById('cdD'),H=document.getElementById('cdH'),M=document.getElementById('cdM'),S=document.getElementById('cdS');
-  const cd=document.getElementById('cd'),done=document.getElementById('cdDone');
-  if(!cd) return;
-  function tick(){
-    const diff=FECHA_CITA-new Date();
-    if(diff<=0){cd.style.display='none';done.style.display='block';return;}
-    const s=Math.floor(diff/1000);
-    D.textContent=Math.floor(s/86400);
-    H.textContent=Math.floor(s%86400/3600);
-    M.textContent=Math.floor(s%3600/60);
-    S.textContent=s%60;
+  const pond=document.getElementById('pePond'),state=document.getElementById('peState'),
+        btn=document.getElementById('peBtn'),msg=document.getElementById('peMsg'),
+        lastEl=document.getElementById('peLast'),bestEl=document.getElementById('peBest');
+  if(!pond) return;
+  let best=+(localStorage.getItem('pescaBest')||0); if(best)bestEl.textContent=best+' ms';
+  let phase='idle', t0=0, waitT=null;
+  function toIdle(){phase='idle';pond.classList.remove('bite');state.textContent='🎣 Pulsa "Lanzar el sedal"';btn.disabled=false;}
+  function launch(){
+    phase='wait';pond.classList.remove('bite');state.textContent='🌊 Espera… no te adelantes';btn.disabled=true;
+    const delay=1200+Math.random()*3200;
+    waitT=setTimeout(()=>{phase='bite';pond.classList.add('bite');state.innerHTML='<span class="pesca-fish">🐟</span><br>¡PICA! ¡TOCA!';t0=performance.now();},delay);
   }
-  tick();setInterval(tick,1000);
+  pond.addEventListener('click',()=>{
+    if(phase==='wait'){clearTimeout(waitT);phase='idle';pond.classList.remove('bite');state.textContent='🙈 ¡Te adelantaste! Se escapó';msg.textContent='Espera a que pique de verdad…';btn.disabled=false;btn.textContent='Otra vez 🎣';return;}
+    if(phase==='bite'){
+      const ms=Math.round(performance.now()-t0);phase='idle';pond.classList.remove('bite');
+      lastEl.textContent=ms+' ms';state.textContent='🎉 ¡Pescado en '+ms+' ms!';
+      if(!best||ms<best){best=ms;localStorage.setItem('pescaBest',best);bestEl.textContent=best+' ms';msg.textContent='¡Nuevo récord! '+PIROPOS_JUEGO[Math.floor(Math.random()*PIROPOS_JUEGO.length)];confetti();}
+      else msg.textContent=ms<300?'¡Reflejos de gato! 🐾':ms<500?'¡Muy rápida! 🥰':'¡Bien! Otra vez 🎣';
+      btn.disabled=false;btn.textContent='Otra vez 🎣';
+    }
+  });
+  btn.onclick=()=>{if(phase==='idle')launch();};
+  toIdle();
 })();
 
 /* ================= COFRE DE POEMAS ================= */
